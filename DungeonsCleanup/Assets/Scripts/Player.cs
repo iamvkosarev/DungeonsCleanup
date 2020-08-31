@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float playerHorizontalSpeed = 5f;
 
+    [Header("Player Elements")]
+    [SerializeField] GameObject bodyPrefab;
+
     //catching files
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigitbody2D;
@@ -41,6 +44,13 @@ public class Player : MonoBehaviour
     {
         HorizontalMove();
         HorizontalRotate();
+        UpdateColliderInBody();
+    }
+
+    private void UpdateColliderInBody()
+    {
+        Destroy(bodyPrefab.GetComponent<PolygonCollider2D>());
+        bodyPrefab.AddComponent<PolygonCollider2D>();
     }
 
     private void HorizontalRotate()
