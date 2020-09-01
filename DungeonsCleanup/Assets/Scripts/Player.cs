@@ -64,9 +64,12 @@ public class Player : MonoBehaviour
     private void HorizontalMove()
     {
         float joystickXAxis = playerActionControls.Land.Move.ReadValue<Vector2>().x;
-        float walkLimit = 0.5f;
-        float runLimit = 1f;
-        float joystickSign = Mathf.Sign(joystickXAxis);
+        float joystickXAxisSign = Mathf.Sign(joystickXAxis);
+        float absJpystickXAxis = Mathf.Abs(joystickXAxis);
+
+        float walkLimit = 0.2f;
+        float runLimit = 0.7f;
+
         if (joystickXAxis == 0) {
             // Animation
             myAnimator.SetBool("isWalking", false);
@@ -74,18 +77,18 @@ public class Player : MonoBehaviour
             // Stoping Animation
             return;
         }
-        else if (Mathf.Abs(joystickXAxis) <= walkLimit) // Walk
+        else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
         {
             // Moving
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * walkLimit* joystickSign, myRigitbody2D.velocity.y);
+            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (walkLimit + 0.2f) * joystickXAxisSign, myRigitbody2D.velocity.y);
             // Animation
             myAnimator.SetBool("isWalking", true);
             myAnimator.SetBool("isRunning", false);
         }
-        else if (Mathf.Abs(joystickXAxis) > walkLimit && Mathf.Abs(joystickXAxis) <= runLimit) // Run
+        else if (absJpystickXAxis >= runLimit) // Run
         {
             // Moving
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * runLimit* joystickSign, myRigitbody2D.velocity.y);
+            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (runLimit + 0.1f) * joystickXAxisSign, myRigitbody2D.velocity.y);
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
