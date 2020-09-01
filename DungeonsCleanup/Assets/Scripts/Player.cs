@@ -135,4 +135,9 @@ public class Player : MonoBehaviour
             myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
         }
     }
+
+    public void StopStoppingAnimation()
+    {
+        myAnimator.SetTrigger("StopStopping");
+    }
 }
