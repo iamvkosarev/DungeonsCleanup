@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7081787223668988281}
   - component: {fileID: 7081787223668988280}
+  - component: {fileID: 100721578862528606}
   m_Layer: 11
   m_Name: Feet
   m_TagString: Untagged
@@ -57,6 +58,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.61, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &100721578862528606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787223668988230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e04d2657e1581f45b106c2155ac3070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlayerJumpOverWall: 0
+  canPlayerDoDoubleJump: 1
+  jumpForce: 8
+  checkRadius: 0.1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 4096
+  jumpUIImage: {fileID: 0}
+  singleJumpImage: {fileID: 0}
+  doubleJumpImage: {fileID: 0}
 --- !u!1 &7081787225086070597
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +153,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 33a60539504488444a668246b3a688a9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -144,8 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHorizontalSpeed: 8
-  bodyPrefab: {fileID: 7081787225611444493}
+  playerHorizontalSpeed: 11
+  bodyChild: {fileID: 7081787225611444493}
+  feetChild: {fileID: 7081787223668988230}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0

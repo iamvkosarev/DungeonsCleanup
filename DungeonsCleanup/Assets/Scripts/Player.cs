@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] float playerHorizontalSpeed = 5f;
 
     [Header("Player Elements")]
-    [SerializeField] GameObject bodyPrefab;
+    [SerializeField] GameObject bodyChild;
+    [SerializeField] GameObject feetChild;
 
     //catching files
     PlayerActionControls playerActionControls;
@@ -19,10 +20,17 @@ public class Player : MonoBehaviour
     Animator myAnimator;
 
     // param
+    bool isAttackButtonPressed;
+    bool isJumpButtonPressed;
 
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
+        // Attack
+        playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
+        playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
+        // Jump
+        playerActionControls.Land.Jump.started += _ => Jump();
     }
 
     private void OnEnable()
@@ -47,10 +55,15 @@ public class Player : MonoBehaviour
         UpdateColliderInBody();
     }
 
+    private void Jump()
+    {
+        feetChild.GetComponent<JumpScript>().Jump();
+    }
+
     private void UpdateColliderInBody()
     {
-        Destroy(bodyPrefab.GetComponent<PolygonCollider2D>());
-        bodyPrefab.AddComponent<PolygonCollider2D>();
+        Destroy(bodyChild.GetComponent<PolygonCollider2D>());
+        bodyChild.AddComponent<PolygonCollider2D>();
     }
 
     private void HorizontalRotate()
