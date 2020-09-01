@@ -9,7 +9,6 @@ public class JumpScript : MonoBehaviour
 
     // config
     [Header("Game Settings")]
-    [SerializeField] bool canPlayerJumpOverWall = false;
     [SerializeField] bool canPlayerDoDoubleJump = false;
     [SerializeField] float jumpForce;
 

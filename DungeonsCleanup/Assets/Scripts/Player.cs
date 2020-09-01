@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     // config
     [Header("Movement")]
     [SerializeField] float playerHorizontalSpeed = 5f;
+    [SerializeField] float timeOnStoping = 0.3f;
 
     [Header("Player Elements")]
     [SerializeField] GameObject bodyChild;
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
     // param
     bool isAttackButtonPressed;
     bool isJumpButtonPressed;
+    bool isStoping;
+    float timeSinceStartStoping;
+    float startVelocityXAxis;
+    float walkLimit = 0.2f;
+    float runLimit = 0.7f;
 
     private void Awake()
     {
@@ -29,6 +35,9 @@ public class Player : MonoBehaviour
         // Attack
         playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
         playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
+        // Moving
+        playerActionControls.Land.Move.started += _ => isStoping = false;
+        playerActionControls.Land.Move.canceled += _ => isStoping = true;
         // Jump
         playerActionControls.Land.Jump.started += _ => Jump();
     }
@@ -53,7 +62,9 @@ public class Player : MonoBehaviour
         HorizontalMove();
         HorizontalRotate();
         UpdateColliderInBody();
+        StopMoving();
     }
+
 
     private void Jump()
     {
@@ -80,10 +91,8 @@ public class Player : MonoBehaviour
         float joystickXAxisSign = Mathf.Sign(joystickXAxis);
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
 
-        float walkLimit = 0.2f;
-        float runLimit = 0.7f;
 
-        if (joystickXAxis == 0) {
+        if (absJpystickXAxis < walkLimit) {
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
@@ -105,6 +114,25 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
+        }
+    }
+
+    private void StopMoving()
+    {
+        if (Mathf.Abs(myRigitbody2D.velocity.x ) > walkLimit * playerHorizontalSpeed && !isStoping)
+        {
+            timeSinceStartStoping = Time.time;
+            startVelocityXAxis = myRigitbody2D.velocity.x;
+        }
+
+        if (isStoping && Time.time - timeSinceStartStoping <= timeOnStoping)
+        {
+            float coefficientOfStoping = (Time.time - timeSinceStartStoping) / timeOnStoping;
+            myRigitbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigitbody2D.velocity.y);
+        }
+        else if(isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
+        {
+            myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
         }
     }
 }
