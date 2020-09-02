@@ -23,18 +23,35 @@ public class JumpScript : MonoBehaviour
 
     //catching files
     Rigidbody2D playerRigidbody2D;
+    Player playerScript;
 
     // param
     bool isPlayerUsedSecondJump;
     private void Start()
     {
         playerRigidbody2D = GetComponentInParent<Rigidbody2D>();
+        playerScript = GetComponentInParent<Player>();
     }
 
     private void Update()
     {
         RefreshJumpParametrs();
         RefreshUIJumpIcon();
+        CheckPlayerFlyVelocity();
+    }
+
+    private void CheckPlayerFlyVelocity()
+    {
+
+        if (IsPlayerOnGround())
+        {
+            playerScript.StartLandAnimation();
+        }
+
+        if (playerRigidbody2D.velocity.y < 0 && !IsPlayerOnGround())
+        {
+            playerScript.StartFallAnimation();
+        }
     }
 
     private void RefreshUIJumpIcon()
@@ -83,6 +100,9 @@ public class JumpScript : MonoBehaviour
         // Single Jump
         if (IsPlayerOnGround())
         {
+            // Animation
+            playerScript.StartJumpingAnimation();
+            // Jump
             playerRigidbody2D.velocity = Vector2.up * jumpForce;
         }
         // Double Jump
@@ -90,6 +110,9 @@ public class JumpScript : MonoBehaviour
         {
             if (!isPlayerUsedSecondJump)
             {
+                // Animation
+                playerScript.DoSecondJumpAnimation();
+                // Jump
                 playerRigidbody2D.velocity = Vector2.up * jumpForce;
                 isPlayerUsedSecondJump = true;
             }

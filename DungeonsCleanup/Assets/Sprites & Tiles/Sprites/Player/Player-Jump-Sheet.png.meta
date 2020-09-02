@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: 542e090c2be0d1540ae83b587d526a99
+guid: 7b7795805ec749743971960e9780ee38
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7863303593068407472
-    second: ground-sptite-1_0
+      213: 5487646492029581909
+    second: Player-Jump-Sheet_0
   - first:
-      213: -1704491728956576847
-    second: ground-sptite-1_1
+      213: -8270483074721724015
+    second: Player-Jump-Sheet_1
   - first:
-      213: -6938058359200100376
-    second: ground-sptite-1_2
+      213: -4910694724588927281
+    second: Player-Jump-Sheet_2
+  - first:
+      213: -6878194588654994213
+    second: Player-Jump-Sheet_3
+  - first:
+      213: -4472741241855201506
+    second: Player-Jump-Sheet_4
+  - first:
+      213: -4423683214366229501
+    second: Player-Jump-Sheet_5
+  - first:
+      213: -4969682944105570590
+    second: Player-Jump-Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,9 +67,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 622
+  spritePixelsToUnits: 320
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -122,76 +134,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground-sptite-1_0
+      name: Player-Jump-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 695
-        width: 844
-        height: 208
-      alignment: 9
-      pivot: {x: 0.37677726, y: 1.5024039}
+        y: 0
+        width: 640
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -422, y: -104}
-        - {x: -422, y: 104}
-        - {x: 214, y: 104}
-        - {x: 214, y: -104}
-      tessellationDetail: 0.08
+      physicsShape: []
+      tessellationDetail: 0
       bones: []
-      spriteID: 0ba25e1d4f0102d60800000000000000
-      internalID: 7863303593068407472
+      spriteID: 55a7752e869082c40800000000000000
+      internalID: 5487646492029581909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground-sptite-1_1
+      name: Player-Jump-Sheet_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 640
         y: 0
-        width: 636
-        height: 625
+        width: 640
+        height: 720
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -318, y: 312.5}
-        - {x: -318, y: -312.5}
-        - {x: 318, y: -312.5}
-        - {x: 318, y: 312.5}
-      tessellationDetail: 1
+      physicsShape: []
+      tessellationDetail: 0
       bones: []
-      spriteID: 1bba3f4adcd6858e0800000000000000
-      internalID: -1704491728956576847
+      spriteID: 199c4526677593d80800000000000000
+      internalID: -8270483074721724015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground-sptite-1_2
+      name: Player-Jump-Sheet_2
       rect:
         serializedVersion: 2
-        x: 715
+        x: 1280
         y: 0
-        width: 636
-        height: 625
+        width: 640
+        height: 720
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -318, y: 312.5}
-        - {x: -318, y: -312.5}
-        - {x: 318, y: -312.5}
-        - {x: 318, y: 312.5}
-      tessellationDetail: 1
+      physicsShape: []
+      tessellationDetail: 0
       bones: []
-      spriteID: 8efc2f48ea017bf90800000000000000
-      internalID: -6938058359200100376
+      spriteID: fc60e7c7a25b9dbb0800000000000000
+      internalID: -4910694724588927281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Jump-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 640
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc743fb67ebb80a0800000000000000
+      internalID: -6878194588654994213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Jump-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 640
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f2bf2c981ade1c0800000000000000
+      internalID: -4472741241855201506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Jump-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 640
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cb7d0ed8beb92c0800000000000000
+      internalID: -4423683214366229501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Jump-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 640
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee154e51b3280bb0800000000000000
+      internalID: -4969682944105570590
       vertices: []
       indices: 
       edges: []

@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
-            // Stoping Animation
             return;
         }
         else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
@@ -119,7 +118,7 @@ public class Player : MonoBehaviour
 
     private void StopMoving()
     {
-        if (Mathf.Abs(myRigitbody2D.velocity.x ) > walkLimit * playerHorizontalSpeed && !isStoping)
+        if (Mathf.Abs(myRigitbody2D.velocity.x) > walkLimit * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
             startVelocityXAxis = myRigitbody2D.velocity.x;
@@ -130,14 +129,43 @@ public class Player : MonoBehaviour
             float coefficientOfStoping = (Time.time - timeSinceStartStoping) / timeOnStoping;
             myRigitbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigitbody2D.velocity.y);
         }
-        else if(isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
+        else if (isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
         {
             myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
         }
     }
 
-    public void StopStoppingAnimation()
+    // Animation
+
+    public void StartJumpingAnimation()
     {
-        myAnimator.SetTrigger("StopStopping");
+        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isRunning", false);
+        myAnimator.SetBool("isStopping", false);
+        myAnimator.SetBool("isJumping", true);
     }
+
+    public void SetJumpingFalseInAnimation()
+    {
+        myAnimator.SetBool("isJumping", false);
+    }
+
+    public void StartFallAnimation()
+    {
+        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isRunning", false);
+        myAnimator.SetBool("isStopping", false);
+        myAnimator.SetBool("isFalling", true);
+    }
+
+    public void StartLandAnimation()
+    {
+        myAnimator.SetBool("isFalling", false);
+    }
+
+    public void DoSecondJumpAnimation()
+    {
+        myAnimator.SetBool("isJumping", true);
+    }
+
 }
