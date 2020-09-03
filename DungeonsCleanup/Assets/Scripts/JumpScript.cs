@@ -14,6 +14,7 @@ public class JumpScript : MonoBehaviour
 
     [Header("Development Settings")]
     [SerializeField] float checkRadius;
+    [SerializeField] float checkRadiusForLanding;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] LayerMask whatIsWall;
 
@@ -43,7 +44,7 @@ public class JumpScript : MonoBehaviour
     private void CheckPlayerFlyVelocity()
     {
 
-        if (IsPlayerOnGround())
+        if (IsPlayerNearbyGround())
         {
             playerScript.StartLandAnimation();
         }
@@ -93,6 +94,10 @@ public class JumpScript : MonoBehaviour
     private bool IsPlayerOnGround()
     {
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
+    }
+    private bool IsPlayerNearbyGround()
+    {
+        return Physics2D.OverlapCircle(transform.position, checkRadiusForLanding, whatIsGround);
     }
 
     public void Jump()

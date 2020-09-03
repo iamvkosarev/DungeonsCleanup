@@ -35,9 +35,6 @@ public class Player : MonoBehaviour
         // Attack
         playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
         playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
-        // Moving
-        playerActionControls.Land.Move.started += _ => isStoping = false;
-        playerActionControls.Land.Move.canceled += _ => isStoping = true;
         // Jump
         playerActionControls.Land.Jump.started += _ => Jump();
     }
@@ -96,6 +93,7 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
+            isStoping = true;
             return;
         }
         else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
@@ -114,6 +112,7 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
         }
+        isStoping = false;
     }
 
     private void StopMoving()
