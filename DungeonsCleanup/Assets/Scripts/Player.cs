@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
 
+    [Header("VFX")]
+    //[SerializeField] GameObject runVFX;
+
     //catching files
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigitbody2D;
@@ -114,6 +117,9 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
+
+            //GameObject explosion = Instantiate(runVFX, transform.position, transform.rotation);
+            //Destroy(explosion, 1f);
         }
     }
 
