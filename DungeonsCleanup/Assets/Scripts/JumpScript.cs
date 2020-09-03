@@ -14,6 +14,7 @@ public class JumpScript : MonoBehaviour
 
     [Header("Development Settings")]
     [SerializeField] float checkRadius;
+    [SerializeField] float checkRadiusForLanding;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] LayerMask whatIsWall;
 
@@ -23,18 +24,35 @@ public class JumpScript : MonoBehaviour
 
     //catching files
     Rigidbody2D playerRigidbody2D;
+    Player playerScript;
 
     // param
     bool isPlayerUsedSecondJump;
     private void Start()
     {
         playerRigidbody2D = GetComponentInParent<Rigidbody2D>();
+        playerScript = GetComponentInParent<Player>();
     }
 
     private void Update()
     {
         RefreshJumpParametrs();
         RefreshUIJumpIcon();
+        CheckPlayerFlyVelocity();
+    }
+
+    private void CheckPlayerFlyVelocity()
+    {
+
+        if (IsPlayerNearbyGround())
+        {
+            playerScript.StartLandAnimation();
+        }
+
+        if (playerRigidbody2D.velocity.y < 0 && !IsPlayerOnGround())
+        {
+            playerScript.StartFallAnimation();
+        }
     }
 
     private void RefreshUIJumpIcon()
@@ -77,12 +95,19 @@ public class JumpScript : MonoBehaviour
     {
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
     }
+    private bool IsPlayerNearbyGround()
+    {
+        return Physics2D.OverlapCircle(transform.position, checkRadiusForLanding, whatIsGround);
+    }
 
     public void Jump()
     {
         // Single Jump
         if (IsPlayerOnGround())
         {
+            // Animation
+            playerScript.StartJumpingAnimation();
+            // Jump
             playerRigidbody2D.velocity = Vector2.up * jumpForce;
         }
         // Double Jump
@@ -90,6 +115,9 @@ public class JumpScript : MonoBehaviour
         {
             if (!isPlayerUsedSecondJump)
             {
+                // Animation
+                playerScript.DoSecondJumpAnimation();
+                // Jump
                 playerRigidbody2D.velocity = Vector2.up * jumpForce;
                 isPlayerUsedSecondJump = true;
             }

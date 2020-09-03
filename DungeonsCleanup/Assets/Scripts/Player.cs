@@ -38,9 +38,6 @@ public class Player : MonoBehaviour
         // Attack
         playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
         playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
-        // Moving
-        playerActionControls.Land.Move.started += _ => isStoping = false;
-        playerActionControls.Land.Move.canceled += _ => isStoping = true;
         // Jump
         playerActionControls.Land.Jump.started += _ => Jump();
     }
@@ -99,7 +96,7 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
-            // Stoping Animation
+            isStoping = true;
             return;
         }
         else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
@@ -121,11 +118,12 @@ public class Player : MonoBehaviour
             //GameObject explosion = Instantiate(runVFX, transform.position, transform.rotation);
             //Destroy(explosion, 1f);
         }
+        isStoping = false;
     }
 
     private void StopMoving()
     {
-        if (Mathf.Abs(myRigitbody2D.velocity.x ) > walkLimit * playerHorizontalSpeed && !isStoping)
+        if (Mathf.Abs(myRigitbody2D.velocity.x) > walkLimit * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
             startVelocityXAxis = myRigitbody2D.velocity.x;
@@ -136,14 +134,43 @@ public class Player : MonoBehaviour
             float coefficientOfStoping = (Time.time - timeSinceStartStoping) / timeOnStoping;
             myRigitbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigitbody2D.velocity.y);
         }
-        else if(isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
+        else if (isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
         {
             myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
         }
     }
 
-    public void StopStoppingAnimation()
+    // Animation
+
+    public void StartJumpingAnimation()
     {
-        myAnimator.SetTrigger("StopStopping");
+        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isRunning", false);
+        myAnimator.SetBool("isStopping", false);
+        myAnimator.SetBool("isJumping", true);
     }
+
+    public void SetJumpingFalseInAnimation()
+    {
+        myAnimator.SetBool("isJumping", false);
+    }
+
+    public void StartFallAnimation()
+    {
+        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isRunning", false);
+        myAnimator.SetBool("isStopping", false);
+        myAnimator.SetBool("isFalling", true);
+    }
+
+    public void StartLandAnimation()
+    {
+        myAnimator.SetBool("isFalling", false);
+    }
+
+    public void DoSecondJumpAnimation()
+    {
+        myAnimator.SetBool("isJumping", true);
+    }
+
 }
