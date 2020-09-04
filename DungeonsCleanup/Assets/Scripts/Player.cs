@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
 
+    [Header("VFX")]
+    [SerializeField] GameObject runParticlesPrefab;
+    [SerializeField] float particlesDestroyDelay = 0.1f;
+
     //catching files
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigitbody2D;
@@ -146,6 +150,21 @@ public class Player : MonoBehaviour
         {
             myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
         }
+    }
+
+    public void SpawnRunParticlesVFX(int isDirectionInSameSide)
+    {
+        int angleOfRotate;
+        if (transform.localScale.x >= 0)
+        {
+            angleOfRotate = isDirectionInSameSide == 1? 0 : 180;
+        }
+        else
+        {
+            angleOfRotate = isDirectionInSameSide == 1? 180 : 180;
+        }
+        GameObject particles = Instantiate(runParticlesPrefab, feetChild.transform.position, Quaternion.Euler(0, angleOfRotate, 0));
+        Destroy(particles, particlesDestroyDelay);
     }
 
     // Animation
