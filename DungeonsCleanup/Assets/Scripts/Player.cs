@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject feetChild;
 
     [Header("VFX")]
-    //[SerializeField] GameObject runVFX;
+    [SerializeField] GameObject runVFX;
 
     //catching files
     PlayerActionControls playerActionControls;
@@ -115,8 +115,14 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
 
-            //GameObject explosion = Instantiate(runVFX, transform.position, transform.rotation);
-            //Destroy(explosion, 1f);
+            if(joystickXAxis >= 0)
+            {
+                RunVFX(0);
+            }
+            else
+            {
+                RunVFX(180);
+            }
         }
         isStoping = false;
     }
@@ -142,6 +148,12 @@ public class Player : MonoBehaviour
 
     // Animation
 
+    public void RunVFX(float angle)
+    {
+        GameObject ground = Instantiate(runVFX, transform.Find("Feet").position, Quaternion.Euler(0, angle, 0));
+        Destroy(ground, 0.1f);
+
+    }
     public void StartJumpingAnimation()
     {
         myAnimator.SetBool("isWalking", false);
