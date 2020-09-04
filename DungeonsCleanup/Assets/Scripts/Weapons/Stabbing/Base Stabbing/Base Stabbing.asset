@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eae6196469dcf041a82c4331b5b1cca, type: 3}
+  m_Name: Base Stabbing
+  m_EditorClassIdentifier: 
+  nameOfWeapon: "\u0411\u0430\u0437\u043E\u0432\u044B\u0439 \u043A\u043B\u0438\u043D\u043E\u043A"
+  description: "\u0412\u0435\u043B\u0438\u043A\u043E\u043B\u0435\u043F\u043D\u043E
+    \u0440\u0435\u0436\u0438\u0442 \u043A\u0430\u043F\u0443\u0441\u0442\u0443 \u0438
+    \u0431\u0430\u043A\u043B\u0430\u0436\u0430\u043D\u044B."
+  itemClass: "E-\u043A\u043B\u0430\u0441\u0441"
+  source: "\u041A\u0443\u0437\u043D\u044F \u0413\u0435\u0444\u0435\u0441\u0442\u0430"
+  damages: 01000000
+  animationFramesList:
+  - {fileID: 11400000, guid: d82b257edd3bda84d89f8addd4d3b324, type: 2}

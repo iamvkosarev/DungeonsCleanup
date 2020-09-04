@@ -19,11 +19,14 @@ public class Player : MonoBehaviour
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigitbody2D;
     Animator myAnimator;
+    PlayerAttackManager myAttackManager;
+    JumpScript feetsJumpingScript;
 
     // param
     bool isAttackButtonPressed;
     bool isJumpButtonPressed;
     bool isStoping;
+    bool isPlayerOnGround;
     float timeSinceStartStoping;
     float startVelocityXAxis;
     float walkLimit = 0.2f;
@@ -52,6 +55,8 @@ public class Player : MonoBehaviour
     {
         myRigitbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myAttackManager = GetComponent<PlayerAttackManager>();
+        feetsJumpingScript = feetChild.GetComponent<JumpScript>();
     }
 
     void Update()
@@ -60,8 +65,17 @@ public class Player : MonoBehaviour
         HorizontalRotate();
         UpdateColliderInBody();
         StopMoving();
+        Attack();
+        UpdatePlayerGroundInfo();
     }
 
+    private void Attack()
+    {
+        if (isAttackButtonPressed)
+        {
+            myAttackManager.StartStabbingAttack();
+        }
+    }
 
     private void Jump()
     {
@@ -136,6 +150,11 @@ public class Player : MonoBehaviour
 
     // Animation
 
+    private void UpdatePlayerGroundInfo()
+    {
+        isPlayerOnGround = feetsJumpingScript.IsPlayerOnGround();
+        myAnimator.SetBool("isPlayerOnGround", isPlayerOnGround);
+    }
     public void StartJumpingAnimation()
     {
         myAnimator.SetBool("isWalking", false);
