@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 3558d82efe9421243a75657cfd3a9e05
+guid: a4896d7becede7c4b8c342209a3d3e5f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6151535808314537983
-    second: Player-Attack1-WithKnife-Sheet_0
+      213: 7085866533923164399
+    second: Player-StabbingAttack1-Sheet_0
   - first:
-      213: 4428365533053709081
-    second: Player-Attack1-WithKnife-Sheet_1
+      213: 7499721724952311492
+    second: Player-StabbingAttack1-Sheet_1
   - first:
-      213: -84700629682666714
-    second: Player-Attack1-WithKnife-Sheet_2
+      213: 5678637701774490533
+    second: Player-StabbingAttack1-Sheet_2
   - first:
-      213: -3452257190049138904
-    second: Player-Attack1-WithKnife-Sheet_3
+      213: -257626145661130413
+    second: Player-StabbingAttack1-Sheet_3
   - first:
-      213: -1085830750451084373
-    second: Player-Attack1-WithKnife-Sheet_4
+      213: -5280716798827549732
+    second: Player-StabbingAttack1-Sheet_4
   - first:
-      213: -3693205433708908363
-    second: Player-Attack1-WithKnife-Sheet_5
+      213: 6893790166625850452
+    second: Player-StabbingAttack1-Sheet_5
   - first:
-      213: -5239050510941413683
-    second: Player-Attack1-WithKnife-Sheet_6
+      213: -600976569834063696
+    second: Player-StabbingAttack1-Sheet_6
+  - first:
+      213: -7789503978515929653
+    second: Player-StabbingAttack1-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_0
+      name: Player-StabbingAttack1-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 108015a46ca51aaa0800000000000000
-      internalID: -6151535808314537983
+      spriteID: fe09150f11e065260800000000000000
+      internalID: 7085866533923164399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_1
+      name: Player-StabbingAttack1-Sheet_1
       rect:
         serializedVersion: 2
         x: 640
@@ -169,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91bef356df6b47d30800000000000000
-      internalID: 4428365533053709081
+      spriteID: 4c6ff027c2d541860800000000000000
+      internalID: 7499721724952311492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_2
+      name: Player-StabbingAttack1-Sheet_2
       rect:
         serializedVersion: 2
         x: 1280
@@ -190,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 623438fd93513def0800000000000000
-      internalID: -84700629682666714
+      spriteID: 5abb86e27e29ece40800000000000000
+      internalID: 5678637701774490533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_3
+      name: Player-StabbingAttack1-Sheet_3
       rect:
         serializedVersion: 2
         x: 1920
@@ -211,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82735d1606e1710d0800000000000000
-      internalID: -3452257190049138904
+      spriteID: 359e30fa26abc6cf0800000000000000
+      internalID: -257626145661130413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_4
+      name: Player-StabbingAttack1-Sheet_4
       rect:
         serializedVersion: 2
         x: 2560
@@ -232,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba3da297faa5ee0f0800000000000000
-      internalID: -1085830750451084373
+      spriteID: cdb2276cc0027b6b0800000000000000
+      internalID: -5280716798827549732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_5
+      name: Player-StabbingAttack1-Sheet_5
       rect:
         serializedVersion: 2
         x: 3200
@@ -253,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b0fc39b9391fbcc0800000000000000
-      internalID: -3693205433708908363
+      spriteID: 45490d5b1a9abaf50800000000000000
+      internalID: 6893790166625850452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Attack1-WithKnife-Sheet_6
+      name: Player-StabbingAttack1-Sheet_6
       rect:
         serializedVersion: 2
         x: 3840
@@ -274,8 +277,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dce120761572b47b0800000000000000
-      internalID: -5239050510941413683
+      spriteID: 0b835bc6ef6e8a7f0800000000000000
+      internalID: -600976569834063696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-StabbingAttack1-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5e010f66f16e390800000000000000
+      internalID: -7789503978515929653
       vertices: []
       indices: 
       edges: []

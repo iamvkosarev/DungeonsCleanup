@@ -41,7 +41,7 @@ public class JumpScript : MonoBehaviour
         CheckPlayerFlyVelocity();
     }
 
-    private void CheckPlayerFlyVelocity()
+    public void CheckPlayerFlyVelocity()
     {
 
         if (IsPlayerNearbyGround())
@@ -91,7 +91,7 @@ public class JumpScript : MonoBehaviour
         }
     }
 
-    private bool IsPlayerOnGround()
+    public bool IsPlayerOnGround()
     {
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
     }

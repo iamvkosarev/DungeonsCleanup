@@ -15,18 +15,18 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
 
-    [Header("VFX")]
-    [SerializeField] GameObject runVFX;
-
     //catching files
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigitbody2D;
     Animator myAnimator;
+    PlayerAttackManager myAttackManager;
+    JumpScript feetsJumpingScript;
 
     // param
     bool isAttackButtonPressed;
     bool isJumpButtonPressed;
     bool isStoping;
+    bool isPlayerOnGround;
     float timeSinceStartStoping;
     float startVelocityXAxis;
     float walkLimit = 0.2f;
@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
     {
         myRigitbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myAttackManager = GetComponent<PlayerAttackManager>();
+        feetsJumpingScript = feetChild.GetComponent<JumpScript>();
     }
 
     void Update()
@@ -63,8 +65,17 @@ public class Player : MonoBehaviour
         HorizontalRotate();
         UpdateColliderInBody();
         StopMoving();
+        Attack();
+        UpdatePlayerGroundInfo();
     }
 
+    private void Attack()
+    {
+        if (isAttackButtonPressed)
+        {
+            myAttackManager.StartStabbingAttack();
+        }
+    }
 
     private void Jump()
     {
@@ -114,15 +125,6 @@ public class Player : MonoBehaviour
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
-
-            if(joystickXAxis >= 0)
-            {
-                RunVFX(0);
-            }
-            else
-            {
-                RunVFX(180);
-            }
         }
         isStoping = false;
     }
@@ -148,11 +150,10 @@ public class Player : MonoBehaviour
 
     // Animation
 
-    public void RunVFX(float angle)
+    private void UpdatePlayerGroundInfo()
     {
-        GameObject ground = Instantiate(runVFX, transform.Find("Feet").position, Quaternion.Euler(0, angle, 0));
-        Destroy(ground, 0.1f);
-
+        isPlayerOnGround = feetsJumpingScript.IsPlayerOnGround();
+        myAnimator.SetBool("isPlayerOnGround", isPlayerOnGround);
     }
     public void StartJumpingAnimation()
     {
