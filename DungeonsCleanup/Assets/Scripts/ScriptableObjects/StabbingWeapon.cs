@@ -10,6 +10,7 @@ public class StabbingWeapon : ScriptableObject
     [SerializeField] string itemClass = "E-класс";
     [SerializeField] string source = "Кузня Гефеста";
     [SerializeField] int[] damages;
+    [SerializeField] float[] attackRadius;
     [SerializeField] List<FramesList> animationFramesList;
 
 
@@ -38,5 +39,14 @@ public class StabbingWeapon : ScriptableObject
             Debug.Log($"Weapon {name} hasn't any damage in {numOfAttack} num of array");
         }
         return damages[numOfAttack];
+    }
+
+    public float GetAttackRadius(int numOfAttack)
+    {
+        if (damages.Length <= numOfAttack)
+        {
+            Debug.Log($"Weapon {name} hasn't any attack radius in {numOfAttack} num of array");
+        }
+        return attackRadius[numOfAttack];
     }
 }

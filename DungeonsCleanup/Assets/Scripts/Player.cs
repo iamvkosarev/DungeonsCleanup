@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
     {
         if (isAttackButtonPressed)
         {
-            myAttackManager.StartStabbingAttack();
+            myAttackManager.StartStabbingAttackAnimation();
         }
     }
 
