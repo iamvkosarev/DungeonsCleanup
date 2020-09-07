@@ -6,11 +6,12 @@ public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] PlayerProperties playerProperties;
     [SerializeField] SpriteRenderer stabbingWeaponSpriteRender;
+    [SerializeField] LayerMask enemysLayer;
     [SerializeField] int numOfStabbingAttacks = 1;
 
     StabbingWeapon currentStabbingWeapon;
     int currentStabbingAttackNum;
-    bool isAttacking = false;
+    bool didAttackAnimationStart = false;
     Animator myAnimator;
     // ProjjectileWeapon currentProjjectileWeapon;
     // title
@@ -29,18 +30,18 @@ public class PlayerAttackManager : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    public void StartStabbingAttack()
+    public void StartStabbingAttackAnimation()
     {
-        if (isAttacking) { return; }
-        else { isAttacking = true;}
+        if (didAttackAnimationStart) { return; }
+        else { didAttackAnimationStart = true;}
         currentStabbingAttackNum = Random.Range(0, numOfStabbingAttacks - 1);
         // Animation
         myAnimator.SetBool("isAttacking", true);
         myAnimator.SetTrigger($"Stabbing_{currentStabbingAttackNum}");
     }
-    public void StopAttacking()
+    public void StopAttackAnimation()
     {
-        isAttacking = false;
+        didAttackAnimationStart = false;
         myAnimator.SetBool("isAttacking", false);
         SetDefaultStabbingSprite();
     }
@@ -55,4 +56,9 @@ public class PlayerAttackManager : MonoBehaviour
         stabbingWeaponSpriteRender.sprite = null;
     }
 
+    public void DetectEnemysAndAttack()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position,currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum), enemysLayer);
+        Debug.Log($"Атаковано {enemies.Length} врагов");
+    }
 }
