@@ -130,7 +130,6 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
 
-            SpawnRunParticlesVFX(1);
         }
         isStoping = false;
     }
