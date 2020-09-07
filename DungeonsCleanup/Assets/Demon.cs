@@ -19,7 +19,7 @@ public class Demon : MonoBehaviour
     }
     void Start()
     {
-        direction =  - transform.position;
+        
     }
 
     // Update is called once per frame
