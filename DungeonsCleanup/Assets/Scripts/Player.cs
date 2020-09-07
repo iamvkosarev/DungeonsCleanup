@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
         {
             // Moving
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (walkLimit + 0.2f) * joystickXAxisSign, myRigitbody2D.velocity.y);
+            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigitbody2D.velocity.y);
             // Animation
             myAnimator.SetBool("isWalking", true);
             myAnimator.SetBool("isRunning", false);
