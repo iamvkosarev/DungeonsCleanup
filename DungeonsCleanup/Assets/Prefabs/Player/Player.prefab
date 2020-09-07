@@ -257,6 +257,8 @@ MonoBehaviour:
   timeOnStoping: 0.45
   bodyChild: {fileID: 7081787225611444493}
   feetChild: {fileID: 7081787223668988230}
+  runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
+  particlesDestroyDelay: 0.1
 --- !u!212 &586757185
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         HorizontalMove();
         HorizontalRotate();
         UpdateColliderInBody();
-        StopMoving();
+        StopingMoving();
         Attack();
         UpdatePlayerGroundInfo();
     }
@@ -107,17 +107,22 @@ public class Player : MonoBehaviour
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
 
 
-        if (absJpystickXAxis < walkLimit) {
+        if (absJpystickXAxis < walkLimit && !myAnimator.GetBool("isAttacking")) {
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
             isStoping = true;
             return;
         }
+        else if (myAnimator.GetBool("isAttacking"))
+        {
+            myAnimator.SetBool("isWalking", false);
+            myAnimator.SetBool("isRunning", false);
+        }
         else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
         {
             // Moving
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (walkLimit + 0.2f) * joystickXAxisSign, myRigitbody2D.velocity.y);
+            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigitbody2D.velocity.y);
             // Animation
             myAnimator.SetBool("isWalking", true);
             myAnimator.SetBool("isRunning", false);
@@ -130,14 +135,14 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
 
-            SpawnRunParticlesVFX(1);
         }
         isStoping = false;
     }
 
-    private void StopMoving()
+    private void StopingMoving()
     {
-        if (Mathf.Abs(myRigitbody2D.velocity.x) > walkLimit * playerHorizontalSpeed && !isStoping)
+        if (!myAnimator.GetBool("isPlayerOnGround")) { return; }
+            if (Mathf.Abs(myRigitbody2D.velocity.x) > walkLimit * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
             startVelocityXAxis = myRigitbody2D.velocity.x;
@@ -169,6 +174,18 @@ public class Player : MonoBehaviour
         Destroy(particles, particlesDestroyDelay);
     }
 
+    public void Jerk(float attackJerkForce)
+    {
+        timeSinceStartStoping = Time.time;
+        startVelocityXAxis = myRigitbody2D.velocity.x;
+        float playerDirection = Mathf.Sign(transform.localScale.x);
+        float playerVertVelocity = myRigitbody2D.velocity.y;
+        if (!myAnimator.GetBool("isPlayerOnGround"))
+        {
+            attackJerkForce *= 3f;
+        }
+        myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x / 1.4f + attackJerkForce * playerDirection, playerVertVelocity);
+    }
     // Animation
 
     private void UpdatePlayerGroundInfo()
