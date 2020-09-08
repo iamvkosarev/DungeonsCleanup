@@ -2688,6 +2688,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4186234070018730899, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186234070018730899, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186234070351334819, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186234070479778200, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186234070479778202, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30813,6 +30833,10 @@ PrefabInstance:
       propertyPath: checkRadiusForLanding
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 100721578862528606, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: canPlayerDoDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -30869,6 +30893,14 @@ PrefabInstance:
       propertyPath: runParticlesPrefab
       value: 
       objectReference: {fileID: 3041570011163597666, guid: 1e750982b6485f04896a625f02e193b7, type: 3}
+    - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: delayBeforeNextJump
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: jumpJoystickStartLevel
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7081787225611444495, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
