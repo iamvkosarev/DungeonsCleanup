@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         { 
             feetChild.GetComponent<JumpScript>().Jump();
             StartCoroutine(WaitingJump());
-            TakeDamage(15); // for test!
+            //TakeDamage(15); // for test!
         }
     }
 
