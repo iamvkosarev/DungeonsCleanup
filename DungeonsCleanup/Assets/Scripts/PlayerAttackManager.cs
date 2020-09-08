@@ -58,7 +58,10 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void DetectEnemysAndAttack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position,currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum), enemysLayer);
+        float playerDirection = Mathf.Sign(transform.localScale.x);
+        float attackRadius = currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum);
+        Vector2 attackZonePos = new Vector2(transform.position.x + playerDirection * attackRadius, transform.position.y);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemysLayer);
         Debug.Log($"Атаковано {enemies.Length} врагов");
     }
 }
