@@ -7,6 +7,10 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player : MonoBehaviour
 {
     // config
+    [Header("Characteristics")]
+    public int maxHealth = 100;
+    int currentHealth;
+
     [Header("Movement")]
     [SerializeField] float playerHorizontalSpeed = 5f;
     [SerializeField] float timeOnStoping = 0.3f;
@@ -18,6 +22,7 @@ public class Player : MonoBehaviour
     [Header("Player Elements")]
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
+    [SerializeField] HealthBar healthBar;
 
     [Header("VFX")]
     [SerializeField] GameObject runParticlesPrefab;
@@ -60,6 +65,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         myRigitbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAttackManager = GetComponent<PlayerAttackManager>();
@@ -92,6 +99,7 @@ public class Player : MonoBehaviour
         { 
             feetChild.GetComponent<JumpScript>().Jump();
             StartCoroutine(WaitingJump());
+            TakeDamage(15); // for test!
         }
     }
 
@@ -238,6 +246,12 @@ public class Player : MonoBehaviour
     public void DoSecondJumpAnimation()
     {
         myAnimator.SetBool("isJumping", true);
+    }
+
+    private void TakeDamage(int damage) // for test
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
 }
