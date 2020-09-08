@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: c8f56be05aa66cb4eb64f46fa017bca5
+guid: 4ca3d24c06f90c8489bb13231645694c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3924270961327824509
-    second: torch-Sheet_0
+      213: -2774631310978294678
+    second: 2-5D-Walls_0
   - first:
-      213: 2270167383099144066
-    second: torch-Sheet_1
+      213: -8384275992318810153
+    second: 2-5D-Walls_1
   - first:
-      213: -5761421149536445635
-    second: torch-Sheet_2
+      213: -5106960830434544703
+    second: 2-5D-Walls_2
   - first:
-      213: 608870526272484499
-    second: torch-Sheet_3
+      213: 3806524552798946523
+    second: 2-5D-Walls_3
   - first:
-      213: -6607130584295726281
-    second: torch-Sheet_4
+      213: 920427568432116601
+    second: 2-5D-Walls_4
   - first:
-      213: -6688038687065565720
-    second: torch-Sheet_5
+      213: -1374736738695550478
+    second: 2-5D-Walls_5
+  - first:
+      213: 3879231840920605367
+    second: 2-5D-Walls_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +67,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 74
+  spritePixelsToUnits: 630
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -131,127 +134,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: torch-Sheet_0
+      name: 2-5D-Walls_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 958
+        width: 882
+        height: 882
+      alignment: 9
+      pivot: {x: 0.3628117, y: 0.3628118}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381aca33a503a89c0800000000000000
-      internalID: -3924270961327824509
+      spriteID: a6c5676f5878e79d0800000000000000
+      internalID: -2774631310978294678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_1
+      name: 2-5D-Walls_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 1920
+        width: 880
+        height: 240
+      alignment: 9
+      pivot: {x: 0.3756364, y: 1.333333}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2877d420531418f10800000000000000
-      internalID: 2270167383099144066
+      spriteID: 7d76003286115ab80800000000000000
+      internalID: -8384275992318810153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_2
+      name: 2-5D-Walls_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 0
+        y: 2400
+        width: 640
+        height: 640
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3b15746df15b00b0800000000000000
-      internalID: -5761421149536445635
+      spriteID: 1c37d1cbe2e6029b0800000000000000
+      internalID: -5106960830434544703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_3
+      name: 2-5D-Walls_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 1920
+        y: 2400
+        width: 640
+        height: 640
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3943da88484237800800000000000000
-      internalID: 608870526272484499
+      spriteID: bd44266b9ed73d430800000000000000
+      internalID: 3806524552798946523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_4
+      name: 2-5D-Walls_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 958
+        y: 958
+        width: 874
+        height: 874
+      alignment: 9
+      pivot: {x: 0.3628117, y: 0.3628118}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7332f6a5db1ce44a0800000000000000
-      internalID: -6607130584295726281
+      spriteID: 9737fd13ff306cc00800000000000000
+      internalID: 920427568432116601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_5
+      name: 2-5D-Walls_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 960
+        y: 1920
+        width: 880
+        height: 240
+      alignment: 9
+      pivot: {x: 0.3756364, y: 1.333333}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e51365bf305f23a0800000000000000
-      internalID: -6688038687065565720
+      spriteID: 2f96f564834fbece0800000000000000
+      internalID: -1374736738695550478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2-5D-Walls_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2400
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b215776eccc5d530800000000000000
+      internalID: 3879231840920605367
       vertices: []
       indices: 
       edges: []
