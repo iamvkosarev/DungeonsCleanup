@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] float playerHorizontalSpeed = 5f;
     [SerializeField] float timeOnStoping = 0.3f;
 
+    [Header("Jump Activation ")]
+    [SerializeField] float jumpJoystickStartLevel = 0.7f;
+    [SerializeField] float delayBeforeNextJump = 1f;
+
     [Header("Player Elements")]
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
@@ -30,6 +34,7 @@ public class Player : MonoBehaviour
     bool isAttackButtonPressed;
     bool isJumpButtonPressed;
     bool isStoping;
+    bool canPlayerJump = true;
     bool isPlayerOnGround;
     float timeSinceStartStoping;
     float startVelocityXAxis;
@@ -42,8 +47,6 @@ public class Player : MonoBehaviour
         // Attack
         playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
         playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
-        // Jump
-        playerActionControls.Land.Jump.started += _ => Jump();
     }
 
     private void OnEnable()
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
     {
         HorizontalMove();
         HorizontalRotate();
+        Jump();
         UpdateColliderInBody();
         StopingMoving();
         Attack();
@@ -83,7 +87,19 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        feetChild.GetComponent<JumpScript>().Jump();
+        float joystickYAxis = playerActionControls.Land.Move.ReadValue<Vector2>().y;
+        if (joystickYAxis >= jumpJoystickStartLevel && canPlayerJump)
+        { 
+            feetChild.GetComponent<JumpScript>().Jump();
+            StartCoroutine(WaitingJump());
+        }
+    }
+
+    IEnumerator WaitingJump()
+    {
+        canPlayerJump = false;
+        yield return new WaitForSeconds(delayBeforeNextJump);
+        canPlayerJump = true;
     }
 
     private void UpdateColliderInBody()
