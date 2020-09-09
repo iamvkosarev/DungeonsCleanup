@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     [Header("Player Elements")]
     [SerializeField] GameObject bodyChild;
     [SerializeField] GameObject feetChild;
-    [SerializeField] HealthBar healthBar;
 
     [Header("VFX")]
     [SerializeField] GameObject runParticlesPrefab;
@@ -66,7 +65,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
         myRigitbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAttackManager = GetComponent<PlayerAttackManager>();
@@ -248,10 +246,5 @@ public class Player : MonoBehaviour
         myAnimator.SetBool("isJumping", true);
     }
 
-    private void TakeDamage(int damage) // for test
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-    }
 
 }

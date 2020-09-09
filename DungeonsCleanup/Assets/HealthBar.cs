@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] Slider slider;
+    [SerializeField] Slider healthSlider;
+    [SerializeField] TextMeshProUGUI healthText;    
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
-        
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
+        healthText.text = $"{health} / {health}";
+
     }
     public void SetHealth(int health)
     {
-        slider.value = health;
+        healthSlider.value = health;
+        healthText.text = $"{health} / {healthSlider.maxValue}";
     }
 }

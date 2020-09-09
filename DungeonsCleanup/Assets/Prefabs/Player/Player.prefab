@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -767915699
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPlayerDoDoubleJump: 1
-  jumpForce: 9
+  jumpForce: 10
   checkRadius: 0.2
   checkRadiusForLanding: 0.8
   whatIsGround:
@@ -174,9 +174,10 @@ GameObject:
   - component: {fileID: 7081787225086070599}
   - component: {fileID: 7081787225086070596}
   - component: {fileID: 7081787225086070598}
-  - component: {fileID: 7081787225086070649}
   - component: {fileID: 586757185}
+  - component: {fileID: 7081787225086070649}
   - component: {fileID: 5961501673156388416}
+  - component: {fileID: 586757187}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -241,24 +242,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7081787225086070649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHorizontalSpeed: 11
-  timeOnStoping: 0.45
-  bodyChild: {fileID: 7081787225611444493}
-  feetChild: {fileID: 7081787223668988230}
-  runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
-  particlesDestroyDelay: 0.1
 --- !u!212 &586757185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -310,6 +293,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7081787225086070649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  playerHorizontalSpeed: 11
+  timeOnStoping: 0.45
+  jumpJoystickStartLevel: 0.7
+  delayBeforeNextJump: 1
+  bodyChild: {fileID: 7081787225611444493}
+  feetChild: {fileID: 7081787223668988230}
+  runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
+  particlesDestroyDelay: 0.1
 --- !u!114 &5961501673156388416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +332,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   numOfStabbingAttacks: 1
+--- !u!114 &586757187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  healthBar: {fileID: 0}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +416,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -767915699
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4518225611054890064, guid: 292ab47f764f7574ca20fc5d9e4f27cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
