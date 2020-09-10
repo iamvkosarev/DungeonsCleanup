@@ -62,6 +62,7 @@ public class PlayerAttackManager : MonoBehaviour
         float playerDirection = Mathf.Sign(transform.localScale.x);
         float attackRadius = currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum);
         Vector2 attackZonePos = new Vector2(transform.position.x + playerDirection * attackRadius, transform.position.y);
+        
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemiesLayer);
         foreach (Collider2D enemy in enemies)
         {
