@@ -8,7 +8,6 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] SpriteRenderer stabbingWeaponSpriteRender;
     [SerializeField] LayerMask enemiesLayer;
     [SerializeField] int numOfStabbingAttacks = 1;
-    [SerializeField] int playerDamage = 20;
 
     StabbingWeapon currentStabbingWeapon;
     int currentStabbingAttackNum;
@@ -66,7 +65,7 @@ public class PlayerAttackManager : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemiesLayer);
         foreach (Collider2D enemy in enemies)
         {
-            enemy.gameObject.GetComponent<Health>().TakeAwayHelath(playerDamage);
+            enemy.gameObject.GetComponent<Health>().TakeAwayHelath(currentStabbingWeapon.GetDamage(currentStabbingAttackNum));
         }
         Debug.Log($"Атаковано {enemies.Length} врагов");
     }
