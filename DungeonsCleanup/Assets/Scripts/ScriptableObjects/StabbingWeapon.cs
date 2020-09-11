@@ -12,6 +12,7 @@ public class StabbingWeapon : ScriptableObject
     [SerializeField] int[] damages;
     [SerializeField] float[] attackRadius;
     [SerializeField] List<FramesList> animationFramesList;
+    [SerializeField] Sprite icon;
 
 
     public Sprite GetAnimationSprtie(int numOfAttack, int numOfFrame)
@@ -21,6 +22,10 @@ public class StabbingWeapon : ScriptableObject
             Debug.Log($"Weapon {name} hasn't {numOfFrame} sprite in {numOfAttack} num of array");
         }
         return animationFramesList[numOfAttack].GetFrame(numOfFrame);
+    }
+    public Sprite GetIcon()
+    {
+        return icon;
     }
     public string GetName()
     {
