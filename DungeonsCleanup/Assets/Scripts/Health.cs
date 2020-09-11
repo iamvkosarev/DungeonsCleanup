@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField] int health;
 
@@ -24,10 +24,17 @@ public class DamageDealer : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log($"GameObject \"{gameObject.name}\" has destroyed");
+            Death();
         }
     }
     public int GetHealth()
     {
         return health;
+    }
+
+    private void Death()
+    {
+        transform.Rotate(0, 0, -90);
+        Destroy(gameObject, 2f);
     }
 }

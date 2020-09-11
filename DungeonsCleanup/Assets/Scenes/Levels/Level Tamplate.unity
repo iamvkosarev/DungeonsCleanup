@@ -147,6 +147,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6285030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1001 &87355287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,7 +441,7 @@ Transform:
   - {fileID: 1731729982}
   - {fileID: 1965640066}
   m_Father: {fileID: 703988837}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703988836
 GameObject:
@@ -457,8 +470,8 @@ Transform:
   m_LocalPosition: {x: 21.454884, y: 7.9446454, z: -28.186308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1794203167}
   - {fileID: 658882939}
+  - {fileID: 1794203167}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -763,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1357551601207701500, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1357551601207701500, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1004,6 +1017,10 @@ PrefabInstance:
       propertyPath: jumpUIImage
       value: 
       objectReference: {fileID: 467978749}
+    - target: {fileID: 5961501673156388416, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: enemiesLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 7081787223668988280, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Offset.y
       value: 0.90222085

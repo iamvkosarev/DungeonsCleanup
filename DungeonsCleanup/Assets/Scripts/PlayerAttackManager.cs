@@ -6,7 +6,7 @@ public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] PlayerProperties playerProperties;
     [SerializeField] SpriteRenderer stabbingWeaponSpriteRender;
-    [SerializeField] LayerMask enemysLayer;
+    [SerializeField] LayerMask enemiesLayer;
     [SerializeField] int numOfStabbingAttacks = 1;
 
     StabbingWeapon currentStabbingWeapon;
@@ -61,7 +61,12 @@ public class PlayerAttackManager : MonoBehaviour
         float playerDirection = Mathf.Sign(transform.localScale.x);
         float attackRadius = currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum);
         Vector2 attackZonePos = new Vector2(transform.position.x + playerDirection * attackRadius, transform.position.y);
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemysLayer);
+        
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemiesLayer);
+        foreach (Collider2D enemy in enemies)
+        {
+            enemy.gameObject.GetComponent<Health>().TakeAwayHelath(currentStabbingWeapon.GetDamage(currentStabbingAttackNum));
+        }
         Debug.Log($"Атаковано {enemies.Length} врагов");
     }
 }
