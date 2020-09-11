@@ -34,7 +34,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if (didAttackAnimationStart) { return; }
         else { didAttackAnimationStart = true;}
-        currentStabbingAttackNum = Random.Range(0, numOfStabbingAttacks - 1);
+        currentStabbingAttackNum = Random.Range(0, numOfStabbingAttacks);
         // Animation
         myAnimator.SetBool("isAttacking", true);
         myAnimator.SetTrigger($"Stabbing_{currentStabbingAttackNum}");
