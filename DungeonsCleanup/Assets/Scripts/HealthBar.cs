@@ -13,12 +13,12 @@ public class HealthBar : MonoBehaviour
     {
         healthSlider.maxValue = health;
         healthSlider.value = health;
-        healthText.text = $"{health} / {health}";
+        healthText.text = $"{health}/{health}";
 
     }
     public void SetHealth(int health)
     {
         healthSlider.value = health;
-        healthText.text = $"{health} / {healthSlider.maxValue}";
+        healthText.text = $"{health}/{healthSlider.maxValue}";
     }
 }
