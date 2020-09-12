@@ -5,8 +5,8 @@ using TMPro;
 
 public class NotificationWindow : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI topPartText;
-    [SerializeField] TextMeshProUGUI buttomPartText;
+    [SerializeField] protected TextMeshProUGUI topPartText;
+    [SerializeField] protected TextMeshProUGUI buttomPartText;
 
     public void CloseNotificationWindow()
     {
