@@ -8,8 +8,8 @@ public class Demon : MonoBehaviour
     Player player;
     Rigidbody2D myRigidbody;
     Transform myTransform;
-    [SerializeField] float speed = 10f;
-    [SerializeField] float distanceToAttack = 15f;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float distanceToAttack = 10f;
     Vector3 direction;
 
     void Awake()
