@@ -69,4 +69,13 @@ public class PlayerAttackManager : MonoBehaviour
         }
         Debug.Log($"Атаковано {enemies.Length} врагов");
     }
+
+    public StabbingWeapon SwitchCurrentStabbingWeapon(StabbingWeapon newStabbingWeapon)
+    {
+        Debug.Log("Оружее меняется");
+        StabbingWeapon previousStabbingWeapon = currentStabbingWeapon;
+        currentStabbingWeapon = newStabbingWeapon;
+        playerProperties.SetCurrentStabbingWeapons(newStabbingWeapon);
+        return previousStabbingWeapon;
+    }
 }

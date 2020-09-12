@@ -35,9 +35,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""SwitchWeapon"",
                     ""type"": ""Button"",
-                    ""id"": ""78752bdd-892c-4bbe-b343-a0adf3406605"",
+                    ""id"": ""930d1540-7799-4909-8163-86d6fe08a0ff"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -123,12 +123,12 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""891846cf-9972-41cd-9e7b-0a58ac258634"",
+                    ""id"": ""26299446-13e6-4e7f-85cc-43df41c852d2"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -141,7 +141,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_Land = asset.FindActionMap("Land", throwIfNotFound: true);
         m_Land_Move = m_Land.FindAction("Move", throwIfNotFound: true);
         m_Land_Attack = m_Land.FindAction("Attack", throwIfNotFound: true);
-        m_Land_Jump = m_Land.FindAction("Jump", throwIfNotFound: true);
+        m_Land_SwitchWeapon = m_Land.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -193,14 +193,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private ILandActions m_LandActionsCallbackInterface;
     private readonly InputAction m_Land_Move;
     private readonly InputAction m_Land_Attack;
-    private readonly InputAction m_Land_Jump;
+    private readonly InputAction m_Land_SwitchWeapon;
     public struct LandActions
     {
         private @PlayerActionControls m_Wrapper;
         public LandActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Land_Move;
         public InputAction @Attack => m_Wrapper.m_Land_Attack;
-        public InputAction @Jump => m_Wrapper.m_Land_Jump;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Land_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -216,9 +216,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack;
-                @Jump.started -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
+                @SwitchWeapon.started -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitchWeapon;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -229,9 +229,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @SwitchWeapon.started += instance.OnSwitchWeapon;
+                @SwitchWeapon.performed += instance.OnSwitchWeapon;
+                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
             }
         }
     }
@@ -240,6 +240,6 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }
