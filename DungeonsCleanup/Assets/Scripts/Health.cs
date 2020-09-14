@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int health;
-
+    public int health;
+    public float delayBeforeDeath;
     public virtual void TakeAwayHelath(int damage)
     {
         if (damage >= health)
@@ -35,6 +35,6 @@ public class Health : MonoBehaviour
     private void Death()
     {
         transform.Rotate(0, 0, -90);
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, delayBeforeDeath);
     }
 }
