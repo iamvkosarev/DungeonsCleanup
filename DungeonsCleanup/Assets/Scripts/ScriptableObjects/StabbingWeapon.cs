@@ -7,9 +7,10 @@ public class StabbingWeapon : ScriptableObject
 {
     [SerializeField] string nameOfWeapon = "Без имени";
     [TextArea(minLines:3, maxLines:6)] [SerializeField] string description = "Что-то делает";
-    [SerializeField] string itemClass = "E-класс";
+    [SerializeField] string itemClassInEnglish = "E";
     [SerializeField] string source = "Кузня Гефеста";
-    [SerializeField] int[] damages;
+    [SerializeField] int damages;
+    [SerializeField] string typeOfStabbing;
     [SerializeField] float[] attackRadius;
     [SerializeField] List<FramesList> animationFramesList;
     [SerializeField] Sprite icon;
@@ -27,9 +28,17 @@ public class StabbingWeapon : ScriptableObject
     {
         return icon;
     }
-    public string GetName()
+    public string GetTypeOfStebbing()
+    {
+        return typeOfStabbing;
+    }
+    public string GetWeaponName()
     {
         return nameOfWeapon;
+    }
+    public string GetClass()
+    {
+        return itemClassInEnglish;
     }
     
     public string GetDescription()
@@ -37,18 +46,14 @@ public class StabbingWeapon : ScriptableObject
         return description;
     }
 
-    public int GetDamage(int numOfAttack)
+    public int GetDamage()
     {
-        if (damages.Length <= numOfAttack)
-        {
-            Debug.Log($"Weapon {name} hasn't any damage in {numOfAttack} num of array");
-        }
-        return damages[numOfAttack];
+        return damages;
     }
 
     public float GetAttackRadius(int numOfAttack)
     {
-        if (damages.Length <= numOfAttack)
+        if (attackRadius.Length <= numOfAttack)
         {
             Debug.Log($"Weapon {name} hasn't any attack radius in {numOfAttack} num of array");
         }

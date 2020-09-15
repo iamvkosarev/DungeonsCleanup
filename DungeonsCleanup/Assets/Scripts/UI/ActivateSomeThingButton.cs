@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
 
-public class SwtichWeapon : MonoBehaviour
+public class ActivateSomeThingButton : MonoBehaviour
 {
     [SerializeField] UnityEngine.UI.Image myImage;
     [SerializeField] UnityEngine.UI.Image childImage;

@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 7081787225086070649}
   - component: {fileID: 5961501673156388416}
   - component: {fileID: 586757187}
+  - component: {fileID: 1187377112}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -305,7 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   playerHorizontalSpeed: 11
   timeOnStoping: 0.45
   jumpJoystickStartLevel: 0.7
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f3f3d8e59ad1345ad466f4109a11ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProperties: {fileID: 11400000, guid: f3a89c514d5b9734490d7d7b3509a2c2, type: 2}
+  playerProperties: {fileID: 11400000, guid: cad8e190d57569d4d9311c367790fdbf, type: 2}
   stabbingWeaponSpriteRender: {fileID: 749463905}
   enemiesLayer:
     serializedVersion: 2
@@ -345,7 +345,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  delayBeforeDeath: 0
   healthBar: {fileID: 0}
+--- !u!114 &1187377112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4c4c60693cfa5419997b142228cbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 0.5
+  weaponLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  activateSomeThingButton: {fileID: 0}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
