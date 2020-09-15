@@ -8,31 +8,44 @@ public class Demon : MonoBehaviour
     Player player;
     Rigidbody2D myRigidbody;
     Transform myTransform;
-    [SerializeField] float speed = 10f;
-    [SerializeField] float distanceToAttack = 15f;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float distanceToAttack = 10f;
+    [SerializeField] float radiusOfAttack = 1f;
+    [SerializeField] int demonDamage = 1;
+    [SerializeField] float delayBeforeAttack = 1f;
+    [SerializeField] LayerMask playerMask;
     Vector3 direction;
+    Animator myAnimator;
+    Health health;
 
     void Awake()
     {
+        health = GetComponent<Health>();
         startPos = gameObject.transform.position;
         player = FindObjectOfType<Player>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
-    }
-    void Start()
-    {
-        
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack)
+        if(health.health > 0)
         {
-            MoveTowardPlayer();
-            return;
+            if(Mathf.Abs(player.transform.position.x - transform.position.x) < radiusOfAttack)
+            {
+                myAnimator.SetBool("Attack", true);
+                return;
+            }
+            else if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack)
+            {
+                MoveTowardPlayer();
+                return;
+            }
+            BackToStartPlace();
+
         }
-        BackToStartPlace();
     }
 
     private void MoveTowardPlayer()
@@ -68,5 +81,15 @@ public class Demon : MonoBehaviour
     private void Flip()
     {
         transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)), 1f);
+    }
+
+    public void Attack()
+    {
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < radiusOfAttack)
+        {
+            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(demonDamage);
+            myAnimator.SetBool("Attack", false);
+
+        }
     }
 }

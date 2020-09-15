@@ -6,10 +6,6 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
-    // config
-    [Header("Characteristics")]
-    public int maxHealth = 100;
-    int currentHealth;
 
     [Header("Movement")]
     [SerializeField] float playerHorizontalSpeed = 5f;
@@ -64,7 +60,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
         myRigitbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAttackManager = GetComponent<PlayerAttackManager>();
