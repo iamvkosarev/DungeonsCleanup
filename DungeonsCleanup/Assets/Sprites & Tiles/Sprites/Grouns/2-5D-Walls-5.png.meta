@@ -1,34 +1,37 @@
 fileFormatVersion: 2
-guid: 2d03dc77df6a2f3478256bf54ab15fee
+guid: 196797bd1c0fd564ba5f927434181192
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -300524740249742271
-    second: 2-5D-Walls-2_0
+      213: -4946582661472610075
+    second: 2-5D-Walls-5_0
   - first:
-      213: -5570978450007654570
-    second: 2-5D-Walls-2_1
+      213: 9098620806377840141
+    second: 2-5D-Walls-5_1
   - first:
-      213: 7968188104865089029
-    second: 2-5D-Walls-2_2
+      213: -4974220136734281938
+    second: 2-5D-Walls-5_2
   - first:
-      213: 4592124002750401844
-    second: 2-5D-Walls-2_3
+      213: 6892284710649970352
+    second: 2-5D-Walls-5_3
   - first:
-      213: -2086969133244537561
-    second: 2-5D-Walls-2_4
+      213: -5821703307146373283
+    second: 2-5D-Walls-5_4
   - first:
-      213: 2021751417049137365
-    second: 2-5D-Walls-2_5
+      213: -3282018809647846608
+    second: 2-5D-Walls-5_5
   - first:
-      213: -8997005897461285651
-    second: 2-5D-Walls-2_6
+      213: -2451241611022220501
+    second: 2-5D-Walls-5_6
   - first:
-      213: 8243326373083952809
-    second: 2-5D-Walls-2_7
+      213: 6535374445950755064
+    second: 2-5D-Walls-5_7
   - first:
-      213: 3442406648832530316
-    second: 2-5D-Walls-2_8
+      213: 3601953337228802216
+    second: 2-5D-Walls-5_8
+  - first:
+      213: -9138810656033070868
+    second: 2-5D-Walls-5_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -59,7 +62,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -73,7 +76,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 632
+  spritePixelsToUnits: 63
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -140,190 +143,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2-5D-Walls-2_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 0
-        width: 250
-        height: 870
-      alignment: 9
-      pivot: {x: 1.284203, y: 0.37}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 144923b475254dbf0800000000000000
-      internalID: -300524740249742271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-2_1
+      name: 2-5D-Walls-5_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 960
-        width: 882
-        height: 882
+        y: 208
+        width: 86
+        height: 88
       alignment: 9
-      pivot: {x: 0.3628117, y: 0.3628117}
+      pivot: {x: 0.3719913, y: 0.3687716}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65fffe3bd98efa2b0800000000000000
-      internalID: -5570978450007654570
+      spriteID: 5e891da07453a5bb0800000000000000
+      internalID: -4946582661472610075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-2_2
+      name: 2-5D-Walls-5_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 87
+        height: 88
+      alignment: 9
+      pivot: {x: 0.3719913, y: 0.3687716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e1126ba6bc44e70800000000000000
+      internalID: 9098620806377840141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2-5D-Walls-5_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 1920
-        width: 880
-        height: 240
+        y: 96
+        width: 87
+        height: 87
       alignment: 9
-      pivot: {x: 0.3756364, y: 1.333333}
+      pivot: {x: 0.3688526, y: 0.3673614}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5060af53dd0b49e60800000000000000
-      internalID: 7968188104865089029
+      spriteID: e2fab53e32508fab0800000000000000
+      internalID: -4974220136734281938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-2_3
+      name: 2-5D-Walls-5_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 87
+        height: 87
+      alignment: 9
+      pivot: {x: 0.3688526, y: 0.3673614}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0beb52d6d6056af50800000000000000
+      internalID: 6892284710649970352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2-5D-Walls-5_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 2400
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43d8b7c43708abf30800000000000000
-      internalID: 4592124002750401844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-2_4
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 250
-        height: 870
+        y: 16
+        width: 91
+        height: 72
       alignment: 9
-      pivot: {x: 1.284203, y: 0.37}
+      pivot: {x: 0.34849557, y: 0.22927867}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72521cb61a89903e0800000000000000
-      internalID: -2086969133244537561
+      spriteID: d57d2d5dfa7253fa0800000000000000
+      internalID: -5821703307146373283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-2_5
+      name: 2-5D-Walls-5_5
       rect:
         serializedVersion: 2
-        x: 960
-        y: 960
-        width: 882
-        height: 882
+        x: 112
+        y: 16
+        width: 88
+        height: 72
       alignment: 9
-      pivot: {x: 0.3628117, y: 0.3628117}
+      pivot: {x: 0.3507582, y: 0.222129}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d04b5db334be0c10800000000000000
-      internalID: 2021751417049137365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-2_6
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 1920
-        width: 880
-        height: 240
-      alignment: 9
-      pivot: {x: 0.3756364, y: 1.3333333}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: decb9bfedc6342380800000000000000
-      internalID: -8997005897461285651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-2_7
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 2400
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a6374b49ad266270800000000000000
-      internalID: 8243326373083952809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-2_8
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 2400
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c871b14cb92e5cf20800000000000000
-      internalID: 3442406648832530316
+      spriteID: 03b2ac0184de372d0800000000000000
+      internalID: -3282018809647846608
       vertices: []
       indices: 
       edges: []

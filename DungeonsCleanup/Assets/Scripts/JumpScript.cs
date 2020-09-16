@@ -11,11 +11,13 @@ public class JumpScript : MonoBehaviour
     [Header("Game Settings")]
     [SerializeField] bool canPlayerDoDoubleJump = false;
     [SerializeField] float jumpForce;
+    [SerializeField] float stopingOnStairsParametr = 2f;
 
     [Header("Development Settings")]
     [SerializeField] float checkRadius;
     [SerializeField] float checkRadiusForLanding;
     [SerializeField] LayerMask whatIsGround;
+    [SerializeField] LayerMask whatIsStairs;
     [SerializeField] LayerMask whatIsWall;
 
     [Header("UI")]
@@ -39,6 +41,20 @@ public class JumpScript : MonoBehaviour
         RefreshJumpParametrs();
         RefreshUIJumpIcon();
         CheckPlayerFlyVelocity();
+        CheckPlayerOnStairs();
+    }
+
+    private void CheckPlayerOnStairs()
+    {
+        if (IsPlayerOnStairs())
+        {
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x / stopingOnStairsParametr, playerRigidbody2D.velocity.y);
+            playerRigidbody2D.gravityScale = 0f;
+        }
+        else
+        {
+            playerRigidbody2D.gravityScale = 1f;
+        }
     }
 
     public void CheckPlayerFlyVelocity()
@@ -49,7 +65,7 @@ public class JumpScript : MonoBehaviour
             playerScript.StartLandAnimation();
         }
 
-        if (playerRigidbody2D.velocity.y < 0 && !IsPlayerOnGround())
+        if (playerRigidbody2D.velocity.y < 0 && !IsPlayerOnGroundOrStairs())
         {
             playerScript.StartFallAnimation();
         }
@@ -58,26 +74,26 @@ public class JumpScript : MonoBehaviour
     private void RefreshUIJumpIcon()
     {
         // Single Jump Active
-        if (IsPlayerOnGround() && !canPlayerDoDoubleJump)
+        if (IsPlayerOnGroundOrStairs() && !canPlayerDoDoubleJump)
         {
             jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.singleJumpActive);
         }
         // Single Jump Not Active
-        else if (!IsPlayerOnGround() && !canPlayerDoDoubleJump)
+        else if (!IsPlayerOnGroundOrStairs() && !canPlayerDoDoubleJump)
         {
             jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.singleJumpNotActive);
         }
         // Double Jump Active
-        else if (canPlayerDoDoubleJump && IsPlayerOnGround())
+        else if (canPlayerDoDoubleJump && IsPlayerOnGroundOrStairs())
         {
             jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpActive);
         }
         // Double Jump Half Active
-        else if (canPlayerDoDoubleJump && !IsPlayerOnGround() && !isPlayerUsedSecondJump)
+        else if (canPlayerDoDoubleJump && !IsPlayerOnGroundOrStairs() && !isPlayerUsedSecondJump)
         {
             jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpHalfActive);
         }
-        else if (canPlayerDoDoubleJump && !IsPlayerOnGround() && isPlayerUsedSecondJump)
+        else if (canPlayerDoDoubleJump && !IsPlayerOnGroundOrStairs() && isPlayerUsedSecondJump)
         {
             jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpNotActive);
         }
@@ -85,15 +101,20 @@ public class JumpScript : MonoBehaviour
 
     private void RefreshJumpParametrs()
     {
-        if (IsPlayerOnGround() && canPlayerDoDoubleJump)
+        if (IsPlayerOnGroundOrStairs() && canPlayerDoDoubleJump)
         {
             isPlayerUsedSecondJump = false;
         }
     }
 
-    public bool IsPlayerOnGround()
+    public bool IsPlayerOnGroundOrStairs()
     {
-        return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
+        return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround) ||
+            Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
+    }
+    public bool IsPlayerOnStairs()
+    {
+        return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
     }
     private bool IsPlayerNearbyGround()
     {
@@ -103,7 +124,7 @@ public class JumpScript : MonoBehaviour
     public void Jump()
     {
         // Single Jump
-        if (IsPlayerOnGround())
+        if (IsPlayerOnGroundOrStairs())
         {
             // Animation
             playerScript.StartJumpingAnimation();
@@ -111,7 +132,7 @@ public class JumpScript : MonoBehaviour
             playerRigidbody2D.velocity = Vector2.up * jumpForce;
         }
         // Double Jump
-        if (canPlayerDoDoubleJump && !IsPlayerOnGround())
+        if (canPlayerDoDoubleJump && !IsPlayerOnGroundOrStairs())
         {
             if (!isPlayerUsedSecondJump)
             {
