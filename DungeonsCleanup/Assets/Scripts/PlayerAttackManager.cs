@@ -10,6 +10,7 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] int numOfStabbingAttacks = 1;
 
     StabbingWeapon currentStabbingWeapon;
+    PlayerActionControls playerActionControls;
     int currentStabbingAttackNum;
     bool didAttackAnimationStart = false;
     Animator myAnimator;
@@ -24,6 +25,14 @@ public class PlayerAttackManager : MonoBehaviour
     // vitality
     // intelligence
 
+    private void OnEnable()
+    {
+        playerActionControls.Enable();
+    }
+    private void OnDisable()
+    {
+        playerActionControls.Disable();
+    }
     private void Start()
     {
         currentStabbingWeapon = playerProperties.GetCurrentStabbingWeapons();
@@ -65,17 +74,19 @@ public class PlayerAttackManager : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackZonePos, attackRadius, enemiesLayer);
         foreach (Collider2D enemy in enemies)
         {
-            enemy.gameObject.GetComponent<Health>().TakeAwayHelath(currentStabbingWeapon.GetDamage(currentStabbingAttackNum));
+            enemy.gameObject.GetComponent<Health>().TakeAwayHelath(currentStabbingWeapon.GetDamage());
         }
         Debug.Log($"Атаковано {enemies.Length} врагов");
     }
 
-    public StabbingWeapon SwitchCurrentStabbingWeapon(StabbingWeapon newStabbingWeapon)
+    public void SwitchCurrentStabbingWeapon(StabbingWeapon newStabbingWeapon)
     {
         Debug.Log("Оружее меняется");
-        StabbingWeapon previousStabbingWeapon = currentStabbingWeapon;
         currentStabbingWeapon = newStabbingWeapon;
         playerProperties.SetCurrentStabbingWeapons(newStabbingWeapon);
-        return previousStabbingWeapon;
+    }
+    public StabbingWeapon GetCurrentStabbingWeapon()
+    {
+        return currentStabbingWeapon;
     }
 }
