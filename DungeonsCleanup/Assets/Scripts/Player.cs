@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     float startVelocityXAxis;
     float walkLimit = 0.2f;
     float runLimit = 0.7f;
+    float jumpUnderHatchLimit = 0.4f;
 
     private void Awake()
     {
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
         Attack();
         UpdatePlayerGroundInfo();
     }
+
 
     private void Attack()
     {
