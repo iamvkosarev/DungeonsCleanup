@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
 
     private void UpdatePlayerGroundInfo()
     {
-        isPlayerOnGround = feetsJumpingScript.IsPlayerOnGround();
+        isPlayerOnGround = feetsJumpingScript.IsPlayerOnGroundOrStairs();
         myAnimator.SetBool("isPlayerOnGround", isPlayerOnGround);
     }
     public void StartJumpingAnimation()
