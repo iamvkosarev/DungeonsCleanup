@@ -200,6 +200,92 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ba7bafa82b1a294ead78a2558a9c7e3, type: 3}
+--- !u!1 &459336810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459336812}
+  - component: {fileID: 459336811}
+  m_Layer: 0
+  m_Name: A*
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &459336811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459336810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAYIeyzQUNVTQIAAPMEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMtu2zAQ/BWD56aQ5CSGemsVx+khsRE3yEUXWlxZhClS4CN+BP73LinJUlz0ZHpndjmzu9Qn4dI0UFilF5qzZ8WA/JgQfybfJgP4BAe6VXLNT9Bz3jmzlSfRwHmlliuMxz7NqBqs5sVPuRWeHGHQSV4qXc/ZFjJlrMFwSYUBhLSyPlti6HNCDvhzk/qUI56SmT+d8JRGkzMeC5AW9EDtiT2tZTlZCFo3wLzkgRxHPX3a8iS66SheeaGE4KaTQuyxCVYz2hiHRpDAOEVr4X7Pr4BvK+tljpOXZWnAdpo0PT5wjR1qq5Jfqm1bTc2uFfZBhfP33MVJ0NQWff4Hv4kDXGpVP/X3toZsxYvdKz0W1NhRX8fhh6/CndxTsaMbAe8VyBe10MpJhqDVzqc6A8nD8PdiLaug2A3xVupV0DX/n473cA7uD5ng9cZD32/bwFqo0O8we9A4md8oOGyG6Upg1Kt4M/CHbscr1AGPXBuLUOdSenkb5bSnknnomXfjbKa0hBDuRDcgqbDHFZax1yO8wkbXXiGP1D+W7vIO69/AVUoID/wouoJWan8ZlqnU/hlMtXRWcAmDaA+8YJ8yJWW7YeOe9Glrp0tajNK2jrOvq0XYbErjJJ2maZLes9ntzX0KMUzj5C6KWZTcMRJ2j0v0ScWqFdq1B6cmh+IS96z/hkwWmjZh25mm+wU/1WrUci5LtS40gFy2FS7CQeMl+CrZnHFs0Bqs5TLMm3zmRKhiByy/FMqD0/nBapoPVXLS8A9lfSQnWfho5ORMzn8BUEsDBBQAAAgIAAAYIezcMfOjbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSirlxoqGRpbGlpZGlWYq5ia6ZZaphqrGhkamBYYqBkWmKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAYIeyzQUNVTQIAAPMEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAYIezcMfOjbQAAAHgAAAAJACQAAAAAAAAAAAAAAJoCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAUgMAAAAA
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!4 &459336812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459336810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.374269, y: 2.7270687, z: -28.435629}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &467978749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4186234071908396202, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
