@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class BatPathing : MonoBehaviour
 {
@@ -9,31 +10,104 @@ public class BatPathing : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     int waypointIndex = 0;
     float startXScale;
+    [SerializeField] Transform player;
+
+    [SerializeField] float speed = 200f;
+    [SerializeField] float distanceToAttack = 10f;
+    float nextWaypointDistance = 3f;
+    Path path;
+    int currentWayPoint = 0;
+    bool reachedEndOfPath = false;
+
+    Seeker seeker;
+    Rigidbody2D rb;
+
+    
+
 
     private void Start()
     {
+        seeker = GetComponent<Seeker>();
+        rb = GetComponent<Rigidbody2D>();
+        InvokeRepeating("UpdatePath", 0f, .5f);
         waypoints = waveConfig.GetWaypoints();
         startXScale = transform.localScale.x;
         transform.position = waypoints[waypointIndex].transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdatePath()
     {
-        Move();
+        if(seeker.IsDone())
+            seeker.StartPath(transform.position, player.position, OnPathComplite);
+    }
+
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        //Moving();
+
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack)
+        {
+            Attack();
+        }
+
+        else
+        {
+            Moving();
+        }      
 
     }
 
-    private void Move()
+    void Attack()
+    {
+        if(path == null)
+            return;
+
+        if(currentWayPoint >= path.vectorPath.Count)
+        {
+            reachedEndOfPath = true;
+            return;
+        }
+
+        else
+        {
+            reachedEndOfPath = false;
+        }
+
+        Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
+        Vector2 force = direction * speed * Time.deltaTime;
+
+        rb.AddForce(force);
+
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
+
+        if(distance < nextWaypointDistance)
+        {
+            currentWayPoint++;
+        }
+
+        if(IsFacingOnAHero())
+        {
+            Flip();
+        }
+    }
+
+    void OnPathComplite(Path p)
+    {
+        if(!p.error)
+        {
+            path = p;
+            currentWayPoint = 0;
+        }
+    }
+
+    private void Moving()
     {
         if(waypointIndex <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
             var movementThisFrame = moveSpeed * Time.deltaTime;
-            if(IsFacingOnAWaypoint())
-            {
-                Flip();
-            }
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
             if(transform.position == targetPosition)
             {
@@ -45,6 +119,13 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = 0;
         }
+
+        
+        
+        if(IsFacingOnAWaypoint())
+        {
+            Flip();
+        }  
     }
 
     private void Flip()
@@ -55,6 +136,19 @@ public class BatPathing : MonoBehaviour
     private bool IsFacingOnAWaypoint()
     {
         if(transform.position.x >= waypoints[waypointIndex].transform.position.x)
+        {
+            return Mathf.Sign(transform.localScale.x) <= 0;
+        }
+        else
+        {
+            return Mathf.Sign(transform.localScale.x) > 0;
+        }
+    }
+
+    private bool IsFacingOnAHero()
+    {
+        Vector2 startPos = transform.position;
+        if(startPos.x >= player.transform.position.x)
         {
             return Mathf.Sign(transform.localScale.x) <= 0;
         }

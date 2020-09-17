@@ -43,6 +43,7 @@ public class Demon : MonoBehaviour
                 MoveTowardPlayer();
                 return;
             }
+            
             BackToStartPlace();
 
         }
