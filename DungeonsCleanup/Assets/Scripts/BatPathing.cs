@@ -8,12 +8,14 @@ public class BatPathing : MonoBehaviour
     [SerializeField] WaveConfig waveConfig;
     List<Transform> waypoints;
     [SerializeField] float moveSpeed = 2f;
+    [SerializeField] int batDamage = 15;
     int waypointIndex = 0;
     float startXScale;
     [SerializeField] Transform player;
 
-    [SerializeField] float speed = 200f;
+    [SerializeField] float attackSpeed = 200f;
     [SerializeField] float distanceToAttack = 10f;
+    [SerializeField] float attackRadius = 1f;
     float nextWaypointDistance = 3f;
     Path path;
     int currentWayPoint = 0;
@@ -47,9 +49,10 @@ public class BatPathing : MonoBehaviour
     {
         //Moving();
 
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack)
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
+             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
         {
-            Attack();
+            MoveTowardPlayer();
         }
 
         else
@@ -59,7 +62,7 @@ public class BatPathing : MonoBehaviour
 
     }
 
-    void Attack()
+    void MoveTowardPlayer()
     {
         if(path == null)
             return;
@@ -76,7 +79,7 @@ public class BatPathing : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+        Vector2 force = direction * attackSpeed * Time.deltaTime;
 
         rb.AddForce(force);
 
@@ -86,6 +89,8 @@ public class BatPathing : MonoBehaviour
         {
             currentWayPoint++;
         }
+
+        Attack();
 
         if(IsFacingOnAHero())
         {
@@ -99,6 +104,16 @@ public class BatPathing : MonoBehaviour
         {
             path = p;
             currentWayPoint = 0;
+        }
+    }
+
+    void Attack()
+    {
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+             && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
+        {
+            player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
+
         }
     }
 
@@ -119,9 +134,6 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = 0;
         }
-
-        
-        
         if(IsFacingOnAWaypoint())
         {
             Flip();
@@ -141,7 +153,7 @@ public class BatPathing : MonoBehaviour
         }
         else
         {
-            return Mathf.Sign(transform.localScale.x) > 0;
+            return Mathf.Sign(transform.localScale.x) >= 0;
         }
     }
 
