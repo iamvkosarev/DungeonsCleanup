@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPlayerDoDoubleJump: 0
-  jumpForce: 10
+  jumpForce: 12
   stopingOnStairsParametr: 2.5
   checkRadius: 0.2
   checkRadiusForLanding: 0.8
@@ -141,6 +141,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   jumpUIImage: {fileID: 0}
+  hazePrefab: {fileID: 5986334924834478879, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
 --- !u!70 &7077148873157811720
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,8 +155,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.9352861}
-  m_Size: {x: 0.61737895, y: 1.9320523}
+  m_Offset: {x: 0, y: 0.82}
+  m_Size: {x: 0.61737895, y: 1.69}
   m_Direction: 0
 --- !u!1 &7081787225086070597
 GameObject:
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHorizontalSpeed: 11
-  timeOnStoping: 0.45
+  timeOnStoping: 0.3
   jumpJoystickStartLevel: 0.7
   delayBeforeNextJump: 1
   bodyChild: {fileID: 7081787225611444493}

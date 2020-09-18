@@ -23,6 +23,9 @@ public class JumpScript : MonoBehaviour
     [Header("UI")]
     [SerializeField] JumpIconsScript jumpUIImage;
 
+    [Header("VFX")]
+    [SerializeField] GameObject hazePrefab;
+
 
     //catching files
     Rigidbody2D playerRigidbody2D;
@@ -121,6 +124,15 @@ public class JumpScript : MonoBehaviour
         return Physics2D.OverlapCircle(transform.position, checkRadiusForLanding, whatIsGround);
     }
 
+
+    public void SpawnHaze()
+    {
+        GameObject haze = Instantiate(hazePrefab, transform.position, Quaternion.identity);
+        if (IsPlayerOnStairs())
+        {
+            haze.GetComponent<Haze>().SetHazeOnStairs();
+        }
+    }
     public void Jump()
     {
         // Single Jump
@@ -129,6 +141,7 @@ public class JumpScript : MonoBehaviour
             // Animation
             playerScript.StartJumpingAnimation();
             // Jump
+            SpawnHaze();
             playerRigidbody2D.velocity = Vector2.up * jumpForce;
         }
         // Double Jump
@@ -139,6 +152,7 @@ public class JumpScript : MonoBehaviour
                 // Animation
                 playerScript.DoSecondJumpAnimation();
                 // Jump
+                SpawnHaze();
                 playerRigidbody2D.velocity = Vector2.up * jumpForce;
                 isPlayerUsedSecondJump = true;
             }

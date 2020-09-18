@@ -93,7 +93,6 @@ public class Player : MonoBehaviour
         float joystickYAxis = playerActionControls.Land.Move.ReadValue<Vector2>().y;
         if (joystickYAxis >= jumpJoystickStartLevel && canPlayerJump)
         { 
-            feetChild.GetComponent<JumpScript>().Jump();
             StartCoroutine(WaitingJump());
             //TakeDamage(15); // for test!
         }
@@ -101,6 +100,7 @@ public class Player : MonoBehaviour
 
     IEnumerator WaitingJump()
     {
+        feetChild.GetComponent<JumpScript>().Jump();
         canPlayerJump = false;
         yield return new WaitForSeconds(delayBeforeNextJump);
         canPlayerJump = true;
