@@ -10,8 +10,8 @@ public class Demon : MonoBehaviour
     Transform myTransform;
     [SerializeField] float speed = 3f;
     [SerializeField] float distanceToAttack = 10f;
-    [SerializeField] float radiusOfAttack = 1f;
-    [SerializeField] int demonDamage = 1;
+    [SerializeField] float attackRadius = 1f;
+    [SerializeField] int demonDamage = 10;
     [SerializeField] float delayBeforeAttack = 1f;
     [SerializeField] LayerMask playerMask;
     Vector3 direction;
@@ -33,17 +33,19 @@ public class Demon : MonoBehaviour
     {
         if(health.health > 0)
         {
-            if(Mathf.Abs(player.transform.position.x - transform.position.x) < radiusOfAttack)
+            if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+                 && Mathf.Abs(player.transform.position.y - transform.position.y) < 1)
             {
                 myAnimator.SetBool("Attack", true);
                 return;
             }
-            else if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack)
+            else if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
+                    && Mathf.Abs(player.transform.position.y - transform.position.y) < 1)
             {
                 MoveTowardPlayer();
                 return;
             }
-            
+
             BackToStartPlace();
 
         }
@@ -86,11 +88,12 @@ public class Demon : MonoBehaviour
 
     public void Attack()
     {
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < radiusOfAttack)
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+                && Mathf.Abs(player.transform.position.y - transform.position.y) < 1)
         {
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(demonDamage);
-            myAnimator.SetBool("Attack", false);
 
         }
+        myAnimator.SetBool("Attack", false);
     }
 }
