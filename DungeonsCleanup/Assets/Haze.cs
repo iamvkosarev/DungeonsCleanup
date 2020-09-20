@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Haze : MonoBehaviour
 {
-    [SerializeField] LayerMask stairsLayer;
-    [SerializeField] float checkRadius;
     Animator myAnimator;
     private void Awake()
     {

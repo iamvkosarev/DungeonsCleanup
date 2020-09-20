@@ -958,9 +958,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -10.244126
       objectReference: {fileID: 0}
+    - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.511474
+      objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.244126
+      objectReference: {fileID: 0}
+    - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.511474
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574013, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_Follow
@@ -1185,6 +1193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rectangle Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 1357551602906501059, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
 --- !u!1001 &1940110115882756206
@@ -1332,6 +1344,34 @@ PrefabInstance:
       propertyPath: activateSomeThingButton
       value: 
       objectReference: {fileID: 1803591809}
+    - target: {fileID: 100721578862528606, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: checkRadiusForLanding
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100721578862528606, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: xAxisPositionToCheckRadius
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077148873157811720, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.000000029802322
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077148873157811720, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5979474
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077148873157811720, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6940546
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077148873157811720, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Size.y
+      value: 1.875896
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077148873157811720, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1342,7 +1382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070599, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.24
+      value: -6.906
       objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070599, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_LocalPosition.z

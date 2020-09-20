@@ -15,7 +15,7 @@ public class JumpScript : MonoBehaviour
 
     [Header("Development Settings")]
     [SerializeField] float checkRadius;
-    [SerializeField] float checkRadiusForLanding;
+    [SerializeField] float xAxisPositionToCheckRadius;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] LayerMask whatIsStairs;
     [SerializeField] LayerMask whatIsWall;
@@ -37,10 +37,9 @@ public class JumpScript : MonoBehaviour
         playerScript = GetComponentInParent<Player>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         RefreshJumpParametrs();
-        CheckPlayerFlyVelocity();
         CheckPlayerOnStairs();
     }
 
@@ -57,19 +56,6 @@ public class JumpScript : MonoBehaviour
         }
     }
 
-    public void CheckPlayerFlyVelocity()
-    {
-
-        if (IsPlayerNearbyGround())
-        {
-            playerScript.StartLandAnimation();
-        }
-
-        if (playerRigidbody2D.velocity.y < 0 && !IsPlayerOnGroundOrStairs())
-        {
-            playerScript.StartFallAnimation();
-        }
-    }
 
 
     private void RefreshJumpParametrs()
@@ -82,22 +68,24 @@ public class JumpScript : MonoBehaviour
 
     public bool IsPlayerOnGroundOrStairs()
     {
-        return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround) ||
-            Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
+        return IsPlayerOnStairs() ||
+            IsPlayerOnGround();
     }
+
     public Collider2D IsPlayerOnStairs()
     {
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
     }
-    private bool IsPlayerNearbyGround()
+
+    public bool IsPlayerOnGround()
     {
-        return Physics2D.OverlapCircle(transform.position, checkRadiusForLanding, whatIsGround);
+        return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
     }
 
 
     public void SpawnHaze()
     {
-        GameObject haze = Instantiate(hazePrefab, transform.position, Quaternion.identity);
+        GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
         Collider2D stairsCheckCollider = IsPlayerOnStairs();
         if (stairsCheckCollider)
@@ -115,9 +103,6 @@ public class JumpScript : MonoBehaviour
         // Single Jump
         if (IsPlayerOnGroundOrStairs())
         {
-            // Animation
-            playerScript.StartJumpingAnimation();
-            // Jump
             SpawnHaze();
             playerRigidbody2D.velocity = Vector2.up * jumpForce;
         }
@@ -126,9 +111,6 @@ public class JumpScript : MonoBehaviour
         {
             if (!isPlayerUsedSecondJump)
             {
-                // Animation
-                playerScript.DoSecondJumpAnimation();
-                // Jump
                 SpawnHaze();
                 playerRigidbody2D.velocity = Vector2.up * jumpForce;
                 isPlayerUsedSecondJump = true;
