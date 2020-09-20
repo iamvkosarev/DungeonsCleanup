@@ -58,8 +58,11 @@ public class BatPathing : MonoBehaviour
         else
         {
             Moving();
-        }      
-
+        }
+    }
+    private void Update()
+    {
+        LookTowardMoving();
     }
 
     void MoveTowardPlayer()
@@ -92,10 +95,6 @@ public class BatPathing : MonoBehaviour
 
         Attack();
 
-        if(IsFacingOnAHero())
-        {
-            Flip();
-        }
     }
 
     void OnPathComplite(Path p)
@@ -134,15 +133,12 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = 0;
         }
-        if(IsFacingOnAWaypoint())
-        {
-            Flip();
-        }  
     }
 
-    private void Flip()
+    private void LookTowardMoving()
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)) * startXScale, transform.localScale.y);
+        float coefficient = Mathf.Sign(rb.velocity.x);
+        transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * -coefficient, transform.localScale.y);
     }
 
     private bool IsFacingOnAWaypoint()
