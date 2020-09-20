@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "JoystickProperties")]
 public class MovingJoystickProperties : ScriptableObject
 {
-    [SerializeField] float walkLimit = 0.2f;
-    [SerializeField] float runLimit = 0.7f;
-    [SerializeField] float jumpLimit = 0.7f;
-    [SerializeField] float lowerMovementLimit = 0.7f;
+    [Range(0f,1f)][SerializeField] float walkLimit = 0.2f;
+    [Range(0f, 1f)] [SerializeField] float runLimit = 0.7f;
+    [Range(0f, 1f)] [SerializeField] float jumpLimit = 0.7f;
+    [Range(0f, 1f)] [SerializeField] float lowerMovementLimit = 0.7f;
 
     public float GetWalkLimit()
     {
