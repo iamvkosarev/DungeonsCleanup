@@ -23,6 +23,7 @@ public class BatPathing : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    Animator myAnimator;
 
     
 
@@ -31,6 +32,7 @@ public class BatPathing : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         InvokeRepeating("UpdatePath", 0f, .5f);
         waypoints = waveConfig.GetWaypoints();
         startXScale = transform.localScale.x;
@@ -52,7 +54,9 @@ public class BatPathing : MonoBehaviour
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
              && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
         {
-            MoveTowardPlayer();
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            myAnimator.SetBool("Attack", true);
+            //MoveTowardPlayer();
         }
 
         else
@@ -90,8 +94,6 @@ public class BatPathing : MonoBehaviour
             currentWayPoint++;
         }
 
-        Attack();
-
         if(IsFacingOnAHero())
         {
             Flip();
@@ -109,12 +111,22 @@ public class BatPathing : MonoBehaviour
 
     void Attack()
     {
+        
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
 
         }
+
+        if(IsFacingOnAHero())
+        {
+            Flip();
+        }
+
+        myAnimator.SetBool("Attack", false);
+
+
     }
 
     private void Moving()

@@ -7,6 +7,7 @@ public class PlayerActivationButton : MonoBehaviour
 {
     [SerializeField] float checkRadius;
     [SerializeField] LayerMask weaponLayer;
+    [SerializeField] LayerMask doorLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     GameObject weaponNotificationWindow;
@@ -27,6 +28,7 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (!canPlayerActivateSomeThing) { return; }
         SwitchCurrentWeapon();
+        OpenDoor();
     }
     private void Update()
     {
@@ -48,15 +50,10 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void CheckPossibilityToActivateSomeThing()
     {
-        bool isPlayerTouckWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
-        if (isPlayerTouckWeapon)
-        {
-            canPlayerActivateSomeThing = true;
-        }
-        else
-        {
-            canPlayerActivateSomeThing = false;
-        }
+        bool isPlayerTouchWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
+        bool isPlayerTouchDoor = Physics2D.OverlapCircle(transform.position, checkRadius, doorLayer);
+
+        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon);
     }
 
     private void SwitchCurrentWeapon()
@@ -65,6 +62,15 @@ public class PlayerActivationButton : MonoBehaviour
         if (weaponCollider != null && weaponNotificationWindow == null)
         {
             weaponNotificationWindow = weaponCollider.GetComponent<Weapon>().ShowWeaponInfo(playerAttackManager);
+        }
+    }
+
+    private void OpenDoor()
+    {
+        Collider2D doorCollider = Physics2D.OverlapCircle(transform.position, checkRadius, doorLayer);
+        if (doorCollider != null)
+        {
+            doorCollider.gameObject.GetComponent<Door>().Open();
         }
     }
 
