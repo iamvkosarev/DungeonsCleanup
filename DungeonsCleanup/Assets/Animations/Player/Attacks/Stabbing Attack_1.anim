@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Stabbing Attack_1
+  m_Name: Stabbing Attack_1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,21 +20,23 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 7085866533923164399, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: 8421159798325061718, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.071428575
-      value: {fileID: 7499721724952311492, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: 59241374628138251, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.14285715
-      value: {fileID: 5678637701774490533, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: -1198171918506552225, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.21428572
-      value: {fileID: -257626145661130413, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: 4318044822040105426, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.2857143
-      value: {fileID: -5280716798827549732, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: 8260584126493277434, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.35714287
-      value: {fileID: 6893790166625850452, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: -1842597868860274102, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.42857143
-      value: {fileID: -600976569834063696, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: 696175727361607772, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     - time: 0.5
-      value: {fileID: -7789503978515929653, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+      value: {fileID: -4370040932193058875, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - time: 0.5714286
+      value: {fileID: 1477742102710868170, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
     attribute: m_Sprite
     path: Body
     classID: 212
@@ -54,20 +56,21 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 7085866533923164399, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: 7499721724952311492, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: 5678637701774490533, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: -257626145661130413, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: -5280716798827549732, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: 6893790166625850452, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: -600976569834063696, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
-    - {fileID: -7789503978515929653, guid: a4896d7becede7c4b8c342209a3d3e5f, type: 3}
+    - {fileID: 8421159798325061718, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: 59241374628138251, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: -1198171918506552225, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: 4318044822040105426, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: 8260584126493277434, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: -1842597868860274102, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: 696175727361607772, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: -4370040932193058875, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
+    - {fileID: 1477742102710868170, guid: 1c6d6d6b2668765429561406b94368d2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5714286
+    m_StopTime: 0.6428572
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -94,11 +97,11 @@ AnimationClip:
     floatParameter: -0.5
     intParameter: 0
     messageOptions: 0
-  - time: 0.14285715
+  - time: 0.21428572
     functionName: Jerk
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 1
+    floatParameter: 2
     intParameter: 0
     messageOptions: 0
   - time: 0.21428572
@@ -115,13 +118,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.2857143
-    functionName: Jerk
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 2
-    intParameter: 0
-    messageOptions: 0
   - time: 0.35714287
     functionName: RefreshStabbingAttackFrame
     data: 
@@ -129,7 +125,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 0.35714287
+  - time: 0.42857143
     functionName: DetectEnemysAndAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -144,6 +140,13 @@ AnimationClip:
     intParameter: 3
     messageOptions: 0
   - time: 0.5
+    functionName: SetDefaultStabbingSprite
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5714286
     functionName: StopAttackAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
