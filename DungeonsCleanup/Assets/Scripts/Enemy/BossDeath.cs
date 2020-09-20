@@ -9,6 +9,7 @@ public class BossDeath : MonoBehaviour
     [SerializeField] string name;
     private void OnDestroy()
     {
+        if (notificationWindowPrefab == null || playerCanvas == null) { return; }
         GameObject newNotificationWindow = Instantiate(notificationWindowPrefab, playerCanvas.transform);
         newNotificationWindow.GetComponent<NotificationWindow>().SetButtomPartText($"[{name}]");
         newNotificationWindow.GetComponent<NotificationWindow>().SetTopPartText($"Внимание");

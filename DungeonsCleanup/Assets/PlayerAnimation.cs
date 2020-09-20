@@ -7,11 +7,10 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] MovingJoystickProperties movingJoystickProperties;
     [SerializeField] bool hasPlayerLowerSpecialAnimation = false;
-    [SerializeField] GameObject feetChild;
 
     PlayerActionControls playerActionControls;
+    PlayerMovement playerMovementScript;
     Rigidbody2D myRigitBody;
-    JumpScript feetsJumpingScript;
     Animator myAnimator;
 
     bool isAttackButtonPressed;
@@ -28,8 +27,8 @@ public class PlayerAnimation : MonoBehaviour
     
     private void Start()
     {
-        playerActionControls = GetComponent<Player>().GetActionControls();
-        feetsJumpingScript = feetChild.GetComponent<JumpScript>();
+        playerMovementScript = GetComponent<PlayerMovement>();
+        playerActionControls = playerMovementScript.GetActionControls();
         myRigitBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
@@ -44,7 +43,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void CheckPlayerPos()
     {
-        if (feetsJumpingScript.IsPlayerOnGroundOrStairs())
+        if (playerMovementScript.IsPlyerStanding())
         {
             isOnGround = true;
             CheckJoystickPos();

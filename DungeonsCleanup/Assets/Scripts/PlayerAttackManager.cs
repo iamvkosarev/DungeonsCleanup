@@ -25,14 +25,6 @@ public class PlayerAttackManager : MonoBehaviour
     // vitality
     // intelligence
 
-    private void OnEnable()
-    {
-        playerActionControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerActionControls.Disable();
-    }
     private void Start()
     {
         currentStabbingWeapon = playerProperties.GetCurrentStabbingWeapons();

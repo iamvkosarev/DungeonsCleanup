@@ -5,7 +5,7 @@ using UnityEngine;
 public class Demon : MonoBehaviour
 {
     Vector3 startPos;
-    Player player;
+    PlayerMovement player;
     Rigidbody2D myRigidbody;
     Transform myTransform;
     [SerializeField] float speed = 3f;
@@ -22,7 +22,7 @@ public class Demon : MonoBehaviour
     {
         health = GetComponent<Health>();
         startPos = gameObject.transform.position;
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerMovement>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
         myAnimator = GetComponent<Animator>();
