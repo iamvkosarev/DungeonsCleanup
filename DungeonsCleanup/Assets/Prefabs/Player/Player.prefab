@@ -154,8 +154,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.91}
-  m_Size: {x: 0.61737895, y: 1.61}
+  m_Offset: {x: 0, y: 0.82}
+  m_Size: {x: 0.61737895, y: 1.69}
   m_Direction: 0
 --- !u!1 &7081787225086070597
 GameObject:
@@ -300,10 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
   playerHorizontalSpeed: 11
   timeOnStoping: 0.3
-  jumpJoystickStartLevel: 0.7
-  delayBeforeNextJump: 1
+  delayBeforeNextJump: 0.6
   bodyChild: {fileID: 7081787225611444493}
   feetChild: {fileID: 7081787223668988230}
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}

@@ -8,11 +8,11 @@ public class Player : MonoBehaviour
 {
 
     [Header("Movement")]
+    [SerializeField] MovingJoystickProperties movingJoystickProperties;
     [SerializeField] float playerHorizontalSpeed = 5f;
     [SerializeField] float timeOnStoping = 0.3f;
 
     [Header("Jump Activation ")]
-    [SerializeField] float jumpJoystickStartLevel = 0.7f;
     [SerializeField] float delayBeforeNextJump = 1f;
 
     [Header("Player Elements")]
@@ -38,9 +38,6 @@ public class Player : MonoBehaviour
     bool isPlayerOnGround;
     float timeSinceStartStoping;
     float startVelocityXAxis;
-    float walkLimit = 0.2f;
-    float runLimit = 0.7f;
-    float jumpUnderHatchLimit = 0.4f;
 
     private void Awake()
     {
@@ -91,7 +88,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         float joystickYAxis = playerActionControls.Land.Move.ReadValue<Vector2>().y;
-        if (joystickYAxis >= jumpJoystickStartLevel && canPlayerJump)
+        if (joystickYAxis >= movingJoystickProperties.GetJumpLimit() && canPlayerJump)
         { 
             StartCoroutine(WaitingJump());
             //TakeDamage(15); // for test!
@@ -127,7 +124,7 @@ public class Player : MonoBehaviour
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
 
 
-        if (absJpystickXAxis < walkLimit && !myAnimator.GetBool("isAttacking")) {
+        if (absJpystickXAxis < movingJoystickProperties.GetWalkLimit() && !myAnimator.GetBool("isAttacking")) {
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
@@ -139,7 +136,8 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", false);
         }
-        else if (absJpystickXAxis >= walkLimit && absJpystickXAxis < runLimit) // Walk
+        else if (absJpystickXAxis >= movingJoystickProperties.GetWalkLimit() 
+            && absJpystickXAxis < movingJoystickProperties.GetRunLimit()) // Walk
         {
             // Moving
             myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigitbody2D.velocity.y);
@@ -147,10 +145,10 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("isWalking", true);
             myAnimator.SetBool("isRunning", false);
         }
-        else if (absJpystickXAxis >= runLimit) // Run
+        else if (absJpystickXAxis >= movingJoystickProperties.GetRunLimit()) // Run
         {
             // Moving
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (runLimit + 0.1f) * joystickXAxisSign, myRigitbody2D.velocity.y);
+            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (movingJoystickProperties.GetRunLimit() + 0.1f) * joystickXAxisSign, myRigitbody2D.velocity.y);
             // Animation
             myAnimator.SetBool("isWalking", false);
             myAnimator.SetBool("isRunning", true);
@@ -162,7 +160,7 @@ public class Player : MonoBehaviour
     private void StopingMoving()
     {
         if (!myAnimator.GetBool("isPlayerOnGround")) { return; }
-            if (Mathf.Abs(myRigitbody2D.velocity.x) > walkLimit * playerHorizontalSpeed && !isStoping)
+            if (Mathf.Abs(myRigitbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
             startVelocityXAxis = myRigitbody2D.velocity.x;
