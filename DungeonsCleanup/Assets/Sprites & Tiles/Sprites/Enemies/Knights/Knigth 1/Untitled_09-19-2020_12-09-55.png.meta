@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 6f06150bcfa129f4585563cc5879ede9
+guid: 42160f6181992ad4483d8f36fee801cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5469770282251256228
-    second: Player-Fly-Down-Sheet_0
+      213: 1610915784689684878
+    second: Untitled_09-19-2020_12-09-55_0
   - first:
-      213: 5217062029083502865
-    second: Player-Fly-Down-Sheet_1
+      213: 1652458769695380625
+    second: Untitled_09-19-2020_12-09-55_1
   - first:
-      213: -5634736677881399191
-    second: Player-Fly-Down-Sheet_2
+      213: -9211485330571034788
+    second: Untitled_09-19-2020_12-09-55_2
   - first:
-      213: 2818990128133698065
-    second: Player-Fly-Down-Sheet_3
-  - first:
-      213: 1002161734196207570
-    second: Player-Fly-Down-Sheet_4
+      213: 8171840975135441668
+    second: Untitled_09-19-2020_12-09-55_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -47,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -61,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 320
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,106 +125,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player-Fly-Down-Sheet_0
+      name: Untitled_09-19-2020_12-09-55_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 30
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e819f750f5f1b5610800000000000000
+      internalID: 1610915784689684878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled_09-19-2020_12-09-55_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 80
+        width: 30
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1941ca5fe76bee610800000000000000
+      internalID: 1652458769695380625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled_09-19-2020_12-09-55_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 720
+        width: 30
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a10394771788eb40800000000000000
-      internalID: 5469770282251256228
+      spriteID: c5f779975ea3a2080800000000000000
+      internalID: -9211485330571034788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Fly-Down-Sheet_1
+      name: Untitled_09-19-2020_12-09-55_3
       rect:
         serializedVersion: 2
-        x: 800
+        x: 30
         y: 0
-        width: 800
-        height: 720
+        width: 30
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11963b6364ab66840800000000000000
-      internalID: 5217062029083502865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player-Fly-Down-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 800
-        height: 720
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 968b30878d46dc1b0800000000000000
-      internalID: -5634736677881399191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player-Fly-Down-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 800
-        height: 720
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 112fdbcf5901f1720800000000000000
-      internalID: 2818990128133698065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player-Fly-Down-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 3200
-        y: 0
-        width: 800
-        height: 720
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2df114e99c468ed00800000000000000
-      internalID: 1002161734196207570
+      spriteID: 4030ee31216386170800000000000000
+      internalID: 8171840975135441668
       vertices: []
       indices: 
       edges: []

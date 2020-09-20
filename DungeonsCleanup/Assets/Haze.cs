@@ -13,21 +13,22 @@ public class Haze : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    private void CheckStairsPos()
+    public void RotateHaze()
     {
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x + transform.localScale.x * 0.8f, transform.position.y), checkRadius, stairsLayer))
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
+         transform.localScale = new Vector2(-1, 1);
     }
 
     public void SetHazeOnStairs()
     {
         myAnimator.SetBool("StairsJump", true);
-        CheckStairsPos();
     }
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void StartAnimation()
+    {
+        myAnimator.SetTrigger("Start");
     }
 }

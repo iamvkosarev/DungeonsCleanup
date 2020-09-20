@@ -140,7 +140,6 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 4096
-  jumpUIImage: {fileID: 0}
   hazePrefab: {fileID: 5986334924834478879, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
 --- !u!70 &7077148873157811720
 CapsuleCollider2D:
@@ -155,8 +154,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.82}
-  m_Size: {x: 0.61737895, y: 1.69}
+  m_Offset: {x: 0, y: 0.91}
+  m_Size: {x: 0.61737895, y: 1.61}
   m_Direction: 0
 --- !u!1 &7081787225086070597
 GameObject:
@@ -385,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787225611444493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}

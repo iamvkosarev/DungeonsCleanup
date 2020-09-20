@@ -20,8 +20,6 @@ public class JumpScript : MonoBehaviour
     [SerializeField] LayerMask whatIsStairs;
     [SerializeField] LayerMask whatIsWall;
 
-    [Header("UI")]
-    [SerializeField] JumpIconsScript jumpUIImage;
 
     [Header("VFX")]
     [SerializeField] GameObject hazePrefab;
@@ -42,7 +40,6 @@ public class JumpScript : MonoBehaviour
     private void Update()
     {
         RefreshJumpParametrs();
-        RefreshUIJumpIcon();
         CheckPlayerFlyVelocity();
         CheckPlayerOnStairs();
     }
@@ -74,33 +71,6 @@ public class JumpScript : MonoBehaviour
         }
     }
 
-    private void RefreshUIJumpIcon()
-    {
-        // Single Jump Active
-        if (IsPlayerOnGroundOrStairs() && !canPlayerDoDoubleJump)
-        {
-            jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.singleJumpActive);
-        }
-        // Single Jump Not Active
-        else if (!IsPlayerOnGroundOrStairs() && !canPlayerDoDoubleJump)
-        {
-            jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.singleJumpNotActive);
-        }
-        // Double Jump Active
-        else if (canPlayerDoDoubleJump && IsPlayerOnGroundOrStairs())
-        {
-            jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpActive);
-        }
-        // Double Jump Half Active
-        else if (canPlayerDoDoubleJump && !IsPlayerOnGroundOrStairs() && !isPlayerUsedSecondJump)
-        {
-            jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpHalfActive);
-        }
-        else if (canPlayerDoDoubleJump && !IsPlayerOnGroundOrStairs() && isPlayerUsedSecondJump)
-        {
-            jumpUIImage.SetJumpIconMode(JumpIconsScript.JumpIconMode.doubleJumpNotActive);
-        }
-    }
 
     private void RefreshJumpParametrs()
     {
@@ -115,7 +85,7 @@ public class JumpScript : MonoBehaviour
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround) ||
             Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
     }
-    public bool IsPlayerOnStairs()
+    public Collider2D IsPlayerOnStairs()
     {
         return Physics2D.OverlapCircle(transform.position, checkRadius, whatIsStairs);
     }
@@ -128,10 +98,17 @@ public class JumpScript : MonoBehaviour
     public void SpawnHaze()
     {
         GameObject haze = Instantiate(hazePrefab, transform.position, Quaternion.identity);
-        if (IsPlayerOnStairs())
+        Haze hazeScript = haze.GetComponent<Haze>();
+        Collider2D stairsCheckCollider = IsPlayerOnStairs();
+        if (stairsCheckCollider)
         {
-            haze.GetComponent<Haze>().SetHazeOnStairs();
+            if (stairsCheckCollider.gameObject.tag == "RightStairs")
+            {
+                hazeScript.RotateHaze();
+            }
+            hazeScript.SetHazeOnStairs();
         }
+        hazeScript.StartAnimation();
     }
     public void Jump()
     {
