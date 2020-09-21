@@ -7,8 +7,13 @@ public class PlayerActivationButton : MonoBehaviour
 {
     [SerializeField] float checkRadius;
     [SerializeField] LayerMask weaponLayer;
-    [SerializeField] LayerMask doorLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
+
+    [Header("OpenDoor")]
+    [SerializeField] Transform doorCheckPoint;
+    [SerializeField] Vector2 doorCheckSize;
+    [SerializeField] LayerMask doorLayer;
+    private bool isPlayerTouchDoor;
 
     GameObject weaponNotificationWindow;
     PlayerActionControls playerActionControls;
@@ -51,7 +56,7 @@ public class PlayerActivationButton : MonoBehaviour
     private void CheckPossibilityToActivateSomeThing()
     {
         bool isPlayerTouchWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
-        bool isPlayerTouchDoor = Physics2D.OverlapCircle(transform.position, checkRadius, doorLayer);
+        isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
 
         canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon);
     }
@@ -59,6 +64,7 @@ public class PlayerActivationButton : MonoBehaviour
     private void SwitchCurrentWeapon()
     {
         Collider2D weaponCollider = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
+
         if (weaponCollider != null && weaponNotificationWindow == null)
         {
             weaponNotificationWindow = weaponCollider.GetComponent<Weapon>().ShowWeaponInfo(playerAttackManager);
@@ -67,7 +73,7 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void OpenDoor()
     {
-        Collider2D doorCollider = Physics2D.OverlapCircle(transform.position, checkRadius, doorLayer);
+        Collider2D doorCollider = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
         if (doorCollider != null)
         {
             doorCollider.gameObject.GetComponent<Door>().Open();
@@ -81,5 +87,11 @@ public class PlayerActivationButton : MonoBehaviour
     private void OnDisable()
     {
         playerActionControls.Disable();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(doorCheckPoint.position, doorCheckSize);
     }
 }

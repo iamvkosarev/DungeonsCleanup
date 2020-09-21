@@ -82,6 +82,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6322206126601678018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6389667949260438817}
+  m_Layer: 8
+  m_Name: Door Check Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6389667949260438817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322206126601678018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.152, y: 0.162, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7081787225086070599}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7081787223668988230
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +199,7 @@ Transform:
   - {fileID: 749463906}
   - {fileID: 5440142212810733446}
   - {fileID: 4780771758210633572}
+  - {fileID: 6389667949260438817}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -351,6 +382,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   activateSomeThingButton: {fileID: 0}
+  doorCheckPoint: {fileID: 6389667949260438817}
+  doorCheckSize: {x: 1.5, y: 0.1}
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!114 &4061366651553803683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4780771758210633572}
   m_Layer: 8
-  m_Name: WallCheckPoint
+  m_Name: Wall Check Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -542,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5440142212810733446}
   m_Layer: 8
-  m_Name: GroundCheckPoint
+  m_Name: Ground Check Point
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
