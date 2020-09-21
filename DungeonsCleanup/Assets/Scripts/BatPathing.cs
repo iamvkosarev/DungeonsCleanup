@@ -23,6 +23,7 @@ public class BatPathing : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    Animator myAnimator;
 
     
 
@@ -31,6 +32,7 @@ public class BatPathing : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         InvokeRepeating("UpdatePath", 0f, .5f);
         waypoints = waveConfig.GetWaypoints();
         startXScale = transform.localScale.x;
@@ -52,17 +54,16 @@ public class BatPathing : MonoBehaviour
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
              && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
         {
-            MoveTowardPlayer();
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            myAnimator.SetBool("Attack", true);
+            //MoveTowardPlayer();
         }
 
         else
         {
             Moving();
-        }
-    }
-    private void Update()
-    {
-        LookTowardMoving();
+        }      
+
     }
 
     void MoveTowardPlayer()
@@ -93,8 +94,10 @@ public class BatPathing : MonoBehaviour
             currentWayPoint++;
         }
 
-        Attack();
-
+        if(IsFacingOnAHero())
+        {
+            Flip();
+        }
     }
 
     void OnPathComplite(Path p)
@@ -108,12 +111,22 @@ public class BatPathing : MonoBehaviour
 
     void Attack()
     {
+        
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
 
         }
+
+        if(IsFacingOnAHero())
+        {
+            Flip();
+        }
+
+        myAnimator.SetBool("Attack", false);
+
+
     }
 
     private void Moving()
@@ -133,12 +146,15 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = 0;
         }
+        if(IsFacingOnAWaypoint())
+        {
+            Flip();
+        }  
     }
 
-    private void LookTowardMoving()
+    private void Flip()
     {
-        float coefficient = Mathf.Sign(rb.velocity.x);
-        transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * -coefficient, transform.localScale.y);
+        transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)) * startXScale, transform.localScale.y);
     }
 
     private bool IsFacingOnAWaypoint()

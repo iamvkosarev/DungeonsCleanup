@@ -8,7 +8,7 @@ public class Demon : MonoBehaviour
     PlayerMovement player;
     Rigidbody2D myRigidbody;
     Transform myTransform;
-    [SerializeField] float speed = 3f;
+    [SerializeField] float moveSpeed = 3f;
     [SerializeField] float distanceToAttack = 10f;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] int demonDamage = 10;
@@ -53,7 +53,7 @@ public class Demon : MonoBehaviour
 
     private void MoveTowardPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         if(!IsFacingOnAHero())
             Flip();
     }
@@ -62,7 +62,7 @@ public class Demon : MonoBehaviour
     {
         if(transform.position.x != startPos.x)
         {
-            transform.position = Vector3.MoveTowards(transform.position, startPos, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, startPos, moveSpeed * Time.deltaTime);
             if(IsFacingOnAHero())
                 Flip();
         }
