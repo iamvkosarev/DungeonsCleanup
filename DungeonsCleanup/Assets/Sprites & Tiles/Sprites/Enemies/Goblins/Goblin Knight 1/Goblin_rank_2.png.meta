@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: d4c238b8d7e724d4ebc3b38c1ba8b172
+guid: 0f92610535bdb3f438826de44610bf08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6981054371071964555
-    second: 2-5D-Walls-4_0
+      213: 8856465546267855873
+    second: Goblin_rank_2_0
   - first:
-      213: -6218616894240632978
-    second: 2-5D-Walls-4_1
+      213: -1963407920173436842
+    second: Goblin_rank_2_1
   - first:
-      213: -7229358746452060144
-    second: 2-5D-Walls-4_2
+      213: 8160372686998199147
+    second: Goblin_rank_2_2
   - first:
-      213: 7815513982314687187
-    second: 2-5D-Walls-4_3
-  - first:
-      213: -5482402039012130751
-    second: 2-5D-Walls-4_4
-  - first:
-      213: -907196697760447800
-    second: 2-5D-Walls-4_5
+      213: 7833390200576204680
+    second: Goblin_rank_2_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -131,145 +125,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2-5D-Walls-4_0
+      name: Goblin_rank_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 208
-        width: 64
-        height: 64
+        y: 40
+        width: 30
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57a419669005e1f90800000000000000
-      internalID: -6981054371071964555
+      spriteID: 10c08c2ad7c78ea70800000000000000
+      internalID: 8856465546267855873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-4_1
+      name: Goblin_rank_2_1
       rect:
         serializedVersion: 2
-        x: 112
-        y: 208
-        width: 64
-        height: 64
+        x: 30
+        y: 40
+        width: 30
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6f4b80e1e803b9a0800000000000000
-      internalID: -6218616894240632978
+      spriteID: 650bfd036e290c4e0800000000000000
+      internalID: -1963407920173436842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-4_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -32, y: 19}
-        - {x: -32, y: -32}
-        - {x: 20, y: -32}
-      tessellationDetail: 1
-      bones: []
-      spriteID: 0189cdbd5882cab90800000000000000
-      internalID: -7229358746452060144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-4_3
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 96
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -32, y: 22}
-        - {x: -32, y: -32}
-        - {x: 24, y: -32}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3da27fcfe88467c60800000000000000
-      internalID: 7815513982314687187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-5D-Walls-4_4
+      name: Goblin_rank_2_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
-      tessellationDetail: 1
+      physicsShape: []
+      tessellationDetail: 0
       bones: []
-      spriteID: 1400ecc74689ae3b0800000000000000
-      internalID: -5482402039012130751
+      spriteID: b6bd35b29b77f3170800000000000000
+      internalID: 8160372686998199147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-5D-Walls-4_5
+      name: Goblin_rank_2_3
       rect:
         serializedVersion: 2
-        x: 112
+        x: 30
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
-      tessellationDetail: 1
+      physicsShape: []
+      tessellationDetail: 0
       bones: []
-      spriteID: 8c2c490f86df863f0800000000000000
-      internalID: -907196697760447800
+      spriteID: 88fde5462eac5bc60800000000000000
+      internalID: 7833390200576204680
       vertices: []
       indices: 
       edges: []
