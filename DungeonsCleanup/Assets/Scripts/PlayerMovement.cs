@@ -13,17 +13,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerHorizontalSpeed = 5f;
     [SerializeField] float timeOnStoping = 0.3f;
     [SerializeField] float slowingOnStairsParametr = 2f;
+    [SerializeField] float horizontalMovingDelay;
+    private bool areHorizontalMovingSuspended= false;
 
-    [Header("Jump")]
+    [Header("Ground Jump")]
     [SerializeField] float jumpForce;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask stairsLayer;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Vector2 groundCheckSize;
     [SerializeField] GameObject hazePrefab;
+    [SerializeField] float groundJumpsDelay;
     private bool isStandingOnGround;
     private bool isStandingOnStairs;
     private bool canJump;
+    private bool areGroundJumpsSuspended = false;
 
     [Header("Slide")]
     [SerializeField] float wallSlideSpeed = 0;
@@ -37,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float wallJumpForce = 18f;
     [SerializeField] float wallJumpDirection = -1f;
     [SerializeField] Vector2 wallJumpAngle;
+    [SerializeField] float wallJumpsDelay;
+    private bool areWallJumpsSuspended = false;
 
 
     [Header("Player Elements")]
@@ -117,14 +123,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void SlowingOnStairs()
     {
-        myRigitbody2D.gravityScale = 1;
         if (isStandingOnStairs)
         {
             myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x / slowingOnStairsParametr, myRigitbody2D.velocity.y);
-            if (myRigitbody2D.velocity.x == 0)
+            if (myRigitbody2D.velocity.x == 0f && !areGroundJumpsSuspended)
             {
-                myRigitbody2D.gravityScale = 0;
+                
+                myRigitbody2D.gravityScale = 0f;
+                myRigitbody2D.velocity = new Vector2(0f, 0f);
+
             }
+            else
+            {
+                myRigitbody2D.gravityScale = 1f;
+            }
+        }
+        else
+        {
+            myRigitbody2D.gravityScale = 1f;
         }
     }
 
@@ -162,31 +178,51 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        if ((isWallSliding || isTouchingWall) && canJump)
+        if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
         {
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
             myRigitbody2D.velocity = new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x);
             canJump = false;
+            StartCoroutine(SuspendWallJumps());
+            StartCoroutine(SuspendHorizontalMoving());
         }
     }
 
     private void Jump()
     {
-        if (canJump && (isStandingOnGround || isStandingOnStairs))
+        if (canJump && (isStandingOnGround || isStandingOnStairs) && !areGroundJumpsSuspended)
         {
             SpawnHaze();
             myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x, jumpForce);
             canJump = false;
+            StartCoroutine(SuspendGroundJumps());
         }
     }
-
+    IEnumerator SuspendGroundJumps()
+    {
+        areGroundJumpsSuspended = true;
+        yield return new WaitForSeconds(groundJumpsDelay);
+        areGroundJumpsSuspended = false;
+    }
+    IEnumerator SuspendWallJumps()
+    {
+        areWallJumpsSuspended = true;
+        yield return new WaitForSeconds(wallJumpsDelay);
+        areWallJumpsSuspended = false;
+    }
 
     private void UpdateColliderInBody()
     {
         Destroy(bodyChild.GetComponent<PolygonCollider2D>());
         bodyChild.AddComponent<PolygonCollider2D>();
     }
+    IEnumerator SuspendHorizontalMoving()
+    {
+        areHorizontalMovingSuspended = true;
+        yield return new WaitForSeconds(horizontalMovingDelay);
+        areHorizontalMovingSuspended = false;
 
+    }
 
     private void HorizontalMove()
     {
@@ -201,6 +237,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+
+        if (areHorizontalMovingSuspended) { return; }
 
         if (absJpystickXAxis < movingJoystickProperties.GetWalkLimit() && !myAnimator.GetBool("IsAttacking")) {
             isStoping = true;
