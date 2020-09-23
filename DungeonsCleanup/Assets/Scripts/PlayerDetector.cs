@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetector : MonoBehaviour
+public class DetectorOfEnemysGettingIntoAttackZone : MonoBehaviour
 {
     [SerializeField] Transform detectorPoint;
     [SerializeField] Vector2 detectorZone;
-    [SerializeField] LayerMask enemiesLayer;
-    bool isEnemyDetected;
+    [SerializeField] LayerMask enemysLayer;
+    private bool isEnemyDetected;
 
     private void Update()
     {
@@ -19,8 +19,7 @@ public class PlayerDetector : MonoBehaviour
 
     private void CheckingEnemies()
     {
-        isEnemyDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemiesLayer);
-        Debug.Log(isEnemyDetected);
+        isEnemyDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
     }
     private void OnDrawGizmosSelected()
     {
