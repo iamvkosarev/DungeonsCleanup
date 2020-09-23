@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6173039102299668388}
   - component: {fileID: 6717491305165644261}
   - component: {fileID: 6363037698307971253}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Base Goblin Attack Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,8 +88,9 @@ MonoBehaviour:
   damage: 10
   whomCanAttacked:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 54016
   dontWorkAfterTouch: 1
+  destoryAfterTounch: 0
 --- !u!1 &5652980269032380645
 GameObject:
   m_ObjectHideFlags: 0

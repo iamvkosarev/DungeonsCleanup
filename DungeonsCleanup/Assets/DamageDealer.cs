@@ -39,26 +39,18 @@ public class DamageDealer : MonoBehaviour
         if (attackedObjectsHealthScripts != null)
         {
             attackedObjectsHealthScripts.TakeAwayHelath(damage);
-            if (dontWorkAfterTouch)
-            {
-                canAttack = false;
-            }
-            if (destoryAfterTounch)
-            {
-                Destroy(gameObject);
-            }
         }
         else if (attackedObjectsPlayerHealthScripts != null)
         {
             attackedObjectsPlayerHealthScripts.TakeAwayHelath(damage);
-            if (dontWorkAfterTouch)
-            {
-                canAttack = false;
-            }
-            if (destoryAfterTounch)
-            {
-                Destroy(gameObject);
-            }
+        }
+        if (dontWorkAfterTouch)
+        {
+            canAttack = false;
+        }
+        if (destoryAfterTounch)
+        {
+            Destroy(gameObject);
         }
     }
     private void OnDrawGizmosSelected()

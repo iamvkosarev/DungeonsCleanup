@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackWavePrefab: {fileID: 1629830435181536908, guid: ee0bb2874d3225a46aeb435a5fcbfd63, type: 3}
   pointOfSpwan: {fileID: 7193347388596663648}
+  setDamage: 0
+  damage: 0
 --- !u!61 &7913969820019337519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -322,6 +324,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.43328995}
-  m_Size: {x: 0.5, y: 1.3665799}
+  m_Offset: {x: 0, y: 0.51228446}
+  m_Size: {x: 0.5, y: 1.2085907}
   m_Direction: 0
