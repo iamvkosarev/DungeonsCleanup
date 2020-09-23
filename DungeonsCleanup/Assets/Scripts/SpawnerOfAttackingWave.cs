@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerOfAttackingWave : MonoBehaviour
 {
     [SerializeField] GameObject attackWavePrefab;
-    [SerializeField] Transform pointOfSpwan;
+    [SerializeField] Transform pointOfSpwan; 
     [SerializeField] bool setDamage;
     [SerializeField] int damage;
 

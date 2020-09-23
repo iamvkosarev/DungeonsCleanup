@@ -11,7 +11,23 @@ public class SpawnerOfProjectile : MonoBehaviour
     [SerializeField] bool setProjectileDamage;
     [SerializeField] int damage;
 
-    public void SpawnProjectile()
+    PlayerDetector detector;
+
+    private void Start() 
+    {
+        
+        detector = gameObject.GetComponent<PlayerDetector>();
+    }
+
+    private void Update()
+    {
+        if(detector.GetResultOfDetecting())
+        {
+            SpawnProjectile();
+        }
+    }
+
+    private void SpawnProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnProjectilePoint.position, Quaternion.identity);
         if (setProjectileSpeed)
