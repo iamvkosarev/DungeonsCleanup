@@ -10,6 +10,7 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] LayerMask whomCanAttacked;
     [SerializeField] bool dontWorkAfterTouch = true;
+    [SerializeField] bool destoryAfterTounch = false;
     private bool canAttack = true;
 
     public void SetDamage(int damage)
@@ -42,16 +43,22 @@ public class DamageDealer : MonoBehaviour
             {
                 canAttack = false;
             }
-            return;
+            if (destoryAfterTounch)
+            {
+                Destroy(gameObject);
+            }
         }
-        if (attackedObjectsPlayerHealthScripts != null)
+        else if (attackedObjectsPlayerHealthScripts != null)
         {
             attackedObjectsPlayerHealthScripts.TakeAwayHelath(damage);
             if (dontWorkAfterTouch)
             {
                 canAttack = false;
             }
-            return;
+            if (destoryAfterTounch)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void OnDrawGizmosSelected()

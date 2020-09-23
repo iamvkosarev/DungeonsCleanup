@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackSpawner : MonoBehaviour
+public class SpawnerOfAttackingWave : MonoBehaviour
 {
     [SerializeField] GameObject attackWavePrefab;
     [SerializeField] Transform pointOfSpwan;
+    [SerializeField] bool setDamage;
+    [SerializeField] int damage;
 
     public void SpawnAttack()
     {
@@ -15,5 +17,10 @@ public class AttackSpawner : MonoBehaviour
             attackWave.transform.localScale = 
                 new Vector2(attackWave.transform.localScale.x * -1, attackWave.transform.localScale.y);
         }
+        if (setDamage)
+        {
+            attackWave.GetComponent<DamageDealer>().SetDamage(damage);
+        }
     }
+
 }

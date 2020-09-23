@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : MonoBehaviour
+public class GoblinMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float radiusOfMoving = 5f;
