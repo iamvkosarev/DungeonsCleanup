@@ -19,7 +19,7 @@ public class DetectorOfEnemysGettingIntoAttackZone : MonoBehaviour
 
     private void CheckingEnemies()
     {
-        bool isEnemyDetected = Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
+        isEnemyDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
     }
     private void OnDrawGizmosSelected()
     {
