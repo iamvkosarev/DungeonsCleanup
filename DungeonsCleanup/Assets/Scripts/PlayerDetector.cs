@@ -6,24 +6,35 @@ using UnityEngine;
 public class PlayerDetector : MonoBehaviour
 {
     [SerializeField] Transform detectorPoint;
-    [SerializeField] Vector2 detectorZone;
-    [SerializeField] LayerMask enemysLayer;
-    private bool isEnemyDetected;
+    [SerializeField] Vector2 detectorToAttack;
+    [SerializeField] Vector2 detectorToMoving;
+    [SerializeField] LayerMask playerLayer;
+    
+    private bool isAttackingPlayer;
+    private bool isPlayerDetected;
 
     private void Update()
     {
-        CheckingEnemies();
+        CheckingPlayer();
     }
 
-    public bool GetResultOfDetecting() { return isEnemyDetected; }
+    public bool GetResultOfAttacking() { return isAttackingPlayer; }
+    public bool GetResultOfDetected() { return isPlayerDetected; }
 
-    private void CheckingEnemies()
+    private void CheckingPlayer()
     {
-        isEnemyDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
+        isAttackingPlayer = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorToAttack, 0, playerLayer);
+        isPlayerDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorToMoving, 0, playerLayer);
+
+        Debug.Log(isPlayerDetected);
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(detectorPoint.position, detectorZone);
+        Gizmos.DrawCube(detectorPoint.position, detectorToAttack);
+
+        Gizmos.DrawCube(detectorPoint.position, detectorToMoving);
     }
+
+    
 }

@@ -6,37 +6,43 @@ public class SpawnerOfProjectile : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform spawnProjectilePoint;
-    [SerializeField] bool setProjectileSpeed;
-    [SerializeField] float projectileSpeed;
-    [SerializeField] bool setProjectileDamage;
-    [SerializeField] int damage;
+    [SerializeField] float shootingDelay = 1f;
+    // [SerializeField] bool setProjectileSpeed;
+    // [SerializeField] float projectileSpeed;
+    // [SerializeField] bool setProjectileDamage;
+    // [SerializeField] int damage;
 
     PlayerDetector detector;
+    Animator myAnimator;
 
-    private void Start() 
+    private void Awake() 
     {
-        
+        myAnimator = GetComponent<Animator>();
         detector = gameObject.GetComponent<PlayerDetector>();
     }
 
     private void Update()
     {
-        if(detector.GetResultOfDetecting())
+        if(detector.GetResultOfAttacking())
         {
-            SpawnProjectile();
+            myAnimator.SetBool("Attack", true);
         }
     }
 
     private void SpawnProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnProjectilePoint.position, Quaternion.identity);
-        if (setProjectileSpeed)
-        {
-            projectile.GetComponent<ProjectileMovement>().SetSpeed(projectileSpeed);
-        }
-        if (setProjectileDamage)
-        {
-            projectile.GetComponent<DamageDealer>().SetDamage(damage);
-        }
+
+        myAnimator.SetBool("Attack", false);
+        // if (setProjectileSpeed)
+        // {
+        //     projectile.GetComponent<ProjectileMovement>().SetSpeed(projectileSpeed);
+        // }
+        // if (setProjectileDamage)
+        // {
+        //     projectile.GetComponent<DamageDealer>().SetDamage(damage);
+        // }
     }
+
+    
 }
