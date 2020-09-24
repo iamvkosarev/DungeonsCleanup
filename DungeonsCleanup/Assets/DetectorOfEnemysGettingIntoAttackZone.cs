@@ -8,18 +8,21 @@ public class DetectorOfEnemysGettingIntoAttackZone : MonoBehaviour
     [SerializeField] Transform detectorPoint;
     [SerializeField] Vector2 detectorZone;
     [SerializeField] LayerMask enemysLayer;
-    private bool isEnemyDetected;
+    private bool isEnemyDetectedInAttackZone;
 
     private void Update()
     {
         CheckingEnemies();
     }
-
-    public bool GetResultOfDetecting() { return isEnemyDetected; }
+    public bool IsEnemyDetected()
+    {
+        return isEnemyDetectedInAttackZone;
+    }
+    public bool GetResultOfDetecting() { return isEnemyDetectedInAttackZone; }
 
     private void CheckingEnemies()
     {
-        isEnemyDetected = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
+        isEnemyDetectedInAttackZone = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
     }
     private void OnDrawGizmosSelected()
     {

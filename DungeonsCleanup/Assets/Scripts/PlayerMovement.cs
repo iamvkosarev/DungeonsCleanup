@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     //catching files
     PlayerActionControls playerActionControls;
-    Rigidbody2D myRigitbody2D;
+    Rigidbody2D myRigidbody2D;
     Animator myAnimator;
     PlayerAttackManager myAttackManager;
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //currentHealth = maxHealth;
-        myRigitbody2D = GetComponent<Rigidbody2D>();
+        myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAttackManager = GetComponent<PlayerAttackManager>();
     }
@@ -125,22 +125,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isStandingOnStairs)
         {
-            myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x / slowingOnStairsParametr, myRigitbody2D.velocity.y);
-            if (myRigitbody2D.velocity.x == 0f && !areGroundJumpsSuspended)
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
+            if (myRigidbody2D.velocity.x == 0f && !areGroundJumpsSuspended)
             {
                 
-                myRigitbody2D.gravityScale = 0f;
-                myRigitbody2D.velocity = new Vector2(0f, 0f);
+                myRigidbody2D.gravityScale = 0f;
+                myRigidbody2D.velocity = new Vector2(0f, 0f);
 
             }
             else
             {
-                myRigitbody2D.gravityScale = 1f;
+                myRigidbody2D.gravityScale = 1f;
             }
         }
         else
         {
-            myRigitbody2D.gravityScale = 1f;
+            myRigidbody2D.gravityScale = 1f;
         }
     }
 
@@ -161,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void WallSlide()
     {
-        if (isTouchingWall && !(isStandingOnGround || isStandingOnStairs) && myRigitbody2D.velocity.y < 0f)
+        if (isTouchingWall && !(isStandingOnGround || isStandingOnStairs) && myRigidbody2D.velocity.y < 0f)
         {
             isWallSliding = true;
         }
@@ -172,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isWallSliding)
         {
-            myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x, -wallSlideSpeed);
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, -wallSlideSpeed);
         }
     }
 
@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
         {
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
-            myRigitbody2D.velocity = new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x);
+            myRigidbody2D.velocity = new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x);
             canJump = false;
             StartCoroutine(SuspendWallJumps());
             StartCoroutine(SuspendHorizontalMoving());
@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
         if (canJump && (isStandingOnGround || isStandingOnStairs) && !areGroundJumpsSuspended)
         {
             SpawnHaze();
-            myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x, jumpForce);
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, jumpForce);
             canJump = false;
             StartCoroutine(SuspendGroundJumps());
         }
@@ -247,11 +247,11 @@ public class PlayerMovement : MonoBehaviour
         else if (absJpystickXAxis >= movingJoystickProperties.GetWalkLimit() 
             && absJpystickXAxis < movingJoystickProperties.GetRunLimit()) // Walk
         {
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigitbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigidbody2D.velocity.y);
         }
         else if (absJpystickXAxis >= movingJoystickProperties.GetRunLimit()) // Run
         {
-            myRigitbody2D.velocity = new Vector2(playerHorizontalSpeed * (movingJoystickProperties.GetRunLimit() + 0.1f) * joystickXAxisSign, myRigitbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(playerHorizontalSpeed * (movingJoystickProperties.GetRunLimit() + 0.1f) * joystickXAxisSign, myRigidbody2D.velocity.y);
 
         }
         isStoping = false;
@@ -267,20 +267,20 @@ public class PlayerMovement : MonoBehaviour
     private void StopingMoving()
     {
         if (!myAnimator.GetBool("IsOnGround")) { return; }
-            if (Mathf.Abs(myRigitbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
+            if (Mathf.Abs(myRigidbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
-            startVelocityXAxis = myRigitbody2D.velocity.x;
+            startVelocityXAxis = myRigidbody2D.velocity.x;
         }
 
         if (isStoping && Time.time - timeSinceStartStoping <= timeOnStoping)
         {
             float coefficientOfStoping = (Time.time - timeSinceStartStoping) / timeOnStoping;
-            myRigitbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigitbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigidbody2D.velocity.y);
         }
         else if (isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
         {
-            myRigitbody2D.velocity = new Vector2(0, myRigitbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
         }
     }
     public PlayerActionControls GetActionControls()
@@ -305,13 +305,13 @@ public class PlayerMovement : MonoBehaviour
     public void Jerk(float attackJerkForce)
     {
         timeSinceStartStoping = Time.time;
-        startVelocityXAxis = myRigitbody2D.velocity.x;
+        startVelocityXAxis = myRigidbody2D.velocity.x;
         float playerDirection = Mathf.Sign(transform.localScale.x);
         if (!myAnimator.GetBool("IsOnGround"))
         {
             attackJerkForce *= 3f;
         }
-        myRigitbody2D.velocity = new Vector2(myRigitbody2D.velocity.x / 1.4f + attackJerkForce * playerDirection, myRigitbody2D.velocity.y);
+        myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / 1.4f + attackJerkForce * playerDirection, myRigidbody2D.velocity.y);
     }
     public void SpawnHaze()
     {
