@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1173190189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173190190}
+  m_Layer: 10
+  m_Name: Player Checker Point (Eyes)
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173190190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173190189}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.125, y: 0.432, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2280272574607320913}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836541060292762293
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,10 +150,10 @@ GameObject:
   - component: {fileID: 5602574948176362969}
   - component: {fileID: 709537018}
   - component: {fileID: 2280272574607320917}
-  - component: {fileID: 5257142989348126127}
   - component: {fileID: 1144908394897137451}
   - component: {fileID: 9010160843188848350}
   - component: {fileID: 7021812925743838097}
+  - component: {fileID: 8277692384100688374}
   m_Layer: 10
   m_Name: Goblin Shooter
   m_TagString: Untagged
@@ -148,6 +178,7 @@ Transform:
   - {fileID: 8603116871917422768}
   - {fileID: 2015094264634204314}
   - {fileID: 6229648096336119979}
+  - {fileID: 1173190190}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,23 +266,6 @@ MonoBehaviour:
   projectileSpeed: 3
   setProjectileDamage: 0
   damage: 0
---- !u!114 &5257142989348126127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280272574607320918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0c22f5e1d781645a17587864209aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectorPoint: {fileID: 8603116871917422768}
-  detectorZone: {x: 5.38, y: 0.21}
-  enemysLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &1144908394897137451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,12 +278,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeZoneOfPointReaching: 0.58
+  radiusOfPointReachingZone: 0.5
   patrolPointsLayer:
     serializedVersion: 2
     m_Bits: 131072
-  patrolCheckerPoint: {fileID: 2015094264634204314}
-  speed: 5
+  patrolPointCheackerCoordinates: {fileID: 2015094264634204314}
+  sizeOfPlayerDetecterRay: 5
+  playerDetecterRayCoordinates: {fileID: 1173190190}
+  maxDeflectionAngle: 30
+  playerAndEnvironmentLayers:
+    serializedVersion: 2
+    m_Bits: 54016
+  playerLayerNum: 8
+  timeOnRayLoopUpdate: 0.5
 --- !u!114 &9010160843188848350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +327,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6526c63e1e7de488e9a1c4bde974c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8277692384100688374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280272574607320918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  delayBeforeDeath: 0
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0

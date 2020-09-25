@@ -5,42 +5,76 @@ using UnityEngine;
 
 public class Patrolman : MonoBehaviour
 {
-    [SerializeField] float sizeZoneOfPointReaching;
+    [Header("To check patrol points")]
+    [SerializeField] float radiusOfPointReachingZone;
     [SerializeField] LayerMask patrolPointsLayer;
-    [SerializeField] Transform patrolCheckerPoint;
-    [Header("Movement")]
-    [SerializeField] float speed;
+    [SerializeField] Transform patrolPointCheackerCoordinates;
     PatrolPoint currentPatrolPoint;
     int currentPatrolPointNum;
-    bool isPatrolmanFree;
+    [Header("To check enemy")]
+    [SerializeField] float sizeOfPlayerDetecterRay;
+    [SerializeField] Transform playerDetecterRayCoordinates;
+    [SerializeField] float maxDeflectionAngle;
+    [SerializeField] LayerMask playerAndEnvironmentLayers;
+    [SerializeField] int playerLayerNum;
+    [SerializeField] float timeOnRayLoopUpdate;
+    float currentAngle;
+    float currentTimeInLoop;
+    bool isPlayerDetecterRayAngleIncreases;
+
+    bool canPatrolmanGetNewPoint;
     bool goToPoint;
-    bool doWeKnowDirection;
-    Rigidbody2D myRigidBode2D;
+    bool goToPlayer;
+    Vector2 directionPlayerDetecterRay;
+
     EnemysMovement myMovementScript;
-    float signXAxisDirection;
 
     private void Start()
     {
-        myRigidBode2D = GetComponent<Rigidbody2D>();
         myMovementScript = GetComponent<EnemysMovement>();
+        currentAngle = -maxDeflectionAngle;
+        isPlayerDetecterRayAngleIncreases = true;
+        currentTimeInLoop = 0;
+        timeOnRayLoopUpdate /= 2f;
+    }
+    
+    private void Update()
+    {
+        CheckIsPointFree();
+        CheckReachingPoint();
+        UpdatePlayerDetecterRayAngle();
+        CheckPlayerDetected();
+    }
+
+
+    private void CheckReachingPoint()
+    {
+        if (currentPatrolPoint == null) { return; }
+        Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone, patrolPointsLayer);
+        if (pointsCollider == null) { return; }
+        if (pointsCollider.gameObject == currentPatrolPoint.gameObject)
+        {
+
+            StartCoroutine(WaitingOnPoint());
+
+        }
+    }
+
+    IEnumerator WaitingOnPoint()
+    {
+        PatrolPoint myLastPatrolPoint = currentPatrolPoint;
+        currentPatrolPoint = null;
+        goToPoint = false;
+        yield return new WaitForSeconds(myLastPatrolPoint.GetTimeOnStand());
+        myLastPatrolPoint.StopPursuing();
+        canPatrolmanGetNewPoint = true;
     }
     public void SetPatrolPoint(PatrolPoint patrolPoint, int patrolPointNum)
     {
         this.currentPatrolPoint = patrolPoint;
         this.currentPatrolPointNum = patrolPointNum;
-        isPatrolmanFree = false;
+        canPatrolmanGetNewPoint = false;
     }
-    public int GetCurrentPatrolPointNum()
-    {
-        return currentPatrolPointNum;
-    }
-    private void Update()
-    {
-        CheckIsPointFree();
-        CheckReachingPoint();
-    }
-
-
     private void CheckIsPointFree()
     {
         if (goToPoint || currentPatrolPoint == null) { return; }
@@ -50,35 +84,66 @@ public class Patrolman : MonoBehaviour
             currentPatrolPoint.StartedPursuing();
             goToPoint = true;
             myMovementScript.SetTarget(currentPatrolPoint.transform);
-            doWeKnowDirection = false;
         }
     }
-
+    public int GetCurrentPatrolPointNum()
+    {
+        return currentPatrolPointNum;
+    }
     public bool ShoulIGoToPatrolPoint()
     {
         return goToPoint;
     }
-
-    public bool IsPatrolmanFree()
+    public bool ShoulIGoToPlayer()
     {
-        return isPatrolmanFree;
+        return goToPlayer;
     }
 
-    private void CheckReachingPoint()
+    public bool CanPatrolmanGetNewPoint()
     {
-        if (currentPatrolPoint == null) { return; }
-        Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolCheckerPoint.position, sizeZoneOfPointReaching, patrolPointsLayer);
-        if (pointsCollider == null) { return; }
-        if (pointsCollider.gameObject == currentPatrolPoint.gameObject)
+        return canPatrolmanGetNewPoint;
+    }
+    private void UpdatePlayerDetecterRayAngle()
+    {
+        if (currentTimeInLoop >= timeOnRayLoopUpdate)
         {
-            isPatrolmanFree = true;
-            goToPoint = false;
-            currentPatrolPoint.StopPursuing();
+            currentTimeInLoop = timeOnRayLoopUpdate;
+            isPlayerDetecterRayAngleIncreases = false;
+        }
+        else if (currentTimeInLoop <= 0)
+        {
+            isPlayerDetecterRayAngleIncreases = true;
+            currentTimeInLoop = 0;
+        }
+        if (isPlayerDetecterRayAngleIncreases)
+        {
+            currentTimeInLoop += Time.deltaTime;
+        }
+        else
+        {
+            currentTimeInLoop -= Time.deltaTime;
         }
     }
+
+    private void CheckPlayerDetected()
+    {
+        currentAngle = (currentTimeInLoop / timeOnRayLoopUpdate) * maxDeflectionAngle * 2f - maxDeflectionAngle;
+        directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay, Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
+        RaycastHit2D hit = Physics2D.Raycast(playerDetecterRayCoordinates.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndEnvironmentLayers);
+        if (!hit) { return; }
+        if (hit.collider.gameObject.layer == playerLayerNum)
+        {
+            Debug.Log($"{gameObject.name} обнаружил игрока");
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(patrolCheckerPoint.position, sizeZoneOfPointReaching);
+        Gizmos.DrawSphere(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone);
+
+        Gizmos.color = Color.gray;
+        Gizmos.DrawRay(playerDetecterRayCoordinates.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay, 
+            Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay));
     }
 }

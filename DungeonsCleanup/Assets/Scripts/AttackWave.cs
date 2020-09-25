@@ -19,4 +19,5 @@ public class AttackWave : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
+
 }
