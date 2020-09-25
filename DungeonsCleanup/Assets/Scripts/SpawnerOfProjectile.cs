@@ -21,10 +21,6 @@ public class SpawnerOfProjectile : MonoBehaviour
 
     private void Update()
     {
-        if(detector.GetResultOfDetecting())
-        {
-            SpawnProjectile();
-        }
     }
 
     private void SpawnProjectile()
