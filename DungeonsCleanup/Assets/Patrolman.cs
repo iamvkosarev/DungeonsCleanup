@@ -18,9 +18,11 @@ public class Patrolman : MonoBehaviour
     [SerializeField] LayerMask playerAndEnvironmentLayers;
     [SerializeField] int playerLayerNum;
     [SerializeField] float timeOnRayLoopUpdate;
+    [SerializeField] bool turnRayInOppositeDirection;
     float currentAngle;
     float currentTimeInLoop;
     bool isPlayerDetecterRayAngleIncreases;
+    float parameterOfTurningRayAlongXAxis;
 
     bool canPatrolmanGetNewPoint;
     bool goToPoint;
@@ -50,7 +52,8 @@ public class Patrolman : MonoBehaviour
     private void CheckReachingPoint()
     {
         if (currentPatrolPoint == null) { return; }
-        Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone, patrolPointsLayer);
+        Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolPointCheackerCoordinates.position,
+            radiusOfPointReachingZone, patrolPointsLayer);
         if (pointsCollider == null) { return; }
         if (pointsCollider.gameObject == currentPatrolPoint.gameObject)
         {
@@ -59,7 +62,10 @@ public class Patrolman : MonoBehaviour
 
         }
     }
-
+    public void TurnRayInOppositeDirection()
+    {
+        turnRayInOppositeDirection = !turnRayInOppositeDirection;
+    }
     IEnumerator WaitingOnPoint()
     {
         PatrolPoint myLastPatrolPoint = currentPatrolPoint;
@@ -128,7 +134,9 @@ public class Patrolman : MonoBehaviour
     private void CheckPlayerDetected()
     {
         currentAngle = (currentTimeInLoop / timeOnRayLoopUpdate) * maxDeflectionAngle * 2f - maxDeflectionAngle;
-        directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay, Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
+        parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
+        directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
+            Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
         RaycastHit2D hit = Physics2D.Raycast(playerDetecterRayCoordinates.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndEnvironmentLayers);
         if (!hit) { return; }
         if (hit.collider.gameObject.layer == playerLayerNum)
@@ -137,13 +145,17 @@ public class Patrolman : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        currentPatrolPoint.StopPursuing();
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone);
 
         Gizmos.color = Color.gray;
-        Gizmos.DrawRay(playerDetecterRayCoordinates.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay, 
+        Gizmos.DrawRay(playerDetecterRayCoordinates.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis, 
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay));
     }
 }
