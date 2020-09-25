@@ -11,12 +11,12 @@ public class SpawnerOfProjectile : MonoBehaviour
     [SerializeField] bool setProjectileDamage;
     [SerializeField] int damage;
 
-    PlayerDetector detector;
+    DetectorEnemiesInAttackZone detector;
 
     private void Start() 
     {
         
-        detector = gameObject.GetComponent<PlayerDetector>();
+        detector = gameObject.GetComponent<DetectorEnemiesInAttackZone>();
     }
 
     private void Update()

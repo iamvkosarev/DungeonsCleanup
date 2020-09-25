@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetector : MonoBehaviour
+public class DetectorEnemiesInAttackZone : MonoBehaviour
 {
     [SerializeField] Transform detectorPoint;
     [SerializeField] Vector2 detectorZone;
