@@ -62,6 +62,17 @@ public class Patrolman : MonoBehaviour
 
         }
     }
+    public void StartPursuingPlayer(Transform playersPos)
+    {
+        goToPoint = false;
+        goToPlayer = true;
+        if (currentPatrolPoint!= null)
+        {
+            currentPatrolPoint.StopPursuing();
+            currentPatrolPoint = null;
+        }
+        myMovementScript.SetTarget(playersPos);
+    }
     public void TurnRayInOppositeDirection()
     {
         turnRayInOppositeDirection = !turnRayInOppositeDirection;
@@ -141,12 +152,14 @@ public class Patrolman : MonoBehaviour
         if (!hit) { return; }
         if (hit.collider.gameObject.layer == playerLayerNum)
         {
+            StartPursuingPlayer(hit.collider.gameObject.transform);
             Debug.Log($"{gameObject.name} обнаружил игрока");
         }
     }
 
     private void OnDestroy()
     {
+        if(currentPatrolPoint == null) { return; }
         currentPatrolPoint.StopPursuing();
     }
     private void OnDrawGizmosSelected()

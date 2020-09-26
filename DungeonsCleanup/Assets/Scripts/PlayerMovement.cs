@@ -328,6 +328,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
         Collider2D stairsCollider = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
+        if (stairsCollider == null) { return; }
         if (isStandingOnStairs)
         {
             if (stairsCollider.gameObject.tag == "RightStairs")

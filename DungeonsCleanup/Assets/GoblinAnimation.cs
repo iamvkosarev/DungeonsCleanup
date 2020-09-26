@@ -6,6 +6,7 @@ using UnityEngine;
 public class GoblinAnimation : MonoBehaviour
 {
     Animator myAnimator;
+    DetectorEnemiesInAttackZone detectorEnemiesInAttackZone;
     EnemysMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
@@ -13,6 +14,7 @@ public class GoblinAnimation : MonoBehaviour
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
+        detectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         myMovementScript = GetComponent<EnemysMovement>();
     }
 
@@ -25,8 +27,16 @@ public class GoblinAnimation : MonoBehaviour
 
     private void CheckScripts()
     {
-        CheckMovmentScript();
+        if (detectorEnemiesInAttackZone.IsEnemyDetected())
+        {
+            isAttacking = true;
+        }
+        else if (myMovementScript.IsWalking())
+        {
+            isWalking = true;
+        }
     }
+
 
     private void CheckMovmentScript()
     {
