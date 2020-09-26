@@ -1,37 +1,46 @@
 fileFormatVersion: 2
-guid: 50363bd90d09f4b43bd57d34915c0cdb
+guid: 7463aaa3d6232744b88db7087073b738
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2750678463497565672
-    second: Door_open_0
+      213: -4160080916551174061
+    second: Walls_with_cracks_0
   - first:
-      213: 7915164765317771198
-    second: Door_open_1
+      213: -5844968845285788841
+    second: Walls_with_cracks_1
   - first:
-      213: 3829896606799242244
-    second: Door_open_2
+      213: 3439716625014320549
+    second: Walls_with_cracks_2
   - first:
-      213: -4686565623871229294
-    second: Door_open_3
+      213: 1107833699140814109
+    second: Walls_with_cracks_3
   - first:
-      213: -5669509998308177921
-    second: Door_open_4
+      213: -7449359351015545901
+    second: Walls_with_cracks_4
   - first:
-      213: -6885405759174696111
-    second: Door_open_5
+      213: 2982494815924011493
+    second: Walls_with_cracks_5
   - first:
-      213: -5353376158354969728
-    second: Door_open_6
+      213: 4124127472375319963
+    second: Walls_with_cracks_6
   - first:
-      213: -296957176846229269
-    second: Door_open_7
+      213: -5026378390608449268
+    second: Walls_with_cracks_7
   - first:
-      213: -3366931139125252240
-    second: Door_open_8
+      213: 7806747771430173627
+    second: Walls_with_cracks_8
   - first:
-      213: 117361809624718426
-    second: Door_open_9
+      213: -3884778056938708241
+    second: Walls_with_cracks_9
+  - first:
+      213: 7870616816206171217
+    second: Walls_with_cracks_10
+  - first:
+      213: 4635981211865857198
+    second: Walls_with_cracks_11
+  - first:
+      213: 3085208906498873104
+    second: Walls_with_cracks_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -76,7 +85,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 45
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_open_0
+      name: Walls_with_cracks_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 180
-        width: 90
-        height: 90
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a09ebd280a3d9d0800000000000000
-      internalID: -2750678463497565672
+      spriteID: 358f51c827c6446c0800000000000000
+      internalID: -4160080916551174061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_1
+      name: Walls_with_cracks_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 180
-        width: 90
-        height: 90
+        x: 48
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf247fea6058dd60800000000000000
-      internalID: 7915164765317771198
+      spriteID: 753f38d9dcf72eea0800000000000000
+      internalID: -5844968845285788841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_2
+      name: Walls_with_cracks_3
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 90
-        height: 90
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,41 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4042eb61ca6862530800000000000000
-      internalID: 3829896606799242244
+      spriteID: d15ce7b31e0df5f00800000000000000
+      internalID: 1107833699140814109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_3
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 180
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29239944569f5feb0800000000000000
-      internalID: -4686565623871229294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Door_open_4
+      name: Walls_with_cracks_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 90
-        height: 90
+        y: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7c054e1bad151b0800000000000000
-      internalID: -5669509998308177921
+      spriteID: 3d3eb7e732f8e9890800000000000000
+      internalID: -7449359351015545901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_5
+      name: Walls_with_cracks_5
       rect:
         serializedVersion: 2
-        x: 90
-        y: 90
-        width: 90
-        height: 90
+        x: 48
+        y: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 153a6f541ff1270a0800000000000000
-      internalID: -6885405759174696111
+      spriteID: 5e1489fab33f36920800000000000000
+      internalID: 2982494815924011493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_6
+      name: Walls_with_cracks_7
       rect:
         serializedVersion: 2
-        x: 180
-        y: 90
-        width: 90
-        height: 90
+        x: 96
+        y: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,41 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08be4345fbcf4b5b0800000000000000
-      internalID: -5353376158354969728
+      spriteID: c0175111c77be3ab0800000000000000
+      internalID: -5026378390608449268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_7
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 90
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be0e390650ff0ebf0800000000000000
-      internalID: -296957176846229269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Door_open_8
+      name: Walls_with_cracks_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 90
-        height: 90
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,29 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07fec3db7f14641d0800000000000000
-      internalID: -3366931139125252240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Door_open_9
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5cd0eca1f3f0a100800000000000000
-      internalID: 117361809624718426
+      spriteID: 0179cb1872dd0da20800000000000000
+      internalID: 3085208906498873104
       vertices: []
       indices: 
       edges: []

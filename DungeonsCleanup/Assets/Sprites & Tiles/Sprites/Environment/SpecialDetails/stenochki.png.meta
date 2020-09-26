@@ -1,37 +1,97 @@
 fileFormatVersion: 2
-guid: 50363bd90d09f4b43bd57d34915c0cdb
+guid: 218869f861d24b1448b4cfa9f4ee42d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2750678463497565672
-    second: Door_open_0
+      213: -2978138387176197758
+    second: stenochki_0
   - first:
-      213: 7915164765317771198
-    second: Door_open_1
+      213: 2900835221226071792
+    second: stenochki_1
   - first:
-      213: 3829896606799242244
-    second: Door_open_2
+      213: -5504674865865459317
+    second: stenochki_2
   - first:
-      213: -4686565623871229294
-    second: Door_open_3
+      213: -5649693691891913124
+    second: stenochki_3
   - first:
-      213: -5669509998308177921
-    second: Door_open_4
+      213: -3268832858688912922
+    second: stenochki_4
   - first:
-      213: -6885405759174696111
-    second: Door_open_5
+      213: -2741754262062433852
+    second: stenochki_5
   - first:
-      213: -5353376158354969728
-    second: Door_open_6
+      213: -5299758577683917665
+    second: stenochki_6
   - first:
-      213: -296957176846229269
-    second: Door_open_7
+      213: 6922347139473611628
+    second: stenochki_7
   - first:
-      213: -3366931139125252240
-    second: Door_open_8
+      213: 1089021173778787636
+    second: stenochki_8
   - first:
-      213: 117361809624718426
-    second: Door_open_9
+      213: -5628928993854117745
+    second: stenochki_9
+  - first:
+      213: 2318837467068391153
+    second: stenochki_10
+  - first:
+      213: 8025650090886682970
+    second: stenochki_11
+  - first:
+      213: -768372964806288392
+    second: stenochki_12
+  - first:
+      213: -3377862388839489385
+    second: stenochki_13
+  - first:
+      213: 2905016440425117872
+    second: stenochki_14
+  - first:
+      213: 5481516552850710702
+    second: stenochki_15
+  - first:
+      213: -2604181882841337487
+    second: stenochki_16
+  - first:
+      213: -5896278745458744854
+    second: stenochki_17
+  - first:
+      213: -3985898240471234716
+    second: stenochki_18
+  - first:
+      213: 5931697345378096805
+    second: stenochki_19
+  - first:
+      213: -3382744524232511391
+    second: stenochki_20
+  - first:
+      213: 1167076636196342289
+    second: stenochki_21
+  - first:
+      213: -7406306331362014410
+    second: stenochki_22
+  - first:
+      213: -1617929645640891091
+    second: stenochki_23
+  - first:
+      213: -2399855185851377771
+    second: stenochki_24
+  - first:
+      213: 3889010503487805750
+    second: stenochki_25
+  - first:
+      213: 8451299877884080174
+    second: stenochki_26
+  - first:
+      213: -6102876696665989693
+    second: stenochki_27
+  - first:
+      213: -151242586674134062
+    second: stenochki_28
+  - first:
+      213: 3157199155540939690
+    second: stenochki_29
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -76,7 +136,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 45
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,13 +203,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_open_0
+      name: stenochki_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 180
-        width: 90
-        height: 90
+        x: 3
+        y: 138
+        width: 12
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a09ebd280a3d9d0800000000000000
-      internalID: -2750678463497565672
+      spriteID: 281786c6ae68ba6d0800000000000000
+      internalID: -2978138387176197758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_1
+      name: stenochki_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 180
-        width: 90
-        height: 90
+        x: 16
+        y: 138
+        width: 12
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf247fea6058dd60800000000000000
-      internalID: 7915164765317771198
+      spriteID: 0f62f11b346d14820800000000000000
+      internalID: 2900835221226071792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_2
+      name: stenochki_2
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 90
-        height: 90
+        x: 48
+        y: 138
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4042eb61ca6862530800000000000000
-      internalID: 3829896606799242244
+      spriteID: b897110ef577b93b0800000000000000
+      internalID: -5504674865865459317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_3
+      name: stenochki_3
       rect:
         serializedVersion: 2
-        x: 270
-        y: 180
-        width: 90
-        height: 90
+        x: 96
+        y: 138
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +280,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29239944569f5feb0800000000000000
-      internalID: -4686565623871229294
+      spriteID: c5e640545814891b0800000000000000
+      internalID: -5649693691891913124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_4
+      name: stenochki_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 90
-        height: 90
+        x: 136
+        y: 149
+        width: 3
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7c054e1bad151b0800000000000000
-      internalID: -5669509998308177921
+      spriteID: 6e109b385d5c2a2d0800000000000000
+      internalID: -3268832858688912922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_5
+      name: stenochki_6
       rect:
         serializedVersion: 2
-        x: 90
-        y: 90
-        width: 90
-        height: 90
+        x: 3
+        y: 106
+        width: 12
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 153a6f541ff1270a0800000000000000
-      internalID: -6885405759174696111
+      spriteID: f9412d527a97376b0800000000000000
+      internalID: -5299758577683917665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_6
+      name: stenochki_7
       rect:
         serializedVersion: 2
-        x: 180
-        y: 90
-        width: 90
-        height: 90
+        x: 16
+        y: 106
+        width: 12
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,20 +343,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08be4345fbcf4b5b0800000000000000
-      internalID: -5353376158354969728
+      spriteID: c6b14441c0e111060800000000000000
+      internalID: 6922347139473611628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_7
+      name: stenochki_8
       rect:
         serializedVersion: 2
-        x: 270
-        y: 90
-        width: 90
-        height: 90
+        x: 43
+        y: 103
+        width: 40
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,20 +364,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be0e390650ff0ebf0800000000000000
-      internalID: -296957176846229269
+      spriteID: 43da6f7dcfafc1f00800000000000000
+      internalID: 1089021173778787636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_8
+      name: stenochki_9
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 103
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88ad6747e602e1b0800000000000000
+      internalID: -5628928993854117745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stenochki_10
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 127
+        width: 5
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fe5a7cf36a2e2020800000000000000
+      internalID: 2318837467068391153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stenochki_11
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 109
+        width: 6
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59d1e66c36d06f60800000000000000
+      internalID: 8025650090886682970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stenochki_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 20
+        width: 17
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1ee3888b53c2ea0800000000000000
+      internalID: -5896278745458744854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stenochki_24
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 90
-        height: 90
+        width: 64
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,20 +469,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07fec3db7f14641d0800000000000000
-      internalID: -3366931139125252240
+      spriteID: 59713f66c6002bed0800000000000000
+      internalID: -2399855185851377771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_9
+      name: stenochki_25
       rect:
         serializedVersion: 2
-        x: 90
+        x: 80
         y: 0
-        width: 90
-        height: 90
+        width: 64
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,8 +490,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5cd0eca1f3f0a100800000000000000
-      internalID: 117361809624718426
+      spriteID: 6395724b27a88f530800000000000000
+      internalID: 3889010503487805750
       vertices: []
       indices: 
       edges: []
