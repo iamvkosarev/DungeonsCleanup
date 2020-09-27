@@ -6,9 +6,12 @@ using UnityEngine;
 public class DetectorEnemiesInAttackZone : MonoBehaviour
 {
     [SerializeField] Transform detectorPoint;
-    [SerializeField] Vector2 detectorZone;
-    [SerializeField] LayerMask enemysLayer;
+    [SerializeField] float detectorRayLength;
+    [SerializeField] LayerMask playerAndEnvironmentLayers;
+    [SerializeField] int playerLayerNum;
+    [SerializeField] bool turnRayInOppositeDirection;
     private bool isEnemyDetectedInAttackZone;
+    float parameterOfTurningRayAlongXAxis = -1f;
 
     private void Update()
     {
@@ -18,15 +21,27 @@ public class DetectorEnemiesInAttackZone : MonoBehaviour
     {
         return isEnemyDetectedInAttackZone;
     }
-    public bool GetResultOfDetecting() { return isEnemyDetectedInAttackZone; }
 
     private void CheckingEnemies()
     {
-        isEnemyDetectedInAttackZone = (bool)Physics2D.OverlapBox(detectorPoint.position, detectorZone, 0, enemysLayer);
+        parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
+        RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, new Vector2(parameterOfTurningRayAlongXAxis, 0), detectorRayLength, playerAndEnvironmentLayers);
+        if (hit.collider == null)
+        {
+            isEnemyDetectedInAttackZone = false; 
+        }
+        else if (hit.collider.gameObject.layer == 8)
+        {
+            isEnemyDetectedInAttackZone = true;
+        }
+        else
+        {
+            isEnemyDetectedInAttackZone = false;
+        }
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(detectorPoint.position, detectorZone);
+        Gizmos.DrawRay(detectorPoint.position, new Vector2(detectorRayLength * parameterOfTurningRayAlongXAxis, 0));
     }
 }

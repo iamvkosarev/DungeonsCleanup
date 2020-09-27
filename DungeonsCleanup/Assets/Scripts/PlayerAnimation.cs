@@ -73,7 +73,11 @@ public class PlayerAnimation : MonoBehaviour
         float joystickXAxis = joystickVector.x;
         float joystickYAxis = joystickVector.y;
         float joystickXAxisAbs = Mathf.Abs(joystickXAxis);
-        if (joystickYAxis >= movingJoystickProperties.GetJumpLimit())
+        if (playerMovementScript.IsAttackButtonPressed())
+        {
+            isAttacking = true;
+        }
+        else if (joystickYAxis >= movingJoystickProperties.GetJumpLimit())
         {
             isMakingJump = true;
         }

@@ -7,7 +7,7 @@ public class EnemiesMovement : MonoBehaviour
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] float walkSpeed;
-    [SerializeField] bool isWalking; // Временно сделал true, чтобы ходть по точкам
+    bool isWalking; 
     [SerializeField] float runSpeed;
     bool isRunning;
     [SerializeField] LayerMask stairsLayer;
@@ -18,6 +18,7 @@ public class EnemiesMovement : MonoBehaviour
 
     Transform currentTarget;
     Rigidbody2D myRigidbody2D;
+    DetectorEnemiesInAttackZone DetectorEnemiesInAttackZone;
     Patrolman patrolman;
     bool doWeKnowTargetDirection;
     float signXAxisDirection;
@@ -26,6 +27,7 @@ public class EnemiesMovement : MonoBehaviour
     private void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        DetectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         patrolman = GetComponent<Patrolman>();
     }
     private void Update()
@@ -48,8 +50,21 @@ public class EnemiesMovement : MonoBehaviour
         // else if(isRunning == true) // Проверяем бежали ли мы к игроку
         //      Ставим карутину, чтобы постоять на точке isRunning = false; isWalking = false;
         //      После этого идём по точкам объода isRunning = false; isWalking = true;
-        if (patrolman.ShoulIGoToPatrolPoint()) {
+        if (patrolman.ShoulIGoToPlayer() && !DetectorEnemiesInAttackZone.IsEnemyDetected())
+        {
+            isRunning = true;
+            isWalking = false;
+            return;
+        }
+        else if(patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected())
+        {
+            isRunning = false;
+            isWalking = false;
+            return;
+        }
+        else if (patrolman.ShoulIGoToPatrolPoint()) {
             isWalking = true;
+            isRunning = false;
             return;
         }
         isWalking = false;
@@ -123,6 +138,7 @@ public class EnemiesMovement : MonoBehaviour
     {
         if (!isRunning) { return; }
         myRigidbody2D.velocity = new Vector2(Math.Abs(runSpeed) * signXAxisDirection, myRigidbody2D.velocity.y);
+        doWeKnowTargetDirection = false;
     }
 
     public bool IsWalking()

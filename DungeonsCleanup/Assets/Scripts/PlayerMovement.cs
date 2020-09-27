@@ -95,10 +95,23 @@ public class PlayerMovement : MonoBehaviour
     {
         Inputs();
         CheckTouching();
+        CheckAttacking();
 
         UpdateColliderInBody();
         StopingMoving();
-        Attack();
+    }
+
+    private void CheckAttacking()
+    {
+        if (isAttackButtonPressed)
+        {
+            areHorizontalMovingSuspended = true;
+            isStoping = true;
+        }
+        else
+        {
+            areHorizontalMovingSuspended = false;
+        }
     }
 
     private void CheckTouching()
@@ -152,12 +165,9 @@ public class PlayerMovement : MonoBehaviour
         canJump = (joystickYAxis >= movingJoystickProperties.GetJumpLimit()) ? true : false;
     }
 
-    private void Attack()
+    public bool IsAttackButtonPressed()
     {
-        if (isAttackButtonPressed)
-        {
-            myAttackManager.StartStabbingAttackAnimation();
-        }
+        return isAttackButtonPressed;
     }
     private void WallSlide()
     {
@@ -267,7 +277,7 @@ public class PlayerMovement : MonoBehaviour
     private void StopingMoving()
     {
         if (!myAnimator.GetBool("IsOnGround")) { return; }
-            if (Mathf.Abs(myRigidbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
+        if (Mathf.Abs(myRigidbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
         {
             timeSinceStartStoping = Time.time;
             startVelocityXAxis = myRigidbody2D.velocity.x;
@@ -318,6 +328,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
         Collider2D stairsCollider = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
+        if (stairsCollider == null) { return; }
         if (isStandingOnStairs)
         {
             if (stairsCollider.gameObject.tag == "RightStairs")

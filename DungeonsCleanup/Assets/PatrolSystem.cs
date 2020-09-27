@@ -36,7 +36,7 @@ public class PatrolSystem : MonoBehaviour
     {
         foreach (Patrolman patrolman in patrolmen)
         {
-            if (patrolman.IsPatrolmanFree())
+            if (patrolman.CanPatrolmanGetNewPoint())
             {
                 int lastPatrolPointNum = patrolman.GetCurrentPatrolPointNum();
                 int newPatrolPointNum;
@@ -50,7 +50,7 @@ public class PatrolSystem : MonoBehaviour
                 }
                 patrolman.SetPatrolPoint(patrolPoints[newPatrolPointNum], newPatrolPointNum);
 
-                Debug.Log($"Молодец, {patrolman.gameObject.name}. Иди к следующей точки: {newPatrolPointNum}");
+                //Debug.Log($"Молодец, {patrolman.gameObject.name}. Иди к следующей точки: {newPatrolPointNum}");
             }
         }
     }

@@ -10,9 +10,11 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] int numOfStabbingAttacks = 1;
 
     StabbingWeapon currentStabbingWeapon;
+    SpawnerOfAttackingWave mySpawnerOfAttackingWave;
     PlayerActionControls playerActionControls;
     int currentStabbingAttackNum;
-    bool didAttackAnimationStart = false;
+    bool didAnimationStart;
+    PlayerMovement playerMovement;
     Animator myAnimator;
     // ProjjectileWeapon currentProjjectileWeapon;
     // title
@@ -27,24 +29,32 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void Start()
     {
+        mySpawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         currentStabbingWeapon = playerProperties.GetCurrentStabbingWeapons();
+        playerMovement = GetComponent<PlayerMovement>();
         myAnimator = GetComponent<Animator>();
     }
-
-    public void StartStabbingAttackAnimation()
+    private void Update()
     {
-        if (didAttackAnimationStart) { return; }
-        else { didAttackAnimationStart = true;}
-        currentStabbingAttackNum = Random.Range(0, numOfStabbingAttacks);
-        // Animation
-        myAnimator.SetBool("IsAttacking", true);
-        myAnimator.SetTrigger($"Stabbing_{currentStabbingAttackNum}");
+        CheckAttackButtonPressed();
     }
-    public void StopAttackAnimation()
+
+    public void CheckAttackButtonPressed()
     {
-        didAttackAnimationStart = false;
-        myAnimator.SetBool("isAttacking", false);
-        SetDefaultStabbingSprite();
+        if (playerMovement.IsAttackButtonPressed())
+        {
+            if (didAnimationStart) { return; }
+            else
+            {
+                didAnimationStart = true;
+                currentStabbingAttackNum = Random.Range(0, numOfStabbingAttacks);
+                myAnimator.SetTrigger($"Stabbing_{currentStabbingAttackNum}");
+            }
+        }
+        else if (!playerMovement.IsAttackButtonPressed() && stabbingWeaponSpriteRender.sprite != null && myAnimator.GetBool($"isAttacking"))
+        {
+            SetDefaultStabbingSprite();
+        }
     }
 
     public void RefreshStabbingAttackFrame(int numOfFrame)
@@ -55,11 +65,14 @@ public class PlayerAttackManager : MonoBehaviour
     public void SetDefaultStabbingSprite()
     {
         stabbingWeaponSpriteRender.sprite = null;
+        didAnimationStart = false;
     }
 
     public void DetectEnemysAndAttack()
     {
-        float playerDirection = Mathf.Sign(transform.localScale.x);
+        mySpawnerOfAttackingWave.SetDamage(currentStabbingWeapon.GetDamage());
+        mySpawnerOfAttackingWave.SpawnAttack();
+        /*float playerDirection = Mathf.Sign(transform.localScale.x);
         float attackRadius = currentStabbingWeapon.GetAttackRadius(currentStabbingAttackNum);
         Vector2 attackZonePos = new Vector2(transform.position.x + playerDirection * attackRadius, transform.position.y);
         
@@ -68,7 +81,7 @@ public class PlayerAttackManager : MonoBehaviour
         {
             enemy.gameObject.GetComponent<Health>().TakeAwayHelath(currentStabbingWeapon.GetDamage());
         }
-        Debug.Log($"Атаковано {enemies.Length} врагов");
+        Debug.Log($"Атаковано {enemies.Length} врагов");*/
     }
 
     public void SwitchCurrentStabbingWeapon(StabbingWeapon newStabbingWeapon)

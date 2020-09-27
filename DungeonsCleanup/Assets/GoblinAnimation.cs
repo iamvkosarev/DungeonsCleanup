@@ -6,14 +6,16 @@ using UnityEngine;
 public class GoblinAnimation : MonoBehaviour
 {
     Animator myAnimator;
-    EnemiesMovement myMovementScript;
+    DetectorEnemiesInAttackZone detectorEnemiesInAttackZone;
+    EnemysMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
     bool facingRight = true;
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
-        myMovementScript = GetComponent<EnemiesMovement>();
+        detectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
+        myMovementScript = GetComponent<EnemysMovement>();
     }
 
     private void Update()
@@ -25,8 +27,16 @@ public class GoblinAnimation : MonoBehaviour
 
     private void CheckScripts()
     {
-        CheckMovmentScript();
+        if (detectorEnemiesInAttackZone.IsEnemyDetected())
+        {
+            isAttacking = true;
+        }
+        else if (myMovementScript.IsWalking())
+        {
+            isWalking = true;
+        }
     }
+
 
     private void CheckMovmentScript()
     {

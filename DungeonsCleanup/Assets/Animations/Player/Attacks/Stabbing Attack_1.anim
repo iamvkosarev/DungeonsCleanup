@@ -90,20 +90,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: Jerk
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: -0.5
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.21428572
-    functionName: Jerk
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 2
-    intParameter: 0
-    messageOptions: 0
   - time: 0.21428572
     functionName: RefreshStabbingAttackFrame
     data: 
@@ -141,13 +127,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: SetDefaultStabbingSprite
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5714286
-    functionName: StopAttackAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

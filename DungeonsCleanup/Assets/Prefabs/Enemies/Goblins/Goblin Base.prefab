@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1076994572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076994573}
+  m_Layer: 10
+  m_Name: Player Checker Point (Eyes)
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076994573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076994572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4589570952654697383}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5265437476936153
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265437476936153}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5789997, y: 0.003, z: 0}
+  m_LocalPosition: {x: -0.002, y: 0.003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4589570952654697383}
@@ -42,7 +72,7 @@ GameObject:
   m_Layer: 10
   m_Name: Point of Attack Detecting
   m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -54,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071571939900211082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4359996, y: 0, z: 0}
+  m_LocalPosition: {x: -0.77, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4589570952654697383}
@@ -103,10 +133,11 @@ GameObject:
   - component: {fileID: 7913969820019337519}
   - component: {fileID: 4589570952654697377}
   - component: {fileID: 3663855194411197544}
-  - component: {fileID: 2716188461638604176}
   - component: {fileID: 5930750086390548145}
   - component: {fileID: 398341935547332743}
   - component: {fileID: 5821766676611710781}
+  - component: {fileID: 3540123447407174938}
+  - component: {fileID: 8019890438038859567}
   m_Layer: 10
   m_Name: Goblin Base
   m_TagString: Untagged
@@ -131,6 +162,7 @@ Transform:
   - {fileID: 6207639130283900647}
   - {fileID: 1298837879765611092}
   - {fileID: 1743894881820148256}
+  - {fileID: 1076994573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -216,23 +248,7 @@ MonoBehaviour:
   pointOfSpwan: {fileID: 7193347388596663648}
   setDamage: 0
   damage: 0
---- !u!114 &2716188461638604176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589570952654697376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0c22f5e1d781645a17587864209aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectorPoint: {fileID: 6207639130283900647}
-  detectorZone: {x: 1.44, y: 0.19}
-  enemysLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  changeDirectionOfWaveInOpposite: 0
 --- !u!114 &5930750086390548145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,12 +261,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeZoneOfPointReaching: 0.58
+  radiusOfPointReachingZone: 0.5
   patrolPointsLayer:
     serializedVersion: 2
     m_Bits: 131072
-  patrolCheckerPoint: {fileID: 1298837879765611092}
-  speed: 3
+  patrolPointCheackerCoordinates: {fileID: 1298837879765611092}
+  sizeOfPlayerDetecterRay: 5
+  playerDetecterRayCoordinates: {fileID: 1076994573}
+  maxDeflectionAngle: 30
+  playerAndEnvironmentLayers:
+    serializedVersion: 2
+    m_Bits: 54016
+  playerLayerNum: 8
+  timeOnRayLoopUpdate: 0.5
+  turnRayInOppositeDirection: 0
 --- !u!114 &398341935547332743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +311,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6526c63e1e7de488e9a1c4bde974c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3540123447407174938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589570952654697376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  delayBeforeDeath: 0
+--- !u!114 &8019890438038859567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589570952654697376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c278491b70d65b2458fa0bf73a1db3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectorPoint: {fileID: 6207639130283900647}
+  detectorRayLength: 1.48
+  playerAndEnvironmentLayers:
+    serializedVersion: 2
+    m_Bits: 54016
+  playerLayerNum: 8
+  turnRayInOppositeDirection: 0
 --- !u!1 &4589570952976817378
 GameObject:
   m_ObjectHideFlags: 0

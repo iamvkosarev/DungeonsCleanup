@@ -10,6 +10,7 @@ public class SpawnerOfProjectile : MonoBehaviour
     [SerializeField] float projectileSpeed;
     [SerializeField] bool setProjectileDamage;
     [SerializeField] int damage;
+    [SerializeField] bool changeDirectionOfWaveInOpposite;
 
     DetectorEnemiesInAttackZone detector;
 
@@ -19,16 +20,20 @@ public class SpawnerOfProjectile : MonoBehaviour
         detector = gameObject.GetComponent<DetectorEnemiesInAttackZone>();
     }
 
-    private void Update()
-    {
-    }
 
     private void SpawnProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnProjectilePoint.position, Quaternion.identity);
+        float changeDirectionParam = 1;
+        if (changeDirectionOfWaveInOpposite)
+        {
+            changeDirectionParam = -1;
+        }
+        projectile.transform.localScale =
+                new Vector2(projectile.transform.localScale.x * changeDirectionParam * Mathf.Sign(transform.rotation.y), projectile.transform.localScale.y);
         if (setProjectileSpeed)
         {
-            projectile.GetComponent<ProjectileMovement>().SetSpeed(projectileSpeed);
+            projectile.GetComponent<ProjectileMovement>().SetSpeed(projectileSpeed * changeDirectionParam * Mathf.Sign(transform.rotation.y));
         }
         if (setProjectileDamage)
         {
