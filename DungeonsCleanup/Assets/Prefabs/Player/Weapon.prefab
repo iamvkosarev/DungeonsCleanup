@@ -74,7 +74,6 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  checkRadius: 1
 --- !u!95 &4030320658395080734
 Animator:
   serializedVersion: 3
@@ -107,9 +106,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.2661841}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.67559195
 --- !u!1 &5856318691134536123
 GameObject:
   m_ObjectHideFlags: 0
