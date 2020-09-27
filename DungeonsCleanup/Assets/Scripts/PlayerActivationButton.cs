@@ -7,13 +7,13 @@ public class PlayerActivationButton : MonoBehaviour
 {
     [SerializeField] float checkRadius;
     [SerializeField] LayerMask weaponLayer;
+    [SerializeField] LayerMask elevatorLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     [Header("OpenDoor")]
     [SerializeField] Transform doorCheckPoint;
     [SerializeField] Vector2 doorCheckSize;
     [SerializeField] LayerMask doorLayer;
-    private bool isPlayerTouchDoor;
 
     GameObject weaponNotificationWindow;
     PlayerActionControls playerActionControls;
@@ -34,6 +34,7 @@ public class PlayerActivationButton : MonoBehaviour
         if (!canPlayerActivateSomeThing) { return; }
         SwitchCurrentWeapon();
         OpenDoor();
+        TransferPlayer();
     }
     private void Update()
     {
@@ -56,9 +57,10 @@ public class PlayerActivationButton : MonoBehaviour
     private void CheckPossibilityToActivateSomeThing()
     {
         bool isPlayerTouchWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
-        isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
+        bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
+        bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
 
-        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon);
+        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon || isPlayerTouchElevator);
     }
 
     private void SwitchCurrentWeapon()
@@ -77,6 +79,15 @@ public class PlayerActivationButton : MonoBehaviour
         if (doorCollider != null)
         {
             doorCollider.gameObject.GetComponent<Door>().Open();
+        }
+    }
+
+    private void TransferPlayer()
+    {
+        Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
+        if (elevatorCollider != null)
+        {
+            elevatorCollider.gameObject.GetComponent<Elevator>().Transfer(gameObject.transform);
         }
     }
 
