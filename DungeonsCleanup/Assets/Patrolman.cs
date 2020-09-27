@@ -16,13 +16,13 @@ public class Patrolman : MonoBehaviour
     bool goToPoint;
     bool doWeKnowDirection;
     Rigidbody2D myRigidBode2D;
-    EnemysMovement myMovementScript;
+    EnemiesMovement myMovementScript;
     float signXAxisDirection;
 
     private void Start()
     {
         myRigidBode2D = GetComponent<Rigidbody2D>();
-        myMovementScript = GetComponent<EnemysMovement>();
+        myMovementScript = GetComponent<EnemiesMovement>();
     }
     public void SetPatrolPoint(PatrolPoint patrolPoint, int patrolPointNum)
     {

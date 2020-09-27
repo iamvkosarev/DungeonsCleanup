@@ -6,14 +6,14 @@ using UnityEngine;
 public class GoblinAnimation : MonoBehaviour
 {
     Animator myAnimator;
-    EnemysMovement myMovementScript;
+    EnemiesMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
     bool facingRight = true;
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
-        myMovementScript = GetComponent<EnemysMovement>();
+        myMovementScript = GetComponent<EnemiesMovement>();
     }
 
     private void Update()

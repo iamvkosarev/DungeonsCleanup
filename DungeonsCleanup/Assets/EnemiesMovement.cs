@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemysMovement : MonoBehaviour
+public class EnemiesMovement : MonoBehaviour
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] float walkSpeed;
