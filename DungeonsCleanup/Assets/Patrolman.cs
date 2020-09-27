@@ -29,11 +29,11 @@ public class Patrolman : MonoBehaviour
     bool goToPlayer;
     Vector2 directionPlayerDetecterRay;
 
-    EnemysMovement myMovementScript;
+    EnemiesMovement myMovementScript;
 
     private void Start()
     {
-        myMovementScript = GetComponent<EnemysMovement>();
+        myMovementScript = GetComponent<EnemiesMovement>();
         currentAngle = -maxDeflectionAngle;
         isPlayerDetecterRayAngleIncreases = true;
         currentTimeInLoop = 0;
