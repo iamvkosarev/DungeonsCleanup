@@ -2,11 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Bat Wave Config")]
-public class WaveConfig : ScriptableObject
+public class BatSpawn : MonoBehaviour
 {
     [SerializeField] GameObject pathPrefab;
+    [SerializeField] GameObject batPrefab;
+    [SerializeField] int numberOfBats;
 
+
+    private void Start()
+    {
+        int i = 0;
+        while(i < numberOfBats)
+        {
+            SpawnBat();
+            i++;
+        }  
+    }
     public List<Transform> GetWaypoints()
     { 
         var waveWaypoints = new List<Transform>();
@@ -17,6 +28,9 @@ public class WaveConfig : ScriptableObject
 
         return waveWaypoints;
     }
-    
 
+    private void SpawnBat()
+    {
+        Instantiate(batPrefab, gameObject.transform);
+    }
 }

@@ -5,22 +5,19 @@ using Pathfinding;
 
 public class BatPathing : MonoBehaviour
 {
-    [SerializeField] WaveConfig waveConfig;
-    List<Transform> waypoints;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] int batDamage = 15;
-    int waypointIndex = 0;
-    float startXScale;
-    [SerializeField] Transform player;
-
+    [SerializeField] PlayerMovement player;
     [SerializeField] float attackSpeed = 200f;
     [SerializeField] float distanceToAttack = 10f;
     [SerializeField] float attackRadius = 1f;
-    float nextWaypointDistance = 3f;
-    Path path;
-    int currentWayPoint = 0;
     bool reachedEndOfPath = false;
-
+    float nextWaypointDistance = 3f;
+    List<Transform> waypoints;
+    int waypointIndex;
+    float startXScale;
+    Path path;
+    int currentWayPoint;
     Seeker seeker;
     Rigidbody2D rb;
     Animator myAnimator;
@@ -30,40 +27,62 @@ public class BatPathing : MonoBehaviour
 
     private void Start()
     {
+        //GetComponent + FindObjectOfType
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        player = FindObjectOfType<PlayerMovement>();
+
+        //For Pathfinding
         InvokeRepeating("UpdatePath", 0f, .5f);
-        waypoints = waveConfig.GetWaypoints();
-        startXScale = transform.localScale.x;
+
+        //For Moving
+        waypoints = gameObject.GetComponentInParent<BatSpawn>().GetWaypoints();
+        waypointIndex = Random.Range(0, waypoints.Count);
         transform.position = waypoints[waypointIndex].transform.position;
+        startXScale = transform.localScale.x;
     }
 
     void UpdatePath()
     {
         if(seeker.IsDone())
-            seeker.StartPath(transform.position, player.position, OnPathComplite);
+            seeker.StartPath(transform.position, player.transform.position, OnPathComplite);
     }
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Moving();
+        Moving();
 
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
-             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
+        // if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
+        //      && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
+        // {
+        //     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        //     myAnimator.SetBool("Attack", true);
+        //     //MoveTowardPlayer();
+        // }
+
+        // else
+        // {
+        //     Moving();
+        // }      
+
+    }
+
+    private void Moving()
+    {
+        var targetPosition = waypoints[waypointIndex].transform.position;
+        var movementThisFrame = moveSpeed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+
+        if(transform.position == targetPosition)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            myAnimator.SetBool("Attack", true);
-            //MoveTowardPlayer();
+            waypointIndex = Random.Range(0, waypoints.Count);
         }
 
-        else
-        {
-            Moving();
-        }      
-
+        if(IsFacingOnAWaypoint())
+            Flip();
     }
 
     void MoveTowardPlayer()
@@ -111,46 +130,19 @@ public class BatPathing : MonoBehaviour
 
     void Attack()
     {
-        
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+       if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
-
         }
 
         if(IsFacingOnAHero())
-        {
             Flip();
-        }
 
         myAnimator.SetBool("Attack", false);
-
-
     }
 
-    private void Moving()
-    {
-        if(waypointIndex <= waypoints.Count - 1)
-        {
-            var targetPosition = waypoints[waypointIndex].transform.position;
-            var movementThisFrame = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
-            if(transform.position == targetPosition)
-            {
-                waypointIndex++;
-            }
-        }
-
-        else
-        {
-            waypointIndex = 0;
-        }
-        if(IsFacingOnAWaypoint())
-        {
-            Flip();
-        }  
-    }
+    
 
     private void Flip()
     {
