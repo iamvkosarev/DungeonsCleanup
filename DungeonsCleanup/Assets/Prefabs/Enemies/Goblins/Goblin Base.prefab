@@ -134,10 +134,10 @@ GameObject:
   - component: {fileID: 4589570952654697377}
   - component: {fileID: 3663855194411197544}
   - component: {fileID: 5930750086390548145}
-  - component: {fileID: 398341935547332743}
   - component: {fileID: 5821766676611710781}
   - component: {fileID: 3540123447407174938}
   - component: {fileID: 8019890438038859567}
+  - component: {fileID: 8777141187466391892}
   m_Layer: 10
   m_Name: Goblin Base
   m_TagString: Untagged
@@ -275,30 +275,6 @@ MonoBehaviour:
   playerLayerNum: 8
   timeOnRayLoopUpdate: 0.5
   turnRayInOppositeDirection: 0
---- !u!114 &398341935547332743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589570952654697376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e5de9ef674e3642a73b33e22b42aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  walkSpeed: 3
-  isWalking: 1
-  runSpeed: 5
-  stairsLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  groundCheckPoint: {fileID: 1743894881820148256}
-  groundCheckSize: {x: -0.78, y: -0.09}
-  slowingOnStairsParametr: 1.2
 --- !u!114 &5821766676611710781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +320,29 @@ MonoBehaviour:
     m_Bits: 54016
   playerLayerNum: 8
   turnRayInOppositeDirection: 0
+--- !u!114 &8777141187466391892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589570952654697376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dcc4a1ceeddc149b6d87047d61189c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  walkSpeed: 3
+  runSpeed: 5
+  stairsLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  groundCheckPoint: {fileID: 1743894881820148256}
+  groundCheckSize: {x: 0.39, y: 0.11}
+  slowingOnStairsParametr: 2
 --- !u!1 &4589570952976817378
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4589570954328271066}
   - component: {fileID: 4589570954328271067}
-  m_Layer: 11
+  m_Layer: 20
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
