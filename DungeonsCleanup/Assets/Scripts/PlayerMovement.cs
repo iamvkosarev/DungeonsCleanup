@@ -228,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
             float playerDirection = Mathf.Sign(transform.rotation.y);
             StartCoroutine(SuspendHorizontalMoving());
-            myRigidbody2D.velocity = new Vector2(wallJumpForce * playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
+            myRigidbody2D.velocity = new Vector2(wallJumpForce * -playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
             canJump = false;
             StartCoroutine(SuspendWallJumps());
         }
