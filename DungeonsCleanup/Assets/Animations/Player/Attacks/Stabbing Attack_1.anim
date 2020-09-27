@@ -90,6 +90,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: StopHorizontalMovement
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.21428572
     functionName: RefreshStabbingAttackFrame
     data: 
@@ -104,19 +111,19 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0.2857143
+    functionName: AttackEnemyByWave
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.35714287
     functionName: RefreshStabbingAttackFrame
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
-    messageOptions: 0
-  - time: 0.42857143
-    functionName: DetectEnemysAndAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
     messageOptions: 0
   - time: 0.42857143
     functionName: RefreshStabbingAttackFrame
@@ -127,6 +134,20 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: SetDefaultStabbingSprite
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5714286
+    functionName: StartHorizontalMovement
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5714286
+    functionName: StopTumbleweed
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2280272574141709356}
   - component: {fileID: 2280272574141709357}
-  m_Layer: 11
+  m_Layer: 20
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,10 +151,10 @@ GameObject:
   - component: {fileID: 709537018}
   - component: {fileID: 2280272574607320917}
   - component: {fileID: 1144908394897137451}
-  - component: {fileID: 9010160843188848350}
   - component: {fileID: 7021812925743838097}
   - component: {fileID: 8277692384100688374}
   - component: {fileID: 1946901898}
+  - component: {fileID: 4509940345892652521}
   m_Layer: 10
   m_Name: Goblin Shooter
   m_TagString: Untagged
@@ -294,30 +294,6 @@ MonoBehaviour:
   playerLayerNum: 8
   timeOnRayLoopUpdate: 0.5
   turnRayInOppositeDirection: 0
---- !u!114 &9010160843188848350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280272574607320918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e5de9ef674e3642a73b33e22b42aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  walkSpeed: 3
-  isWalking: 1
-  runSpeed: 5
-  stairsLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  groundCheckPoint: {fileID: 6229648096336119979}
-  groundCheckSize: {x: -0.78, y: -0.09}
-  slowingOnStairsParametr: 1.2
 --- !u!114 &7021812925743838097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +339,29 @@ MonoBehaviour:
     m_Bits: 54016
   playerLayerNum: 8
   turnRayInOppositeDirection: 0
+--- !u!114 &4509940345892652521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280272574607320918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dcc4a1ceeddc149b6d87047d61189c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  walkSpeed: 3
+  runSpeed: 5
+  stairsLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  groundCheckPoint: {fileID: 6229648096336119979}
+  groundCheckSize: {x: 0.4, y: 0.12}
+  slowingOnStairsParametr: 2
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ public class PlayerAttackManager : MonoBehaviour
         didAnimationStart = false;
     }
 
-    public void DetectEnemysAndAttack()
+    public void AttackEnemyByWave()
     {
         mySpawnerOfAttackingWave.SetDamage(currentStabbingWeapon.GetDamage());
         mySpawnerOfAttackingWave.SpawnAttack();

@@ -24,7 +24,9 @@ public class PlayerAnimation : MonoBehaviour
     bool isGoingUp;
     bool isGoingDown;
     bool startLanding;
-    
+    bool isTumbleweed;
+
+
     private void Start()
     {
         playerMovementScript = GetComponent<PlayerMovement>();
@@ -43,7 +45,11 @@ public class PlayerAnimation : MonoBehaviour
 
     private void CheckPlayerPos()
     {
-        if (playerMovementScript.IsPlyerStanding())
+        if (playerMovementScript.IsTumbleweed() && hasPlayerLowerSpecialAnimation)
+        {
+            isTumbleweed = true;
+        }
+        else if (playerMovementScript.IsPlyerStanding())
         {
             isOnGround = true;
             CheckJoystickPos();
@@ -81,10 +87,6 @@ public class PlayerAnimation : MonoBehaviour
         {
             isMakingJump = true;
         }
-        else if(joystickYAxis <= movingJoystickProperties.GetLowerMovementLimit() && hasPlayerLowerSpecialAnimation)
-        {
-            // Кувырок
-        }
         else if(joystickXAxisAbs < movingJoystickProperties.GetWalkLimit())
         {
             isIdling = true;
@@ -108,6 +110,7 @@ public class PlayerAnimation : MonoBehaviour
         myAnimator.SetBool("IsMakingJump", isMakingJump);
         myAnimator.SetBool("IsAttacking", isAttacking);
         myAnimator.SetBool("IsGoingUp", isGoingUp);
+        myAnimator.SetBool("IsTumbleweed", isTumbleweed);
         myAnimator.SetBool("isGoingDown", isGoingDown);
         if (startLanding)
         {
@@ -125,6 +128,7 @@ public class PlayerAnimation : MonoBehaviour
         isMakingJump = false;
         isAttacking = false;
         isGoingUp = false;
+        isTumbleweed = false;
         isGoingDown = false;
     }
 }

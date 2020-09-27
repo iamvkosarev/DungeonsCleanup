@@ -7,7 +7,7 @@ public class GoblinAnimation : MonoBehaviour
 {
     Animator myAnimator;
     DetectorEnemiesInAttackZone detectorEnemiesInAttackZone;
-    EnemysMovement myMovementScript;
+    EnemiesMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
     bool facingRight = true;
@@ -15,7 +15,7 @@ public class GoblinAnimation : MonoBehaviour
     {
         myAnimator = GetComponent<Animator>();
         detectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
-        myMovementScript = GetComponent<EnemysMovement>();
+        myMovementScript = GetComponent<EnemiesMovement>();
     }
 
     private void Update()

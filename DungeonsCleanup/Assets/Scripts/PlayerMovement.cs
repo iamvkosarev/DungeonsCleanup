@@ -52,6 +52,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject runParticlesPrefab;
     [SerializeField] float particlesDestroyDelay = 0.1f;
 
+    [Header("Tumbleweed")]
+    [SerializeField] float tumbleweedSpeed;
+    [SerializeField] CapsuleCollider2D feetCollider;
+    [SerializeField] CapsuleCollider2D feetNotTouchingFeetCollide;
+    [SerializeField] BoxCollider2D getterAttackCollider;
+    private bool isTumbleweed;
+
     //catching files
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigidbody2D;
@@ -86,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        //currentHealth = maxHealth;
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAttackManager = GetComponent<PlayerAttackManager>();
@@ -95,22 +101,42 @@ public class PlayerMovement : MonoBehaviour
     {
         Inputs();
         CheckTouching();
-        CheckAttacking();
-
+        CheckTumbleweed();
         UpdateColliderInBody();
-        StopingMoving();
+        PlayerRotation();
     }
 
-    private void CheckAttacking()
+    private void CheckTumbleweed()
     {
-        if (isAttackButtonPressed)
+        if (joystickYAxis <= -movingJoystickProperties.GetLowerMovementLimit() && Mathf.Abs(joystickXAxis) >= movingJoystickProperties.GetWalkLimit())
         {
-            areHorizontalMovingSuspended = true;
-            isStoping = true;
+            isTumbleweed = true;
+            feetNotTouchingFeetCollide.enabled = true;
+            feetCollider.enabled = false;
+            getterAttackCollider.enabled = false;
         }
-        else
+    }
+    public bool IsTumbleweed() {
+        return isTumbleweed;
+    }
+    public void StopTumbleweed()
+    {
+        isTumbleweed = false;
+        feetNotTouchingFeetCollide.enabled = false;
+        feetCollider.enabled = true;
+        getterAttackCollider.enabled = true;
+    }
+    private void PlayerRotation()
+    {
+        if (isTumbleweed) { return; }
+        if(joystickXAxis == 0) { return; }
+        if (joystickXAxis < 0 && facingRight)
         {
-            areHorizontalMovingSuspended = false;
+            Flip();
+        }
+        else if (joystickXAxis > 0 && !facingRight)
+        {
+            Flip();
         }
     }
 
@@ -132,6 +158,15 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         WallJump();
         SlowingOnStairs();
+        StopingMoving();
+        tumbleweedMove();
+    }
+
+    private void tumbleweedMove()
+    {
+       if (isTumbleweed) { 
+            myRigidbody2D.velocity = new Vector2(tumbleweedSpeed * Mathf.Sign(transform.rotation.y), myRigidbody2D.velocity.y); 
+       }
     }
 
     private void SlowingOnStairs()
@@ -191,11 +226,21 @@ public class PlayerMovement : MonoBehaviour
         if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
         {
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
-            myRigidbody2D.velocity = new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x);
+            float playerDirection = Mathf.Sign(transform.rotation.y);
+            StartCoroutine(SuspendHorizontalMoving());
+            myRigidbody2D.velocity = new Vector2(wallJumpForce * playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
             canJump = false;
             StartCoroutine(SuspendWallJumps());
-            StartCoroutine(SuspendHorizontalMoving());
         }
+    }
+    public void StopHorizontalMovement()
+    {
+        areHorizontalMovingSuspended = true;
+        myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
+    }
+    public void StartHorizontalMovement()
+    {
+        areHorizontalMovingSuspended = false;
     }
 
     private void Jump()
@@ -228,9 +273,9 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator SuspendHorizontalMoving()
     {
-        areHorizontalMovingSuspended = true;
+        StopHorizontalMovement();
         yield return new WaitForSeconds(horizontalMovingDelay);
-        areHorizontalMovingSuspended = false;
+        StartHorizontalMovement();
 
     }
 
@@ -238,15 +283,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float joystickXAxisSign = Mathf.Sign(joystickXAxis);
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-
-        if (joystickXAxis < 0 && facingRight)
-        {
-            Flip();
-        }
-        else if (joystickXAxis > 0 && !facingRight)
-        {
-            Flip();
-        }
 
         if (areHorizontalMovingSuspended) { return; }
 
@@ -312,30 +348,27 @@ public class PlayerMovement : MonoBehaviour
         Destroy(particles, particlesDestroyDelay);
     }
 
-    public void Jerk(float attackJerkForce)
+    public void Jerk(float jerkForce)
     {
         timeSinceStartStoping = Time.time;
-        startVelocityXAxis = myRigidbody2D.velocity.x;
-        float playerDirection = Mathf.Sign(transform.localScale.x);
-        if (!myAnimator.GetBool("IsOnGround"))
-        {
-            attackJerkForce *= 3f;
-        }
-        myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / 1.4f + attackJerkForce * playerDirection, myRigidbody2D.velocity.y);
+        float jerksDirection = Mathf.Sign(transform.rotation.y);
+        myRigidbody2D.AddForce(new Vector2(jerkForce* jerksDirection, myRigidbody2D.velocity.y));
     }
     public void SpawnHaze()
     {
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
         Collider2D stairsCollider = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
-        if (stairsCollider == null) { return; }
-        if (isStandingOnStairs)
+        if (stairsCollider != null)
         {
-            if (stairsCollider.gameObject.tag == "RightStairs")
+            if (isStandingOnStairs)
             {
-                hazeScript.RotateHaze();
+                if (stairsCollider.gameObject.tag == "RightStairs")
+                {
+                    hazeScript.RotateHaze();
+                }
+                hazeScript.SetHazeOnStairs();
             }
-            hazeScript.SetHazeOnStairs();
         }
         hazeScript.StartAnimation();
     }
