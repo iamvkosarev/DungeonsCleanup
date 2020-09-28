@@ -789,13 +789,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 834983476}
     m_Modifications:
+    - target: {fileID: 1946901898, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+      propertyPath: detectorRayLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4240007
+      value: 6.476
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.328
+      value: -8.812
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -833,9 +837,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2280272574607320917, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6485676117677068574, guid: 544fe0ad3e1c87f4faac6236a7e9ba21, type: 3}
     - target: {fileID: 2280272574607320918, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_Name
       value: Goblin Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884064678594896278, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.262
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884064678594896278, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.454
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
@@ -1342,11 +1358,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4240007
+      value: 11.093
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.328
+      value: -8.843
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.z
