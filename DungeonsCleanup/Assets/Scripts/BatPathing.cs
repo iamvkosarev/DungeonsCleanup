@@ -53,21 +53,22 @@ public class BatPathing : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Moving();
+        // Moving();
 
-        // if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
-        //      && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
-        // {
-        //     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-        //     myAnimator.SetBool("Attack", true);
-        //     //MoveTowardPlayer();
-        // }
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
+             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack
+             && Mathf.Abs(player.transform.position.x - transform.position.x) > 0.3f
+             && Mathf.Abs(player.transform.position.y - transform.position.y) > 0.3f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            myAnimator.SetBool("Attack", true);
+            //MoveTowardPlayer();
+        }
 
-        // else
-        // {
-        //     Moving();
-        // }      
-
+        else
+        {
+            Moving();
+        }
     }
 
     private void Moving()
@@ -104,7 +105,7 @@ public class BatPathing : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
         Vector2 force = direction * attackSpeed * Time.deltaTime;
 
-        rb.AddForce(force);
+        rb.velocity = force;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
 
