@@ -13,20 +13,22 @@ public class Patrolman : MonoBehaviour
     int currentPatrolPointNum;
     [Header("To check enemy")]
     [SerializeField] float sizeOfPlayerDetecterRay;
-    [SerializeField] Transform playerDetecterRayCoordinates;
+    [SerializeField] Transform detectorPoint;
     [SerializeField] float maxDeflectionAngle;
     [SerializeField] LayerMask playerAndEnvironmentLayers;
     [SerializeField] int playerLayerNum;
     [SerializeField] float timeOnRayLoopUpdate;
     [SerializeField] bool turnRayInOppositeDirection;
-    float currentAngle;
+    [SerializeField] float timeOnWaitPlayer;
+    float currentAngle = 0;
     float currentTimeInLoop;
     bool isPlayerDetecterRayAngleIncreases;
-    float parameterOfTurningRayAlongXAxis;
+    float parameterOfTurningRayAlongXAxis = -1;
 
     bool canPatrolmanGetNewPoint;
     bool goToPoint;
     bool goToPlayer;
+    int countStopWaintingForPlayer;
     Vector2 directionPlayerDetecterRay;
 
     EnemiesMovement myMovementScript;
@@ -44,13 +46,53 @@ public class Patrolman : MonoBehaviour
     {
         CheckIsPointFree();
         CheckReachingPoint();
+        CheckReachingLastPlayerPosition();
         UpdatePlayerDetecterRayAngle();
         CheckPlayerDetected();
     }
 
+    private void CheckReachingLastPlayerPosition()
+    {
+        if(!goToPlayer) { return; }
+        if (currentPatrolPoint != null)
+        {
+            currentPatrolPoint.StopPursuing();
+            currentPatrolPoint = null;
+        }
+        countStopWaintingForPlayer = 0;
+        goToPoint = false;
+
+        Vector2 cheakerPlayerCircleCoordinates = transform.position;
+        Vector2 lastPlayerPos = myMovementScript.GetCurrentTragetPos();
+
+        if (Mathf.Abs(lastPlayerPos.x - cheakerPlayerCircleCoordinates.x) 
+            <= Mathf.Abs(radiusOfPointReachingZone ) && goToPlayer)
+        {
+            goToPlayer = false;
+            StartCoroutine(WaitingForPlayer());
+        }
+
+    }
+
+    IEnumerator WaitingForPlayer()
+    {
+        goToPlayer = false;
+        yield return new WaitForSeconds(timeOnWaitPlayer);
+        if (!goToPlayer)
+        {
+            countStopWaintingForPlayer++;
+            if (countStopWaintingForPlayer <= 1)
+            {
+                Debug.Log("Гоблин свободен псоле патруля игрока");
+                canPatrolmanGetNewPoint = true;
+            }
+        }
+
+    }
 
     private void CheckReachingPoint()
     {
+        if (goToPlayer) { return; }
         if (currentPatrolPoint == null) { return; }
         Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolPointCheackerCoordinates.position,
             radiusOfPointReachingZone, patrolPointsLayer);
@@ -64,14 +106,8 @@ public class Patrolman : MonoBehaviour
     }
     public void StartPursuingPlayer(Transform playersPos)
     {
-        goToPoint = false;
         goToPlayer = true;
-        if (currentPatrolPoint!= null)
-        {
-            currentPatrolPoint.StopPursuing();
-            currentPatrolPoint = null;
-        }
-        myMovementScript.SetTarget(playersPos);
+        myMovementScript.SetTarget(playersPos.position);
     }
     public void TurnRayInOppositeDirection()
     {
@@ -84,7 +120,11 @@ public class Patrolman : MonoBehaviour
         goToPoint = false;
         yield return new WaitForSeconds(myLastPatrolPoint.GetTimeOnStand());
         myLastPatrolPoint.StopPursuing();
-        canPatrolmanGetNewPoint = true;
+        if (!goToPlayer)
+        {
+            Debug.Log("Гоблин постоял на точке");
+            canPatrolmanGetNewPoint = true;
+        }
     }
     public void SetPatrolPoint(PatrolPoint patrolPoint, int patrolPointNum)
     {
@@ -98,9 +138,10 @@ public class Patrolman : MonoBehaviour
         bool isPointFree = currentPatrolPoint.IsPointFree();
         if (isPointFree)
         {
+            Debug.Log($"Начнаю преследовать точку {currentPatrolPoint.gameObject.name}");
             currentPatrolPoint.StartedPursuing();
             goToPoint = true;
-            myMovementScript.SetTarget(currentPatrolPoint.transform);
+            myMovementScript.SetTarget(currentPatrolPoint.transform.position);
         }
     }
     public int GetCurrentPatrolPointNum()
@@ -148,7 +189,7 @@ public class Patrolman : MonoBehaviour
         parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
         directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
-        RaycastHit2D hit = Physics2D.Raycast(playerDetecterRayCoordinates.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndEnvironmentLayers);
+        RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndEnvironmentLayers);
         if (!hit) { return; }
         if (hit.collider.gameObject.layer == playerLayerNum)
         {
@@ -168,7 +209,7 @@ public class Patrolman : MonoBehaviour
         Gizmos.DrawSphere(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone);
 
         Gizmos.color = Color.gray;
-        Gizmos.DrawRay(playerDetecterRayCoordinates.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis, 
+        Gizmos.DrawRay(detectorPoint.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis, 
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay));
     }
 }

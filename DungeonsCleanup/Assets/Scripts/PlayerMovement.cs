@@ -57,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CapsuleCollider2D feetCollider;
     [SerializeField] CapsuleCollider2D feetNotTouchingFeetCollide;
     [SerializeField] BoxCollider2D getterAttackCollider;
+    [SerializeField] Transform firstPointForCheckingEnemiesDuringATumbleweed;
+    [SerializeField] Transform secondPointForCheckingEnemiesDuringATumbleweed;
+    [SerializeField] LayerMask enemyLayer;
+    private bool wasFirstPointTouched;
+    private bool wasSecondPointTouched;
     private bool isTumbleweed;
 
     //catching files
@@ -69,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     bool facingRight = true;
     bool isAttackButtonPressed;
     bool isStoping;
+    bool canRotation = true;
     float timeSinceStartStoping;
     float startVelocityXAxis;
     float joystickXAxis;
@@ -104,6 +110,34 @@ public class PlayerMovement : MonoBehaviour
         CheckTumbleweed();
         UpdateColliderInBody();
         PlayerRotation();
+        CheckingEnemiesDuringATumbleweed();
+    }
+
+    private void CheckingEnemiesDuringATumbleweed()
+    {
+        if (isTumbleweed)
+        {
+            if(Physics2D.OverlapPoint(firstPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
+            {
+                wasFirstPointTouched = true;
+            }
+            if(Physics2D.OverlapPoint(secondPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
+            {
+                wasSecondPointTouched = true;
+            }
+        }
+        else
+        {
+            wasFirstPointTouched = false;
+            wasSecondPointTouched = false;
+        }
+    }
+    public void TurnAroundIfWentThrowEnemy()
+    {
+        if (wasSecondPointTouched && wasFirstPointTouched)
+        {
+            Flip();
+        }
     }
 
     private void CheckTumbleweed()
@@ -128,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void PlayerRotation()
     {
-        if (isTumbleweed) { return; }
+        if (!canRotation) { return; }
         if(joystickXAxis == 0) { return; }
         if (joystickXAxis < 0 && facingRight)
         {
@@ -174,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         if (isStandingOnStairs)
         {
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
-            if (myRigidbody2D.velocity.x == 0f && !areGroundJumpsSuspended)
+            if ((myRigidbody2D.velocity.x == 0f || joystickXAxis == 0) && !areGroundJumpsSuspended)
             {
                 
                 myRigidbody2D.gravityScale = 0f;
@@ -379,5 +413,13 @@ public class PlayerMovement : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
+    }
+    public void StartRotaing()
+    {
+        canRotation = true;
+    }
+    public void StopRotating()
+    {
+        canRotation = false;
     }
 }

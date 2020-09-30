@@ -16,17 +16,22 @@ public class EnemiesMovement : MonoBehaviour
     [SerializeField] float slowingOnStairsParametr;
     bool isStandingOnStairs;
 
-    Transform currentTarget;
+
+    Vector2 currentTarget;
     Rigidbody2D myRigidbody2D;
+    Animator myAnimator;
     DetectorEnemiesInAttackZone DetectorEnemiesInAttackZone;
     Patrolman patrolman;
     bool doWeKnowTargetDirection;
     float signXAxisDirection;
     bool facingRight = false;
+    bool canRotate = true;
+    bool canMove = true;
 
     private void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         DetectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         patrolman = GetComponent<Patrolman>();
     }
@@ -35,6 +40,7 @@ public class EnemiesMovement : MonoBehaviour
         CheckTargetType();
         CheckTouchingGround();
     }
+
 
     private void CheckTouchingGround()
     {
@@ -54,24 +60,24 @@ public class EnemiesMovement : MonoBehaviour
         {
             isRunning = true;
             isWalking = false;
-            return;
         }
-        else if(patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected())
+        else if((patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected()) || (!patrolman.ShoulIGoToPlayer() && !patrolman.ShoulIGoToPatrolPoint()))
         {
             isRunning = false;
             isWalking = false;
-            return;
         }
         else if (patrolman.ShoulIGoToPatrolPoint()) {
             isWalking = true;
             isRunning = false;
-            return;
         }
-        isWalking = false;
+        else
+        {
+            isWalking = false;
+        }
 
     }
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(Vector2 newTarget)
     {
         currentTarget = newTarget;
         doWeKnowTargetDirection = false;
@@ -104,6 +110,10 @@ public class EnemiesMovement : MonoBehaviour
             myRigidbody2D.gravityScale = 1f;
         }
     }
+    public Vector2 GetCurrentTragetPos()
+    {
+        return currentTarget;
+    }
 
     private void Movement()
     {
@@ -113,20 +123,37 @@ public class EnemiesMovement : MonoBehaviour
             GetDirection();
             doWeKnowTargetDirection = true;
         }
+        if (!canMove) { return; }
         Run();
         Walk();
     }
     private void GetDirection()
     {
-        signXAxisDirection = Mathf.Sign(currentTarget.transform.position.x - transform.position.x);
-        if (signXAxisDirection < 0 && facingRight)
+        signXAxisDirection = Mathf.Sign(currentTarget.x - transform.position.x);
+        if (signXAxisDirection < 0 && facingRight && canRotate)
         {
             Flip();
         }
-        else if (signXAxisDirection > 0 && !facingRight)
+        else if (signXAxisDirection > 0 && !facingRight && canRotate)
         {
             Flip();
         }
+    }
+    public void StopRotating()
+    {
+        canRotate = false;
+    }
+    public void StartRotating()
+    {
+        canRotate = true;
+    }
+    public void StopMoving()
+    {
+        canMove = false;
+    }
+    public void StartMoving()
+    {
+        canMove = true;
     }
     private void Walk()
     {

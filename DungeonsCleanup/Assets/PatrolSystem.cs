@@ -50,7 +50,6 @@ public class PatrolSystem : MonoBehaviour
                 }
                 patrolman.SetPatrolPoint(patrolPoints[newPatrolPointNum], newPatrolPointNum);
 
-                //Debug.Log($"Молодец, {patrolman.gameObject.name}. Иди к следующей точки: {newPatrolPointNum}");
             }
         }
     }

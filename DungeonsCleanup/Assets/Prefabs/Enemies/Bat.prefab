@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 2
   delayBeforeDeath: 0
 --- !u!114 &934885363
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  batDamage: 15
+  batDamage: 1
   player: {fileID: 0}
   attackSpeed: 150
   distanceToAttack: 10
