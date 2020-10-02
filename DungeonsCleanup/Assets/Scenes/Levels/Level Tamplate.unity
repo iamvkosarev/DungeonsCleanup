@@ -853,6 +853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Shooter
       objectReference: {fileID: 0}
+    - target: {fileID: 8603116871917422768, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
 --- !u!1 &834983475
@@ -15894,21 +15898,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1294136324}
     - target: {fileID: 586757187, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: particlesColor.r
-      value: 0.6037736
-      objectReference: {fileID: 0}
-    - target: {fileID: 586757187, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: particlesColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 586757187, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: particlesColor.b
-      value: 0
+      propertyPath: health
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1187377112, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: activateSomeThingButton
       value: 
       objectReference: {fileID: 1803591809}
+    - target: {fileID: 2542656809900335354, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3443432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542656809900335354, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3653173
+      objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player

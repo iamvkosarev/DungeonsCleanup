@@ -20,8 +20,13 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(dalayBeforeStart);
         myAnimator.SetTrigger("StartStartCrossfade");
     }
+    public void SwitchOffCanvas()
+    {
+        canvas.active = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        canvas.active = true;
         myAnimator.SetTrigger("StartExitCrossfade");
     }
     public void LoadNextScene()
