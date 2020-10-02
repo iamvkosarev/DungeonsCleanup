@@ -56,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float tumbleweedSpeed;
     [SerializeField] CapsuleCollider2D feetCollider;
     [SerializeField] CapsuleCollider2D feetNotTouchingFeetCollide;
-    [SerializeField] BoxCollider2D getterAttackCollider;
     [SerializeField] Transform firstPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] Transform secondPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] LayerMask enemyLayer;
@@ -68,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigidbody2D;
     Animator myAnimator;
+    PlayerHealth myHealth;
     PlayerAttackManager myAttackManager;
 
     // param
@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myHealth = GetComponent<PlayerHealth>();
         myAttackManager = GetComponent<PlayerAttackManager>();
     }
     void Update()
@@ -147,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
             isTumbleweed = true;
             feetNotTouchingFeetCollide.enabled = true;
             feetCollider.enabled = false;
-            getterAttackCollider.enabled = false;
+            myHealth.SetProtectingMode(true);
         }
     }
     public bool IsTumbleweed() {
@@ -158,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         isTumbleweed = false;
         feetNotTouchingFeetCollide.enabled = false;
         feetCollider.enabled = true;
-        getterAttackCollider.enabled = true;
+        myHealth.SetProtectingMode(false);
     }
     private void PlayerRotation()
     {

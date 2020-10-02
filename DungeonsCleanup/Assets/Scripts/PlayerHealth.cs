@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     [SerializeField] HealthBar healthBar;
+    bool isProtecting;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class PlayerHealth : Health
     }
     public override void TakeAwayHelath(int damage)
     {
+        if (isProtecting) { return; }
         base.TakeAwayHelath(damage);
         healthBar.SetHealth(base.GetHealth());
     }
@@ -24,7 +26,10 @@ public class PlayerHealth : Health
             Death();
         }
     }
-
+    public void SetProtectingMode(bool isProtecting)
+    {
+        this.isProtecting = isProtecting;
+    }
     private void Death()
     {
         // KillPlayer

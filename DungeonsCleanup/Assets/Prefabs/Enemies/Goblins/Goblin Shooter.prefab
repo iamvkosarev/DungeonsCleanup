@@ -315,6 +315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 1
+  particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
   health: 3
   delayBeforeDeath: 0
 --- !u!114 &1946901898
@@ -336,7 +339,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 54016
   playerLayerNum: 8
-  timeOnRayLoopUpdate: 0.5
+  timeOnRayLoopUpdate: 0.1
   turnRayInOppositeDirection: 0
 --- !u!114 &4509940345892652521
 MonoBehaviour:
@@ -361,6 +364,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 6229648096336119979}
   groundCheckSize: {x: 0.4, y: 0.12}
   slowingOnStairsParametr: 1.2
+  timeOnSlowing: 0.05
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0

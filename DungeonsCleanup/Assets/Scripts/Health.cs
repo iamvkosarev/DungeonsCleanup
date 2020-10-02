@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private GameObject getDamageParticle;
     [SerializeField] private float particlesDestroyDelay = 0.2f;
+    [SerializeField] private Color particlesColor;
     public int health;
     public float delayBeforeDeath;
     private int firstHealth;
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
         {
             health -= damage;
             GameObject particles = Instantiate(getDamageParticle, gameObject.transform.position, Quaternion.identity);
+            particles.GetComponent<ParticleSystem>().startColor = particlesColor;
             Destroy(particles, particlesDestroyDelay);
         }
 
