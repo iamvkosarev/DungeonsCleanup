@@ -15,6 +15,7 @@ public class DetectorEnemiesInAttackZone : MonoBehaviour
     private bool isEnemyDetectedInAttackZone;
     float currentAngle = 0;
     float currentTimeInLoop;
+    float fixedAngle = 0;
     bool isPlayerDetecterRayAngleIncreases;
     Vector2 directionPlayerDetecterRay;
     float parameterOfTurningRayAlongXAxis = -1f;
@@ -37,7 +38,8 @@ public class DetectorEnemiesInAttackZone : MonoBehaviour
 
     private void CheckingEnemies()
     {
-        currentAngle = (currentTimeInLoop / timeOnRayLoopUpdate) * maxDeflectionAngle * 2f - maxDeflectionAngle;
+        if (isEnemyDetectedInAttackZone){ currentAngle = fixedAngle;}
+        else { currentAngle = (currentTimeInLoop / timeOnRayLoopUpdate) * maxDeflectionAngle * 2f - maxDeflectionAngle; }
         parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
         directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
@@ -49,6 +51,7 @@ public class DetectorEnemiesInAttackZone : MonoBehaviour
         if (hit.collider.gameObject.layer == playerLayerNum)
         {
             isEnemyDetectedInAttackZone = true;
+            fixedAngle = currentAngle;
         }
         else
         {
