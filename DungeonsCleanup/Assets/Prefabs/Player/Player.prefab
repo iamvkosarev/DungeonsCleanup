@@ -476,7 +476,6 @@ MonoBehaviour:
   tumbleweedSpeed: 10
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
-  getterAttackCollider: {fileID: 2542656809900335354}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
   enemyLayer:
@@ -514,7 +513,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
-  particlesColor: {r: 1, g: 0.0037735105, b: 0.0037735105, a: 1}
+  particlesColor: {r: 0.6037736, g: 0, b: 0, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
   health: 200
   delayBeforeDeath: 0
   healthBar: {fileID: 0}

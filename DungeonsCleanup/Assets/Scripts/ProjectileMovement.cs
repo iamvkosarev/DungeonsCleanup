@@ -6,11 +6,12 @@ public class ProjectileMovement : MonoBehaviour
 {
     [SerializeField] float speed = 3f;
     PlayerMovement player;
+    Vector2 velocityDirection;
     int playerLayer;
     Rigidbody2D myRigidbody;
-    public void SetSpeed(float speed)
+    public void SetVelocityDirection(Vector2 velocityDirection)
     {
-        this.speed = speed; 
+        this.velocityDirection = velocityDirection; 
     }
     void Start()
     {
@@ -22,7 +23,7 @@ public class ProjectileMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRigidbody.velocity = new Vector2(-speed, 0f);
+        myRigidbody.velocity = new Vector2(velocityDirection.x * speed, velocityDirection.y * speed);
     }
 
 }
