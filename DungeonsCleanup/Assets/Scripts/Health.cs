@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private GameObject getDamageParticle;
+    [SerializeField] private float particlesDestroyDelay = 0.2f;
     public int health;
     public float delayBeforeDeath;
+    private int firstHealth;
+    private void Start()
+    {
+        firstHealth = health;
+    }
     public virtual void TakeAwayHelath(int damage)
     {
         if (damage >= health)
@@ -15,6 +22,8 @@ public class Health : MonoBehaviour
         else
         {
             health -= damage;
+            GameObject particles = Instantiate(getDamageParticle, gameObject.transform.position, Quaternion.identity);
+            Destroy(particles, particlesDestroyDelay);
         }
 
         CheckZeroHealth();
