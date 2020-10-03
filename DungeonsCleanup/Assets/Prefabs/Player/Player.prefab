@@ -331,7 +331,7 @@ Transform:
   m_GameObject: {fileID: 7081787225086070597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.42, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.8}
   m_Children:
   - {fileID: 7081787225611444492}
   - {fileID: 7081787223668988281}
@@ -472,11 +472,10 @@ MonoBehaviour:
   wallJumpsDelay: 0.3
   bodyChild: {fileID: 7081787225611444493}
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
-  particlesDestroyDelay: 0.1
+  particlesDestroyDelay: 1
   tumbleweedSpeed: 10
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
-  getterAttackCollider: {fileID: 2542656809900335354}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
   enemyLayer:
@@ -512,6 +511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 2
+  particlesColor: {r: 0.6037736, g: 0, b: 0, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
   health: 200
   delayBeforeDeath: 0
   healthBar: {fileID: 0}

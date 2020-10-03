@@ -15,7 +15,11 @@ public class EnemiesMovement : MonoBehaviour
     [SerializeField] Vector2 groundCheckSize;
     [SerializeField] float slowingOnStairsParametr;
     bool isStandingOnStairs;
-
+    [Header("Slowing")]
+    [SerializeField] float timeOnSlowing;
+    float timeSinceStartedSlowing = 0f;
+    bool startToSlowing;
+    float lastVelocityOnXAxis;
 
     Vector2 currentTarget;
     Rigidbody2D myRigidbody2D;
@@ -86,6 +90,38 @@ public class EnemiesMovement : MonoBehaviour
     {
         Movement();
         SlowingOnStairs();
+        Slowing();
+    }
+
+    private void Slowing()
+    {
+        if (!isRunning && !isWalking && !startToSlowing)
+        {
+            startToSlowing = true;
+            timeSinceStartedSlowing = Time.deltaTime;
+            lastVelocityOnXAxis = myRigidbody2D.velocity.x;
+        }
+        else
+        {
+            startToSlowing = false;
+        }
+        if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing >= Time.deltaTime)
+        {
+            float slowingParameter;
+            if (timeOnSlowing != 0)
+            {
+                slowingParameter = 1f - (Time.deltaTime - timeSinceStartedSlowing) / timeOnSlowing;
+            }
+            else
+            {
+                slowingParameter = 0f;
+            }
+            myRigidbody2D.velocity = new Vector2(lastVelocityOnXAxis * slowingParameter, myRigidbody2D.velocity.y);
+        }
+        else if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing <= Time.deltaTime)
+        {
+            myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
+        }
     }
 
     private void SlowingOnStairs()

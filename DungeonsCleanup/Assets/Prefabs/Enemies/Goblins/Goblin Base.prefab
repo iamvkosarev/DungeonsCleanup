@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071571939900211082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.77000016, y: 0, z: 0}
+  m_LocalPosition: {x: -0.658, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4268006042674321304}
@@ -331,6 +331,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 2
+  particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
   health: 3
   delayBeforeDeath: 0
 --- !u!114 &8019890438038859567
@@ -346,13 +353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorPoint: {fileID: 6207639130283900647}
-  sizeOfPlayerDetecterRay: 1.8
-  maxDeflectionAngle: 30
+  sizeOfPlayerDetecterRay: 1.29
+  maxDeflectionAngle: 15
   playerAndEnvironmentLayers:
     serializedVersion: 2
     m_Bits: 54016
   playerLayerNum: 8
-  timeOnRayLoopUpdate: 0.5
+  timeOnRayLoopUpdate: 0.1
   turnRayInOppositeDirection: 0
 --- !u!114 &8777141187466391892
 MonoBehaviour:
@@ -377,6 +384,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 1743894881820148256}
   groundCheckSize: {x: 0.39, y: 0.11}
   slowingOnStairsParametr: 1
+  timeOnSlowing: 0.2
 --- !u!1 &4589570952976817378
 GameObject:
   m_ObjectHideFlags: 0
