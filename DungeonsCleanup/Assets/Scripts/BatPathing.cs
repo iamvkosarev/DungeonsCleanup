@@ -5,25 +5,24 @@ using Pathfinding;
 
 public class BatPathing : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 2f;
-    [SerializeField] int batDamage = 15;
-    [SerializeField] PlayerMovement player;
-    [SerializeField] float attackSpeed = 200f;
-    [SerializeField] float distanceToAttack = 10f;
-    [SerializeField] float attackRadius = 1f;
-    bool reachedEndOfPath = false;
-    float nextWaypointDistance = 3f;
-    List<Transform> waypoints;
-    int waypointIndex;
-    float startXScale;
-    Path path;
-    int currentWayPoint;
-    Seeker seeker;
-    Rigidbody2D rb;
-    Animator myAnimator;
-
-    
-
+    [Header("Speed")]
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float towardSpeed = 200f;
+    [Header("Attack")]
+    [SerializeField] private int batDamage = 15;
+    [SerializeField] private float attackRadius = 1f;
+    private PlayerMovement player;
+    private float distanceToAttack;
+    private bool reachedEndOfPath = false;
+    private float nextWaypointDistance = 3f;
+    private List<Transform> waypoints;
+    private int waypointIndex;
+    private float startXScale;
+    private Path path;
+    private int currentWayPoint;
+    private Seeker seeker;
+    private Rigidbody2D rb;
+    private Animator myAnimator;
 
     private void Start()
     {
@@ -32,6 +31,7 @@ public class BatPathing : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
+        distanceToAttack = GetComponentInParent<BatSpawn>().GetDistanceToAttack();
 
         //For Pathfinding
         InvokeRepeating("UpdatePath", 0f, .5f);
@@ -43,7 +43,7 @@ public class BatPathing : MonoBehaviour
         startXScale = transform.localScale.x;
     }
 
-    void UpdatePath()
+    private void UpdatePath()
     {
         if(seeker.IsDone())
             seeker.StartPath(transform.position, player.transform.position, OnPathComplite);
@@ -51,7 +51,7 @@ public class BatPathing : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // Moving();
 
@@ -86,7 +86,7 @@ public class BatPathing : MonoBehaviour
             Flip();
     }
 
-    void MoveTowardPlayer()
+    private void MoveTowardPlayer()
     {
         if(path == null)
             return;
@@ -103,7 +103,7 @@ public class BatPathing : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = direction * attackSpeed * Time.deltaTime;
+        Vector2 force = direction * towardSpeed * Time.deltaTime;
 
         rb.velocity = force;
 
@@ -120,7 +120,7 @@ public class BatPathing : MonoBehaviour
         }
     }
 
-    void OnPathComplite(Path p)
+    private void OnPathComplite(Path p)
     {
         if(!p.error)
         {
@@ -129,7 +129,7 @@ public class BatPathing : MonoBehaviour
         }
     }
 
-    void Attack()
+    private void Attack()
     {
        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)

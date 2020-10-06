@@ -9,11 +9,13 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] float dalayBeforeStart = 1f;
     [SerializeField] GameObject canvas;
     Animator myAnimator;
+    int currentSceneIndex;
     private void Start()
     {
         canvas.active = true;
         myAnimator = GetComponent<Animator>();
         StartCoroutine(LoadingStartCrossfade());
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
     IEnumerator LoadingStartCrossfade()
     {
@@ -29,8 +31,23 @@ public class LevelLoader : MonoBehaviour
         canvas.active = true;
         myAnimator.SetTrigger("StartExitCrossfade");
     }
-    public void LoadNextScene()
+    public void LoadScene()
     {
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    public void LoadSettingsScene()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

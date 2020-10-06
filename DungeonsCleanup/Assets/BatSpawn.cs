@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BatSpawn : MonoBehaviour
 {
-    [SerializeField] GameObject pathPrefab;
-    [SerializeField] GameObject batPrefab;
-    [SerializeField] int numberOfBats;
+    [SerializeField] private GameObject pathPrefab;
+    [Header("Bats")]
+    [SerializeField] private GameObject batPrefab;
+    [SerializeField] private int numberOfBats;
+    [SerializeField] private float distanceToAttack = 10f;
 
 
     private void Start()
@@ -17,6 +19,11 @@ public class BatSpawn : MonoBehaviour
             SpawnBat();
             i++;
         }  
+    }
+
+    private void SpawnBat()
+    {
+        Instantiate(batPrefab, gameObject.transform);
     }
     public List<Transform> GetWaypoints()
     { 
@@ -29,8 +36,8 @@ public class BatSpawn : MonoBehaviour
         return waveWaypoints;
     }
 
-    private void SpawnBat()
+    public float GetDistanceToAttack()
     {
-        Instantiate(batPrefab, gameObject.transform);
+        return distanceToAttack;
     }
 }
