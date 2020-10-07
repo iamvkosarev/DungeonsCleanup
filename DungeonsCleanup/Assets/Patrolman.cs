@@ -15,7 +15,7 @@ public class Patrolman : MonoBehaviour
     [SerializeField] float sizeOfPlayerDetecterRay;
     [SerializeField] Transform detectorPoint;
     [SerializeField] float maxDeflectionAngle;
-    [SerializeField] LayerMask playerAndEnvironmentLayers;
+    [SerializeField] LayerMask playerAndCollidingEnvironmentLayers;
     [SerializeField] int playerLayerNum;
     [SerializeField] float timeOnRayLoopUpdate;
     [SerializeField] bool turnRayInOppositeDirection;
@@ -189,7 +189,7 @@ public class Patrolman : MonoBehaviour
         parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
         directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
-        RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndEnvironmentLayers);
+        RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndCollidingEnvironmentLayers);
         if (!hit) { return; }
         if (hit.collider.gameObject.layer == playerLayerNum)
         {
