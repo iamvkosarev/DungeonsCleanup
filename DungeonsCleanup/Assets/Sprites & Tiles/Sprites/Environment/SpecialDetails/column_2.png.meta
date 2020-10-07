@@ -1,37 +1,43 @@
 fileFormatVersion: 2
-guid: 95a6da4355875b24c8880ee97d38e519
+guid: 4e8618625d80209478b553cd193d4533
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2750678463497565672
-    second: Door_open_0
+      213: -6352866142294181552
+    second: column_2_0
   - first:
-      213: 7915164765317771198
-    second: Door_open_1
+      213: 610229131931860022
+    second: column_2_1
   - first:
-      213: 3829896606799242244
-    second: Door_open_2
+      213: -8131668477108056687
+    second: column_2_2
   - first:
-      213: -4686565623871229294
-    second: Door_open_3
+      213: 5736010061642618123
+    second: column_2_3
   - first:
-      213: -5669509998308177921
-    second: Door_open_4
+      213: -1998635394413923193
+    second: column_2_4
   - first:
-      213: -6885405759174696111
-    second: Door_open_5
+      213: -7459841040659267798
+    second: column_2_5
   - first:
-      213: -5353376158354969728
-    second: Door_open_6
+      213: 4092170499734730017
+    second: column_2_6
   - first:
-      213: -296957176846229269
-    second: Door_open_7
+      213: 5224701160159923150
+    second: column_2_7
   - first:
-      213: -3366931139125252240
-    second: Door_open_8
+      213: -5693839218211730749
+    second: column_2_8
   - first:
-      213: 117361809624718426
-    second: Door_open_9
+      213: 9024878843439054742
+    second: column_2_9
+  - first:
+      213: 1001570622303470658
+    second: column_2_10
+  - first:
+      213: 881899458133342520
+    second: column_2_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -62,7 +68,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -76,7 +82,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 45
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_open_0
+      name: column_2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 180
-        width: 90
-        height: 90
+        x: 4
+        y: 64
+        width: 41
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a09ebd280a3d9d0800000000000000
-      internalID: -2750678463497565672
+      spriteID: 059f2fa07e516d7a0800000000000000
+      internalID: -6352866142294181552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_1
+      name: column_2_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 180
-        width: 90
-        height: 90
+        x: 85
+        y: 96
+        width: 22
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf247fea6058dd60800000000000000
-      internalID: 7915164765317771198
+      spriteID: 63cb4609928f77800800000000000000
+      internalID: 610229131931860022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_2
+      name: column_2_2
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 90
-        height: 90
+        x: 117
+        y: 96
+        width: 18
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4042eb61ca6862530800000000000000
-      internalID: 3829896606799242244
+      spriteID: 19d8bbe7a92862f80800000000000000
+      internalID: -8131668477108056687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_3
+      name: column_2_3
       rect:
         serializedVersion: 2
-        x: 270
-        y: 180
-        width: 90
-        height: 90
+        x: 153
+        y: 96
+        width: 14
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29239944569f5feb0800000000000000
-      internalID: -4686565623871229294
+      spriteID: b055648a2c66a9f40800000000000000
+      internalID: 5736010061642618123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_4
+      name: column_2_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 90
-        height: 90
+        x: 7
+        y: 16
+        width: 18
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7c054e1bad151b0800000000000000
-      internalID: -5669509998308177921
+      spriteID: 7847f60b2bb6344e0800000000000000
+      internalID: -1998635394413923193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_5
+      name: column_2_5
       rect:
         serializedVersion: 2
-        x: 90
-        y: 90
-        width: 90
-        height: 90
+        x: 89
+        y: 48
+        width: 14
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 153a6f541ff1270a0800000000000000
-      internalID: -6885405759174696111
+      spriteID: a2fbf92f812597890800000000000000
+      internalID: -7459841040659267798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_6
+      name: column_2_6
       rect:
         serializedVersion: 2
-        x: 180
-        y: 90
-        width: 90
-        height: 90
+        x: 121
+        y: 48
+        width: 14
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08be4345fbcf4b5b0800000000000000
-      internalID: -5353376158354969728
+      spriteID: 1257505636f4ac830800000000000000
+      internalID: 4092170499734730017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_7
+      name: column_2_7
       rect:
         serializedVersion: 2
-        x: 270
-        y: 90
-        width: 90
-        height: 90
+        x: 153
+        y: 48
+        width: 14
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,20 +310,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be0e390650ff0ebf0800000000000000
-      internalID: -296957176846229269
+      spriteID: ecb47e4060ed18840800000000000000
+      internalID: 5224701160159923150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_8
+      name: column_2_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 44
+        y: 15
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca4d46f56b6bf0b0800000000000000
+      internalID: -5693839218211730749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: column_2_9
+      rect:
+        serializedVersion: 2
+        x: 85
         y: 0
-        width: 90
-        height: 90
+        width: 22
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,20 +352,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07fec3db7f14641d0800000000000000
-      internalID: -3366931139125252240
+      spriteID: 69f7f140e7fce3d70800000000000000
+      internalID: 9024878843439054742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_open_9
+      name: column_2_10
       rect:
         serializedVersion: 2
-        x: 90
+        x: 117
         y: 0
-        width: 90
-        height: 90
+        width: 22
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,8 +373,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5cd0eca1f3f0a100800000000000000
-      internalID: 117361809624718426
+      spriteID: 2448dd7ac2b46ed00800000000000000
+      internalID: 1001570622303470658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: column_2_11
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839b5a972e22d3c00800000000000000
+      internalID: 881899458133342520
       vertices: []
       indices: 
       edges: []
