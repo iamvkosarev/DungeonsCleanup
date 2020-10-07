@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 0f92610535bdb3f438826de44610bf08
+guid: f7a2a1457dd0e1842822f3c96459b21a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8856465546267855873
-    second: Goblin_rank_2_0
+      213: 8806295616301697019
+    second: Goblin_rank_2_attack_0
   - first:
-      213: -1963407920173436842
-    second: Goblin_rank_2_1
+      213: -8397733782870804873
+    second: Goblin_rank_2_attack_1
   - first:
-      213: 8160372686998199147
-    second: Goblin_rank_2_2
+      213: -1342404985540901958
+    second: Goblin_rank_2_attack_2
   - first:
-      213: 7833390200576204680
-    second: Goblin_rank_2_3
+      213: 177018766937536046
+    second: Goblin_rank_2_attack_3
+  - first:
+      213: -2949834970694745927
+    second: Goblin_rank_2_attack_4
+  - first:
+      213: -6524607584725126417
+    second: Goblin_rank_2_attack_5
+  - first:
+      213: -1667457027725836006
+    second: Goblin_rank_2_attack_6
+  - first:
+      213: -3954317894420512794
+    second: Goblin_rank_2_attack_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -78,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -90,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +126,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,13 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Goblin_rank_2_0
+      name: Goblin_rank_2_attack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 30
-        height: 40
+        y: 88
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10c08c2ad7c78ea70800000000000000
-      internalID: 8856465546267855873
+      spriteID: bf70ebc843f363a70800000000000000
+      internalID: 8806295616301697019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Goblin_rank_2_1
+      name: Goblin_rank_2_attack_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 40
-        width: 30
-        height: 40
+        x: 32
+        y: 88
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +172,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 650bfd036e290c4e0800000000000000
-      internalID: -1963407920173436842
+      spriteID: 77630b91e91457b80800000000000000
+      internalID: -8397733782870804873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Goblin_rank_2_2
+      name: Goblin_rank_2_attack_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 88
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab30f1c27c1de5de0800000000000000
+      internalID: -1342404985540901958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank_2_attack_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26b3e171a5e47200800000000000000
+      internalID: 177018766937536046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank_2_attack_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 44
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b007b919b41017d0800000000000000
+      internalID: -2949834970694745927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank_2_attack_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 44
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2b3a578ffe375a0800000000000000
+      internalID: -6524607584725126417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank_2_attack_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 30
-        height: 40
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +277,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6bd35b29b77f3170800000000000000
-      internalID: 8160372686998199147
+      spriteID: a114c28faa00cd8e0800000000000000
+      internalID: -1667457027725836006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Goblin_rank_2_3
+      name: Goblin_rank_2_attack_7
       rect:
         serializedVersion: 2
-        x: 30
+        x: 32
         y: 0
-        width: 30
-        height: 40
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,8 +298,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88fde5462eac5bc60800000000000000
-      internalID: 7833390200576204680
+      spriteID: 6ef381e63d07f19c0800000000000000
+      internalID: -3954317894420512794
       vertices: []
       indices: 
       edges: []

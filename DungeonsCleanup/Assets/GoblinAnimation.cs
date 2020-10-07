@@ -10,6 +10,7 @@ public class GoblinAnimation : MonoBehaviour
     EnemiesMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
+    bool IsRunning;
     bool facingRight = true;
     private void Start()
     {
@@ -35,6 +36,10 @@ public class GoblinAnimation : MonoBehaviour
         {
             isWalking = true;
         }
+        else if (myMovementScript.IsRunning())
+        {
+            IsRunning = true;
+        }
     }
 
 
@@ -50,10 +55,12 @@ public class GoblinAnimation : MonoBehaviour
     {
         myAnimator.SetBool("IsAttacking", isAttacking);
         myAnimator.SetBool("IsWalking", isWalking);
+        myAnimator.SetBool("IsRunning", IsRunning);
     }
     private void ClearAllParameters()
     {
         isAttacking = false;
         isWalking = false;
+        IsRunning = false;
     }
 }
