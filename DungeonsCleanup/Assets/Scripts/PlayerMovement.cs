@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerAttackManager myAttackManager;
 
     // param
+    bool wasJumpRecently = false;
     bool facingRight = true;
     bool isAttackButtonPressed;
     bool isStoping;
@@ -300,7 +301,18 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(wallJumpsDelay);
         areWallJumpsSuspended = false;
     }
-
+    public bool WasJumpRecently()
+    {
+        if (areWallJumpsSuspended || areGroundJumpsSuspended)
+        {
+            wasJumpRecently = true;
+        }
+        else if (isStandingOnGround)
+        {
+            wasJumpRecently = false;
+        }
+        return wasJumpRecently;
+    }
     private void UpdateColliderInBody()
     {
         Destroy(bodyChild.GetComponent<PolygonCollider2D>());
@@ -318,6 +330,11 @@ public class PlayerMovement : MonoBehaviour
     {
         float joystickXAxisSign = Mathf.Sign(joystickXAxis);
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
+
+        if (isStandingOnGround)
+        {
+            StartHorizontalMovement();
+        }
 
         if (areHorizontalMovingSuspended) { return; }
 

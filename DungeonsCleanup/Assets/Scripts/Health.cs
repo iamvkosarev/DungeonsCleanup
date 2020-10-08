@@ -6,6 +6,11 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
+    
+    [Header("Health && Death")]
+    public int health;
+    public float delayBeforeDeath;
+    
     [Header("Damage Particles")]
     [SerializeField] private GameObject getDamageParticle;
     [SerializeField] private float particlesDestroyDelay = 0.2f;
@@ -16,10 +21,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float floatingPointSpeed;
     [SerializeField] private float maxAngleFloatingPointDirection;
     [SerializeField] private float floatingPointDestroyDelay = 2f;
-
-    public int health;
-    public float delayBeforeDeath;
     private int firstHealth;
+
     private void Start()
     {
         firstHealth = health;

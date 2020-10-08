@@ -259,8 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6485676117677068574, guid: 544fe0ad3e1c87f4faac6236a7e9ba21, type: 3}
   spawnProjectilePoint: {fileID: 4884064678594896278}
-  setProjectileSpeed: 1
-  projectileSpeed: 10
   setProjectileDamage: 0
   damage: 0
   changeDirectionOfWaveInOpposite: 0
@@ -284,7 +282,7 @@ MonoBehaviour:
   sizeOfPlayerDetecterRay: 6.37
   detectorPoint: {fileID: 1173190190}
   maxDeflectionAngle: 65
-  playerAndEnvironmentLayers:
+  playerAndCollidingEnvironmentLayers:
     serializedVersion: 2
     m_Bits: 54016
   playerLayerNum: 8
@@ -394,7 +392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2280272574921672724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0.065, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 2280272574607320913}
@@ -440,7 +438,7 @@ SpriteRenderer:
   m_SortingLayerID: -974317227
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5460900656241176131, guid: ad75f98be63c06b47b4f691d4718c3d5, type: 3}
+  m_Sprite: {fileID: -5959237281320765665, guid: c2bff6d954b999a49956cab9befd2ec8, type: 3}
   m_Color: {r: 0.52173364, g: 0.6981132, b: 0.49658242, a: 1}
   m_FlipX: 0
   m_FlipY: 0

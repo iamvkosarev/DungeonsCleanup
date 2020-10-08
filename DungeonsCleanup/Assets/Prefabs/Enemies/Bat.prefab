@@ -140,8 +140,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 3
   delayBeforeDeath: 0
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 0.2
+  particlesColor: {r: 0.6132076, g: 0.090631254, b: 0.14066537, a: 0}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
 --- !u!114 &934885363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,10 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  batDamage: 1
-  player: {fileID: 0}
-  attackSpeed: 150
-  distanceToAttack: 10
+  towardSpeed: 200
+  batDamage: 2
   attackRadius: 1
 --- !u!114 &934885370
 MonoBehaviour:
