@@ -246,8 +246,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.060000002, y: 1.313489}
-  m_Size: {x: 0.6940546, y: 1.0369778}
+  m_Offset: {x: -0.030164748, y: 1.313489}
+  m_Size: {x: 0.6343841, y: 1.0369778}
   m_Direction: 0
 --- !u!1 &7081787223668988230
 GameObject:
@@ -293,8 +293,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: 1.75}
-  m_Size: {x: 0.6940546, y: 1.91}
+  m_Offset: {x: -0.032650977, y: 1.75}
+  m_Size: {x: 0.63935655, y: 1.9099998}
   m_Direction: 0
 --- !u!1 &7081787225086070597
 GameObject:
@@ -458,7 +458,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   groundCheckPoint: {fileID: 5440142212810733446}
-  groundCheckSize: {x: 0.39, y: 0.03}
+  groundCheckSize: {x: 0.95, y: 0.58}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
   groundJumpsDelay: 0.3
   wallSlideSpeed: 0.2
@@ -468,7 +468,7 @@ MonoBehaviour:
   wallCheckPoint: {fileID: 4780771758210633572}
   wallCheckSize: {x: 0.11, y: 0.96}
   wallJumpForce: 8
-  wallJumpDirection: -1
+  wallJumpDirection: 1
   wallJumpAngle: {x: 1, y: 1.3}
   wallJumpsDelay: 0.3
   bodyChild: {fileID: 7081787225611444493}
@@ -792,7 +792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8668672551814026816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.071100235, y: -0.90079975, z: 0}
+  m_LocalPosition: {x: 0.051, y: -0.90079975, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
