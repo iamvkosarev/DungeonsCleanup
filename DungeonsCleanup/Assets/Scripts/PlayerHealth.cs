@@ -7,10 +7,29 @@ public class PlayerHealth : Health
 {
     [SerializeField] HealthBar healthBar;
     bool isProtecting;
-
     private void Start()
     {
-        healthBar.SetMaxHealth(base.GetHealth());
+        SetMaxHealth(base.health);
+        SetCurrentHealth(base.health);
+    }
+
+    public void SetMaxHealth(int maxHelath)
+    {
+        healthBar.SetMaxHealth(maxHelath);
+    }
+    public void SetCurrentHealth(int health)
+    {
+        healthBar.SetHealth(health);
+        base.health = health;
+    }
+    public int GetMaxHealth()
+    {
+        return healthBar.GetMaxHelath();
+    }
+
+    public int GetHelath()
+    {
+        return healthBar.GetHelath();
     }
     public override void TakeAwayHelath(int damage)
     {

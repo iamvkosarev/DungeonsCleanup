@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 4061366651553803683}
   - component: {fileID: 2542656809900335354}
   - component: {fileID: 2769539842428143087}
+  - component: {fileID: 3175382458436422066}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -493,12 +494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f3f3d8e59ad1345ad466f4109a11ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProperties: {fileID: 11400000, guid: cad8e190d57569d4d9311c367790fdbf, type: 2}
   stabbingWeaponSpriteRender: {fileID: 749463905}
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 1024
   numOfStabbingAttacks: 2
+  currentStabbingWeapon: {fileID: 11400000, guid: 367025fdb2419f1499a0da7f7336bced, type: 2}
 --- !u!114 &586757187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  health: 200
+  health: 1000
   delayBeforeDeath: 0
   healthBar: {fileID: 0}
 --- !u!114 &1187377112
@@ -573,7 +574,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06322098, y: 0.26914334}
+  m_Offset: {x: 0.06322098, y: 0.3443432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -584,7 +585,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6066246, y: 1.515717}
+  m_Size: {x: 0.6066246, y: 1.3653173}
   m_EdgeRadius: 0
 --- !u!114 &2769539842428143087
 MonoBehaviour:
@@ -603,6 +604,22 @@ MonoBehaviour:
   setDamage: 1
   damage: 0
   changeDirectionOfWaveInOpposite: 1
+--- !u!114 &3175382458436422066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e68de9a1f3970e40ba7f3413c606a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stabbingWeaponList: {fileID: 11400000, guid: 0b719c30b61a5e444bb4310f6198fe13, type: 2}
+  maxPlayerHealth: 0
+  currentPlayerHealth: 0
+  currentStabbingNum: 0
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
