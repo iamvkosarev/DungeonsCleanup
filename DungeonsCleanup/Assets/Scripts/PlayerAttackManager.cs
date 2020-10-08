@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    [SerializeField] PlayerProperties playerProperties;
     [SerializeField] SpriteRenderer stabbingWeaponSpriteRender;
     [SerializeField] LayerMask enemiesLayer;
     [SerializeField] int numOfStabbingAttacks = 1;
 
-    StabbingWeapon currentStabbingWeapon;
+    public StabbingWeapon currentStabbingWeapon;
+
     SpawnerOfAttackingWave mySpawnerOfAttackingWave;
-    PlayerActionControls playerActionControls;
     int currentStabbingAttackNum;
     bool didAnimationStart;
     PlayerMovement playerMovement;
@@ -30,7 +29,6 @@ public class PlayerAttackManager : MonoBehaviour
     private void Start()
     {
         mySpawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
-        currentStabbingWeapon = playerProperties.GetCurrentStabbingWeapons();
         playerMovement = GetComponent<PlayerMovement>();
         myAnimator = GetComponent<Animator>();
     }
@@ -88,7 +86,6 @@ public class PlayerAttackManager : MonoBehaviour
     {
         Debug.Log("Оружее меняется");
         currentStabbingWeapon = newStabbingWeapon;
-        playerProperties.SetCurrentStabbingWeapons(newStabbingWeapon);
     }
     public StabbingWeapon GetCurrentStabbingWeapon()
     {
