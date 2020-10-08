@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxAngleFloatingPointDirection;
     [SerializeField] private float floatingPointDestroyDelay = 2f;
     private int firstHealth;
+
     private void Start()
     {
         firstHealth = health;

@@ -12,7 +12,6 @@ public class HealthBar : MonoBehaviour
     public void SetMaxHealth(int health)
     {
         healthSlider.maxValue = health;
-        healthSlider.value = health;
         healthText.text = $"{healthSlider.value}/{healthSlider.maxValue}";
 
     }
@@ -20,5 +19,14 @@ public class HealthBar : MonoBehaviour
     {
         healthSlider.value = health;
         healthText.text = $"{health}/{healthSlider.maxValue}";
+    }
+    public int GetMaxHelath()
+    {
+        return (int)healthSlider.maxValue;
+    }
+
+    public int GetHelath()
+    {
+        return (int)healthSlider.value;
     }
 }
