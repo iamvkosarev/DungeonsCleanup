@@ -260,6 +260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2656131187304725633, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: Reverse
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -37484,6 +37488,14 @@ PrefabInstance:
     - target: {fileID: 6880271299474292102, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306142256400207108, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.016129017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306142256400207108, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.016129017
       objectReference: {fileID: 0}
     - target: {fileID: 7366041043843322795, guid: 3c4c2eaabc1dd89419799a0cb4d51cf7, type: 3}
       propertyPath: m_ColliderPaths.Array.size
