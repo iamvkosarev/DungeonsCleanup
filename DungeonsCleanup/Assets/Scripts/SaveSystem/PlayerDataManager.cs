@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDataManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerDataManager : MonoBehaviour
     public int maxPlayerHealth;
     public int currentPlayerHealth;
     public int currentStabbingNum;
+    public int currentSceneNum;
 
     PlayerAttackManager playerAttackManager;
     PlayerHealth playerHealth;
@@ -16,14 +18,20 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerAttackManager = GetComponent<PlayerAttackManager>();
         playerHealth = GetComponent<PlayerHealth>();
+        LoadData();
     }
 
     public void LoadData()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        // Нужно выбирать какой тип данных игрока подгружать:
+        //     - Те, что после смерти
+        //     - Те, что после выхода их игры
+        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
+        PlayerData data = SaveSystem.LoadPlayer(levelSettingsName);
         maxPlayerHealth = data.maxPlayerHealth;
         currentPlayerHealth = data.playerHealth;
         currentStabbingNum = data.stabbingWeaponNum;
+        currentSceneNum = data.sceneNum; ;
 
         SetData();
     }
@@ -31,14 +39,29 @@ public class PlayerDataManager : MonoBehaviour
     public void SaveData()
     {
         GetData();
-        SaveSystem.SavePlayer(this);
+        // Нужно выбирать какой тип данных игрока сохранять:
+        //     - Те, что после смерти
+        //     - Те, что после выхода их игры
+        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
+        SaveSystem.SavePlayer(levelSettingsName, this);
     }
 
     #region Set data in Player's scripts
     private void SetData()
     {
+        SetScene();
         SetDataInAttack();
         SetDataInHealth();
+    }
+
+    private void SetScene()
+    {
+        int openedScene = SceneManager.GetActiveScene().buildIndex;
+        if (openedScene == currentSceneNum)
+        {
+            return;
+        }
+        SceneManager.LoadScene(currentSceneNum);
     }
 
     private void SetDataInHealth()
@@ -58,6 +81,12 @@ public class PlayerDataManager : MonoBehaviour
     {
         GetDataFromAttack();
         GetDataFromHealth();
+        GetDataAboutScene();
+    }
+
+    private void GetDataAboutScene()
+    {
+        currentSceneNum = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void GetDataFromHealth()
