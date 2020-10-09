@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject menuCanvas;
-    [SerializeField] private GameObject settingsCanvas;
+    [SerializeField] private GameObject mainMenuCanvas;
+    [SerializeField] private GameObject settingsMenuCanvas;
+    [SerializeField] private GameObject sessionsMenuCanvas;
 
 
     private void Start() 
     {
-        menuCanvas.SetActive(true);
-        settingsCanvas.SetActive(false);
+        SetMenuCanvas();
     }
 
     public void SetMenuCanvas()
     {
-        settingsCanvas.SetActive(false);
-        menuCanvas.SetActive(true);
+        SwitchOffAllCanvases();
+        mainMenuCanvas.SetActive(true);
     }
 
     public void SetSettingsCanvas()
     {
-        settingsCanvas.SetActive(true);
-        menuCanvas.SetActive(false);
+        SwitchOffAllCanvases();
+        settingsMenuCanvas.SetActive(true);
+    }
+    public void SetSessionCanvas()
+    {
+        SwitchOffAllCanvases();
+        sessionsMenuCanvas.SetActive(true);
     }
     
-    
+    public void SwitchOffAllCanvases()
+    {
+        mainMenuCanvas.SetActive(false);
+        settingsMenuCanvas.SetActive(false);
+        sessionsMenuCanvas.SetActive(false);
+    }
 }
