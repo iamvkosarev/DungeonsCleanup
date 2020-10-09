@@ -7,7 +7,8 @@ public static class SaveSystem
     public static void SavePlayer(PlayerDataManager playerDataManager)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "palyer.data";
+        string path = Application.persistentDataPath + "player.data";
+        Debug.Log("Данные будут сохранены в новый файл : " + path);
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(playerDataManager);
@@ -19,7 +20,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "palyer.data";
+        string path = Application.persistentDataPath + "player.data";
         if (File.Exists(path))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
