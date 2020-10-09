@@ -26,7 +26,7 @@ public class PlayerDataManager : MonoBehaviour
         // Нужно выбирать какой тип данных игрока подгружать:
         //     - Те, что после смерти
         //     - Те, что после выхода их игры
-        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
+        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
         PlayerData data = SaveSystem.LoadPlayer(levelSettingsName);
         maxPlayerHealth = data.maxPlayerHealth;
         currentPlayerHealth = data.playerHealth;
@@ -42,7 +42,7 @@ public class PlayerDataManager : MonoBehaviour
         // Нужно выбирать какой тип данных игрока сохранять:
         //     - Те, что после смерти
         //     - Те, что после выхода их игры
-        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
+        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
         SaveSystem.SavePlayer(levelSettingsName, this);
     }
 
