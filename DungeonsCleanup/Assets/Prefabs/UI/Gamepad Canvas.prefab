@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -452.1875, y: 89.97751}
+  m_AnchoredPosition: {x: -450, y: 90}
   m_SizeDelta: {x: 215.625, y: 215.625}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &3878762132796581231
@@ -143,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -98, y: 197}
+  m_AnchoredPosition: {x: -100, y: 200}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &4186234070018730909
@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 4186234071548517223}
   - component: {fileID: 4186234071548517222}
   - component: {fileID: 4186234071548517221}
+  - component: {fileID: 2656131187304725633}
   m_Layer: 5
   m_Name: Gamepad Canvas
   m_TagString: Untagged
@@ -539,6 +540,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2656131187304725633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186234071548517220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bca78676664214cb8a041cceee6713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 4186234070351334818}
+  attackButton: {fileID: 4186234070018730899}
+  activateButton: {fileID: 3015487831703574079}
+  Reverse: 0
+  newJoystickPosition: {x: 1380, y: 90, z: 0}
+  newAttackButtonPosition: {x: -1480, y: 200, z: 0}
+  newActivateButtonPosition: {x: -1230, y: 90, z: 0}
 --- !u!1 &7663366168254203412
 GameObject:
   m_ObjectHideFlags: 0
