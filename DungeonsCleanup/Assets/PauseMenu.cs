@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject gamepadUI;
-
+    private void Start()
+    {
+        ResumeGame();
+    }
     public void PauseGame()
     {
         gamepadUI.SetActive(false);
@@ -20,5 +24,9 @@ public class PauseMenu : MonoBehaviour
         gamepadUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void LoadMainMenu()
+    {
+
     }
 }
