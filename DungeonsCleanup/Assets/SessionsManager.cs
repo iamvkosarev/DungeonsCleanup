@@ -7,11 +7,23 @@ public class SessionsManager : MonoBehaviour
 {
     [SerializeField] SessionForm[] sessionForms;
     private int selectedSessionForm = -1;
-
+    private void Start()
+    {
+        DeactivateAllSessions();
+    }
     private void Update()
     {
         CheckFormsOnSelected();
         LoadCreatedAndDoesntSession();
+    }
+    public void DeactivateAllSessions()
+    {
+        SessionData data =  SaveSystem.LoadSession();
+        for(int i = 0; i< data.sessionActivity.Length;i++)
+        {
+            data.sessionActivity[i] = false;
+        }
+        SaveSystem.SaveSession(data.sessionActivity, data.createdSessions);
     }
 
     public void LoadCreatedAndDoesntSession()

@@ -12,7 +12,6 @@ public class PlayerHealth : Health
         SetMaxHealth(base.health);
         SetCurrentHealth(base.health);
     }
-
     public void SetMaxHealth(int maxHelath)
     {
         healthBar.SetMaxHealth(maxHelath);
