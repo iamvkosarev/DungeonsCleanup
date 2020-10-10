@@ -12,7 +12,7 @@ public class LevelLoader : MonoBehaviour
     int currentSceneIndex;
     private void Start()
     {
-        canvas.active = true;
+        canvas.SetActive(true);
         myAnimator = GetComponent<Animator>();
         StartCoroutine(LoadingStartCrossfade());
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -24,11 +24,11 @@ public class LevelLoader : MonoBehaviour
     }
     public void SwitchOffCanvas()
     {
-        canvas.active = false;
+        canvas.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        canvas.active = true;
+        canvas.SetActive(true);
         myAnimator.SetTrigger("StartExitCrossfade");
     }
     public void LoadScene()
@@ -53,5 +53,10 @@ public class LevelLoader : MonoBehaviour
     public void LoadSavingMenu()
     {
         SceneManager.LoadScene("SavingMenu");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
