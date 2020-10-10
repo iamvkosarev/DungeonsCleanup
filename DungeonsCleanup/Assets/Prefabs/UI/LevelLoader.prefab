@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 2399188801449762173}
   - component: {fileID: 2399188801449762174}
   - component: {fileID: 2399188801449762171}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,9 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dbc0fcebc6f374595afe65f146d9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Level Tamplate 2
+  nextSceneName: Danila 1 try
   dalayBeforeStart: 0
   canvas: {fileID: 2399188799881064834}
+  playerDataManager: {fileID: 0}
 --- !u!95 &2399188801449762174
 Animator:
   serializedVersion: 3

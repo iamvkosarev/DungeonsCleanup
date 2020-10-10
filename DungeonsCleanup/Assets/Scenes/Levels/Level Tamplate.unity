@@ -15508,10 +15508,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2399188799881064834, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762172, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.06
@@ -15557,16 +15553,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: nextSceneName
-      value: Danila 1 try
+      propertyPath: playerDataManager
+      value: 
+      objectReference: {fileID: 7081787225095367194}
+    - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
+      propertyPath: nextSceneBuildIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: m_Name
       value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: m_Layer
-      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}

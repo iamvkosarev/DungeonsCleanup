@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     [SerializeField] HealthBar healthBar;
+    [SerializeField] BoxCollider2D playerHealthCollider;
+    [SerializeField] float reloadingDelay = 2f;
     bool isProtecting;
     private void Start()
     {
@@ -15,6 +17,10 @@ public class PlayerHealth : Health
     public void SetMaxHealth(int maxHelath)
     {
         healthBar.SetMaxHealth(maxHelath);
+    }
+    public void SetVisibilityOfEnemies(bool mode)
+    {
+        playerHealthCollider.enabled = mode;
     }
     public void SetCurrentHealth(int health)
     {
@@ -50,6 +56,23 @@ public class PlayerHealth : Health
     }
     private void Death()
     {
-        // KillPlayer
+        SetVisibilityOfEnemies(false);
+        GetComponent<PlayerMovement>().SetCollidingOfEnemiesMode(false);
+        StartCoroutine(Reloading());
+    }
+
+    IEnumerator Reloading()
+    {
+        yield return new WaitForSeconds(reloadingDelay);
+        GetComponent<PlayerDataManager>().SetCheckPointSessionData();
+    }
+
+    public bool IsPlayerDead()
+    {
+        if (base.GetHealth() == 0)
+        {
+            return true;
+        }
+        return false;
     }
 }

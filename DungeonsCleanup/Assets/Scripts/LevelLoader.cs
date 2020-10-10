@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] string nextSceneName;
+    [SerializeField] int nextSceneBuildIndex;
     [SerializeField] float dalayBeforeStart = 1f;
     [SerializeField] GameObject canvas;
+    [SerializeField] PlayerDataManager playerDataManager;
     Animator myAnimator;
     int currentSceneIndex;
     private void Start()
     {
+       
         canvas.active = true;
         myAnimator = GetComponent<Animator>();
         StartCoroutine(LoadingStartCrossfade());
@@ -33,7 +35,15 @@ public class LevelLoader : MonoBehaviour
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(nextSceneBuildIndex);
+    }
+    public void RefreshCurrentSessionData()
+    {
+        if (playerDataManager != null)
+        {
+
+            playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
+        }
     }
 
     public void LoadNextScene()

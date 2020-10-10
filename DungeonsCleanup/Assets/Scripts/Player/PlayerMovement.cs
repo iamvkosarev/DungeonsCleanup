@@ -147,8 +147,7 @@ public class PlayerMovement : MonoBehaviour
         if (joystickYAxis <= -movingJoystickProperties.GetLowerMovementLimit() && Mathf.Abs(joystickXAxis) >= movingJoystickProperties.GetWalkLimit())
         {
             isTumbleweed = true;
-            feetNotTouchingFeetCollide.enabled = true;
-            feetCollider.enabled = false;
+            SetCollidingOfEnemiesMode(false);
             myHealth.SetProtectingMode(true);
         }
     }
@@ -158,9 +157,13 @@ public class PlayerMovement : MonoBehaviour
     public void StopTumbleweed()
     {
         isTumbleweed = false;
-        feetNotTouchingFeetCollide.enabled = false;
-        feetCollider.enabled = true;
+        SetCollidingOfEnemiesMode(true);
         myHealth.SetProtectingMode(false);
+    }
+    public void SetCollidingOfEnemiesMode(bool mode)
+    {
+        feetNotTouchingFeetCollide.enabled = !mode;
+        feetCollider.enabled = mode;
     }
     private void PlayerRotation()
     {
