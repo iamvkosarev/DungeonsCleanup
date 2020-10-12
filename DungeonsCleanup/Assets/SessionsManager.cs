@@ -33,7 +33,11 @@ public class SessionsManager : MonoBehaviour
         {
             if (createdSessions[i])
             {
-                sessionForms[i].SetSessionCreated();
+                sessionForms[i].SetSessionCreated(true);
+            }
+            else
+            {
+                sessionForms[i].SetSessionCreated(false);
             }
         }
     }
