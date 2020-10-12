@@ -60,6 +60,12 @@ public class LevelLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void LoadSavingMenu()
     {
         SceneManager.LoadScene("SavingMenu");
