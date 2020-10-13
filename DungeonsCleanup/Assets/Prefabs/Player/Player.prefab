@@ -394,8 +394,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
+  runSpeed: 12
+  walkSpeed: 5
+  startingMovingTransitionTime: 0.8
+  endingMovingTransitionTime: 0.4
   playerHorizontalSpeed: 13
-  timeOnStoping: 0.3
   slowingOnStairsParametr: 2
   horizontalMovingDelay: 1.2
   jumpForce: 12
@@ -596,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787225611444493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: 0}
+  m_LocalPosition: {x: 0, y: 0.109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}
