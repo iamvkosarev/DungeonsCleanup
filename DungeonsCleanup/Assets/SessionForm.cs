@@ -9,7 +9,8 @@ public class SessionForm : MonoBehaviour
     [SerializeField] GameObject selectSessionFormButton;
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject creatButton;
-
+    [SerializeField] GameObject deleteButton;
+ 
     [Header("Start Game Settings")]
     [SerializeField] int sceneNum;
     [SerializeField] int maxPlayerHealth;
@@ -39,6 +40,23 @@ public class SessionForm : MonoBehaviour
         #endregion
 
     }
+    public void DeleteSession()
+    {
+        #region Delete Session from "Created Sessions" array
+        SessionData sessionData = SaveSystem.LoadSession();
+        sessionData.createdSessions[ID] = false;
+        SaveSystem.SaveSession(sessionData.sessionActivity, sessionData.createdSessions);
+        #endregion
+        #region Delete Player Session Settings
+        string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
+        string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
+
+        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum);
+
+        SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
+        SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
+        #endregion
+    }
     public void LoadSession()
     {
         #region Set active status in Session file
@@ -52,9 +70,9 @@ public class SessionForm : MonoBehaviour
         SceneManager.LoadScene(sceneNumToLoad);
         #endregion
     }
-    public void SetSessionCreated()
+    public void SetSessionCreated(bool mode)
     {
-        isCreated = true;
+        isCreated = mode;
     }
     public void SelectSession()
     {
@@ -63,6 +81,7 @@ public class SessionForm : MonoBehaviour
         if (isCreated)
         {
             startGameButton.SetActive(true);
+            deleteButton.SetActive(true);
         }
         else
         {
