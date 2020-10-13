@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
+    
     [SerializeField] float destroyDalay;
     [SerializeField] float moveSpeed;
     [SerializeField] float lastPointSpeed;
+    [SerializeField] LayerMask playerLayer;
 
     Rigidbody2D myRigidbody2D;
+    Animator myAnimator;
+    SpriteRenderer mySpriteRenderer;
     BoxCollider2D myBoxCollider2D;
     private Transform[] motionCoordinates;
     private int lastMotionCoordinatesIndex;
@@ -20,6 +24,8 @@ public class Drop : MonoBehaviour
     private void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         myBoxCollider2D.enabled = false;
@@ -88,6 +94,16 @@ public class Drop : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Sound
+        if (collision.gameObject.layer == playerLayer)
+        {
+            Destroy(gameObject, destroyDalay);
+        }
+        myBoxCollider2D.isTrigger = false;
+        myAnimator.SetTrigger("Drop");
+    }
+    public void Destroy()
+    {
+        mySpriteRenderer.sprite = null;
         Destroy(gameObject, destroyDalay);
     }
 }
