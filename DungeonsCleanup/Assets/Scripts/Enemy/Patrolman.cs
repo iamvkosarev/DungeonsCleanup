@@ -122,7 +122,6 @@ public class Patrolman : MonoBehaviour
         myLastPatrolPoint.StopPursuing();
         if (!goToPlayer)
         {
-            Debug.Log("Гоблин постоял на точке");
             canPatrolmanGetNewPoint = true;
         }
     }
@@ -138,7 +137,6 @@ public class Patrolman : MonoBehaviour
         bool isPointFree = currentPatrolPoint.IsPointFree();
         if (isPointFree)
         {
-            Debug.Log($"Начнаю преследовать точку {currentPatrolPoint.gameObject.name}");
             currentPatrolPoint.StartedPursuing();
             goToPoint = true;
             myMovementScript.SetTarget(currentPatrolPoint.transform.position);
