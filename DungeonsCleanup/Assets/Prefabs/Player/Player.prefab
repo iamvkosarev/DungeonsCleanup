@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,7 +307,6 @@ GameObject:
   - component: {fileID: 7081787225086070599}
   - component: {fileID: 7081787225086070596}
   - component: {fileID: 7081787225086070598}
-  - component: {fileID: 586757185}
   - component: {fileID: 7081787225086070649}
   - component: {fileID: 5961501673156388416}
   - component: {fileID: 586757187}
@@ -382,57 +381,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!212 &586757185
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -767915699
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.0008686, y: 2.2500002}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &7081787225086070649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,10 +394,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
-  playerHorizontalSpeed: 13
-  timeOnStoping: 0.3
+  runSpeed: 9
+  walkSpeed: 4
+  startingMovingTransitionTime: 0.2
+  endingMovingTransitionTime: 0.2
   slowingOnStairsParametr: 2
-  horizontalMovingDelay: 1.2
+  horizontalMovingSuspendDelay: 1
   jumpForce: 12
   groundLayer:
     serializedVersion: 2
@@ -458,7 +408,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   groundCheckPoint: {fileID: 5440142212810733446}
-  groundCheckSize: {x: 0.95, y: 0.58}
+  groundCheckSize: {x: 0.59, y: 0.11}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
   groundJumpsDelay: 0.3
   wallSlideSpeed: 0.2
@@ -522,6 +472,8 @@ MonoBehaviour:
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
   healthBar: {fileID: 0}
+  playerHealthCollider: {fileID: 2542656809900335354}
+  reloadingDelay: 2
 --- !u!114 &1187377112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stabbingWeaponList: {fileID: 11400000, guid: 0b719c30b61a5e444bb4310f6198fe13, type: 2}
   maxPlayerHealth: 0
-  currentPlayerHealth: 0
+  currentPlayerHealth: 200
   currentStabbingNum: 0
   currentSceneNum: 0
 --- !u!1 &7081787225611444493
@@ -646,7 +598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787225611444493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}

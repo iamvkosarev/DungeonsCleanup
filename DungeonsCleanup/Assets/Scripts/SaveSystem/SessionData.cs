@@ -6,10 +6,12 @@ using UnityEngine;
 public class SessionData
 {
     public bool[] sessionActivity;
+    public bool[] createdSessions;
 
-    public SessionData(bool[] sessionActivity)
+    public SessionData(bool[] sessionActivity, bool[] createdSessions)
     {
         this.sessionActivity = sessionActivity;
+        this.createdSessions = createdSessions;
     }
 
     public int GetActiveSessionNum()

@@ -18,50 +18,110 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerAttackManager = GetComponent<PlayerAttackManager>();
         playerHealth = GetComponent<PlayerHealth>();
-        LoadData();
+        SetLastSessionData();
+    }
+    public PlayerDataManager(int maxPlayerHealth, int currentStabbingNum, int currentSceneNum)
+    {
+        this.maxPlayerHealth = maxPlayerHealth;
+        this.currentPlayerHealth = maxPlayerHealth;
+        this.currentStabbingNum = currentStabbingNum;
+        this.currentSceneNum = currentSceneNum;
+    }
+    public PlayerDataManager(int maxPlayerHealth, int currentPlayerHealth, int currentStabbingNum, int currentSceneNum)
+    {
+        this.maxPlayerHealth = maxPlayerHealth;
+        this.currentPlayerHealth = currentPlayerHealth;
+        this.currentStabbingNum = currentStabbingNum;
+        this.currentSceneNum = currentSceneNum;
+    }
+    public PlayerDataManager(PlayerData playerData)
+    {
+        this.maxPlayerHealth = playerData.maxPlayerHealth;
+        this.currentPlayerHealth = playerData.playerHealth;
+        this.currentStabbingNum = playerData.stabbingWeaponNum;
+        this.currentSceneNum = playerData.sceneNum;
+    }
+    public void SetLastSessionData()
+    {
+        string fileDataName = "currentLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        LoadData(fileDataName);
+
+    }
+    public void SetCheckPointSessionData()
+    {
+        string fileCheckPointDataName = "checkPointLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        PlayerData data = SaveSystem.LoadPlayer(fileCheckPointDataName);
+
+        string fileDataName = "currentLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(data));
+
+        SetLastSessionData();
+    }
+    public void RefreshLastSessionData(bool setNewSceneNum = false, int newStartSceneNum = -1)
+    {
+        GetData();
+        string fileDataName = "currentLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        if (!setNewSceneNum)
+        {
+            SaveSystem.SavePlayer(fileDataName, this);
+        }
+        else
+        {
+            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.maxPlayerHealth, this.currentPlayerHealth, this.currentStabbingNum, newStartSceneNum));
+        }
     }
 
-    public void LoadData()
+    public void RefreshCheckPointSessionData(bool setNewSceneNum = false, int newStartSceneNum = -1)
     {
-        // Нужно выбирать какой тип данных игрока подгружать:
-        //     - Те, что после смерти
-        //     - Те, что после выхода их игры
-        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
-        PlayerData data = SaveSystem.LoadPlayer(levelSettingsName);
-        maxPlayerHealth = data.maxPlayerHealth;
-        currentPlayerHealth = data.playerHealth;
-        currentStabbingNum = data.stabbingWeaponNum;
-        currentSceneNum = data.sceneNum; ;
+        RefreshLastSessionData(setNewSceneNum, newStartSceneNum);
 
+        string fileCheckPointDataName = "checkPointLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        if (!setNewSceneNum)
+        {
+            SaveSystem.SavePlayer(fileCheckPointDataName, this);
+        }
+        else
+        {
+            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.maxPlayerHealth, this.currentPlayerHealth, this.currentStabbingNum, newStartSceneNum));
+        }
+    }
+
+
+    private void LoadData(string fileDataName)
+    {
+        PlayerData data = SaveSystem.LoadPlayer(fileDataName);
+        SetDataInCurrentClass(data);
         SetData();
     }
 
-    public void SaveData()
+    private void SetDataInCurrentClass(PlayerData playerData)
     {
-        GetData();
-        // Нужно выбирать какой тип данных игрока сохранять:
-        //     - Те, что после смерти
-        //     - Те, что после выхода их игры
-        string levelSettingsName = "levelSetings_session_" + SaveSystem.LoadSession().ToString();
-        SaveSystem.SavePlayer(levelSettingsName, this);
+        this.maxPlayerHealth = playerData.maxPlayerHealth;
+        this.currentPlayerHealth = playerData.playerHealth;
+        this.currentStabbingNum = playerData.stabbingWeaponNum;
+        this.currentSceneNum = playerData.sceneNum;
     }
+
 
     #region Set data in Player's scripts
     private void SetData()
     {
-        SetScene();
-        SetDataInAttack();
-        SetDataInHealth();
+        if (!SetScene())
+        {
+            SetDataInAttack();
+            SetDataInHealth();
+        }
     }
 
-    private void SetScene()
+    private bool SetScene()
     {
         int openedScene = SceneManager.GetActiveScene().buildIndex;
-        if (openedScene == currentSceneNum)
+        if (!GetComponent<PlayerHealth>().IsPlayerDead())
         {
-            return;
+            return false;
         }
         SceneManager.LoadScene(currentSceneNum);
+        return true;
     }
 
     private void SetDataInHealth()
@@ -97,11 +157,11 @@ public class PlayerDataManager : MonoBehaviour
 
     private void GetDataFromAttack()
     {
-        StabbingWeapon lastStavvingWeapon = playerAttackManager.currentStabbingWeapon;
+        StabbingWeapon lastStabbingWeapon = playerAttackManager.currentStabbingWeapon;
         int stabbingWeaponListLenght = stabbingWeaponList.GetListLength();
         for (int stabbingWeaponNum = 0; stabbingWeaponNum < stabbingWeaponListLenght; stabbingWeaponNum++)
         {
-            if(stabbingWeaponList.GetStabbingWeapon(stabbingWeaponNum) == lastStavvingWeapon)
+            if(stabbingWeaponList.GetStabbingWeapon(stabbingWeaponNum) == lastStabbingWeapon)
             {
                 currentStabbingNum = stabbingWeaponNum;
                 break;

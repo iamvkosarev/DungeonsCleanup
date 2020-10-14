@@ -10,11 +10,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] MovingJoystickProperties movingJoystickProperties;
 
     [Header("For Horizontal Movement")]
-    [SerializeField] float playerHorizontalSpeed = 5f;
-    [SerializeField] float timeOnStoping = 0.3f;
+    [SerializeField] float runSpeed;
+    [SerializeField] float walkSpeed;
+    [SerializeField] float startingMovingTransitionTime;
+    [SerializeField] float endingMovingTransitionTime;
     [SerializeField] float slowingOnStairsParametr = 2f;
-    [SerializeField] float horizontalMovingDelay;
+    [SerializeField] float horizontalMovingSuspendDelay;
     private bool areHorizontalMovingSuspended= false;
+    private float velocityOnTheStartOfTransition;
+    private float velocityInTheEndOfTransition;
+    private float timeSinceStartTransition;
+
+    private enum StateOFMove
+    {
+        Run, Walk, Stand, TransitonUp, TransitionDown
+    }
+    private StateOFMove currentState;
+    private StateOFMove previousState;
+    private bool isMovingStateManagementSuspended;
 
     [Header("Ground Jump")]
     [SerializeField] float jumpForce;
@@ -74,13 +87,11 @@ public class PlayerMovement : MonoBehaviour
     bool wasJumpRecently = false;
     bool facingRight = true;
     bool isAttackButtonPressed;
-    bool isStoping;
     bool canRotation = true;
-    float timeSinceStartStoping;
-    float startVelocityXAxis;
     float joystickXAxis;
     float joystickYAxis;
 
+    #region Customization Player Action Controls
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
@@ -97,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerActionControls.Disable();
     }
+    #endregion
 
     void Start()
     {
@@ -113,17 +125,62 @@ public class PlayerMovement : MonoBehaviour
         UpdateColliderInBody();
         PlayerRotation();
         CheckingEnemiesDuringATumbleweed();
+        ManageStateOfMove();
+    }
+
+
+    void FixedUpdate()
+    {
+        HorizontalMove();
+        Jump();
+        WallSlide();
+        WallJump();
+        SlowingOnStairs();
+        tumbleweedMove();
+    }
+
+
+    private void Inputs()
+    {
+        Vector2 joystickVector = playerActionControls.Land.Move.ReadValue<Vector2>();
+        joystickXAxis = joystickVector.x;
+        joystickYAxis = joystickVector.y;
+        canJump = (joystickYAxis >= movingJoystickProperties.GetJumpLimit()) ? true : false;
+    }
+
+    #region Touching
+
+    private void CheckTouching()
+    {
+        isStandingOnGround = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+        isStandingOnStairs = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
+        isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
+    }
+    public bool IsPlyerStanding()
+    {
+        return isStandingOnGround || isStandingOnStairs;
+    }
+    #endregion
+
+    #region Tumbleweed (Подкат)
+
+    private void tumbleweedMove()
+    {
+        if (isTumbleweed)
+        {
+            myRigidbody2D.velocity = new Vector2(tumbleweedSpeed * Mathf.Sign(transform.rotation.y), myRigidbody2D.velocity.y);
+        }
     }
 
     private void CheckingEnemiesDuringATumbleweed()
     {
         if (isTumbleweed)
         {
-            if(Physics2D.OverlapPoint(firstPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
+            if (Physics2D.OverlapPoint(firstPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
             {
                 wasFirstPointTouched = true;
             }
-            if(Physics2D.OverlapPoint(secondPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
+            if (Physics2D.OverlapPoint(secondPointForCheckingEnemiesDuringATumbleweed.position, enemyLayer))
             {
                 wasSecondPointTouched = true;
             }
@@ -147,99 +204,28 @@ public class PlayerMovement : MonoBehaviour
         if (joystickYAxis <= -movingJoystickProperties.GetLowerMovementLimit() && Mathf.Abs(joystickXAxis) >= movingJoystickProperties.GetWalkLimit())
         {
             isTumbleweed = true;
-            feetNotTouchingFeetCollide.enabled = true;
-            feetCollider.enabled = false;
+            SetCollidingOfEnemiesMode(false);
             myHealth.SetProtectingMode(true);
         }
     }
-    public bool IsTumbleweed() {
+    public bool IsTumbleweed()
+    {
         return isTumbleweed;
     }
     public void StopTumbleweed()
     {
         isTumbleweed = false;
-        feetNotTouchingFeetCollide.enabled = false;
-        feetCollider.enabled = true;
+        SetCollidingOfEnemiesMode(true);
         myHealth.SetProtectingMode(false);
     }
-    private void PlayerRotation()
+    public void SetCollidingOfEnemiesMode(bool mode)
     {
-        if (!canRotation) { return; }
-        if(joystickXAxis == 0) { return; }
-        if (joystickXAxis < 0 && facingRight)
-        {
-            Flip();
-        }
-        else if (joystickXAxis > 0 && !facingRight)
-        {
-            Flip();
-        }
+        feetNotTouchingFeetCollide.enabled = !mode;
+        feetCollider.enabled = mode;
     }
+    #endregion
 
-    private void CheckTouching()
-    {
-        isStandingOnGround = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isStandingOnStairs = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
-        isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
-    }
-    public bool IsPlyerStanding()
-    {
-        return isStandingOnGround || isStandingOnStairs;
-    }
-
-    void FixedUpdate()
-    {
-        HorizontalMove();
-        Jump();
-        WallSlide();
-        WallJump();
-        SlowingOnStairs();
-        StopingMoving();
-        tumbleweedMove();
-    }
-
-    private void tumbleweedMove()
-    {
-       if (isTumbleweed) { 
-            myRigidbody2D.velocity = new Vector2(tumbleweedSpeed * Mathf.Sign(transform.rotation.y), myRigidbody2D.velocity.y); 
-       }
-    }
-
-    private void SlowingOnStairs()
-    {
-        if (isStandingOnStairs)
-        {
-            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
-            if ((myRigidbody2D.velocity.x == 0f || joystickXAxis == 0) && !areGroundJumpsSuspended)
-            {
-                
-                myRigidbody2D.gravityScale = 0f;
-                myRigidbody2D.velocity = new Vector2(0f, 0f);
-
-            }
-            else
-            {
-                myRigidbody2D.gravityScale = 1f;
-            }
-        }
-        else
-        {
-            myRigidbody2D.gravityScale = 1f;
-        }
-    }
-
-    private void Inputs()
-    {
-        Vector2 joystickVector = playerActionControls.Land.Move.ReadValue<Vector2>();
-        joystickXAxis = joystickVector.x;
-        joystickYAxis = joystickVector.y;
-        canJump = (joystickYAxis >= movingJoystickProperties.GetJumpLimit()) ? true : false;
-    }
-
-    public bool IsAttackButtonPressed()
-    {
-        return isAttackButtonPressed;
-    }
+    #region Wall Slide
     private void WallSlide()
     {
         if (isTouchingWall && !(isStandingOnGround || isStandingOnStairs) && myRigidbody2D.velocity.y < 0f)
@@ -256,29 +242,11 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, -wallSlideSpeed);
         }
     }
+    #endregion
 
-    private void WallJump()
-    {
-        if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
-        {
-            //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
-            float playerDirection = Mathf.Sign(transform.rotation.y);
-            StartCoroutine(SuspendHorizontalMoving());
-            myRigidbody2D.velocity = new Vector2(wallJumpForce * -playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
-            canJump = false;
-            StartCoroutine(SuspendWallJumps());
-        }
-    }
-    public void StopHorizontalMovement()
-    {
-        areHorizontalMovingSuspended = true;
-        myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
-    }
-    public void StartHorizontalMovement()
-    {
-        areHorizontalMovingSuspended = false;
-    }
+    #region Jump
 
+    #region Ground Jump
     private void Jump()
     {
         if (canJump && (isStandingOnGround || isStandingOnStairs) && !areGroundJumpsSuspended)
@@ -295,12 +263,28 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(groundJumpsDelay);
         areGroundJumpsSuspended = false;
     }
+    #endregion
+    #region Wall Jump 
+    private void WallJump()
+    {
+        if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
+        {
+            //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
+            float playerDirection = Mathf.Sign(transform.rotation.y);
+            StartCoroutine(SuspendHorizontalMoving());
+            myRigidbody2D.velocity = new Vector2(wallJumpForce * -playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
+            canJump = false;
+            StartCoroutine(SuspendWallJumps());
+        }
+    }
     IEnumerator SuspendWallJumps()
     {
         areWallJumpsSuspended = true;
         yield return new WaitForSeconds(wallJumpsDelay);
         areWallJumpsSuspended = false;
     }
+    #endregion
+
     public bool WasJumpRecently()
     {
         if (areWallJumpsSuspended || areGroundJumpsSuspended)
@@ -313,48 +297,22 @@ public class PlayerMovement : MonoBehaviour
         }
         return wasJumpRecently;
     }
-    private void UpdateColliderInBody()
+    #endregion
+
+    #region Rotation
+    private void PlayerRotation()
     {
-        Destroy(bodyChild.GetComponent<PolygonCollider2D>());
-        bodyChild.AddComponent<PolygonCollider2D>();
-    }
-    IEnumerator SuspendHorizontalMoving()
-    {
-        StopHorizontalMovement();
-        yield return new WaitForSeconds(horizontalMovingDelay);
-        StartHorizontalMovement();
-
-    }
-
-    private void HorizontalMove()
-    {
-        float joystickXAxisSign = Mathf.Sign(joystickXAxis);
-        float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-
-        if (isStandingOnGround)
+        if (!canRotation) { return; }
+        if (joystickXAxis == 0) { return; }
+        if (joystickXAxis < 0 && facingRight)
         {
-            StartHorizontalMovement();
+            Flip();
         }
-
-        if (areHorizontalMovingSuspended) { return; }
-
-        if (absJpystickXAxis < movingJoystickProperties.GetWalkLimit() && !myAnimator.GetBool("IsAttacking")) {
-            isStoping = true;
-            return;
-        }
-        else if (absJpystickXAxis >= movingJoystickProperties.GetWalkLimit() 
-            && absJpystickXAxis < movingJoystickProperties.GetRunLimit()) // Walk
+        else if (joystickXAxis > 0 && !facingRight)
         {
-            myRigidbody2D.velocity = new Vector2(playerHorizontalSpeed * absJpystickXAxis * joystickXAxisSign, myRigidbody2D.velocity.y);
+            Flip();
         }
-        else if (absJpystickXAxis >= movingJoystickProperties.GetRunLimit()) // Run
-        {
-            myRigidbody2D.velocity = new Vector2(playerHorizontalSpeed * (movingJoystickProperties.GetRunLimit() + 0.1f) * joystickXAxisSign, myRigidbody2D.velocity.y);
-
-        }
-        isStoping = false;
     }
-
     private void Flip()
     {
         wallJumpDirection *= -1;
@@ -362,24 +320,203 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    private void StopingMoving()
+    public void StartRotaing()
     {
-        if (!myAnimator.GetBool("IsOnGround")) { return; }
-        if (Mathf.Abs(myRigidbody2D.velocity.x) > movingJoystickProperties.GetWalkLimit() * playerHorizontalSpeed && !isStoping)
-        {
-            timeSinceStartStoping = Time.time;
-            startVelocityXAxis = myRigidbody2D.velocity.x;
-        }
+        canRotation = true;
+    }
+    public void StopRotating()
+    {
+        canRotation = false;
+    }
+    #endregion
 
-        if (isStoping && Time.time - timeSinceStartStoping <= timeOnStoping)
+    #region Horizontal move
+    IEnumerator SuspendHorizontalMoving()
+    {
+        StopHorizontalMovement();
+        yield return new WaitForSeconds(horizontalMovingSuspendDelay);
+        StartHorizontalMovement();
+
+    }
+    private void ManageStateOfMove()
+    {
+        if (IsPlyerStanding())
         {
-            float coefficientOfStoping = (Time.time - timeSinceStartStoping) / timeOnStoping;
-            myRigidbody2D.velocity = new Vector2(startVelocityXAxis * (1 - coefficientOfStoping), myRigidbody2D.velocity.y);
+            StartHorizontalMovement();
         }
-        else if (isStoping && Time.time - timeSinceStartStoping > timeOnStoping)
+        float absJpystickXAxis = Mathf.Abs(joystickXAxis);
+        if (isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
+        previousState = currentState;
+
+        #region If player's jumped from wall and then landed on ground before end of supsended we should give acess to move
+        
+        #endregion
+
+
+        if (absJpystickXAxis < movingJoystickProperties.GetWalkLimit() || myAnimator.GetBool("IsAttacking"))
         {
-            myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
+            currentState = StateOFMove.Stand;
+            if (previousState == StateOFMove.Run || previousState == StateOFMove.Walk)
+            {
+                SetVolumesOfMoveTransition(0f);
+                currentState = StateOFMove.TransitionDown;
+            }
+            else
+            {
+                isMovingStateManagementSuspended = false;
+            }
         }
+        else if (absJpystickXAxis >= movingJoystickProperties.GetWalkLimit()
+            && absJpystickXAxis < movingJoystickProperties.GetRunLimit()) // Walk
+        {
+            currentState = StateOFMove.Walk;
+            if (previousState == StateOFMove.Run)
+            {
+                SetVolumesOfMoveTransition(runSpeed);
+                currentState = StateOFMove.TransitionDown;
+            }
+            else if(previousState == StateOFMove.Stand)
+            {
+                SetVolumesOfMoveTransition(walkSpeed);
+                currentState = StateOFMove.TransitonUp;
+            }
+            else
+            {
+                isMovingStateManagementSuspended = false;
+            }
+        }
+        else if (absJpystickXAxis >= movingJoystickProperties.GetRunLimit()) // Run
+        {
+            currentState = StateOFMove.Run;
+            if (previousState == StateOFMove.Stand || previousState == StateOFMove.Walk)
+            {
+                SetVolumesOfMoveTransition(runSpeed);
+                currentState = StateOFMove.TransitonUp;
+            }
+            else
+            {
+                isMovingStateManagementSuspended = false;
+            }
+        }
+    }
+
+    private void SetVolumesOfMoveTransition(float velocityInTheEndOfTransition_input)
+    {
+        isMovingStateManagementSuspended = true;
+        timeSinceStartTransition = Time.time;
+        velocityOnTheStartOfTransition = myRigidbody2D.velocity.x ;
+        velocityInTheEndOfTransition = velocityInTheEndOfTransition_input * Mathf.Sign(joystickXAxis);
+    }
+
+    private void HorizontalMove()
+    {
+        if (areHorizontalMovingSuspended) { return; }
+        float velocityYAxis = myRigidbody2D.velocity.y;
+        float absJpystickXAxis = Mathf.Abs(joystickXAxis);
+        if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
+        if (currentState == StateOFMove.TransitonUp)
+        {
+            if (Time.time <= timeSinceStartTransition + startingMovingTransitionTime)
+            {
+                float increaseRatioOfTheSpeed;
+                if (startingMovingTransitionTime == 0)
+                {
+                    increaseRatioOfTheSpeed = 0;
+                }
+                else
+                {
+                    increaseRatioOfTheSpeed = 1 - (Time.time - timeSinceStartTransition) / startingMovingTransitionTime;
+                }
+                myRigidbody2D.velocity = new Vector2(velocityOnTheStartOfTransition + velocityInTheEndOfTransition - 
+                    velocityInTheEndOfTransition * Mathf.Pow(increaseRatioOfTheSpeed, 2), velocityYAxis);
+            }
+            else
+            {
+                isMovingStateManagementSuspended = false;
+            }
+        }
+        else if(currentState == StateOFMove.TransitionDown)
+        {
+            if (Time.time <= timeSinceStartTransition + endingMovingTransitionTime)
+            {
+                float increaseRatioOfTheSpeed;
+                if (endingMovingTransitionTime == 0)
+                {
+                    increaseRatioOfTheSpeed = 1;
+                }
+                else
+                {
+                    increaseRatioOfTheSpeed = (Time.time - timeSinceStartTransition) / endingMovingTransitionTime;
+                }
+                myRigidbody2D.velocity = new Vector2(velocityOnTheStartOfTransition -
+                    (velocityOnTheStartOfTransition - velocityInTheEndOfTransition) * Mathf.Pow(increaseRatioOfTheSpeed, 2), velocityYAxis);
+            }
+            else
+            {
+                isMovingStateManagementSuspended = false;
+            }
+        }
+        else if(currentState == StateOFMove.Stand)
+        {
+            myRigidbody2D.velocity = new Vector2(0f, velocityYAxis);
+        }
+        else if(currentState == StateOFMove.Run)
+        {
+            myRigidbody2D.velocity = new Vector2(runSpeed * Mathf.Sign(joystickXAxis), velocityYAxis);
+        }
+        else if (currentState == StateOFMove.Walk) 
+        {
+            myRigidbody2D.velocity = new Vector2(walkSpeed * Mathf.Sign(joystickXAxis), velocityYAxis);
+        }
+    }
+
+
+    public void StopHorizontalMovement()
+    {
+        areHorizontalMovingSuspended = true;
+    }
+    public void StartHorizontalMovement()
+    {
+        areHorizontalMovingSuspended = false;
+    }
+
+    #endregion
+
+    #region Slowing
+    private void SlowingOnStairs()
+    {
+        if (isStandingOnStairs)
+        {
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
+            if ((myRigidbody2D.velocity.x == 0f || joystickXAxis == 0) && !areGroundJumpsSuspended)
+            {
+
+                myRigidbody2D.gravityScale = 0f;
+                myRigidbody2D.velocity = new Vector2(0f, 0f);
+
+            }
+            else
+            {
+                myRigidbody2D.gravityScale = 1f;
+            }
+        }
+        else
+        {
+            myRigidbody2D.gravityScale = 1f;
+        }
+    }
+    #endregion
+
+    #region Others
+    public bool IsAttackButtonPressed()
+    {
+        return isAttackButtonPressed;
+    }
+
+    private void UpdateColliderInBody()
+    {
+        Destroy(bodyChild.GetComponent<PolygonCollider2D>());
+        bodyChild.AddComponent<PolygonCollider2D>();
     }
     public PlayerActionControls GetActionControls()
     {
@@ -399,13 +536,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject particles = Instantiate(runParticlesPrefab, transform.position + runParticlesPrefab.transform.position, Quaternion.Euler(0, angleOfRotate, 0));
         Destroy(particles, particlesDestroyDelay);
     }
-
-    public void Jerk(float jerkForce)
-    {
-        timeSinceStartStoping = Time.time;
-        float jerksDirection = Mathf.Sign(transform.rotation.y);
-        myRigidbody2D.AddForce(new Vector2(jerkForce* jerksDirection, myRigidbody2D.velocity.y));
-    }
+    
     public void SpawnHaze()
     {
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
@@ -432,12 +563,5 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
     }
-    public void StartRotaing()
-    {
-        canRotation = true;
-    }
-    public void StopRotating()
-    {
-        canRotation = false;
-    }
+    #endregion
 }

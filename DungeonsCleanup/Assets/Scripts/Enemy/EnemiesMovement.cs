@@ -7,9 +7,7 @@ public class EnemiesMovement : MonoBehaviour
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] float walkSpeed;
-    bool isWalking; 
     [SerializeField] float runSpeed;
-    bool isRunning;
     [SerializeField] LayerMask stairsLayer;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Vector2 groundCheckSize;
@@ -20,6 +18,12 @@ public class EnemiesMovement : MonoBehaviour
     float timeSinceStartedSlowing = 0f;
     bool startToSlowing;
     float lastVelocityOnXAxis;
+
+    private enum StatesOfMove
+    {
+        Run, Walk, Stand
+    }
+    private StatesOfMove currentStateMove;
 
     Vector2 currentTarget;
     Rigidbody2D myRigidbody2D;
@@ -54,30 +58,21 @@ public class EnemiesMovement : MonoBehaviour
     private void CheckTargetType()
     {
         if (currentTarget == null) { return; }
-        // if (игрок был обнаружен скриптом обнаружения и игрок вне зоны досигаемости атаки)
-        //      берём последнии координты (currentTarget из скрипта обнаржуения) игрока и бужим туда isRunning = true; isWalking = false;
-        //      return;
-        // else if(isRunning == true) // Проверяем бежали ли мы к игроку
-        //      Ставим карутину, чтобы постоять на точке isRunning = false; isWalking = false;
-        //      После этого идём по точкам объода isRunning = false; isWalking = true;
         if (patrolman.ShoulIGoToPlayer() && !DetectorEnemiesInAttackZone.IsEnemyDetected())
         {
-            isRunning = true;
-            isWalking = false;
+            currentStateMove = StatesOfMove.Run;
         }
         else if((patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected()) || (!patrolman.ShoulIGoToPlayer() && !patrolman.ShoulIGoToPatrolPoint()))
         {
-            isRunning = false;
-            isWalking = false;
+            currentStateMove = StatesOfMove.Stand;
         }
         else if (patrolman.ShoulIGoToPatrolPoint()) {
-            isWalking = true;
-            isRunning = false;
+            currentStateMove = StatesOfMove.Walk;
         }
-        else
+        /*else
         {
-            isWalking = false;
-        }
+            currentState = StatesOfMove.Stand;
+        }*/
 
     }
 
@@ -95,7 +90,7 @@ public class EnemiesMovement : MonoBehaviour
 
     private void Slowing()
     {
-        if (!isRunning && !isWalking && !startToSlowing)
+        if (currentStateMove == StatesOfMove.Stand && !startToSlowing)
         {
             startToSlowing = true;
             timeSinceStartedSlowing = Time.deltaTime;
@@ -129,7 +124,7 @@ public class EnemiesMovement : MonoBehaviour
         if (isStandingOnStairs)
         {
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
-            if (!isWalking && !isRunning)
+            if (currentStateMove == StatesOfMove.Stand)
             {
 
                 myRigidbody2D.gravityScale = 0f;
@@ -193,24 +188,24 @@ public class EnemiesMovement : MonoBehaviour
     }
     private void Walk()
     {
-        if (!isWalking) { return; }
+        if (currentStateMove != StatesOfMove.Walk) { return; }
         myRigidbody2D.velocity = new Vector2(Math.Abs(walkSpeed) * signXAxisDirection, myRigidbody2D.velocity.y);
     }
 
     private void Run()
     {
-        if (!isRunning) { return; }
+        if (currentStateMove != StatesOfMove.Run) { return; }
         myRigidbody2D.velocity = new Vector2(Math.Abs(runSpeed) * signXAxisDirection, myRigidbody2D.velocity.y);
         doWeKnowTargetDirection = false;
     }
 
     public bool IsWalking()
     {
-        return isWalking;
+        return currentStateMove == StatesOfMove.Walk ? true : false;
     }
     public bool IsRunning()
     {
-        return isRunning;
+        return currentStateMove == StatesOfMove.Run ? true:false;
     }
     private void Flip()
     {

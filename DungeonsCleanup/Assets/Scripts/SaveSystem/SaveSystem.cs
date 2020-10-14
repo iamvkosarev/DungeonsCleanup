@@ -44,7 +44,7 @@ public static class SaveSystem
         }
     }
 
-    public static void SaveSession(bool[] sessionActivity)
+    public static void SaveSession(bool[] sessionActivity, bool[] createdSessions)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
@@ -57,14 +57,14 @@ public static class SaveSystem
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SessionData data = new SessionData(sessionActivity);
+        SessionData data = new SessionData(sessionActivity, createdSessions);
 
         binaryFormatter.Serialize(stream, data);
 
         stream.Close();
     }
 
-    public static int LoadSession()
+    public static SessionData LoadSession()
     {
         string path = Application.persistentDataPath + "/saves/" + "sessions" + ".save";
         if (File.Exists(path))
@@ -75,12 +75,13 @@ public static class SaveSystem
 
             stream.Close();
 
-            return sessionData.GetActiveSessionNum();
+            return sessionData;
         }
         else
         {
-            Debug.LogError("Save file not found in" + path);
-            return -1;
+            SessionData data = new SessionData(new bool[3] { false, false, false }, new bool[3] { false, false, false });
+            SaveSession(data.sessionActivity, data.createdSessions);
+            return data;
         }
     }
 }
