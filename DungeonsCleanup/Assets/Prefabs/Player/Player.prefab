@@ -399,7 +399,7 @@ MonoBehaviour:
   startingMovingTransitionTime: 0.2
   endingMovingTransitionTime: 0.2
   slowingOnStairsParametr: 2
-  horizontalMovingSuspendDelay: 0
+  horizontalMovingSuspendDelay: 1
   jumpForce: 12
   groundLayer:
     serializedVersion: 2
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stabbingWeaponList: {fileID: 11400000, guid: 0b719c30b61a5e444bb4310f6198fe13, type: 2}
   maxPlayerHealth: 0
-  currentPlayerHealth: 0
+  currentPlayerHealth: 200
   currentStabbingNum: 0
   currentSceneNum: 0
 --- !u!1 &7081787225611444493

@@ -340,16 +340,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ManageStateOfMove()
     {
-        Debug.Log(currentState);
+        if (IsPlyerStanding())
+        {
+            StartHorizontalMovement();
+        }
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
         if (isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
         previousState = currentState;
 
         #region If player's jumped from wall and then landed on ground before end of supsended we should give acess to move
-        if (IsPlyerStanding())
-        {
-            StartHorizontalMovement();
-        }
+        
         #endregion
 
 
@@ -411,8 +411,9 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMove()
     {
         if (areHorizontalMovingSuspended) { return; }
-        if (!IsPlyerStanding()) { return; }
         float velocityYAxis = myRigidbody2D.velocity.y;
+        float absJpystickXAxis = Mathf.Abs(joystickXAxis);
+        if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
         if (currentState == StateOFMove.TransitonUp)
         {
             if (Time.time <= timeSinceStartTransition + startingMovingTransitionTime)
@@ -473,7 +474,6 @@ public class PlayerMovement : MonoBehaviour
     public void StopHorizontalMovement()
     {
         areHorizontalMovingSuspended = true;
-        myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
     }
     public void StartHorizontalMovement()
     {
