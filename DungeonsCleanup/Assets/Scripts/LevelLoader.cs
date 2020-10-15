@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,12 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] PlayerDataManager playerDataManager;
     Animator myAnimator;
     int currentSceneIndex;
+    enum FollowingState
+    {
+        NextScene,
+        MainMenu
+    }
+    private FollowingState followingState;
     private void Start()
     {
        
@@ -30,19 +37,43 @@ public class LevelLoader : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        SetFollowingState(FollowingState.NextScene);
         canvas.active = true;
         myAnimator.SetTrigger("StartExitCrossfade");
     }
+    public void LoadMainMenuFromGameScene()
+    {
+        SetFollowingState(FollowingState.MainMenu);
+        canvas.active = true;
+        myAnimator.SetTrigger("StartExitCrossfade");
+    }
+    private void SetFollowingState(FollowingState followingState)
+    {
+        this.followingState = followingState;
+    }
+
     public void LoadScene()
     {
-        SceneManager.LoadScene(nextSceneBuildIndex);
+        Debug.Log(followingState);
+        if (followingState == FollowingState.NextScene)
+        {
+            SceneManager.LoadScene(nextSceneBuildIndex);
+        }
+        else if(followingState == FollowingState.MainMenu)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
     public void RefreshCurrentSessionData()
     {
-        if (playerDataManager != null)
+        if (playerDataManager != null && followingState == FollowingState.NextScene)
         {
 
             playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
+        }
+        else if (playerDataManager != null && followingState == FollowingState.MainMenu)
+        {
+            playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: SceneManager.GetActiveScene().buildIndex);
         }
     }
 
