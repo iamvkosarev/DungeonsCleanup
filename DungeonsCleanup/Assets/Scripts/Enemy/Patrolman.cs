@@ -65,8 +65,8 @@ public class Patrolman : MonoBehaviour
         Vector2 cheakerPlayerCircleCoordinates = transform.position;
         Vector2 lastPlayerPos = myMovementScript.GetCurrentTragetPos();
 
-        if (Mathf.Abs(lastPlayerPos.x - cheakerPlayerCircleCoordinates.x) 
-            <= Mathf.Abs(radiusOfPointReachingZone ) && goToPlayer)
+        if ((Mathf.Abs(lastPlayerPos.x - cheakerPlayerCircleCoordinates.x) 
+            <= Mathf.Abs(radiusOfPointReachingZone ) || myMovementScript.IsTouchingInvisibleWall()) && goToPlayer)
         {
             goToPlayer = false;
             StartCoroutine(WaitingForPlayer());

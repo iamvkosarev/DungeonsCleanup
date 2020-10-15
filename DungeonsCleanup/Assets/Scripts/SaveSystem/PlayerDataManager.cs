@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerDataManager : MonoBehaviour
 {
     [SerializeField] private StabbingWeaponList stabbingWeaponList;
+    [SerializeField] private bool setOwnData;
     public int maxPlayerHealth;
     public int currentPlayerHealth;
     public int currentStabbingNum;
@@ -18,7 +19,14 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerAttackManager = GetComponent<PlayerAttackManager>();
         playerHealth = GetComponent<PlayerHealth>();
-        SetLastSessionData();
+        if (setOwnData)
+        {
+            SetData();
+        }
+        else
+        {
+            SetLastSessionData();
+        }
     }
     public PlayerDataManager(int maxPlayerHealth, int currentStabbingNum, int currentSceneNum)
     {

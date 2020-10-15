@@ -19,6 +19,12 @@ public class EnemiesMovement : MonoBehaviour
     bool startToSlowing;
     float lastVelocityOnXAxis;
 
+    [Header("Invisible Wall Touching")]
+    [SerializeField] LayerMask invisibleWallLayer;
+    [SerializeField] Vector2 invisibleWallCheckSize;
+    [SerializeField] Transform invisibleWallCheckPoint;
+    bool isTouchingInvisibleWall;
+
     private enum StatesOfMove
     {
         Run, Walk, Stand
@@ -47,6 +53,7 @@ public class EnemiesMovement : MonoBehaviour
     {
         CheckTargetType();
         CheckTouchingGround();
+        CheckTouchingInvisibleWall();
     }
 
 
@@ -54,17 +61,25 @@ public class EnemiesMovement : MonoBehaviour
     {
         isStandingOnStairs = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
     }
-
+    private void CheckTouchingInvisibleWall()
+    {
+        isTouchingInvisibleWall = Physics2D.OverlapBox(invisibleWallCheckPoint.position, invisibleWallCheckSize, 0, invisibleWallLayer);
+    }
+    public bool IsTouchingInvisibleWall()
+    {
+        return isTouchingInvisibleWall;
+    }
     private void CheckTargetType()
     {
         if (currentTarget == null) { return; }
-        if (patrolman.ShoulIGoToPlayer() && !DetectorEnemiesInAttackZone.IsEnemyDetected())
-        {
-            currentStateMove = StatesOfMove.Run;
-        }
-        else if((patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected()) || (!patrolman.ShoulIGoToPlayer() && !patrolman.ShoulIGoToPatrolPoint()))
+
+        if ((patrolman.ShoulIGoToPlayer() && DetectorEnemiesInAttackZone.IsEnemyDetected()) || (!patrolman.ShoulIGoToPlayer() && !patrolman.ShoulIGoToPatrolPoint()) || isTouchingInvisibleWall)
         {
             currentStateMove = StatesOfMove.Stand;
+        }
+        else if (patrolman.ShoulIGoToPlayer() && !DetectorEnemiesInAttackZone.IsEnemyDetected())
+        {
+            currentStateMove = StatesOfMove.Run;
         }
         else if (patrolman.ShoulIGoToPatrolPoint()) {
             currentStateMove = StatesOfMove.Walk;
@@ -216,5 +231,7 @@ public class EnemiesMovement : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(invisibleWallCheckPoint.position, invisibleWallCheckSize);
     }
 }
