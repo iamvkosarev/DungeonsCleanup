@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 7527446659138619075}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &195300368482755964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3548378142020817165}
+  m_Layer: 10
+  m_Name: Invisible Wall Checker Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3548378142020817165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195300368482755964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.526, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7527446659138619075}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836541060292762293
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102697589144876273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.452, y: 0.27, z: 0}
+  m_LocalPosition: {x: -0.452, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7527446659138619075}
@@ -191,7 +221,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -313,6 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 1
   particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
@@ -320,8 +352,6 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  health: 3
-  delayBeforeDeath: 0
 --- !u!114 &1946901898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +397,11 @@ MonoBehaviour:
   groundCheckSize: {x: 0.4, y: 0.12}
   slowingOnStairsParametr: 1.2
   timeOnSlowing: 0.05
+  invisibleWallLayer:
+    serializedVersion: 2
+    m_Bits: 16777216
+  invisibleWallCheckSize: {x: 0.87, y: 0.12}
+  invisibleWallCheckPoint: {fileID: 3548378142020817165}
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +546,7 @@ Transform:
   - {fileID: 2015094264634204314}
   - {fileID: 6229648096336119979}
   - {fileID: 1173190190}
+  - {fileID: 3548378142020817165}
   m_Father: {fileID: 2280272574607320913}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

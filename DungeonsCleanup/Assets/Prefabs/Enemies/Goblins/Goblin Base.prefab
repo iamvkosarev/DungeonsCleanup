@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 4268006042674321304}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &605976247314103449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4325826052018154950}
+  m_Layer: 10
+  m_Name: Invisible Wall Checker Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4325826052018154950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605976247314103449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.561, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4268006042674321304}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071571939900211082
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +182,7 @@ Transform:
   - {fileID: 1298837879765611092}
   - {fileID: 1743894881820148256}
   - {fileID: 1076994573}
+  - {fileID: 4325826052018154950}
   m_Father: {fileID: 4589570952654697383}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -209,7 +240,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -331,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
@@ -338,8 +371,6 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  health: 3
-  delayBeforeDeath: 0
 --- !u!114 &8019890438038859567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +416,11 @@ MonoBehaviour:
   groundCheckSize: {x: 0.39, y: 0.11}
   slowingOnStairsParametr: 1
   timeOnSlowing: 0.2
+  invisibleWallLayer:
+    serializedVersion: 2
+    m_Bits: 16777216
+  invisibleWallCheckSize: {x: 0.72, y: 0.11}
+  invisibleWallCheckPoint: {fileID: 4325826052018154950}
 --- !u!1 &4589570952976817378
 GameObject:
   m_ObjectHideFlags: 0

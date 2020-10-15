@@ -84,7 +84,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
+  delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
@@ -213,8 +215,6 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  health: 5
-  delayBeforeDeath: 0
 --- !u!114 &1157642317395755929
 MonoBehaviour:
   m_ObjectHideFlags: 0
