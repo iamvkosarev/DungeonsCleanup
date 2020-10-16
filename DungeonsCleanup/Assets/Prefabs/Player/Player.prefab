@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -410,6 +410,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 5440142212810733446}
   groundCheckSize: {x: 0.59, y: 0.11}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
+  checkStairsRayLength: 1.5
   groundJumpsDelay: 0.3
   wallSlideSpeed: 0.2
   wallLayer:
@@ -569,7 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stabbingWeaponList: {fileID: 11400000, guid: 0b719c30b61a5e444bb4310f6198fe13, type: 2}
-  maxPlayerHealth: 0
+  setOwnData: 1
+  maxPlayerHealth: 200
   currentPlayerHealth: 200
   currentStabbingNum: 0
   currentSceneNum: 0
@@ -694,7 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7573613103745708401}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
