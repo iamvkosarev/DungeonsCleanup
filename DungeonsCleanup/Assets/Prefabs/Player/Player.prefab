@@ -309,12 +309,12 @@ GameObject:
   - component: {fileID: 7081787225086070598}
   - component: {fileID: 7081787225086070649}
   - component: {fileID: 5961501673156388416}
-  - component: {fileID: 586757187}
   - component: {fileID: 1187377112}
   - component: {fileID: 4061366651553803683}
   - component: {fileID: 2542656809900335354}
   - component: {fileID: 2769539842428143087}
   - component: {fileID: 3175382458436422066}
+  - component: {fileID: 2292040330820466361}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -451,30 +451,6 @@ MonoBehaviour:
     m_Bits: 1024
   numOfStabbingAttacks: 2
   currentStabbingWeapon: {fileID: 11400000, guid: 367025fdb2419f1499a0da7f7336bced, type: 2}
---- !u!114 &586757187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1000
-  delayBeforeDeath: 0
-  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
-  particlesDestroyDelay: 2
-  particlesColor: {r: 0.6037736, g: 0, b: 0, a: 1}
-  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
-  floatingPointSpeed: 5
-  maxAngleFloatingPointDirection: 20
-  floatingPointDestroyDelay: 2
-  healthBar: {fileID: 0}
-  playerHealthCollider: {fileID: 2542656809900335354}
-  reloadingDelay: 2
 --- !u!114 &1187377112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,12 +470,15 @@ MonoBehaviour:
   elevatorLayer:
     serializedVersion: 2
     m_Bits: 2097152
-  activateSomeThingButton: {fileID: 0}
-  doorCheckPoint: {fileID: 6389667949260438817}
-  doorCheckSize: {x: 1.5, y: 0.1}
   doorLayer:
     serializedVersion: 2
     m_Bits: 32768
+  tabletLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  activateSomeThingButton: {fileID: 0}
+  doorCheckPoint: {fileID: 6389667949260438817}
+  doorCheckSize: {x: 1.5, y: 0.1}
 --- !u!114 &4061366651553803683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +554,30 @@ MonoBehaviour:
   currentPlayerHealth: 200
   currentStabbingNum: 0
   currentSceneNum: 0
+--- !u!114 &2292040330820466361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2000
+  delayBeforeDeath: 1
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 2
+  particlesColor: {r: 0.5660378, g: 0, b: 0, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
+  healthBar: {fileID: 0}
+  playerHealthCollider: {fileID: 2542656809900335354}
+  reloadingDelay: 2
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
