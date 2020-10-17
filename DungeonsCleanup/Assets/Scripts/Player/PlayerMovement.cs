@@ -7,15 +7,15 @@ using UnityEngine.Scripting.APIUpdating;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] MovingJoystickProperties movingJoystickProperties;
+    [SerializeField] private MovingJoystickProperties movingJoystickProperties;
 
     [Header("For Horizontal Movement")]
-    [SerializeField] float runSpeed;
-    [SerializeField] float walkSpeed;
-    [SerializeField] float startingMovingTransitionTime;
-    [SerializeField] float endingMovingTransitionTime;
-    [SerializeField] float slowingOnStairsParametr = 2f;
-    [SerializeField] float horizontalMovingSuspendDelay;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float startingMovingTransitionTime;
+    [SerializeField] private float endingMovingTransitionTime;
+    [SerializeField] private float slowingOnStairsParametr = 2f;
+    [SerializeField] private float horizontalMovingSuspendDelay;
     private bool areHorizontalMovingSuspended= false;
     private float velocityOnTheStartOfTransition;
     private float velocityInTheEndOfTransition;
@@ -30,66 +30,67 @@ public class PlayerMovement : MonoBehaviour
     private bool isMovingStateManagementSuspended;
 
     [Header("Ground Jump")]
-    [SerializeField] float jumpForce;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask stairsLayer;
-    [SerializeField] Transform groundCheckPoint;
-    [SerializeField] Vector2 groundCheckSize;
-    [SerializeField] GameObject hazePrefab;
-    [SerializeField] float groundJumpsDelay;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask stairsLayer;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private Vector2 groundCheckSize;
+    [SerializeField] private GameObject hazePrefab;
+    [SerializeField] private float checkStairsRayLength;
+    [SerializeField] private float groundJumpsDelay;
     private bool isStandingOnGround;
     private bool isStandingOnStairs;
     private bool canJump;
     private bool areGroundJumpsSuspended = false;
 
     [Header("Slide")]
-    [SerializeField] float wallSlideSpeed = 0;
-    [SerializeField] LayerMask wallLayer;
-    [SerializeField] Transform wallCheckPoint;
-    [SerializeField] Vector2 wallCheckSize;
+    [SerializeField] private float wallSlideSpeed = 0;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Transform wallCheckPoint;
+    [SerializeField] private Vector2 wallCheckSize;
     private bool isTouchingWall;
     private bool isWallSliding;
 
     [Header("WallJump")]
-    [SerializeField] float wallJumpForce = 18f;
-    [SerializeField] float wallJumpDirection = -1f;
-    [SerializeField] Vector2 wallJumpAngle;
-    [SerializeField] float wallJumpsDelay;
+    [SerializeField] private float wallJumpForce = 18f;
+    [SerializeField] private float wallJumpDirection = -1f;
+    [SerializeField] private Vector2 wallJumpAngle;
+    [SerializeField] private float wallJumpsDelay;
     private bool areWallJumpsSuspended = false;
 
 
     [Header("Player Elements")]
-    [SerializeField] GameObject bodyChild;
+    [SerializeField] private GameObject bodyChild;
 
     [Header("VFX")]
-    [SerializeField] GameObject runParticlesPrefab;
-    [SerializeField] float particlesDestroyDelay = 0.1f;
+    [SerializeField] private GameObject runParticlesPrefab;
+    [SerializeField] private float particlesDestroyDelay = 0.1f;
 
     [Header("Tumbleweed")]
-    [SerializeField] float tumbleweedSpeed;
-    [SerializeField] CapsuleCollider2D feetCollider;
-    [SerializeField] CapsuleCollider2D feetNotTouchingFeetCollide;
-    [SerializeField] Transform firstPointForCheckingEnemiesDuringATumbleweed;
-    [SerializeField] Transform secondPointForCheckingEnemiesDuringATumbleweed;
-    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] private float tumbleweedSpeed;
+    [SerializeField] private CapsuleCollider2D feetCollider;
+    [SerializeField] private CapsuleCollider2D feetNotTouchingFeetCollide;
+    [SerializeField] private Transform firstPointForCheckingEnemiesDuringATumbleweed;
+    [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
+    [SerializeField] private LayerMask enemyLayer;
     private bool wasFirstPointTouched;
     private bool wasSecondPointTouched;
     private bool isTumbleweed;
 
     //catching files
-    PlayerActionControls playerActionControls;
-    Rigidbody2D myRigidbody2D;
-    Animator myAnimator;
-    HealthUI myHealth;
-    PlayerAttackManager myAttackManager;
+    private PlayerActionControls playerActionControls;
+    private Rigidbody2D myRigidbody2D;
+    private Animator myAnimator;
+    private PlayerHealth myHealth;
+    private PlayerAttackManager myAttackManager;
 
     // param
-    bool wasJumpRecently = false;
-    bool facingRight = true;
-    bool isAttackButtonPressed;
-    bool canRotation = true;
-    float joystickXAxis;
-    float joystickYAxis;
+    private bool wasJumpRecently = false;
+    private bool facingRight = true;
+    private bool isAttackButtonPressed;
+    private bool canRotation = true;
+    private float joystickXAxis;
+    private float joystickYAxis;
 
     #region Customization Player Action Controls
     private void Awake()
@@ -114,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myHealth = GetComponent<HealthUI>();
+        myHealth = GetComponent<PlayerHealth>();
         myAttackManager = GetComponent<PlayerAttackManager>();
     }
     void Update()
@@ -541,18 +542,21 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
-        Collider2D stairsCollider = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
-        if (stairsCollider != null)
-        {
-            if (isStandingOnStairs)
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, feetCollider.size.y / 2 * checkStairsRayLength, layerMask: stairsLayer);
+
+        if (hit)
+        {            
+            if(hit.normal != Vector2.up)
             {
-                if (stairsCollider.gameObject.tag == "RightStairs")
+                if(hit.normal.x < 0)
                 {
-                    hazeScript.RotateHaze();
+                    hazeScript.RotateHaze(); // если идёт вверх вправо
                 }
                 hazeScript.SetHazeOnStairs();
             }
         }
+
         hazeScript.StartAnimation();
     }
     private void OnDrawGizmosSelected()
