@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
     {
         firstHealth = health;
     }
+
     public virtual void TakeAwayHelath(int damage)
     {
         if (damage >= health)

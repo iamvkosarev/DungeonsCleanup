@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerActionControls playerActionControls;
     Rigidbody2D myRigidbody2D;
     Animator myAnimator;
-    PlayerHealth myHealth;
+    HealthUI myHealth;
     PlayerAttackManager myAttackManager;
 
     // param
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myHealth = GetComponent<PlayerHealth>();
+        myHealth = GetComponent<HealthUI>();
         myAttackManager = GetComponent<PlayerAttackManager>();
     }
     void Update()

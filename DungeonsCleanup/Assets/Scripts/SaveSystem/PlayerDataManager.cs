@@ -14,11 +14,11 @@ public class PlayerDataManager : MonoBehaviour
     public int currentSceneNum;
 
     PlayerAttackManager playerAttackManager;
-    PlayerHealth playerHealth;
+    HealthUI playerHealth;
     private void Start()
     {
         playerAttackManager = GetComponent<PlayerAttackManager>();
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<HealthUI>();
         if (setOwnData)
         {
             SetData();
@@ -124,7 +124,7 @@ public class PlayerDataManager : MonoBehaviour
     private bool SetScene()
     {
         int openedScene = SceneManager.GetActiveScene().buildIndex;
-        if (!GetComponent<PlayerHealth>().IsPlayerDead())
+        if (!GetComponent<HealthUI>().IsPlayerDead())
         {
             return false;
         }

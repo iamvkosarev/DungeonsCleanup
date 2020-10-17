@@ -134,7 +134,7 @@ public class BatPathing : MonoBehaviour
        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
-            player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
+            player.GetComponent<HealthUI>().TakeAwayHelath(batDamage);
         }
 
         if(IsFacingOnAHero())
