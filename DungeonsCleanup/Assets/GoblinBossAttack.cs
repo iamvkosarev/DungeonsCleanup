@@ -4,11 +4,13 @@ using UnityEngine;
 public class GoblinBossAttack : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    private PlayerMovement playerMovement;
 
     [Header("Check Player")]
     [SerializeField] private Vector2 checkForAttackPlayerZone;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Color checkPlayerZoneColor;
+    private bool isPlayerInAttackZone;
 
     [Header("Push Attack")]
 
@@ -23,11 +25,11 @@ public class GoblinBossAttack : MonoBehaviour
         Push
     }
     AttackTypes currentAttackType;
-    private bool isPlayerInAttackZone;
     void Start()
     {
         currentAttackType = AttackTypes.Push;
         myAnimator = GetComponent<Animator>();
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -67,8 +69,7 @@ public class GoblinBossAttack : MonoBehaviour
         {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            player.gameObject.GetComponent<Rigidbody2D>().
-                AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+            playerMovement.GetPunch(pushXForce, pushYForce);
             player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(damage);
         }
     }
