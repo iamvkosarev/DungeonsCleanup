@@ -514,6 +514,11 @@ public class PlayerMovement : MonoBehaviour
         return isAttackButtonPressed;
     }
 
+    public void GetPunch(float pushXForce, float pushYForce)
+    {
+        myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+        StartCoroutine(SuspendHorizontalMoving());
+    }
     private void UpdateColliderInBody()
     {
         Destroy(bodyChild.GetComponent<PolygonCollider2D>());
