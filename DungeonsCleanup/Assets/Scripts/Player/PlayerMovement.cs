@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float startingMovingTransitionTime;
     [SerializeField] private float endingMovingTransitionTime;
-    [SerializeField] private float slowingOnStairsParametr = 2f;
+    [SerializeField] private Vector2 slowingOnStairsParametr;
     [SerializeField] private float horizontalMovingSuspendDelay;
     private bool areHorizontalMovingSuspended= false;
     private float velocityOnTheStartOfTransition;
@@ -486,9 +486,11 @@ public class PlayerMovement : MonoBehaviour
     #region Slowing
     private void SlowingOnStairs()
     {
-        if (isStandingOnStairs)
+        if (isStandingOnStairs && !WasJumpRecently())
         {
-            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr.x, myRigidbody2D.velocity.y);
+            //myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y * Time.deltaTime; // 50
+            myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y;
             if ((myRigidbody2D.velocity.x == 0f || joystickXAxis == 0) && !areGroundJumpsSuspended)
             {
 

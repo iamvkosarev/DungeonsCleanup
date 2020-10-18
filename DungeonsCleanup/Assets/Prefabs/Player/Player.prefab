@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   walkSpeed: 4
   startingMovingTransitionTime: 0.2
   endingMovingTransitionTime: 0.2
-  slowingOnStairsParametr: 2
+  slowingOnStairsParametr: {x: 1.5, y: 0.8}
   horizontalMovingSuspendDelay: 1
   jumpForce: 12
   groundLayer:
