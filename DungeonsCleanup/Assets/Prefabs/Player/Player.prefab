@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 2769539842428143087}
   - component: {fileID: 3175382458436422066}
   - component: {fileID: 2292040330820466361}
+  - component: {fileID: 1080693631}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -424,6 +425,7 @@ MonoBehaviour:
   wallJumpsDelay: 0.3
   bodyChild: {fileID: 7081787225611444493}
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
+  runParticals: {fileID: 0}
   particlesDestroyDelay: 1
   tumbleweedSpeed: 10
   feetCollider: {fileID: 7077148873157811720}
@@ -475,7 +477,7 @@ MonoBehaviour:
     m_Bits: 32768
   tabletLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8388608
   activateSomeThingButton: {fileID: 0}
   doorCheckPoint: {fileID: 6389667949260438817}
   doorCheckSize: {x: 1.5, y: 0.1}
@@ -578,6 +580,22 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 2542656809900335354}
   reloadingDelay: 2
+--- !u!114 &1080693631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee181750bb31bb74a82c8a360481ed09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwSpawns: 0.1
+  destroyDelay: 0.1
+  echo: {fileID: 7081787225611444493}
+  echoColor: {r: 1, g: 1, b: 1, a: 0.49019608}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7081787225611444492}
   - component: {fileID: 7081787225611444495}
+  - component: {fileID: 2123216847243914664}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -660,6 +679,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2123216847243914664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225611444493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e75ad914d371164687fb4d961812bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOnChange: -1
+  startAlphaChannel: 1
+  endAlphaChannel: 0
 --- !u!1 &7238425143453033020
 GameObject:
   m_ObjectHideFlags: 0
