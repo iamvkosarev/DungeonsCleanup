@@ -79,6 +79,16 @@ public class Health : MonoBehaviour
     private void Death()
     {
         transform.Rotate(0, 0, -90);
+        SpawnExp();
         Destroy(gameObject, delayBeforeDeath);
+    }
+
+    private void SpawnExp()
+    {
+        SpawExperience spawExperience = GetComponent<SpawExperience>();
+        if (spawExperience)
+        {
+            spawExperience.SpawnExp();
+        }
     }
 }

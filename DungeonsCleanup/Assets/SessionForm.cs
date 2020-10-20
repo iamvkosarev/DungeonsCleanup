@@ -15,6 +15,11 @@ public class SessionForm : MonoBehaviour
     [SerializeField] int sceneNum;
     [SerializeField] int maxPlayerHealth;
     [SerializeField] int stabbingWeaponNum;
+    [SerializeField] int lvl;
+    [SerializeField] int currentExp;
+    [SerializeField] int neededExp;
+    [SerializeField] int damage;
+
 
     bool isSessionSelected;
     bool isCreated;
@@ -33,7 +38,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum);
+        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum, lvl, currentExp, neededExp, damage);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
@@ -51,7 +56,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum);
+        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum, lvl, currentExp, neededExp, damage);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
