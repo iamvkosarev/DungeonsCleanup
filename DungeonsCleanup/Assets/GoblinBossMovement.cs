@@ -37,6 +37,6 @@ public class GoblinBossMovement : MonoBehaviour
 
     private void Flip()
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)) * startXScale, transform.localScale.y);
+        transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)) * Mathf.Abs(startXScale), transform.localScale.y);
     }
 }

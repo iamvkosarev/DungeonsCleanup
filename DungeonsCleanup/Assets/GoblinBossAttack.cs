@@ -7,22 +7,26 @@ public class GoblinBossAttack : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [Header("Check Player")]
-    [SerializeField] private Vector2 checkForAttackPlayerZone;
-    [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private Color checkPlayerZoneColor;
-    private bool isPlayerInAttackZone;
+    [SerializeField] private float distanceToPush = 3f;
+    private bool isPlayerInAttackZoneToPush;
 
     [Header("Push Attack")]
+    
 
     [SerializeField] private float minPushXForce = 800f;
     [SerializeField] private float maxPushXForce = 1200f;
     [SerializeField] private float minPushYForce = 300f;
     [SerializeField] private float maxPushYForce = 500f;
     [SerializeField] private int damage = 25;
+
+    [Header("Earthquake")]
+    [SerializeField] private GameObject forEarthquakeGround;
+    [SerializeField] private float groundSpeed;
     private Animator myAnimator;
     enum AttackTypes
     {
-        Push
+        Push,
+        Earthquake
     }
     AttackTypes currentAttackType;
     void Start()
@@ -35,49 +39,38 @@ public class GoblinBossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckPlayer();
+        CheckDistanceToAttack();
         Attack();
+    }
+
+    private void CheckDistanceToAttack()
+    {
+        isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
     }
 
     private void Attack()
     {
         if (currentAttackType == AttackTypes.Push)
         {
-            if (isPlayerInAttackZone)
+            if (isPlayerInAttackZoneToPush)
             {
                 myAnimator.SetTrigger("Push Attack");
             }
         }
-    }
 
-    private void CheckPlayer()
-    {
-        Collider2D hitColliders = Physics2D.OverlapBox(new Vector2(transform.position.x - checkForAttackPlayerZone.x / 2, transform.position.y), checkForAttackPlayerZone, 0, playerLayer);
-        if (hitColliders)
+        if (currentAttackType == AttackTypes.Earthquake)
         {
-            isPlayerInAttackZone = true;
-        }
-        else
-        {
-            isPlayerInAttackZone = false;
+            myAnimator.SetTrigger("Earthquake Attack");
         }
     }
 
     public void PushAttack()
     {
-        if(isPlayerInAttackZone)
-        {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            playerMovement.GetPunch(pushXForce, pushYForce);
+            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
             player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(damage);
-        }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = checkPlayerZoneColor;
-        Gizmos.DrawCube(new Vector2(transform.position.x - checkForAttackPlayerZone.x / 2, transform.position.y), checkForAttackPlayerZone);
-
-    }
+    
 }
