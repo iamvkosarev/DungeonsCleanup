@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private GameObject runParticlesPrefab;
+    [SerializeField] private ParticleSystem runParticals;
     [SerializeField] private float particlesDestroyDelay = 0.1f;
 
     [Header("Tumbleweed")]
@@ -258,6 +259,8 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(SuspendGroundJumps());
         }
     }
+
+
     IEnumerator SuspendGroundJumps()
     {
         areGroundJumpsSuspended = true;
