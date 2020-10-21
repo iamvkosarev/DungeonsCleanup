@@ -20,7 +20,7 @@ public class SpawExperience : MonoBehaviour
         }
         for (int i = 0; i < numOfMaxPoints; i++)
         {
-            GameObject point = Instantiate(expPrefab, transform);
+            GameObject point = Instantiate(expPrefab, transform.position, Quaternion.identity);
             point.GetComponent<Experience>().SetExpAmount(minExpInPoint+1);
         }
     }

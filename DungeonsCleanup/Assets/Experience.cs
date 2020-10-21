@@ -51,8 +51,10 @@ public class Experience : MonoBehaviour
         {
             if (playerCollider_toAddExpCheck)
             {
+                playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>().AddExp(amountOfExperience);
                 Debug.Log("Опыт достиг игрока");
                 Destroy(gameObject);
+                return;
             }
             float playerX = playerCollider_toMoveCheck.gameObject.transform.position.x;
             float playerY = playerCollider_toMoveCheck.gameObject.transform.position.y;
