@@ -13,10 +13,18 @@ public class PlayerDevelopmentManager : MonoBehaviour
     // Count Damage
     private const int START_DAMAGE = 10;
     private const int STEP_DAMAGE = 5;
+    private PlayerAttackManager attackManager;
 
     //Count HP
     private const int START_HP = 100;
     private const int STEP_HP = 10;
+    private HealthUI healthManager;
+
+    private void Start()
+    {
+        attackManager = GetComponent<PlayerAttackManager>();
+        healthManager = GetComponent<HealthUI>();
+    }
 
     public void AddExp(int exp)
     {
@@ -34,19 +42,19 @@ public class PlayerDevelopmentManager : MonoBehaviour
     private void IncreaseLevel()
     {
         lvl++;
+        SetParametersAccordingToTheLvl();
         // shoe some VFX;
     }
-
 
     #region Counters
     public int CountDamage()
     {
-        return START_DAMAGE + lvl * STEP_DAMAGE;
+        return START_DAMAGE + (lvl - 1) * STEP_DAMAGE;
     }
 
-    public int CountHP()
+    public int CountMaxHP()
     {
-        return START_HP + lvl * STEP_HP;
+        return START_HP + (lvl - 1) * STEP_HP;
     }
     #endregion
 
@@ -66,6 +74,24 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #endregion
 
     #region Setters
+
+    #region Set Parameters According ToThe Lvl
+    public void SetParametersAccordingToTheLvl()
+    {
+        SetHealth();
+        SetDamage();
+    }
+    private void SetHealth()
+    {
+        healthManager.SetMaxHealth(CountMaxHP());
+    }
+    private void SetDamage()
+    {
+        attackManager.SetDamage(CountDamage());
+    }
+    #endregion
+
+    #region Set Values
     public void SetCurrentLvl(int lvl)
     {
         this.lvl = lvl;
@@ -78,5 +104,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         this.needExp = needExp;
     }
+    #endregion
+
     #endregion
 }
