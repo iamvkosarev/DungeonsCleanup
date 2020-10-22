@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EchoEffect : MonoBehaviour
 {
+    [SerializeField] private bool work;
     [SerializeField] private float startTimeBtwSpawns = 3f;
     [SerializeField] private float destroyDelay = 0.2f;
     [SerializeField] private GameObject echo;
@@ -11,6 +12,7 @@ public class EchoEffect : MonoBehaviour
     private float timeBtwSpawns;
     private void Update()
     {
+        if (!work) { return; }
         if (timeBtwSpawns <= 0)
         {
             GameObject newClone =  Instantiate(echo, echo.transform.position, Quaternion.identity);
