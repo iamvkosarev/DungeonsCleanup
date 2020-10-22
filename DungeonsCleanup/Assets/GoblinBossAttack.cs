@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GoblinBossAttack : MonoBehaviour
@@ -7,12 +9,12 @@ public class GoblinBossAttack : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [Header("Check Player")]
-    [SerializeField] private float distanceToPush = 3f;
+    [SerializeField] private float distanceToPush = 2f;
+    [SerializeField] private float distanceToEarthquake = 5f;
     private bool isPlayerInAttackZoneToPush;
+    private bool isPlayerInAttackZoneToEarthquake;
 
     [Header("Push Attack")]
-    
-
     [SerializeField] private float minPushXForce = 800f;
     [SerializeField] private float maxPushXForce = 1200f;
     [SerializeField] private float minPushYForce = 300f;
@@ -20,10 +22,12 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private int damage = 25;
 
     [Header("Earthquake")]
-    [SerializeField] private GameObject forEarthquakeGround;
-    [SerializeField] private float groundSpeed;
+    [SerializeField] private GameObject earthquake;
+    public int numberOfGrounds = 7;
+    public float groundYPosition = -5.5f;
+    public float perionOfSpawn = 0.03f;
     private Animator myAnimator;
-    enum AttackTypes
+    private enum AttackTypes
     {
         Push,
         Earthquake
@@ -31,7 +35,7 @@ public class GoblinBossAttack : MonoBehaviour
     AttackTypes currentAttackType;
     void Start()
     {
-        currentAttackType = AttackTypes.Push;
+        currentAttackType = AttackTypes.Earthquake;
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
     }
@@ -46,6 +50,7 @@ public class GoblinBossAttack : MonoBehaviour
     private void CheckDistanceToAttack()
     {
         isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
+        isPlayerInAttackZoneToEarthquake = (Mathf.Abs(transform.position.x - player.position.x) < distanceToEarthquake);
     }
 
     private void Attack()
@@ -60,7 +65,10 @@ public class GoblinBossAttack : MonoBehaviour
 
         if (currentAttackType == AttackTypes.Earthquake)
         {
-            myAnimator.SetTrigger("Earthquake Attack");
+            if (isPlayerInAttackZoneToEarthquake)
+            {
+                myAnimator.SetTrigger("Earthquake Attack");
+            }
         }
     }
 
@@ -71,6 +79,14 @@ public class GoblinBossAttack : MonoBehaviour
             playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
             player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(damage);
     }
+
+    public void EarthquakeAttack()
+    {
+        GameObject earthquakeChild = Instantiate(earthquake, transform.position, transform.rotation);
+        earthquakeChild.transform.SetParent(gameObject.transform);
+    }
+
+    
 
     
 }
