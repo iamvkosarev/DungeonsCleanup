@@ -224,17 +224,17 @@ GameObject:
   m_Component:
   - component: {fileID: 7081787225086070599}
   - component: {fileID: 7081787225086070596}
+  - component: {fileID: 4061366651553803683}
   - component: {fileID: 7081787225086070598}
+  - component: {fileID: 2542656809900335354}
+  - component: {fileID: 4360314141667563155}
   - component: {fileID: 7081787225086070649}
   - component: {fileID: 5961501673156388416}
   - component: {fileID: 1187377112}
-  - component: {fileID: 4061366651553803683}
-  - component: {fileID: 2542656809900335354}
   - component: {fileID: 2769539842428143087}
   - component: {fileID: 3175382458436422066}
-  - component: {fileID: 2292040330820466361}
-  - component: {fileID: 1080693631}
   - component: {fileID: 1176042659}
+  - component: {fileID: 1080693631}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -279,6 +279,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4061366651553803683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7b1c015ae04ae44a422c88ac2e419d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
+  hasPlayerLowerSpecialAnimation: 1
 --- !u!50 &7081787225086070598
 Rigidbody2D:
   serializedVersion: 4
@@ -300,6 +314,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &2542656809900335354
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06322098, y: 0.3443432}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6066246, y: 1.3653173}
+  m_EdgeRadius: 0
+--- !u!114 &4360314141667563155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b67a3fe73678a24f961d34e45959b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2000
+  delayBeforeDeath: 1
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 2
+  particlesColor: {r: 0.5647059, g: 0, b: 0, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
+  healthBar: {fileID: 0}
+  playerHealthCollider: {fileID: 2542656809900335354}
+  reloadingDelay: 2
 --- !u!114 &7081787225086070649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +393,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 5440142212810733446}
   groundCheckSize: {x: 0.59, y: 0.11}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
-  checkStairsRayLength: 1.5
+  checkStairsRayLength: 0.3
   groundJumpsDelay: 0.3
   wallSlideSpeed: 0.2
   wallLayer:
@@ -368,7 +432,7 @@ MonoBehaviour:
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  numOfAttackAnimations: 1
+  numOfAttackAnimations: 2
   damage: 100
 --- !u!114 &1187377112
 MonoBehaviour:
@@ -398,46 +462,6 @@ MonoBehaviour:
   activateSomeThingButton: {fileID: 0}
   doorCheckPoint: {fileID: 6389667949260438817}
   doorCheckSize: {x: 1.5, y: 0.1}
---- !u!114 &4061366651553803683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7b1c015ae04ae44a422c88ac2e419d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
-  hasPlayerLowerSpecialAnimation: 1
---- !u!61 &2542656809900335354
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06322098, y: 0.3443432}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6066246, y: 1.3653173}
-  m_EdgeRadius: 0
 --- !u!114 &2769539842428143087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,8 +496,7 @@ MonoBehaviour:
   currentSceneNum: 0
   lvl: 1
   currentExp: 0
-  neededExp: 10
---- !u!114 &2292040330820466361
+--- !u!114 &1176042659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -482,21 +505,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7081787225086070597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d75b41926e6d9f4081cf31dc03411c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
-  delayBeforeDeath: 1
-  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
-  particlesDestroyDelay: 2
-  particlesColor: {r: 0.5660378, g: 0, b: 0, a: 1}
-  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
-  floatingPointSpeed: 5
-  maxAngleFloatingPointDirection: 20
-  floatingPointDestroyDelay: 2
-  healthBar: {fileID: 0}
-  playerHealthCollider: {fileID: 2542656809900335354}
-  reloadingDelay: 2
+  listLevelOfDevelopment: {fileID: 11400000, guid: abac91d596180fb40a223af0b82ada6a, type: 2}
+  lvl: 1
+  exp: 0
 --- !u!114 &1080693631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,21 +527,6 @@ MonoBehaviour:
   startTimeBtwSpawns: 0.1
   destroyDelay: 0.2
   echo: {fileID: 7081787225611444493}
---- !u!114 &1176042659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d75b41926e6d9f4081cf31dc03411c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lvl: 1
-  exp: 0
-  needExp: 10
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0

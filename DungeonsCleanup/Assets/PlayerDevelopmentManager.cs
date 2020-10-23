@@ -5,25 +5,19 @@ using UnityEngine;
 
 public class PlayerDevelopmentManager : MonoBehaviour
 {
+    [SerializeField] private ListLevelOfDevelopment listLevelOfDevelopment;
     [Header("Level's parameters")]
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
-    [SerializeField] private int needExp;
-
-    // Count Damage
-    private const int START_DAMAGE = 10;
-    private const int STEP_DAMAGE = 5;
+    
+    private int needExp;
     private PlayerAttackManager attackManager;
-
-    //Count HP
-    private const int START_HP = 100;
-    private const int STEP_HP = 10;
-    private HealthUI healthManager;
+    private PlayerHealth healthManager;
 
     private void Start()
     {
         attackManager = GetComponent<PlayerAttackManager>();
-        healthManager = GetComponent<HealthUI>();
+        healthManager = GetComponent<PlayerHealth>();
     }
 
     public void AddExp(int exp)
@@ -43,22 +37,33 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         lvl++;
         SetParametersAccordingToTheLvl();
+        needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         // shoe some VFX;
     }
 
     #region Counters
     public int CountDamage()
     {
-        return START_DAMAGE + (lvl - 1) * STEP_DAMAGE;
+        return listLevelOfDevelopment.GetParammeterOfLevel(lvl - 1).GetDamage();
     }
 
     public int CountMaxHP()
     {
-        return START_HP + (lvl - 1) * STEP_HP;
+        return listLevelOfDevelopment.GetParammeterOfLevel(lvl - 1).GetMaxHP();
     }
+
     #endregion
 
     #region Getters
+
+    public int GetMaxHealthAccordingLvl()
+    {
+        return CountMaxHP();
+    }
+    public int GetDamageAccordingLvl()
+    {
+        return CountDamage();
+    }
     public int GetCurrentLvl()
     {
         return lvl;
@@ -78,16 +83,23 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #region Set Parameters According ToThe Lvl
     public void SetParametersAccordingToTheLvl()
     {
+        needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         SetHealth();
         SetDamage();
     }
     private void SetHealth()
     {
-        healthManager.SetMaxHealth(CountMaxHP());
+        if (healthManager)
+        {
+            healthManager.SetMaxHealth(CountMaxHP());
+        }
     }
     private void SetDamage()
     {
-        attackManager.SetDamage(CountDamage());
+        if (attackManager)
+        { 
+            attackManager.SetDamage(CountDamage());
+        }
     }
     #endregion
 
@@ -99,10 +111,6 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public void SetCurrentExp(int exp)
     {
         this.exp = exp;
-    }
-    public void SetNeedExp(int needExp)
-    {
-        this.needExp = needExp;
     }
     #endregion
 
