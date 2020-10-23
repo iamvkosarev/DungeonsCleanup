@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gamepad Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4186234071548517220, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
 --- !u!1 &469642018 stripped
@@ -6471,10 +6475,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376158579989925707, guid: d89208649f2b89849ad095f48170fa39, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1572534833}
-    - target: {fileID: 5376158579989925707, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: gamepadUI
       value: 
       objectReference: {fileID: 469642018}
@@ -6482,6 +6482,10 @@ PrefabInstance:
       propertyPath: playerBarsUI
       value: 
       objectReference: {fileID: 518350615}
+    - target: {fileID: 5376158579989925707, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1572534833}
     - target: {fileID: 5376158579989925710, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_Name
       value: Developer Player Canvas
