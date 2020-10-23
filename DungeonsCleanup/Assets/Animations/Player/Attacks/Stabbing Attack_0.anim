@@ -101,41 +101,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.1875
-    functionName: RefreshStabbingAttackFrame
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.25
-    functionName: RefreshStabbingAttackFrame
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 1
-    messageOptions: 0
-  - time: 0.3125
-    functionName: RefreshStabbingAttackFrame
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 2
-    messageOptions: 0
-  - time: 0.375
-    functionName: RefreshStabbingAttackFrame
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 3
-    messageOptions: 0
-  - time: 0.4375
-    functionName: SetDefaultStabbingSprite
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.4375
     functionName: StartHorizontalMovement
     data: 
@@ -144,7 +109,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.4375
-    functionName: StopTumbleweed
+    functionName: AttackHasEnded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -17,7 +17,6 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] Transform doorCheckPoint;
     [SerializeField] Vector2 doorCheckSize;
 
-    GameObject weaponNotificationWindow;
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
     bool canPlayerActivateSomeThing;
@@ -34,7 +33,6 @@ public class PlayerActivationButton : MonoBehaviour
     private void ActivateSomeThing()
     {
         if (!canPlayerActivateSomeThing) { return; }
-        SwitchCurrentWeapon();
         OpenDoor();
         TransferPlayer();
         ShowTabletText();
@@ -59,23 +57,14 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void CheckPossibilityToActivateSomeThing()
     {
-        bool isPlayerTouchWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
         bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
 
-        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon || isPlayerTouchElevator || isPlayerTouchTablet);
+        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet);
     }
 
-    private void SwitchCurrentWeapon()
-    {
-        Collider2D weaponCollider = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
 
-        if (weaponCollider != null && weaponNotificationWindow == null)
-        {
-            weaponNotificationWindow = weaponCollider.GetComponent<Weapon>().ShowWeaponInfo(playerAttackManager);
-        }
-    }
 
     private void OpenDoor()
     {

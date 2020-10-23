@@ -10,15 +10,13 @@ public class SessionForm : MonoBehaviour
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject creatButton;
     [SerializeField] GameObject deleteButton;
- 
+
     [Header("Start Game Settings")]
+    [SerializeField] int playerHelth = -1;
     [SerializeField] int sceneNum;
-    [SerializeField] int maxPlayerHealth;
-    [SerializeField] int stabbingWeaponNum;
-    [SerializeField] int lvl;
-    [SerializeField] int currentExp;
-    [SerializeField] int neededExp;
-    [SerializeField] int damage;
+    [SerializeField] int lvl = 1;
+    [SerializeField] int currentExp = 1;
+    [SerializeField] int neededExp = 10;
 
 
     bool isSessionSelected;
@@ -38,7 +36,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum, lvl, currentExp, neededExp, damage);
+        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth,sceneNum, lvl, currentExp, neededExp);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
@@ -56,7 +54,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(maxPlayerHealth, stabbingWeaponNum, sceneNum, lvl, currentExp, neededExp, damage);
+        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth, sceneNum, lvl, currentExp, neededExp);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
