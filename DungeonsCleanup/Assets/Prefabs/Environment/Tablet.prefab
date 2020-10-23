@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3083563224270360989}
   - component: {fileID: 3083563224270360991}
   - component: {fileID: 562500921}
-  m_Layer: 23
+  m_Layer: 25
   m_Name: Tablet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.15}
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabletCanvas: {fileID: 3998605218734022871, guid: ed534c63ea321544ca08f4ea809c8393, type: 3}
-  headerTextFontSize: 100
-  headerText: Test Tablet Header
+  headerTextFontSize: 70
+  headerText: Break your fingers chech
   mainTextFontSize: 70
-  mainText: There is we can give our player a clear instructions about movement,
-    attakicg, ect...
+  mainText: Use your right hand's finger to controll a joystick and left hand't finger
+    to attack
