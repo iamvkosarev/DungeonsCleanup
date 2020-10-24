@@ -87,7 +87,7 @@ public class PlayerActivationButton : MonoBehaviour
     private void ShowTabletText()
     {
         Debug.Log("Tablet Text!");
-        Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer).GetComponent<Tablet>().InstansiateTabletCanvas();
+        Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer).GetComponent<Paper>().InstansiateTabletCanvas();
     }
 
     private void OnEnable()
