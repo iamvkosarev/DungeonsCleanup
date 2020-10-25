@@ -46,10 +46,10 @@ public class Health : MonoBehaviour
         {
             SpawnGetHitSFX();
             health -= damage;
-            SpawnBlood();
-            SpawnFloatingPoints(damage);
         }
 
+        SpawnBlood();
+        SpawnFloatingPoints(damage);
         CheckZeroHealth();
     }
 
