@@ -6,15 +6,15 @@ using UnityEngine;
 public class PlayerData
 {
     public int sceneNum;
-    public int maxPlayerHealth;
     public int playerHealth;
-    public int stabbingWeaponNum;
+    public int lvl;
+    public int currentExp;
 
     public PlayerData (PlayerDataManager playerDataManager)
     {
         sceneNum = playerDataManager.currentSceneNum;
-        maxPlayerHealth = playerDataManager.maxPlayerHealth;
-        playerHealth = playerDataManager.currentPlayerHealth;
-        stabbingWeaponNum = playerDataManager.currentStabbingNum;
+        playerHealth = playerDataManager.currentHealth;
+        this.lvl = playerDataManager.lvl;
+        this.currentExp = playerDataManager.currentExp;
     }
 }

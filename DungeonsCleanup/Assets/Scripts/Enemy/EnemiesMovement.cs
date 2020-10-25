@@ -5,26 +5,33 @@ using UnityEngine;
 
 public class EnemiesMovement : MonoBehaviour
 {
-    [SerializeField] LayerMask playerLayer;
-    [SerializeField] float walkSpeed;
-    [SerializeField] float runSpeed;
-    [SerializeField] LayerMask stairsLayer;
-    [SerializeField] Transform groundCheckPoint;
-    [SerializeField] Vector2 groundCheckSize;
-    [SerializeField] float slowingOnStairsParametr;
-    bool isStandingOnStairs;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float checkStairsRayLength;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private CapsuleCollider2D feetCollider;
+    [SerializeField] private Vector2 groundCheckSize;
+    [SerializeField] private Vector2 slowingOnStairsParametr;
+    private bool isStandingOnStairs;
+    private bool isStandingOnFloor;
     [Header("Slowing")]
-    [SerializeField] float timeOnSlowing;
-    float timeSinceStartedSlowing = 0f;
-    bool startToSlowing;
-    float lastVelocityOnXAxis;
+    [SerializeField] private float timeOnSlowing;
+    private float timeSinceStartedSlowing = 0f;
+    private bool startToSlowing;
+    private float lastVelocityOnXAxis;
 
     [Header("Invisible Wall Touching")]
-    [SerializeField] LayerMask invisibleWallLayer;
-    [SerializeField] Vector2 invisibleWallCheckSize;
-    [SerializeField] Transform invisibleWallCheckPoint;
-    bool isTouchingInvisibleWall;
-
+    [SerializeField] private LayerMask invisibleWallLayer;
+    [SerializeField] private Vector2 invisibleWallCheckSize;
+    [SerializeField] private Transform invisibleWallCheckPoint;
+    private bool isTouchingInvisibleWall;
+    [Header("Audio")]
+    [SerializeField] private AudioClip firstStepSFX;
+    [SerializeField] private AudioClip secondStepSFX;
+    [SerializeField] private float audioBoost;
+    AudioSource myAudioSource;
     private enum StatesOfMove
     {
         Run, Walk, Stand
@@ -44,6 +51,7 @@ public class EnemiesMovement : MonoBehaviour
 
     private void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         DetectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
@@ -59,7 +67,24 @@ public class EnemiesMovement : MonoBehaviour
 
     private void CheckTouchingGround()
     {
-        isStandingOnStairs = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, feetCollider.size.y / 2 * checkStairsRayLength, layerMask: groundLayer);
+        isStandingOnFloor = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+        if (hit && isStandingOnFloor)
+        {
+            if (hit.normal != Vector2.up)
+            {
+                isStandingOnStairs = true;
+            }
+            else
+            {
+                isStandingOnStairs = false;
+            }
+        }
+        else
+        {
+            isStandingOnStairs = false;
+        }
     }
     private void CheckTouchingInvisibleWall()
     {
@@ -138,7 +163,7 @@ public class EnemiesMovement : MonoBehaviour
     {
         if (isStandingOnStairs)
         {
-            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr, myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr.x, myRigidbody2D.velocity.y);
             if (currentStateMove == StatesOfMove.Stand)
             {
 
@@ -148,6 +173,7 @@ public class EnemiesMovement : MonoBehaviour
             }
             else
             {
+                myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y;
                 myRigidbody2D.gravityScale = 1f;
             }
         }
@@ -185,6 +211,11 @@ public class EnemiesMovement : MonoBehaviour
             Flip();
         }
     }
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
+    }
     public void StopRotating()
     {
         canRotate = false;
@@ -213,7 +244,7 @@ public class EnemiesMovement : MonoBehaviour
         myRigidbody2D.velocity = new Vector2(Math.Abs(runSpeed) * signXAxisDirection, myRigidbody2D.velocity.y);
         doWeKnowTargetDirection = false;
     }
-
+    #region Checkers
     public bool IsWalking()
     {
         return currentStateMove == StatesOfMove.Walk ? true : false;
@@ -222,10 +253,23 @@ public class EnemiesMovement : MonoBehaviour
     {
         return currentStateMove == StatesOfMove.Run ? true:false;
     }
-    private void Flip()
+    #endregion
+    #region Others
+
+    public void SpawnFirstSFX()
     {
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
+        if (firstStepSFX)
+        {
+            myAudioSource.PlayOneShot(firstStepSFX, audioBoost);
+        }
+        
+    }
+    public void SpawnSecondSFX()
+    {
+        if (secondStepSFX)
+        {
+            myAudioSource.PlayOneShot(secondStepSFX, audioBoost);
+        }
     }
     private void OnDrawGizmosSelected()
     {
@@ -234,4 +278,5 @@ public class EnemiesMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawCube(invisibleWallCheckPoint.position, invisibleWallCheckSize);
     }
+    #endregion
 }

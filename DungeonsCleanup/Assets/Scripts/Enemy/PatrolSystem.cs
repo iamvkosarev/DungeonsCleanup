@@ -24,7 +24,6 @@ public class PatrolSystem : MonoBehaviour
                 yourPointNum = patrolmanNum;
             }
             patrolmen[patrolmanNum].SetPatrolPoint(patrolPoints[yourPointNum], yourPointNum);
-            Debug.Log($"Здравствуй, {patrolmen[patrolmanNum].gameObject.name}. Номер твоей точки: {yourPointNum}");
         }
     }
     private void Update()

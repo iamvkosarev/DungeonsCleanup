@@ -6,19 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    [SerializeField] private StabbingWeaponList stabbingWeaponList;
     [SerializeField] private bool setOwnData;
-    public int maxPlayerHealth;
-    public int currentPlayerHealth;
-    public int currentStabbingNum;
-    public int currentSceneNum;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public int currentSceneNum;
+    [SerializeField] public int lvl;
+    [SerializeField] public int currentExp;
 
-    PlayerAttackManager playerAttackManager;
-    PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
+    private PlayerDevelopmentManager playerDevelopmentManager;
     private void Start()
     {
-        playerAttackManager = GetComponent<PlayerAttackManager>();
         playerHealth = GetComponent<PlayerHealth>();
+        playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         if (setOwnData)
         {
             SetData();
@@ -28,26 +27,19 @@ public class PlayerDataManager : MonoBehaviour
             SetLastSessionData();
         }
     }
-    public PlayerDataManager(int maxPlayerHealth, int currentStabbingNum, int currentSceneNum)
+    public PlayerDataManager(int currentPlayerHealth, int currentSceneNum, int lvl, int currentExp)
     {
-        this.maxPlayerHealth = maxPlayerHealth;
-        this.currentPlayerHealth = maxPlayerHealth;
-        this.currentStabbingNum = currentStabbingNum;
+        this.currentHealth = currentPlayerHealth;
         this.currentSceneNum = currentSceneNum;
-    }
-    public PlayerDataManager(int maxPlayerHealth, int currentPlayerHealth, int currentStabbingNum, int currentSceneNum)
-    {
-        this.maxPlayerHealth = maxPlayerHealth;
-        this.currentPlayerHealth = currentPlayerHealth;
-        this.currentStabbingNum = currentStabbingNum;
-        this.currentSceneNum = currentSceneNum;
+        this.lvl = lvl;
+        this.currentExp = currentExp;
     }
     public PlayerDataManager(PlayerData playerData)
     {
-        this.maxPlayerHealth = playerData.maxPlayerHealth;
-        this.currentPlayerHealth = playerData.playerHealth;
-        this.currentStabbingNum = playerData.stabbingWeaponNum;
+        this.currentHealth = playerData.playerHealth;
         this.currentSceneNum = playerData.sceneNum;
+        this.lvl = playerData.lvl;
+        this.currentExp = playerData.currentExp;
     }
     public void SetLastSessionData()
     {
@@ -75,7 +67,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.maxPlayerHealth, this.currentPlayerHealth, this.currentStabbingNum, newStartSceneNum));
+            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.currentHealth,newStartSceneNum, this.lvl, this.currentExp));
         }
     }
 
@@ -90,7 +82,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.maxPlayerHealth, this.currentPlayerHealth, this.currentStabbingNum, newStartSceneNum));
+            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.currentHealth, newStartSceneNum, this.lvl, this.currentExp));
         }
     }
 
@@ -104,10 +96,10 @@ public class PlayerDataManager : MonoBehaviour
 
     private void SetDataInCurrentClass(PlayerData playerData)
     {
-        this.maxPlayerHealth = playerData.maxPlayerHealth;
-        this.currentPlayerHealth = playerData.playerHealth;
-        this.currentStabbingNum = playerData.stabbingWeaponNum;
+        this.currentHealth = playerData.playerHealth;
         this.currentSceneNum = playerData.sceneNum;
+        this.lvl = playerData.lvl;
+        this.currentExp = playerData.currentExp;
     }
 
 
@@ -116,9 +108,17 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (!SetScene())
         {
-            SetDataInAttack();
+            SetDataInDeveloperManager();
             SetDataInHealth();
         }
+    }
+
+    private void SetDataInDeveloperManager()
+    {
+        playerDevelopmentManager.SetCurrentExp(currentExp);
+        playerDevelopmentManager.SetCurrentLvl(lvl);
+
+        playerDevelopmentManager.SetParametersAccordingToTheLvl();
     }
 
     private bool SetScene()
@@ -134,22 +134,30 @@ public class PlayerDataManager : MonoBehaviour
 
     private void SetDataInHealth()
     {
-        playerHealth.SetMaxHealth(maxPlayerHealth);
-        playerHealth.SetCurrentHealth(currentPlayerHealth);
+        if (currentHealth == -1)
+        {
+            playerHealth.SetCurrentHealth(playerHealth.GetMaxHealth());
+        }
+        else
+        {
+            playerHealth.SetCurrentHealth(currentHealth);
+        }
     }
 
-    private void SetDataInAttack()
-    {
-        playerAttackManager.currentStabbingWeapon = stabbingWeaponList.GetStabbingWeapon(currentStabbingNum);
-    }
     #endregion
 
     #region Get data from Player's scripts
     private void GetData()
     {
-        GetDataFromAttack();
         GetDataFromHealth();
+        GetDataFromDeveloperManager();
         GetDataAboutScene();
+    }
+
+    private void GetDataFromDeveloperManager()
+    {
+        currentExp = playerDevelopmentManager.GetCurrentExp();
+        lvl = playerDevelopmentManager.GetCurrentLvl();
     }
 
     private void GetDataAboutScene()
@@ -159,22 +167,8 @@ public class PlayerDataManager : MonoBehaviour
 
     private void GetDataFromHealth()
     {
-        currentPlayerHealth = playerHealth.GetHelath();
-        maxPlayerHealth = playerHealth.GetMaxHealth();
+        currentHealth = playerHealth.GetHelath();
     }
 
-    private void GetDataFromAttack()
-    {
-        StabbingWeapon lastStabbingWeapon = playerAttackManager.currentStabbingWeapon;
-        int stabbingWeaponListLenght = stabbingWeaponList.GetListLength();
-        for (int stabbingWeaponNum = 0; stabbingWeaponNum < stabbingWeaponListLenght; stabbingWeaponNum++)
-        {
-            if(stabbingWeaponList.GetStabbingWeapon(stabbingWeaponNum) == lastStabbingWeapon)
-            {
-                currentStabbingNum = stabbingWeaponNum;
-                break;
-            }
-        }
-    }
     #endregion
 }

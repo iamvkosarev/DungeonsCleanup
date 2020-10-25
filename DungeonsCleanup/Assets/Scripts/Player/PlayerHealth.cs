@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    [SerializeField] HealthBar healthBar;
-    [SerializeField] BoxCollider2D playerHealthCollider;
-    [SerializeField] float reloadingDelay = 2f;
-    bool isProtecting;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private BoxCollider2D playerHealthCollider;
+    [SerializeField] private float reloadingDelay = 2f;
+    private PlayerDevelopmentManager playerDevelopmentManager;
+    private bool isProtecting;
+
     private void Start()
     {
-        SetMaxHealth(base.health);
-        SetCurrentHealth(base.health);
+        playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
+        SetMaxHealth(playerDevelopmentManager.GetMaxHealthAccordingLvl());
     }
     public void SetMaxHealth(int maxHelath)
     {

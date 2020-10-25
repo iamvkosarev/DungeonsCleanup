@@ -91,7 +91,7 @@ public class Demon : MonoBehaviour
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
                 && Mathf.Abs(player.transform.position.y - transform.position.y) < 1)
         {
-            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(demonDamage);
+            player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(demonDamage);
 
         }
         myAnimator.SetBool("Attack", false);

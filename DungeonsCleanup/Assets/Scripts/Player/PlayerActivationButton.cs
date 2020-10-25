@@ -6,16 +6,17 @@ using UnityEngine;
 public class PlayerActivationButton : MonoBehaviour
 {
     [SerializeField] float checkRadius;
+    [Header("Layers")]
     [SerializeField] LayerMask weaponLayer;
     [SerializeField] LayerMask elevatorLayer;
+    [SerializeField] LayerMask doorLayer;
+    [SerializeField] LayerMask tabletLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     [Header("OpenDoor")]
     [SerializeField] Transform doorCheckPoint;
     [SerializeField] Vector2 doorCheckSize;
-    [SerializeField] LayerMask doorLayer;
 
-    GameObject weaponNotificationWindow;
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
     bool canPlayerActivateSomeThing;
@@ -32,9 +33,9 @@ public class PlayerActivationButton : MonoBehaviour
     private void ActivateSomeThing()
     {
         if (!canPlayerActivateSomeThing) { return; }
-        SwitchCurrentWeapon();
         OpenDoor();
         TransferPlayer();
+        ShowTabletText();
     }
     private void Update()
     {
@@ -56,22 +57,14 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void CheckPossibilityToActivateSomeThing()
     {
-        bool isPlayerTouchWeapon = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
         bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
+        bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
 
-        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchWeapon || isPlayerTouchElevator);
+        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet);
     }
 
-    private void SwitchCurrentWeapon()
-    {
-        Collider2D weaponCollider = Physics2D.OverlapCircle(transform.position, checkRadius, weaponLayer);
 
-        if (weaponCollider != null && weaponNotificationWindow == null)
-        {
-            weaponNotificationWindow = weaponCollider.GetComponent<Weapon>().ShowWeaponInfo(playerAttackManager);
-        }
-    }
 
     private void OpenDoor()
     {
@@ -89,6 +82,12 @@ public class PlayerActivationButton : MonoBehaviour
         {
             elevatorCollider.gameObject.GetComponent<Elevator>().Transfer(gameObject.transform);
         }
+    }
+
+    private void ShowTabletText()
+    {
+        Debug.Log("Tablet Text!");
+        Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer).GetComponent<Paper>().InstansiateTabletCanvas();
     }
 
     private void OnEnable()

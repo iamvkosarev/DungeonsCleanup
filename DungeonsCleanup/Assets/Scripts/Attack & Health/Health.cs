@@ -21,12 +21,21 @@ public class Health : MonoBehaviour
     [SerializeField] private float floatingPointSpeed;
     [SerializeField] private float maxAngleFloatingPointDirection;
     [SerializeField] private float floatingPointDestroyDelay = 2f;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip getHitSFX;
+    [SerializeField] private AudioClip deathSFX;
+    [SerializeField] private float audioBoost;
+    AudioSource myAudioSource;
+
     private int firstHealth;
 
     private void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         firstHealth = health;
     }
+
     public virtual void TakeAwayHelath(int damage)
     {
         if (damage >= health)
@@ -35,6 +44,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            SpawnGetHitSFX();
             health -= damage;
             SpawnBlood();
             SpawnFloatingPoints(damage);
@@ -78,6 +88,38 @@ public class Health : MonoBehaviour
     private void Death()
     {
         transform.Rotate(0, 0, -90);
+        SpawnExp();
+        SpawnDeathSFX();
         Destroy(gameObject, delayBeforeDeath);
     }
+
+    private void SpawnExp()
+    {
+        SpawExperience spawExperience = GetComponent<SpawExperience>();
+        if (spawExperience)
+        {
+            spawExperience.SpawnExp();
+        }
+    }
+
+    #region SFX
+    private void SpawnGetHitSFX()
+    {
+        if (getHitSFX)
+        {
+            myAudioSource.PlayOneShot(getHitSFX, audioBoost);
+        }
+    }
+    private void SpawnDeathSFX()
+    {
+        if (deathSFX)
+        {
+            GameObject deathGO = new GameObject();
+            deathGO.transform.position = transform.position;
+            AudioSource deathAudioSource = deathGO.AddComponent<AudioSource>();
+            deathAudioSource.PlayOneShot(deathSFX, audioBoost);
+            Destroy(deathGO, deathSFX.length);
+        }
+    }
+    #endregion
 }

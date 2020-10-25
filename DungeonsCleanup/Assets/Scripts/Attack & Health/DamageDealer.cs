@@ -35,7 +35,7 @@ public class DamageDealer : MonoBehaviour
         }
         else { return; }
         Health attackedObjectsHealthScripts = touchedObject.GetComponent<Health>();
-        PlayerHealth attackedObjectsPlayerHealthScripts = touchedObject.GetComponent<PlayerHealth>();
+        HealthUI attackedObjectsPlayerHealthScripts = touchedObject.GetComponent<HealthUI>();
         if (attackedObjectsHealthScripts != null)
         {
             attackedObjectsHealthScripts.TakeAwayHelath(damage);
