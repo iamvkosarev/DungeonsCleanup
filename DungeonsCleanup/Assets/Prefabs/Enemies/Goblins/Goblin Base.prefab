@@ -512,12 +512,14 @@ MonoBehaviour:
     m_Bits: 256
   walkSpeed: 4
   runSpeed: 6
-  stairsLayer:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 512
+  checkStairsRayLength: 1.3
   groundCheckPoint: {fileID: 1743894881820148256}
-  groundCheckSize: {x: 0.39, y: 0.11}
-  slowingOnStairsParametr: 1
+  feetCollider: {fileID: 4589570954328271067}
+  groundCheckSize: {x: 0.5, y: 0.3}
+  slowingOnStairsParametr: {x: 1.1, y: 0.8}
   timeOnSlowing: 0.2
   invisibleWallLayer:
     serializedVersion: 2
@@ -694,7 +696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5794123826910331035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009999709, y: -0.63899994, z: 0}
+  m_LocalPosition: {x: -0.009999709, y: -0.561, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4268006042674321304}

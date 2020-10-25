@@ -361,6 +361,9 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
+  getHitSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  audioBoost: 0
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 2542656809900335354}
   reloadingDelay: 2
@@ -391,18 +394,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   groundCheckPoint: {fileID: 5440142212810733446}
-  groundCheckSize: {x: 0.59, y: 0.11}
+  groundCheckSize: {x: 0.57, y: 0.34}
+  groundCheckColor: {r: 0.8490566, g: 0, b: 0, a: 0.5411765}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
-  checkStairsRayLength: 0.3
+  checkStairsRayLength: 1.5
   groundJumpsDelay: 0.3
   wallSlideSpeed: 0.2
   wallLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 512
   wallCheckPoint: {fileID: 4780771758210633572}
   wallCheckSize: {x: 0.11, y: 0.96}
   wallJumpForce: 8
-  wallJumpDirection: 1
+  wallJumpDirection: -1
   wallJumpAngle: {x: 1, y: 1.3}
   wallJumpsDelay: 0.3
   bodyChild: {fileID: 7081787225611444493}
@@ -479,6 +483,8 @@ MonoBehaviour:
   setDamage: 1
   damage: 0
   changeDirectionOfWaveInOpposite: 1
+  attackSFX: {fileID: 0}
+  audioBoost: 0
 --- !u!114 &3175382458436422066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8668672551814026816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.051, y: -0.90079975, z: 0}
+  m_LocalPosition: {x: 0.051, y: -0.792, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}

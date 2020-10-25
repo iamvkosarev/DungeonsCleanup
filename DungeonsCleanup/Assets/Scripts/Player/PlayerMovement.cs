@@ -35,9 +35,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask stairsLayer;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Vector2 groundCheckSize;
+    [SerializeField] private Color groundCheckColor;
     [SerializeField] private GameObject hazePrefab;
     [SerializeField] private float checkStairsRayLength;
     [SerializeField] private float groundJumpsDelay;
+    private bool isStandingOnFloor;
     private bool isStandingOnGround;
     private bool isStandingOnStairs;
     private bool canJump;
@@ -154,13 +156,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTouching()
     {
-        isStandingOnGround = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
-        isStandingOnStairs = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, stairsLayer);
+        isStandingOnFloor = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, feetCollider.size.y / 2 * checkStairsRayLength, layerMask: groundLayer);
+
+        if (hit && isStandingOnFloor)
+        {
+            if (hit.normal != Vector2.up)
+            {
+                isStandingOnStairs = true;
+                isStandingOnGround = false;
+            }
+            else
+            {
+                isStandingOnGround = true;
+                isStandingOnStairs = false;
+            }
+        }
+        else
+        {
+            isStandingOnGround = false;
+            isStandingOnStairs = false;
+        }
         isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
     }
     public bool IsPlyerStanding()
     {
-        return isStandingOnGround || isStandingOnStairs;
+        return isStandingOnFloor;
     }
     #endregion
 
@@ -230,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
     #region Wall Slide
     private void WallSlide()
     {
-        if (isTouchingWall && !(isStandingOnGround || isStandingOnStairs) && myRigidbody2D.velocity.y < 0f)
+        if (isTouchingWall && !isStandingOnFloor && myRigidbody2D.velocity.y < 0f)
         {
             isWallSliding = true;
         }
@@ -251,7 +273,7 @@ public class PlayerMovement : MonoBehaviour
     #region Ground Jump
     private void Jump()
     {
-        if (canJump && (isStandingOnGround || isStandingOnStairs) && !areGroundJumpsSuspended)
+        if (canJump && isStandingOnFloor && !areGroundJumpsSuspended)
         {
             SpawnHaze();
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, jumpForce);
@@ -295,7 +317,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wasJumpRecently = true;
         }
-        else if (isStandingOnGround)
+        else if (isStandingOnFloor)
         {
             wasJumpRecently = false;
         }
@@ -493,7 +515,7 @@ public class PlayerMovement : MonoBehaviour
         {
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x / slowingOnStairsParametr.x, myRigidbody2D.velocity.y);
             //myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y * Time.deltaTime; // 50
-            myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y;
+            
             if ((myRigidbody2D.velocity.x == 0f || joystickXAxis == 0) && !areGroundJumpsSuspended)
             {
 
@@ -503,6 +525,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                myRigidbody2D.velocity += Vector2.down * slowingOnStairsParametr.y;
                 myRigidbody2D.gravityScale = 1f;
             }
         }
@@ -553,7 +576,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject haze = Instantiate(hazePrefab, transform.position + hazePrefab.transform.position, Quaternion.identity);
         Haze hazeScript = haze.GetComponent<Haze>();
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, feetCollider.size.y / 2 * checkStairsRayLength, layerMask: stairsLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, feetCollider.size.y / 2 * checkStairsRayLength, layerMask: groundLayer);
 
         if (hit)
         {            
@@ -571,7 +594,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = groundCheckColor;
         Gizmos.DrawCube(groundCheckPoint.position, groundCheckSize);
 
         Gizmos.color = Color.yellow;
