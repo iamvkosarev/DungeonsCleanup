@@ -463,10 +463,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  healthCollider: {fileID: 7913969820019337519}
+  feetCoolider: {fileID: 4589570954328271067}
+  deathAnimationsNum: 2
+  timeBefroGoingUnderGround: 3
+  speedOnGoingUnderGround: 0.6
+  timeBeforeDestroyAfterGoingUnderGround: 3
   delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
-  particlesColor: {r: 0.107653946, g: 0.509434, b: 0.15085606, a: 1}
+  particlesColor: {r: 0.6698113, g: 0.046760388, b: 0.10146962, a: 1}
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
@@ -612,7 +618,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -974317227
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -5460900656241176131, guid: ad75f98be63c06b47b4f691d4718c3d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
