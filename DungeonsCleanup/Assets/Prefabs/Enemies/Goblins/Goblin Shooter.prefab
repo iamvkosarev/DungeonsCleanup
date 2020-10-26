@@ -352,6 +352,9 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
+  getHitSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  audioBoost: 0
 --- !u!114 &1946901898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,18 +393,23 @@ MonoBehaviour:
     m_Bits: 256
   walkSpeed: 3
   runSpeed: 5
-  stairsLayer:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 512
+  checkStairsRayLength: 1.3
   groundCheckPoint: {fileID: 6229648096336119979}
-  groundCheckSize: {x: 0.4, y: 0.12}
-  slowingOnStairsParametr: 1.2
-  timeOnSlowing: 0.05
+  feetCollider: {fileID: 2280272574141709357}
+  groundCheckSize: {x: 0.5, y: 0.3}
+  slowingOnStairsParametr: {x: 1.1, y: 0.8}
+  timeOnSlowing: 0.2
   invisibleWallLayer:
     serializedVersion: 2
     m_Bits: 16777216
-  invisibleWallCheckSize: {x: 0.87, y: 0.12}
+  invisibleWallCheckSize: {x: 0.72, y: 0.11}
   invisibleWallCheckPoint: {fileID: 3548378142020817165}
+  firstStepSFX: {fileID: 8300000, guid: 8b927dc974d470043b6bbd857dd2cae9, type: 3}
+  secondStepSFX: {fileID: 8300000, guid: 5ec0b9976a961fc49855fa2e6cc6d369, type: 3}
+  audioBoost: 1.4
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0

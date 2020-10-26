@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tablet : MonoBehaviour
+public class Paper : MonoBehaviour
 {
-    [SerializeField] GameObject tabletCanvas;
+    [SerializeField] GameObject paperCanvas;
     [Header("Header Text")]
     [SerializeField] private int headerTextFontSize;
     [TextArea] [SerializeField] private string headerText;
@@ -26,10 +26,11 @@ public class Tablet : MonoBehaviour
 
     public void InstansiateTabletCanvas()
     {
-        GameObject canvas = Instantiate(tabletCanvas);
-        SetText(canvas, headerTextName, headerText, headerTextFontSize);
-        SetText(canvas, mainTextName, mainText, mainTextFontSize);
-        canvas.GetComponent<Animator>().SetBool("Show Tablet", true);
+        GameObject canvas = Instantiate(paperCanvas);
+        PaperCanvas paperCanvasScripts = canvas.GetComponent<PaperCanvas>();
+        paperCanvasScripts.SetHeaderText(headerText, headerTextFontSize);
+        paperCanvasScripts.SetMainText(mainText, mainTextFontSize);
+        canvas.GetComponent<Animator>().SetBool("Show Paper", true);
     }
 
 

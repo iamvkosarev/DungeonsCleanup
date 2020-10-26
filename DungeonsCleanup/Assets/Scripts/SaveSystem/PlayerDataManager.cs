@@ -11,13 +11,12 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] public int currentSceneNum;
     [SerializeField] public int lvl;
     [SerializeField] public int currentExp;
-    [SerializeField] public int neededExp;
 
-    private HealthUI playerHealth;
+    private PlayerHealth playerHealth;
     private PlayerDevelopmentManager playerDevelopmentManager;
     private void Start()
     {
-        playerHealth = GetComponent<HealthUI>();
+        playerHealth = GetComponent<PlayerHealth>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         if (setOwnData)
         {
@@ -28,21 +27,12 @@ public class PlayerDataManager : MonoBehaviour
             SetLastSessionData();
         }
     }
-    public PlayerDataManager(int currentPlayerHealth, int currentSceneNum, int lvl, int currentExp, int neededExp)
+    public PlayerDataManager(int currentPlayerHealth, int currentSceneNum, int lvl, int currentExp)
     {
         this.currentHealth = currentPlayerHealth;
         this.currentSceneNum = currentSceneNum;
         this.lvl = lvl;
         this.currentExp = currentExp;
-        this.neededExp = neededExp;
-    }
-    public PlayerDataManager(int currentPlayerHealth, int currentStabbingNum, int currentSceneNum, int lvl, int currentExp, int neededExp)
-    {
-        this.currentHealth = currentPlayerHealth;
-        this.currentSceneNum = currentSceneNum;
-        this.lvl = lvl;
-        this.currentExp = currentExp;
-        this.neededExp = neededExp;
     }
     public PlayerDataManager(PlayerData playerData)
     {
@@ -50,7 +40,6 @@ public class PlayerDataManager : MonoBehaviour
         this.currentSceneNum = playerData.sceneNum;
         this.lvl = playerData.lvl;
         this.currentExp = playerData.currentExp;
-        this.neededExp = playerData.neededExp;
     }
     public void SetLastSessionData()
     {
@@ -78,7 +67,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.currentHealth,newStartSceneNum, this.lvl, this.currentExp, this.neededExp));
+            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.currentHealth,newStartSceneNum, this.lvl, this.currentExp));
         }
     }
 
@@ -93,7 +82,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.currentHealth, newStartSceneNum, this.lvl, this.currentExp, this.neededExp));
+            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.currentHealth, newStartSceneNum, this.lvl, this.currentExp));
         }
     }
 
@@ -111,7 +100,6 @@ public class PlayerDataManager : MonoBehaviour
         this.currentSceneNum = playerData.sceneNum;
         this.lvl = playerData.lvl;
         this.currentExp = playerData.currentExp;
-        this.neededExp = playerData.neededExp;
     }
 
 
@@ -129,7 +117,6 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerDevelopmentManager.SetCurrentExp(currentExp);
         playerDevelopmentManager.SetCurrentLvl(lvl);
-        playerDevelopmentManager.SetNeedExp(neededExp);
 
         playerDevelopmentManager.SetParametersAccordingToTheLvl();
     }
@@ -137,7 +124,7 @@ public class PlayerDataManager : MonoBehaviour
     private bool SetScene()
     {
         int openedScene = SceneManager.GetActiveScene().buildIndex;
-        if (!GetComponent<HealthUI>().IsPlayerDead())
+        if (!GetComponent<PlayerHealth>().IsPlayerDead())
         {
             return false;
         }
@@ -171,7 +158,6 @@ public class PlayerDataManager : MonoBehaviour
     {
         currentExp = playerDevelopmentManager.GetCurrentExp();
         lvl = playerDevelopmentManager.GetCurrentLvl();
-        neededExp = playerDevelopmentManager.GetNeedExp();
     }
 
     private void GetDataAboutScene()

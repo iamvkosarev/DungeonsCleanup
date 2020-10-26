@@ -9,7 +9,6 @@ public class PlayerData
     public int playerHealth;
     public int lvl;
     public int currentExp;
-    public int neededExp;
 
     public PlayerData (PlayerDataManager playerDataManager)
     {
@@ -17,6 +16,5 @@ public class PlayerData
         playerHealth = playerDataManager.currentHealth;
         this.lvl = playerDataManager.lvl;
         this.currentExp = playerDataManager.currentExp;
-        this.neededExp = playerDataManager.neededExp;
     }
 }

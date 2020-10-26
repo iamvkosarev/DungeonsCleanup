@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    [SerializeField] LayerMask enemiesLayer;
-    [SerializeField] int numOfAttackAnimations = 1;
-    [SerializeField] int damage = 100;
-    SpawnerOfAttackingWave mySpawnerOfAttackingWave;
-    int currentAttackNum;
-    bool isAnimationContinue;
-    PlayerMovement playerMovement;
-    Animator myAnimator;
+    [SerializeField] private LayerMask enemiesLayer;
+    [SerializeField] private int numOfAttackAnimations = 1;
+    [SerializeField] private int damage = 100;
+    private SpawnerOfAttackingWave mySpawnerOfAttackingWave;
+    private int currentAttackNum;
+    private bool isAnimationContinue;
+    private PlayerMovement playerMovement;
+    private Animator myAnimator;
+    private PlayerDevelopmentManager playerDevelopmentManager;
 
     private void Start()
     {
+        playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         mySpawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         playerMovement = GetComponent<PlayerMovement>();
         myAnimator = GetComponent<Animator>();
+        SetDamage(playerDevelopmentManager.GetDamageAccordingLvl());
     }
     private void Update()
     {
