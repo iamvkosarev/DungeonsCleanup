@@ -28,4 +28,9 @@ public class Earthquake : MonoBehaviour
 
         goblinBoss.numberOfGrounds = startNumberOfGrounds;
     }
+
+    private void OnDestroy()
+    {
+        goblinBoss.GetComponent<GoblinBossMovement>().shouldGoToPlayer = true;
+    }
 }

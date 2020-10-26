@@ -7,6 +7,8 @@ public class GoblinBossAttack : MonoBehaviour
 {
     [SerializeField] private Transform player;
     private PlayerMovement playerMovement;
+    private GoblinBossMovement movement;
+    [SerializeField] float frequencyOfSpecialAttack = 10f;
 
     [Header("Check Player")]
     [SerializeField] private float distanceToPush = 2f;
@@ -33,15 +35,19 @@ public class GoblinBossAttack : MonoBehaviour
     private Animator myAnimator;
     private enum AttackTypes
     {
+        Simple,
         Push,
         Earthquake
     }
-    AttackTypes currentAttackType;
-    void Start()
+    [SerializeField] AttackTypes currentAttackType;
+
+    private void Start()
     {
-        currentAttackType = AttackTypes.Earthquake;
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
+        movement = GetComponent<GoblinBossMovement>();
+        
+        StartCoroutine(SetSpecialAttack());
     }
 
     // Update is called once per frame
@@ -59,11 +65,17 @@ public class GoblinBossAttack : MonoBehaviour
 
     private void Attack()
     {
+        if (currentAttackType == AttackTypes.Simple)
+        {
+
+        }
         if (currentAttackType == AttackTypes.Push)
         {
             if (isPlayerInAttackZoneToPush)
             {
+                movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Push Attack");
+                currentAttackType = AttackTypes.Simple;
             }
         }
 
@@ -71,17 +83,24 @@ public class GoblinBossAttack : MonoBehaviour
         {
             if (isPlayerInAttackZoneToEarthquake)
             {
+                movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Earthquake Attack");
+                currentAttackType = AttackTypes.Simple;
             }
         }
     }
 
     public void PushAttack()
     {
+        if (isPlayerInAttackZoneToPush)
+        {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
             playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
-            player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(pushDamage);
+            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
+            
+        }
+        movement.shouldGoToPlayer = true;
     }
 
     public void EarthquakeAttack()
@@ -90,6 +109,20 @@ public class GoblinBossAttack : MonoBehaviour
         earthquakeChild.transform.SetParent(gameObject.transform);
         Destroy(earthquakeChild, timeForDestroy);
     }
+    
+    private IEnumerator SetSpecialAttack()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(frequencyOfSpecialAttack);
+            int number = UnityEngine.Random.Range(1, Enum.GetNames(typeof(AttackTypes)).Length);
+            currentAttackType = (AttackTypes)number;
+            Debug.Log(currentAttackType);
+
+        }
+    }
+
+
 
     
 
