@@ -19,13 +19,17 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private float maxPushXForce = 1200f;
     [SerializeField] private float minPushYForce = 300f;
     [SerializeField] private float maxPushYForce = 500f;
-    [SerializeField] private int damage = 25;
+    [SerializeField] private int pushDamage = 25;
 
     [Header("Earthquake")]
     [SerializeField] private GameObject earthquake;
     public int numberOfGrounds = 7;
     public float groundYPosition = -5.5f;
     public float perionOfSpawn = 0.03f;
+    public float timeForDestroy = 2f;
+    public int earthquakeDamage = 100;
+    public float pushXForceForEarth = 0;
+    public float pushYForceForEarth = 100f;
     private Animator myAnimator;
     private enum AttackTypes
     {
@@ -77,13 +81,14 @@ public class GoblinBossAttack : MonoBehaviour
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
             playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
-            player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(damage);
+            player.gameObject.GetComponent<HealthUI>().TakeAwayHelath(pushDamage);
     }
 
     public void EarthquakeAttack()
     {
         GameObject earthquakeChild = Instantiate(earthquake, transform.position, transform.rotation);
         earthquakeChild.transform.SetParent(gameObject.transform);
+        Destroy(earthquakeChild, timeForDestroy);
     }
 
     
