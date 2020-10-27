@@ -30,7 +30,6 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         playerMovementScript = GetComponent<PlayerMovement>();
-        playerActionControls = playerMovementScript.GetActionControls();
         myRigitBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
@@ -75,7 +74,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void CheckJoystickPos()
     {
-        Vector2 joystickVector = playerActionControls.Land.Move.ReadValue<Vector2>();
+        Vector2 joystickVector = playerMovementScript.GetMovementParameters();
         float joystickXAxis = joystickVector.x;
         float joystickYAxis = joystickVector.y;
         float joystickXAxisAbs = Mathf.Abs(joystickXAxis);
