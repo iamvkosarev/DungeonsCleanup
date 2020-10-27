@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 399620425}
+    - target: {fileID: 1514099537, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186234070042386596, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: m_MovementRange
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -232,6 +240,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+--- !u!1 &8370729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1514099537, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+  m_PrefabInstance: {fileID: 8370728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8370730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4186234070351334817, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+  m_PrefabInstance: {fileID: 8370728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85628209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
@@ -23938,15 +23956,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5376158579989925706, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24893,6 +24911,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 8370730}
+    - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: movementButtons
+      value: 
+      objectReference: {fileID: 8370729}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
 --- !u!4 &1763410855 stripped

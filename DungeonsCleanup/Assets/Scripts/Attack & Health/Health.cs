@@ -135,7 +135,7 @@ public class Health : MonoBehaviour
         SwitchOffFeetCollider();
         myRB.bodyType = RigidbodyType2D.Kinematic;
         myRB.velocity = new Vector2(0, 0);
-        int randomNumOfAnimation = UnityEngine.Random.Range(1, deathAnimationsNum);
+        int randomNumOfAnimation = UnityEngine.Random.Range(1, deathAnimationsNum+1);
         animator.Play($"Death_{randomNumOfAnimation}");
     }
 
