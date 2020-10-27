@@ -9,6 +9,12 @@ public class Health : MonoBehaviour
     
     [Header("Health && Death")]
     public int health;
+    public BoxCollider2D healthCollider;
+    public Collider2D feetCoolider;
+    public int deathAnimationsNum = 0;
+    public float timeBefroGoingUnderGround = 3f;
+    public float speedOnGoingUnderGround = 0.6f;
+    public float timeBeforeDestroyAfterGoingUnderGround = 3f;
     public float delayBeforeDeath;
     
     [Header("Damage Particles")]
@@ -29,11 +35,15 @@ public class Health : MonoBehaviour
     AudioSource myAudioSource;
 
     private int firstHealth;
+    private Rigidbody2D myRB;
+    Animator animator;
 
     private void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
+        myRB = GetComponent<Rigidbody2D>();
         firstHealth = health;
+        animator = GetComponent<Animator>();
     }
 
     public virtual void TakeAwayHelath(int damage)
@@ -85,12 +95,48 @@ public class Health : MonoBehaviour
         return health;
     }
 
+    public void SetVisibilityOfEnemies(bool mode)
+    {
+        healthCollider.enabled = mode;
+    }
     private void Death()
     {
-        transform.Rotate(0, 0, -90);
         SpawnExp();
         SpawnDeathSFX();
-        Destroy(gameObject, delayBeforeDeath);
+        DeathAnimaton();
+    }
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
+    public void StartGoingUnderGround()
+    {
+        StartCoroutine(GoingUnderGround());
+    }
+    IEnumerator GoingUnderGround()
+    {
+        yield return new WaitForSeconds(timeBefroGoingUnderGround);
+        myRB.velocity = Vector2.down * speedOnGoingUnderGround;
+        yield return new WaitForSeconds(timeBeforeDestroyAfterGoingUnderGround);
+        Destroy();
+    }
+    public void SwitchOffFeetCollider()
+    {
+        feetCoolider.enabled = false;
+    }
+    private void DeathAnimaton()
+    {
+        if (deathAnimationsNum == 0)
+        {
+            Destroy(gameObject, delayBeforeDeath);
+            return;
+        }
+        SetVisibilityOfEnemies(false);
+        SwitchOffFeetCollider();
+        myRB.bodyType = RigidbodyType2D.Kinematic;
+        myRB.velocity = new Vector2(0, 0);
+        int randomNumOfAnimation = UnityEngine.Random.Range(1, deathAnimationsNum);
+        animator.Play($"Death_{randomNumOfAnimation}");
     }
 
     private void SpawnExp()
