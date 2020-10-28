@@ -5,75 +5,93 @@ using UnityEngine;
 
 public class HatchManagment : MonoBehaviour
 {
-    [SerializeField] float changeHatchRotateLimit = 0.3f;
-    [SerializeField] float timeOnWait = 1f;
-    PlayerActionControls playerActionControls;
-    PlatformEffector2D myPlatformEffector2D;
-    float waitTime;
-    bool isButtonPressed;
-    private void Awake()
+    [SerializeField] private float timeOnWait = 1f;
+    [SerializeField] private float playerOperatingThreshold;
+    [SerializeField] private Transform checkPlayerPoint;
+    [SerializeField] private Vector2 checkPlayerSize;
+    [SerializeField] private Vector2 checkPlayerInWitchSideSize;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private Color checkPlayerColor;
+    [SerializeField] private Color checkPlayerInWitchSideColor;
+    [SerializeField] private GameObject openBody;
+    [SerializeField] private GameObject closeBody;
+    private PlatformEffector2D myPlatformEffector2D;
+    private PlayerMovement playerMovement;
+
+    private void Start()
     {
-        playerActionControls = new PlayerActionControls();
         myPlatformEffector2D = GetComponent<PlatformEffector2D>();
-        playerActionControls.Land.Move.started += _=> isButtonPressed = true;
-        playerActionControls.Land.Move.canceled += _ => isButtonPressed = false;
+        CloseBody();
+        
     }
 
-    private bool IsJoystickYAxisLowerButtonLevel()
+    private void Update()
     {
-        float joystickYAxis = playerActionControls.Land.Move.ReadValue<Vector2>().y;
-        if (joystickYAxis <= -changeHatchRotateLimit)
-        {
-            return true;
-        }
-        return false;
+        CheckPlayer();
+    }
 
-    }
-    private bool IsJoystickYAxisBiggerTopLevel()
+    private void CheckPlayer()
     {
-        float joystickYAxis = playerActionControls.Land.Move.ReadValue<Vector2>().y;
-        if (joystickYAxis >= changeHatchRotateLimit)
+        Collider2D playerCollider = Physics2D.OverlapBox(checkPlayerPoint.position, checkPlayerSize, 0, playerLayer);
+        if (playerCollider != null)
         {
-            return true;
-        }
-        return false;
-
-    }
-    void Update()
-    {
-        CheckHatchRotate();
-    }
-    private void CheckHatchRotate()
-    {
-        if (!isButtonPressed)
-        {
-            if (waitTime <= 0)
+            Debug.Log(playerCollider.gameObject.name);
+            if (playerMovement == null)
             {
-                myPlatformEffector2D.rotationalOffset = 0f;
-                waitTime = timeOnWait;
+                Debug.Log("Player Movement detected");
+                playerMovement = playerCollider.GetComponent<PlayerMovement>();
+                Debug.Log(playerMovement.GetMovementParameters());
             }
             else
             {
-                waitTime -= Time.deltaTime;
+                Vector2 playerMovementManagerValues = playerMovement.GetMovementParameters();
+                if (playerMovementManagerValues.y <= -playerOperatingThreshold && IsPlayerHigher())
+                {
+                    OpenBody();
+                }
+                else
+                {
+                    CloseBody();
+                }
             }
         }
-        if (isButtonPressed && IsJoystickYAxisLowerButtonLevel())
+        else
         {
-            myPlatformEffector2D.rotationalOffset = 180f;
+            if (playerMovement != null)
+            {
+                playerMovement = null;
+            }
+            CloseBody();
         }
-        if (IsJoystickYAxisBiggerTopLevel()  && isButtonPressed)
+    }
+    private void OpenBody()
+    {
+        openBody.SetActive(true);
+        closeBody.SetActive(false);
+        myPlatformEffector2D.rotationalOffset = 180f;
+    }
+    private void CloseBody()
+    {
+        openBody.SetActive(false);
+        closeBody.SetActive(true);
+        myPlatformEffector2D.rotationalOffset = 0f;
+    }
+    private bool IsPlayerHigher()
+    {
+        Collider2D playerCollider = Physics2D.OverlapBox(new Vector2(checkPlayerPoint.position.x, checkPlayerPoint.position.y + checkPlayerSize.y / 2f - checkPlayerInWitchSideSize.y / 2f), checkPlayerInWitchSideSize, 0, playerLayer);
+        if (playerCollider != null)
         {
-            myPlatformEffector2D.rotationalOffset = 0f;
+            return true;
         }
+        return false;
     }
-
-    private void OnEnable()
+    private void OnDrawGizmosSelected()
     {
-        playerActionControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerActionControls.Disable();
-    }
+        Gizmos.color = checkPlayerColor;
+        Gizmos.DrawCube(checkPlayerPoint.position, checkPlayerSize);
 
+        Gizmos.color = checkPlayerInWitchSideColor;
+        Gizmos.DrawCube(new Vector2(checkPlayerPoint.position.x, checkPlayerPoint.position.y + checkPlayerSize.y/2f - checkPlayerInWitchSideSize.y/2f), checkPlayerInWitchSideSize);
+    }
+    
 }
