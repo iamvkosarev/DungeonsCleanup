@@ -101,7 +101,6 @@ public class Health : MonoBehaviour
     }
     private void Death()
     {
-        SpawnExp();
         SpawnDeathSFX();
         DeathAnimaton();
     }
@@ -111,6 +110,7 @@ public class Health : MonoBehaviour
     }
     public void StartGoingUnderGround()
     {
+        SpawnExp();
         StartCoroutine(GoingUnderGround());
     }
     IEnumerator GoingUnderGround()
