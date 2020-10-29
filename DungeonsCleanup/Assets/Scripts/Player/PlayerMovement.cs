@@ -6,8 +6,13 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    
+    [SerializeField] private GameObject joystick;
+    [SerializeField] private GameObject movementButtons;
+    private bool useJoystick;
+    private MovementButtonsManager movementButtonsManager;
     [SerializeField] private MovingJoystickProperties movingJoystickProperties;
+    private MovementGamepad movementGamepad;
 
     [Header("For Horizontal Movement")]
     [SerializeField] private float runSpeed;
@@ -119,7 +124,21 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myHealth = GetComponent<PlayerHealth>();
+        movementButtonsManager = movementButtons.GetComponent<MovementButtonsManager>();
         myAttackManager = GetComponent<PlayerAttackManager>();
+        useJoystick = SaveSystem.LoadSettings().useJoystick;
+        if (useJoystick)
+        {
+            movementGamepad = joystick.GetComponent<MovementGamepad>();
+        }
+        else
+        {
+            movementGamepad = movementButtons.GetComponent<MovementGamepad>();
+        }
+        SettingsData settingsData = SaveSystem.LoadSettings();
+        movementGamepad.SetNewAlphaChannel(settingsData.alphaChannelParam);
+        movementGamepad.SetNewPos(settingsData.posXParam, settingsData.posYParam);
+        movementGamepad.SetNewScale(settingsData.scaleParam);
     }
     void Update()
     {
@@ -146,9 +165,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        Vector2 joystickVector = playerActionControls.Land.Move.ReadValue<Vector2>();
-        joystickXAxis = joystickVector.x;
-        joystickYAxis = joystickVector.y;
+        Vector2 movementParameters;
+        if (useJoystick)
+        {
+            movementParameters = playerActionControls.Land.Move.ReadValue<Vector2>();
+        }
+        else
+        {
+            movementParameters = movementButtonsManager.GetResult();
+        }
+        joystick.SetActive(useJoystick);
+        movementButtons.SetActive(!useJoystick);
+
+        joystickXAxis = movementParameters.x;
+        joystickYAxis = movementParameters.y;
         canJump = (joystickYAxis >= movingJoystickProperties.GetJumpLimit()) ? true : false;
     }
 
@@ -295,6 +325,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
         {
+
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
             float playerDirection = Mathf.Sign(transform.rotation.y);
             StartCoroutine(SuspendHorizontalMoving());
@@ -552,9 +583,9 @@ public class PlayerMovement : MonoBehaviour
         Destroy(bodyChild.GetComponent<PolygonCollider2D>());
         bodyChild.AddComponent<PolygonCollider2D>();
     }
-    public PlayerActionControls GetActionControls()
+    public Vector2 GetMovementParameters()
     {
-        return playerActionControls;
+        return new Vector2(joystickXAxis, joystickYAxis);
     }
     public void SpawnRunParticlesVFX(int isDirectionInSameSide)
     {

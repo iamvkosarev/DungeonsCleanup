@@ -37,6 +37,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         lvl++;
         SetParametersAccordingToTheLvl();
+        healthManager.SetCurrentHealth(healthManager.GetMaxHealth());
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         // shoe some VFX;
     }

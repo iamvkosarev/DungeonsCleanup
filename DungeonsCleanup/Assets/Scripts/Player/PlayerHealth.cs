@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     [SerializeField] private HealthBar healthBar;
-    [SerializeField] private BoxCollider2D playerHealthCollider;
     [SerializeField] private float reloadingDelay = 2f;
     private PlayerDevelopmentManager playerDevelopmentManager;
     private bool isProtecting;
@@ -18,10 +17,6 @@ public class PlayerHealth : Health
     public void SetMaxHealth(int maxHelath)
     {
         healthBar.SetMaxHealth(maxHelath);
-    }
-    public void SetVisibilityOfEnemies(bool mode)
-    {
-        playerHealthCollider.enabled = mode;
     }
     public void SetCurrentHealth(int health)
     {

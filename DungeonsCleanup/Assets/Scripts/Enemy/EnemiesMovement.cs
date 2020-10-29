@@ -40,6 +40,7 @@ public class EnemiesMovement : MonoBehaviour
 
     Vector2 currentTarget;
     Rigidbody2D myRigidbody2D;
+    Health myHealth;
     Animator myAnimator;
     DetectorEnemiesInAttackZone DetectorEnemiesInAttackZone;
     Patrolman patrolman;
@@ -53,6 +54,7 @@ public class EnemiesMovement : MonoBehaviour
     {
         myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        myHealth = GetComponent<Health>();
         myAnimator = GetComponent<Animator>();
         DetectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         patrolman = GetComponent<Patrolman>();
@@ -62,8 +64,17 @@ public class EnemiesMovement : MonoBehaviour
         CheckTargetType();
         CheckTouchingGround();
         CheckTouchingInvisibleWall();
+        CheckZeroHealth();
     }
 
+    private void CheckZeroHealth()
+    {
+        if (myHealth.GetHealth() == 0)
+        {
+            StopRotating();
+            StopMoving();
+        }
+    }
 
     private void CheckTouchingGround()
     {

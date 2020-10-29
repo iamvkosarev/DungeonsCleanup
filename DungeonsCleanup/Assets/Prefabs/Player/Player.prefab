@@ -353,6 +353,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2000
+  healthCollider: {fileID: 2542656809900335354}
+  feetCoolider: {fileID: 7077148873157811720}
+  deathAnimationsNum: 0
+  timeBefroGoingUnderGround: 3
+  speedOnGoingUnderGround: 0.8
+  timeBeforeDestroyAfterGoingUnderGround: 3
   delayBeforeDeath: 1
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
@@ -365,7 +371,6 @@ MonoBehaviour:
   deathSFX: {fileID: 0}
   audioBoost: 0
   healthBar: {fileID: 0}
-  playerHealthCollider: {fileID: 2542656809900335354}
   reloadingDelay: 2
 --- !u!114 &7081787225086070649
 MonoBehaviour:
@@ -379,6 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021fdcfe03fbf047afe34f472f4d5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  movementButtons: {fileID: 0}
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
   runSpeed: 9
   walkSpeed: 4
@@ -402,7 +409,7 @@ MonoBehaviour:
   wallSlideSpeed: 0.2
   wallLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
   wallCheckPoint: {fileID: 4780771758210633572}
   wallCheckSize: {x: 0.11, y: 0.96}
   wallJumpForce: 8
@@ -603,7 +610,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -767915699
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50be7e40059e8eb4db05e6642cfd6e8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
