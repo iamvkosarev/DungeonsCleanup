@@ -16,6 +16,9 @@ public class GoblinBossAttack : MonoBehaviour
     private bool isPlayerInAttackZoneToPush;
     private bool isPlayerInAttackZoneToEarthquake;
 
+    [Header("Simple Attack")]
+    [SerializeField] private int simpleAttackDamage = 20;
+
     [Header("Push Attack")]
     [SerializeField] private float minPushXForce = 800f;
     [SerializeField] private float maxPushXForce = 1200f;
@@ -67,15 +70,19 @@ public class GoblinBossAttack : MonoBehaviour
     {
         if (currentAttackType == AttackTypes.Simple)
         {
-
+            if (isPlayerInAttackZoneToPush)
+            {
+                movement.shouldGoToPlayer = false;
+                myAnimator.SetTrigger("Simple Attack");
+            }
         }
+
         if (currentAttackType == AttackTypes.Push)
         {
             if (isPlayerInAttackZoneToPush)
             {
                 movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Push Attack");
-                currentAttackType = AttackTypes.Simple;
             }
         }
 
@@ -83,17 +90,28 @@ public class GoblinBossAttack : MonoBehaviour
         {
             if (isPlayerInAttackZoneToEarthquake)
             {
+                currentAttackType = AttackTypes.Simple;
                 movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Earthquake Attack");
-                currentAttackType = AttackTypes.Simple;
             }
         }
+    }
+
+    public void SimpleAttack()
+    {
+        if (isPlayerInAttackZoneToPush)
+        {
+            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(simpleAttackDamage);
+            Debug.Log("You just make a simple attack with " + simpleAttackDamage + "damage!");
+        }
+        movement.shouldGoToPlayer = true;
     }
 
     public void PushAttack()
     {
         if (isPlayerInAttackZoneToPush)
         {
+            currentAttackType = AttackTypes.Simple;
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
             playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
