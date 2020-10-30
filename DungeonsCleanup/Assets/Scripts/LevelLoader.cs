@@ -27,6 +27,8 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadingStartCrossfade());
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
+
+
     IEnumerator LoadingStartCrossfade()
     {
         yield return new WaitForSeconds(dalayBeforeStart);
@@ -78,7 +80,7 @@ public class LevelLoader : MonoBehaviour
         }
         else if (playerDataManager != null && followingState == FollowingState.MainMenu)
         {
-            playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: SceneManager.GetActiveScene().buildIndex);
+            //playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: SceneManager.GetActiveScene().buildIndex);
         }
     }
 
