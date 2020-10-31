@@ -334,7 +334,7 @@ MonoBehaviour:
   patrolPointCheackerCoordinates: {fileID: 1298837879765611092}
   sizeOfPlayerDetecterRay: 6
   detectorPoint: {fileID: 1076994573}
-  maxDeflectionAngle: 65
+  maxDeflectionAngle: 50
   playerAndCollidingEnvironmentLayers:
     serializedVersion: 2
     m_Bits: 54016
@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6526c63e1e7de488e9a1c4bde974c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxNumOfTurnings: 2
 --- !u!114 &3540123447407174938
 MonoBehaviour:
   m_ObjectHideFlags: 0

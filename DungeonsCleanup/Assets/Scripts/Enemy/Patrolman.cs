@@ -25,6 +25,7 @@ public class Patrolman : MonoBehaviour
     bool isPlayerDetecterRayAngleIncreases;
     float parameterOfTurningRayAlongXAxis = -1;
 
+    bool waitingOnPoint;
     bool canPatrolmanGetNewPoint;
     bool goToPoint;
     bool goToPlayer;
@@ -109,16 +110,14 @@ public class Patrolman : MonoBehaviour
         goToPlayer = true;
         myMovementScript.SetTarget(playersPos.position);
     }
-    public void TurnRayInOppositeDirection()
-    {
-        turnRayInOppositeDirection = !turnRayInOppositeDirection;
-    }
     IEnumerator WaitingOnPoint()
     {
         PatrolPoint myLastPatrolPoint = currentPatrolPoint;
         currentPatrolPoint = null;
         goToPoint = false;
+        waitingOnPoint = true;
         yield return new WaitForSeconds(myLastPatrolPoint.GetTimeOnStand());
+        waitingOnPoint = false;
         myLastPatrolPoint.StopPursuing();
         if (!goToPlayer)
         {
@@ -184,7 +183,7 @@ public class Patrolman : MonoBehaviour
     private void CheckPlayerDetected()
     {
         currentAngle = (currentTimeInLoop / timeOnRayLoopUpdate) * maxDeflectionAngle * 2f - maxDeflectionAngle;
-        parameterOfTurningRayAlongXAxis = Mathf.Sign(transform.rotation.y) * (turnRayInOppositeDirection ? 1 : -1);
+        parameterOfTurningRayAlongXAxis = (transform.rotation.y < 0 ? -1 : 1) * (turnRayInOppositeDirection ? 1 : -1);
         directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
         RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndCollidingEnvironmentLayers);
@@ -209,5 +208,25 @@ public class Patrolman : MonoBehaviour
         Gizmos.color = Color.gray;
         Gizmos.DrawRay(detectorPoint.position, new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis, 
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay));
+    }
+    public bool IsWaitingOnPoint()
+    {
+        return waitingOnPoint;
+    }
+
+    bool wasHadTurned;
+    public void TurnRay()
+    {
+        wasHadTurned = true;
+        detectorPoint.localPosition= new Vector2(-detectorPoint.localPosition.x, detectorPoint.localPosition.y);
+        turnRayInOppositeDirection = !turnRayInOppositeDirection;
+    }
+    public void TurnRayBack()
+    {
+        if (wasHadTurned)
+        {
+            wasHadTurned = false;
+            TurnRay();
+        }
     }
 }
