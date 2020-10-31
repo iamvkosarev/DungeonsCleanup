@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] int nextSceneBuildIndex;
-    [SerializeField] float dalayBeforeStart = 1f;
-    [SerializeField] GameObject canvas;
-    [SerializeField] PlayerDataManager playerDataManager;
-    Animator myAnimator;
-    int currentSceneIndex;
+    [SerializeField] private int nextSceneBuildIndex;
+    [SerializeField] private float dalayBeforeStart = 1f;
+    [SerializeField] private bool isCheckPoint = false;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private PlayerDataManager playerDataManager;
+    private Animator myAnimator;
+    private int currentSceneIndex;
     enum FollowingState
     {
         NextScene,
@@ -26,6 +27,8 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadingStartCrossfade());
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
+
+
     IEnumerator LoadingStartCrossfade()
     {
         yield return new WaitForSeconds(dalayBeforeStart);
@@ -70,10 +73,14 @@ public class LevelLoader : MonoBehaviour
         {
 
             playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
+            if (isCheckPoint)
+            {
+                playerDataManager.RefreshCheckPointSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
+            }
         }
         else if (playerDataManager != null && followingState == FollowingState.MainMenu)
         {
-            playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: SceneManager.GetActiveScene().buildIndex);
+            //playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: SceneManager.GetActiveScene().buildIndex);
         }
     }
 

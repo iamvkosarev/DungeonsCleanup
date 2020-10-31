@@ -17,8 +17,8 @@ public class MovementButtonsManager : MonoBehaviour
 
     public Vector2 GetResult()
     {
-        resultOfPressing = new Vector2(resultOfPressing.x != 0 ? Mathf.Sign(resultOfPressing.x) : 0,
+        Vector2 result = new Vector2(resultOfPressing.x != 0 ? Mathf.Sign(resultOfPressing.x) : 0,
             resultOfPressing.y != 0 ? Mathf.Sign(resultOfPressing.y) : 0);
-        return resultOfPressing;
+        return result;
     }
 }

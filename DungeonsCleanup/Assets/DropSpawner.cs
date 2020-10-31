@@ -13,9 +13,11 @@ public class DropSpawner : MonoBehaviour
     
     IEnumerator Start()
     {
+        yield return new WaitForSeconds(Random.RandomRange(minTimeOnDalay, maxTimeOnDalay));
         do
         {
             GameObject newDrop = Instantiate(dropPrfab, motionCoordinates[0].position, Quaternion.identity) as GameObject;
+            newDrop.transform.parent = transform.parent;
             Drop newDropScript = newDrop.GetComponent<Drop>();
             newDropScript.SetCoordinates(motionCoordinates);
             yield return new WaitForSeconds(Random.RandomRange(minTimeOnDalay, maxTimeOnDalay));
