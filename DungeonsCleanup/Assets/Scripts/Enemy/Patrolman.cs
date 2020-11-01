@@ -9,6 +9,7 @@ public class Patrolman : MonoBehaviour
     [SerializeField] float radiusOfPointReachingZone;
     [SerializeField] LayerMask patrolPointsLayer;
     [SerializeField] Transform patrolPointCheackerCoordinates;
+    [SerializeField] Color patrolPointCheackerColor;
     PatrolPoint currentPatrolPoint;
     int currentPatrolPointNum;
     [Header("To check enemy")]
@@ -202,7 +203,7 @@ public class Patrolman : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = patrolPointCheackerColor;
         Gizmos.DrawSphere(patrolPointCheackerCoordinates.position, radiusOfPointReachingZone);
 
         Gizmos.color = Color.gray;
@@ -226,7 +227,8 @@ public class Patrolman : MonoBehaviour
         if (wasHadTurned)
         {
             wasHadTurned = false;
-            TurnRay();
+            detectorPoint.localPosition = new Vector2(-detectorPoint.localPosition.x, detectorPoint.localPosition.y);
+            turnRayInOppositeDirection = !turnRayInOppositeDirection;
         }
     }
 }

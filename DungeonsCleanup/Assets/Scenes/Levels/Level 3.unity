@@ -3654,7 +3654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopOnPoint: 1
-  timeOnStandHere: 1
+  timeOnStandHere: 3
 --- !u!1 &560287459
 GameObject:
   m_ObjectHideFlags: 0
@@ -38890,10 +38890,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995921972}
     m_Modifications:
-    - target: {fileID: 1732000173, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (1)
@@ -38941,18 +38937,6 @@ PrefabInstance:
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952976817379, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570954328271066, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.554
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930750086390548145, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: maxDeflectionAngle
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
