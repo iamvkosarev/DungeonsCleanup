@@ -141,22 +141,22 @@ public class EnemiesMovement : MonoBehaviour
 
     private void Slowing()
     {
-        if (currentStateMove == StatesOfMove.Stand && !startToSlowing)
+        if (currentStateMove == StatesOfMove.Stand && !startToSlowing  && myRigidbody2D.velocity.x !=0)
         {
             startToSlowing = true;
-            timeSinceStartedSlowing = Time.deltaTime;
+            timeSinceStartedSlowing = Time.time;
             lastVelocityOnXAxis = myRigidbody2D.velocity.x;
         }
-        else
+        else if(currentStateMove != StatesOfMove.Stand)
         {
             startToSlowing = false;
         }
-        if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing >= Time.deltaTime)
+        if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing > Time.time)
         {
             float slowingParameter;
             if (timeOnSlowing != 0)
             {
-                slowingParameter = 1f - (Time.deltaTime - timeSinceStartedSlowing) / timeOnSlowing;
+                slowingParameter = 1f - (Time.time - timeSinceStartedSlowing) / timeOnSlowing;
             }
             else
             {
@@ -164,9 +164,10 @@ public class EnemiesMovement : MonoBehaviour
             }
             myRigidbody2D.velocity = new Vector2(lastVelocityOnXAxis * slowingParameter, myRigidbody2D.velocity.y);
         }
-        else if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing <= Time.deltaTime)
+        else if (startToSlowing && timeOnSlowing + timeSinceStartedSlowing <= Time.time)
         {
             myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
+            startToSlowing = false;
         }
     }
 

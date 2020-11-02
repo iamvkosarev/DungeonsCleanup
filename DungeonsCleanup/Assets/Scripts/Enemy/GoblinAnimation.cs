@@ -5,16 +5,22 @@ using UnityEngine;
 
 public class GoblinAnimation : MonoBehaviour
 {
+    [SerializeField] private int maxNumOfTurnings;
     Animator myAnimator;
+    Patrolman myPatrolmanScript;
     DetectorEnemiesInAttackZone detectorEnemiesInAttackZone;
     EnemiesMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
-    bool IsRunning;
+    bool isTurningHead;
+    bool isRunning;
     bool facingRight = true;
+    int countTrunings = 1;
+    int numOfTurning = 0;
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
+        myPatrolmanScript = GetComponent<Patrolman>();
         detectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         myMovementScript = GetComponent<EnemiesMovement>();
     }
@@ -31,17 +37,41 @@ public class GoblinAnimation : MonoBehaviour
         if (detectorEnemiesInAttackZone.IsEnemyDetected())
         {
             isAttacking = true;
+            countTrunings = 1;
+            numOfTurning = -1;
         }
         else if (myMovementScript.IsWalking())
         {
             isWalking = true;
+            countTrunings = 1;
+            numOfTurning = -1;
         }
         else if (myMovementScript.IsRunning())
         {
-            IsRunning = true;
+            isRunning = true;
+            countTrunings = 1;
+            numOfTurning = -1;
+        }
+        else if (myPatrolmanScript != null)
+        {
+            if (myPatrolmanScript.IsWaitingOnPoint())
+            {
+                if (numOfTurning == -1)
+                {
+                    numOfTurning = UnityEngine.Random.Range(0, maxNumOfTurnings + 1);
+                }
+                if (numOfTurning >= countTrunings)
+                {
+                    isTurningHead = true;
+                }
+            }
         }
     }
 
+    public void CountTurn()
+    {
+        countTrunings++;
+    }
 
     private void CheckMovmentScript()
     {
@@ -55,12 +85,14 @@ public class GoblinAnimation : MonoBehaviour
     {
         myAnimator.SetBool("IsAttacking", isAttacking);
         myAnimator.SetBool("IsWalking", isWalking);
-        myAnimator.SetBool("IsRunning", IsRunning);
+        myAnimator.SetBool("IsRunning", isRunning);
+        myAnimator.SetBool("isTurningHead", isTurningHead);
     }
     private void ClearAllParameters()
     {
         isAttacking = false;
         isWalking = false;
-        IsRunning = false;
+        isRunning = false;
+        isTurningHead = false;
     }
 }

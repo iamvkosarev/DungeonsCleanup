@@ -3654,7 +3654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopOnPoint: 1
-  timeOnStandHere: 1
+  timeOnStandHere: 3
 --- !u!1 &560287459
 GameObject:
   m_ObjectHideFlags: 0
@@ -35561,7 +35561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -38890,10 +38890,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995921972}
     m_Modifications:
-    - target: {fileID: 1732000173, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (1)
@@ -38904,7 +38900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.66
+      value: -1.67
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.z
