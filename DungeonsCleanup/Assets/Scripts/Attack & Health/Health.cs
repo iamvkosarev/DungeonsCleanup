@@ -32,7 +32,8 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip getHitSFX;
     [SerializeField] private AudioClip deathSFX;
     [SerializeField] private float audioBoost;
-    AudioSource myAudioSource;
+    private AudioSource myAudioSource;
+    private GoblinBossAttack goblinBoss;
 
     private int firstHealth;
     private Rigidbody2D myRB;
@@ -44,6 +45,7 @@ public class Health : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         firstHealth = health;
         animator = GetComponent<Animator>();
+        goblinBoss = FindObjectOfType<GoblinBossAttack>();
     }
 
     public virtual void TakeAwayHelath(int damage)
@@ -168,4 +170,10 @@ public class Health : MonoBehaviour
         }
     }
     #endregion
+
+    private void OnDestroy()
+    {
+        if(!goblinBoss) { return; }
+        goblinBoss.currentNumberOfGoblins--;
+    }
 }

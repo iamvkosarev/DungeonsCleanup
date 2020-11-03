@@ -35,12 +35,19 @@ public class GoblinBossAttack : MonoBehaviour
     public int earthquakeDamage = 100;
     public float pushXForceForEarth = 0;
     public float pushYForceForEarth = 100f;
+    [Header("Spawn Goblins")]
+    [SerializeField] private int numberOfGoblins = 5;
+    [SerializeField] private Vector2[] spawnPlace;
+    [SerializeField] private GameObject[] goblinPreafb;
     private Animator myAnimator;
+    public int currentNumberOfGoblins = 1;
+
     private enum AttackTypes
     {
         Simple,
         Push,
-        Earthquake
+        Earthquake,
+        SpawnGoblins
     }
     [SerializeField] AttackTypes currentAttackType;
 
@@ -54,7 +61,7 @@ public class GoblinBossAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CheckDistanceToAttack();
         Attack();
@@ -95,6 +102,14 @@ public class GoblinBossAttack : MonoBehaviour
                 myAnimator.SetTrigger("Earthquake Attack");
             }
         }
+        if (currentAttackType == AttackTypes.SpawnGoblins)
+        {
+            currentAttackType = AttackTypes.Simple;
+            movement.shouldGoToPlayer = false;
+            myAnimator.SetBool("Spawn Goblins", true);
+        }
+
+        CommingOutOfTheShadow();
     }
 
     public void SimpleAttack()
@@ -102,7 +117,6 @@ public class GoblinBossAttack : MonoBehaviour
         if (isPlayerInAttackZoneToPush)
         {
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(simpleAttackDamage);
-            Debug.Log("You just make a simple attack with " + simpleAttackDamage + "damage!");
         }
         movement.shouldGoToPlayer = true;
     }
@@ -111,21 +125,45 @@ public class GoblinBossAttack : MonoBehaviour
     {
         if (isPlayerInAttackZoneToPush)
         {
-            currentAttackType = AttackTypes.Simple;
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
             playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
             
         }
+        currentAttackType = AttackTypes.Simple;
         movement.shouldGoToPlayer = true;
     }
 
     public void EarthquakeAttack()
     {
         GameObject earthquakeChild = Instantiate(earthquake, transform.position, transform.rotation);
-        earthquakeChild.transform.SetParent(gameObject.transform);
         Destroy(earthquakeChild, timeForDestroy);
+    }
+
+    public void SpawnGoblins()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            for (int i = 0; i < numberOfGoblins; i++)
+            {
+               int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
+               int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
+               Instantiate(goblinPreafb[randomGoblin], new Vector2(spawnPlace[randomPosition].x, spawnPlace[randomPosition].y), Quaternion.identity);
+            }
+        
+
+        currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
+    }
+
+    private void CommingOutOfTheShadow()
+    {
+        if(myAnimator.GetBool("Spawn Goblins") && currentNumberOfGoblins == 0)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            movement.shouldGoToPlayer = true;
+            myAnimator.SetBool("Spawn Goblins", false);
+            currentNumberOfGoblins = 1;
+        }
     }
     
     private IEnumerator SetSpecialAttack()
@@ -139,6 +177,8 @@ public class GoblinBossAttack : MonoBehaviour
 
         }
     }
+
+
 
 
 
