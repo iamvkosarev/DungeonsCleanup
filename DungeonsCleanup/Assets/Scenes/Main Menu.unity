@@ -848,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5212624506062511414, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7941103620451494607, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -958,6 +958,10 @@ PrefabInstance:
     - target: {fileID: 7099971958059515440, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_Name
       value: Main Menu Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099971958059515440, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7099971958059515444, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_LocalPosition.x
