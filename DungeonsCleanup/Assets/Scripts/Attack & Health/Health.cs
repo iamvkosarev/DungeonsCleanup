@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
     AudioSource myAudioSource;
 
     private int firstHealth;
+    private EnemiesMovement enemiesMovement;
     private Rigidbody2D myRB;
     Animator animator;
 
@@ -54,6 +55,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            FlipIfDontKnowWhereAttackFrom();
             SpawnGetHitSFX();
             health -= damage;
         }
@@ -61,6 +63,18 @@ public class Health : MonoBehaviour
         SpawnBlood();
         SpawnFloatingPoints(damage);
         CheckZeroHealth();
+    }
+
+    private void FlipIfDontKnowWhereAttackFrom()
+    {
+        if (!enemiesMovement)
+        {
+            enemiesMovement = GetComponent<EnemiesMovement>();
+        }
+        if (enemiesMovement)
+        {
+            enemiesMovement.RotateOnHit();
+        }
     }
 
     private void SpawnFloatingPoints(int damage)
