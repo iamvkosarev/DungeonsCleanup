@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 4268006042674321304}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &195259396731092597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223593614621091549}
+  m_Layer: 10
+  m_Name: Attack Tag Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223593614621091549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195259396731092597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.985, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4268006042674321304}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605976247314103449
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +213,7 @@ Transform:
   - {fileID: 1743894881820148256}
   - {fileID: 1076994573}
   - {fileID: 4325826052018154950}
+  - {fileID: 1223593614621091549}
   m_Father: {fileID: 4589570952654697383}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,6 +236,7 @@ GameObject:
   - component: {fileID: 8019890438038859567}
   - component: {fileID: 8777141187466391892}
   - component: {fileID: 780513157}
+  - component: {fileID: 5390485869535295272}
   - component: {fileID: 1732000173}
   m_Layer: 10
   m_Name: Goblin Base
@@ -368,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 50
   healthCollider: {fileID: 7913969820019337519}
   feetCoolider: {fileID: 4589570954328271067}
   deathAnimationsNum: 5
@@ -378,7 +410,7 @@ MonoBehaviour:
   delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
-  particlesColor: {r: 0.6698113, g: 0.046760388, b: 0.10146962, a: 1}
+  particlesColor: {r: 0.105882354, g: 0.50980395, b: 0.14901961, a: 1}
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
@@ -455,6 +487,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
   amountOfExperience: 10
+--- !u!114 &5390485869535295272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589570952654697376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f6e81475c10dd4cad115c63040e152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTagSprites:
+  - {fileID: -8334908125956167650, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
+  - {fileID: -8687764546562108101, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
+  - {fileID: -6629335157355587682, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
+  attakTagSortingLayerName: VFX
+  attackTagPos: {fileID: 1223593614621091549}
+  delayToDestory: 0.5
 --- !u!82 &1732000173
 AudioSource:
   m_ObjectHideFlags: 0

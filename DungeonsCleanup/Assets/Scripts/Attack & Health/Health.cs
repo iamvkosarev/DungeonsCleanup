@@ -117,6 +117,11 @@ public class Health : MonoBehaviour
     {
         SpawnDeathSFX();
         DeathAnimaton();
+        AttackTag attackTag = GetComponent<AttackTag>();
+        if (attackTag)
+        {
+            attackTag.DestroyAttackTag();
+        }
     }
     public void Destroy()
     {
