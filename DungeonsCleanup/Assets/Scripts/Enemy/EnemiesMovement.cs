@@ -67,6 +67,13 @@ public class EnemiesMovement : MonoBehaviour
         CheckZeroHealth();
     }
 
+    public void RotateOnHit()
+    {
+        if (!patrolman.ShoulIGoToPlayer())
+        {
+            Flip();
+        }
+    }
     private void CheckZeroHealth()
     {
         if (myHealth.GetHealth() == 0)

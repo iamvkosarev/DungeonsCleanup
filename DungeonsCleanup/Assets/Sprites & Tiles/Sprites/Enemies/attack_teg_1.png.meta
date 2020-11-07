@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: a0c607a7875475742bc5fd12593de2e8
+guid: da4f28b3a1dd8994c8dc34376e82076d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5998202885221733700
-    second: door_in_wall_0
+      213: -8334908125956167650
+    second: attack_teg_1_0
   - first:
-      213: 1957044744860345763
-    second: door_in_wall_1
+      213: -8687764546562108101
+    second: attack_teg_1_1
   - first:
-      213: 1688553441642058587
-    second: door_in_wall_2
-  - first:
-      213: 7151312000923840557
-    second: door_in_wall_3
+      213: -6629335157355587682
+    second: attack_teg_1_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,85 +122,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_in_wall_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbaa2a7714a12cca0800000000000000
-      internalID: -5998202885221733700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: door_in_wall_1
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 48
-        width: 30
-        height: 43
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a522fa93d1d82b10800000000000000
-      internalID: 1957044744860345763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: door_in_wall_2
+      name: attack_teg_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b539659a862fe6710800000000000000
-      internalID: 1688553441642058587
+      spriteID: e18addc3835745c80800000000000000
+      internalID: -8334908125956167650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_3
+      name: attack_teg_1_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 13
         y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d20bd0520609e3360800000000000000
-      internalID: 7151312000923840557
+      spriteID: b35dee5bc2cde6780800000000000000
+      internalID: -8687764546562108101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_teg_1_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97dfc05ccedff3a0800000000000000
+      internalID: -6629335157355587682
       vertices: []
       indices: 
       edges: []

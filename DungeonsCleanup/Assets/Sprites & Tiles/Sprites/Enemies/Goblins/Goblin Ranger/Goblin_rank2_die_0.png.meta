@@ -1,52 +1,46 @@
 fileFormatVersion: 2
-guid: 8201de6407831ff4ab8846192542a417
+guid: 9dc0b428b247e644d8b77b18e7c4244b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6871059427421845633
-    second: Furniture_2_0
+      213: 4192926773234552243
+    second: Goblin_rank2_die_0_0
   - first:
-      213: 5271396263764505482
-    second: Furniture_2_1
+      213: -7481194276696720788
+    second: Goblin_rank2_die_0_1
   - first:
-      213: 3288443798058747277
-    second: Furniture_2_2
+      213: 133679434769438929
+    second: Goblin_rank2_die_0_2
   - first:
-      213: 6019008567052926199
-    second: Furniture_2_3
+      213: -8929024301925148860
+    second: Goblin_rank2_die_0_3
   - first:
-      213: -199255326362581507
-    second: Furniture_2_4
+      213: -3766943121640090683
+    second: Goblin_rank2_die_0_4
   - first:
-      213: -1556382665874623402
-    second: Furniture_2_5
+      213: -4726540016013179286
+    second: Goblin_rank2_die_0_5
   - first:
-      213: 6411847689033446773
-    second: Furniture_2_6
+      213: -3545546039409520191
+    second: Goblin_rank2_die_0_6
   - first:
-      213: -7063730882980547169
-    second: Furniture_2_7
+      213: 6776276907313708214
+    second: Goblin_rank2_die_0_7
   - first:
-      213: 5907956917112810235
-    second: Furniture_2_8
+      213: 5922441155227227785
+    second: Goblin_rank2_die_0_8
   - first:
-      213: -8180334365342224360
-    second: Furniture_2_9
+      213: 4018350955180446433
+    second: Goblin_rank2_die_0_9
   - first:
-      213: 6560636676146376349
-    second: Furniture_2_10
+      213: -669487174514388470
+    second: Goblin_rank2_die_0_10
   - first:
-      213: 7934023106479081268
-    second: Furniture_2_11
+      213: -7302376200429027311
+    second: Goblin_rank2_die_0_11
   - first:
-      213: 5874505165868832413
-    second: Furniture_2_12
-  - first:
-      213: -7743925184666162855
-    second: Furniture_2_13
-  - first:
-      213: -5707976043304649313
-    second: Furniture_2_14
+      213: 3595471834941208194
+    second: Goblin_rank2_die_0_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -91,7 +85,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -131,6 +125,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -158,316 +164,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Furniture_2_0
+      name: Goblin_rank2_die_0_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 101
-        width: 40
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 0
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 188f3121528ea5f50800000000000000
-      internalID: 6871059427421845633
+      spriteID: 3bdced76fa4403a30800000000000000
+      internalID: 4192926773234552243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_1
+      name: Goblin_rank2_die_0_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 101
-        width: 40
-        height: 22
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3636364}
+        x: 74
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a83310c09f2c72940800000000000000
-      internalID: 5271396263764505482
+      spriteID: c6a7ec141757d2890800000000000000
+      internalID: -7481194276696720788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_2
+      name: Goblin_rank2_die_0_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 76
-        width: 40
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 148
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d85c02f1636e2ad20800000000000000
-      internalID: 3288443798058747277
+      spriteID: 1d81537dcbcead100800000000000000
+      internalID: 133679434769438929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_3
+      name: Goblin_rank2_die_0_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 76
-        width: 40
-        height: 22
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36363637}
+        x: 222
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fcf833d660d78350800000000000000
-      internalID: 6019008567052926199
+      spriteID: 447dbe494bbb51480800000000000000
+      internalID: -8929024301925148860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_4
+      name: Goblin_rank2_die_0_4
       rect:
         serializedVersion: 2
-        x: 3
-        y: 51
-        width: 37
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 296
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df5cd8c165a1c3df0800000000000000
-      internalID: -199255326362581507
+      spriteID: 5c39a81603129bbc0800000000000000
+      internalID: -3766943121640090683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_5
+      name: Goblin_rank2_die_0_5
       rect:
         serializedVersion: 2
-        x: 44
-        y: 51
-        width: 10
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 370
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 654b7f1263e966ae0800000000000000
-      internalID: -1556382665874623402
+      spriteID: a668dd0d5e4f76eb0800000000000000
+      internalID: -4726540016013179286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_6
+      name: Goblin_rank2_die_0_6
       rect:
         serializedVersion: 2
-        x: 60
-        y: 51
-        width: 10
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 444
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5757fb270857bf850800000000000000
-      internalID: 6411847689033446773
+      spriteID: 1c1d33a89a0bbcec0800000000000000
+      internalID: -3545546039409520191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_7
+      name: Goblin_rank2_die_0_7
       rect:
         serializedVersion: 2
-        x: 76
-        y: 51
-        width: 10
-        height: 19
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42105263}
+        x: 518
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f95fcfaef2698fd90800000000000000
-      internalID: -7063730882980547169
+      spriteID: 6bcbd18e1fb2a0e50800000000000000
+      internalID: 6776276907313708214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_8
+      name: Goblin_rank2_die_0_8
       rect:
         serializedVersion: 2
-        x: 109
-        y: 53
-        width: 10
-        height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+        x: 592
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfa22d0b3874df150800000000000000
-      internalID: 5907956917112810235
+      spriteID: 986197c2adcb03250800000000000000
+      internalID: 5922441155227227785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_9
+      name: Goblin_rank2_die_0_9
       rect:
         serializedVersion: 2
-        x: 4
-        y: 28
-        width: 40
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44444445}
+        x: 666
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8103bd96c3d997e80800000000000000
-      internalID: -8180334365342224360
+      spriteID: 1e2d16257ec04c730800000000000000
+      internalID: 4018350955180446433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_10
+      name: Goblin_rank2_die_0_10
       rect:
         serializedVersion: 2
-        x: 50
-        y: 28
-        width: 40
-        height: 21
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3809524}
+        x: 740
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9eaa161c401c0b50800000000000000
-      internalID: 6560636676146376349
+      spriteID: a02d36d36f085b6f0800000000000000
+      internalID: -669487174514388470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_11
+      name: Goblin_rank2_die_0_11
       rect:
         serializedVersion: 2
-        x: 95
-        y: 28
-        width: 10
-        height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+        x: 814
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4374d65aaff4b1e60800000000000000
-      internalID: 7934023106479081268
+      spriteID: 110492d098fb8aa90800000000000000
+      internalID: -7302376200429027311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furniture_2_12
+      name: Goblin_rank2_die_0_12
       rect:
         serializedVersion: 2
-        x: 109
-        y: 28
-        width: 10
-        height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+        x: 888
+        y: 0
+        width: 74
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d961fcae25f668150800000000000000
-      internalID: 5874505165868832413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Furniture_2_13
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 2
-        width: 40
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44444445}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 959a5c8d21d088490800000000000000
-      internalID: -7743925184666162855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Furniture_2_14
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 2
-        width: 40
-        height: 21
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3809524}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9df260e70239c0b0800000000000000
-      internalID: -5707976043304649313
+      spriteID: 286b791959ea5e130800000000000000
+      internalID: 3595471834941208194
       vertices: []
       indices: 
       edges: []

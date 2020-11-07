@@ -51,6 +51,7 @@ public class Patrolman : MonoBehaviour
         CheckReachingLastPlayerPosition();
         UpdatePlayerDetecterRayAngle();
         CheckPlayerDetected();
+        
     }
 
     private void CheckReachingLastPlayerPosition()

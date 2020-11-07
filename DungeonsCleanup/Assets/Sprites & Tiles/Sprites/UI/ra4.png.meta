@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: a0c607a7875475742bc5fd12593de2e8
+guid: 47081c0ee4d134a4eac621a711057343
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5998202885221733700
-    second: door_in_wall_0
+      213: -777639472416909494
+    second: ra4 1_0
   - first:
-      213: 1957044744860345763
-    second: door_in_wall_1
+      213: 2944383929375334187
+    second: ra4 1_1
   - first:
-      213: 1688553441642058587
-    second: door_in_wall_2
+      213: 7238629300333315088
+    second: ra4 1_2
   - first:
-      213: 7151312000923840557
-    second: door_in_wall_3
+      213: 7860898322548887471
+    second: ra4 1_3
+  - first:
+      213: -3488596013830784616
+    second: ra4 1_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +61,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 22
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,85 +128,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_in_wall_0
+      name: ra4 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        y: 52
+        width: 52
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbaa2a7714a12cca0800000000000000
-      internalID: -5998202885221733700
+      spriteID: a47944b15054535f0800000000000000
+      internalID: -777639472416909494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_1
+      name: ra4 1_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 48
-        width: 30
-        height: 43
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        x: 62
+        y: 106
+        width: 45
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a522fa93d1d82b10800000000000000
-      internalID: 1957044744860345763
+      spriteID: b2f19c0759d8cd820800000000000000
+      internalID: 2944383929375334187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_2
+      name: ra4 1_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        x: 62
+        y: 54
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b539659a862fe6710800000000000000
-      internalID: 1688553441642058587
+      spriteID: 0140a1b2ff6c47460800000000000000
+      internalID: 7238629300333315088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_3
+      name: ra4 1_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        x: 62
+        y: 32
+        width: 45
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d20bd0520609e3360800000000000000
-      internalID: 7151312000923840557
+      spriteID: 899b5c6a864069fc0800000000000000
+      internalID: -3488596013830784616
       vertices: []
       indices: 
       edges: []

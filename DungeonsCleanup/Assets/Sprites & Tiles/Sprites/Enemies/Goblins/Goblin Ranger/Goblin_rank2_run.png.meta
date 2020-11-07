@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: a0c607a7875475742bc5fd12593de2e8
+guid: 962938e8faf94af4fa6246e396b5e421
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5998202885221733700
-    second: door_in_wall_0
+      213: -3121416910525998530
+    second: Goblin_rank2_run_0
   - first:
-      213: 1957044744860345763
-    second: door_in_wall_1
+      213: 5470985707904943472
+    second: Goblin_rank2_run_1
   - first:
-      213: 1688553441642058587
-    second: door_in_wall_2
+      213: -6134799137421831546
+    second: Goblin_rank2_run_2
   - first:
-      213: 7151312000923840557
-    second: door_in_wall_3
+      213: 8612073734207355234
+    second: Goblin_rank2_run_3
+  - first:
+      213: -2495079562818614737
+    second: Goblin_rank2_run_4
+  - first:
+      213: 2089112324685840851
+    second: Goblin_rank2_run_5
+  - first:
+      213: -3127328882781920801
+    second: Goblin_rank2_run_6
+  - first:
+      213: 2414060018092865617
+    second: Goblin_rank2_run_7
+  - first:
+      213: -5631735150148518943
+    second: Goblin_rank2_run_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +73,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 22
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,85 +140,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_in_wall_0
+      name: Goblin_rank2_run_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbaa2a7714a12cca0800000000000000
-      internalID: -5998202885221733700
+      spriteID: e3a533c9bdf7ea4d0800000000000000
+      internalID: -3121416910525998530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_1
+      name: Goblin_rank2_run_1
       rect:
         serializedVersion: 2
         x: 30
-        y: 48
+        y: 0
         width: 30
-        height: 43
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a522fa93d1d82b10800000000000000
-      internalID: 1957044744860345763
+      spriteID: 075c9eac388dceb40800000000000000
+      internalID: 5470985707904943472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_2
+      name: Goblin_rank2_run_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 60
         y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b539659a862fe6710800000000000000
-      internalID: 1688553441642058587
+      spriteID: 682599520b0dcdaa0800000000000000
+      internalID: -6134799137421831546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_in_wall_3
+      name: Goblin_rank2_run_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 90
         y: 0
-        width: 25
-        height: 42
-      alignment: 9
-      pivot: {x: 0.5, y: 0.26190478}
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d20bd0520609e3360800000000000000
-      internalID: 7151312000923840557
+      spriteID: 269b6eabe6b348770800000000000000
+      internalID: 8612073734207355234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank2_run_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a0cdb6b52bf5dd0800000000000000
+      internalID: -2495079562818614737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank2_run_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d14ac837940efc10800000000000000
+      internalID: 2089112324685840851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank2_run_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1e6fd43fe7994d0800000000000000
+      internalID: -3127328882781920801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank2_run_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158f5e4dbc6708120800000000000000
+      internalID: 2414060018092865617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_rank2_run_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ebf05a18be08d1b0800000000000000
+      internalID: -5631735150148518943
       vertices: []
       indices: 
       edges: []
