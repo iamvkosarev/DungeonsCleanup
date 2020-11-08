@@ -94,7 +94,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -974317227
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8647823593821616703, guid: 084850b021273914fb91ae3b4451811e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,6 +141,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthCollider: {fileID: 0}
+  feetCoolider: {fileID: 0}
+  deathAnimationsNum: 0
+  timeBefroGoingUnderGround: 3
+  speedOnGoingUnderGround: 0.6
+  timeBeforeDestroyAfterGoingUnderGround: 3
   delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
@@ -165,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  towardSpeed: 200
+  towardSpeed: 3.5
   batDamage: 2
   attackRadius: 1
 --- !u!114 &934885370

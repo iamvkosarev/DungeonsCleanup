@@ -18,23 +18,17 @@ public class BatPathing : MonoBehaviour
     private List<Transform> waypoints;
     private int waypointIndex;
     private float startXScale;
-    private Path path;
     private int currentWayPoint;
-    private Seeker seeker;
     private Rigidbody2D rb;
     private Animator myAnimator;
 
     private void Start()
     {
         //GetComponent + FindObjectOfType
-        seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
         distanceToAttack = GetComponentInParent<BatSpawn>().GetDistanceToAttack();
-
-        //For Pathfinding
-        InvokeRepeating("UpdatePath", 0f, .5f);
 
         //For Moving
         waypoints = gameObject.GetComponentInParent<BatSpawn>().GetWaypoints();
@@ -43,26 +37,16 @@ public class BatPathing : MonoBehaviour
         startXScale = transform.localScale.x;
     }
 
-    private void UpdatePath()
-    {
-        if(seeker.IsDone())
-            seeker.StartPath(transform.position, player.transform.position, OnPathComplite);
-    }
-
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        // Moving();
+        //Moving();
 
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
-             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack
-             && Mathf.Abs(player.transform.position.x - transform.position.x) > 0.3f
-             && Mathf.Abs(player.transform.position.y - transform.position.y) > 0.3f)
+             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)  
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            myAnimator.SetBool("Attack", true);
-            //MoveTowardPlayer();
+            MoveTowardPlayer();
         }
 
         else
@@ -81,6 +65,7 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = Random.Range(0, waypoints.Count);
         }
+        
 
         if(IsFacingOnAWaypoint())
             Flip();
@@ -88,45 +73,17 @@ public class BatPathing : MonoBehaviour
 
     private void MoveTowardPlayer()
     {
-        if(path == null)
-            return;
+        transform.position = Vector3.MoveTowards
+            (transform.position, player.transform.position, towardSpeed * Time.deltaTime);
 
-        if(currentWayPoint >= path.vectorPath.Count)
+
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+            && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
-            reachedEndOfPath = true;
-            return;
+            myAnimator.SetBool("Attack", true);
         }
-
-        else
-        {
-            reachedEndOfPath = false;
-        }
-
-        Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = direction * towardSpeed * Time.deltaTime;
-
-        rb.velocity = force;
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
-
-        if(distance < nextWaypointDistance)
-        {
-            currentWayPoint++;
-        }
-
-        if(IsFacingOnAHero())
-        {
-            Flip();
-        }
-    }
-
-    private void OnPathComplite(Path p)
-    {
-        if(!p.error)
-        {
-            path = p;
-            currentWayPoint = 0;
-        }
+        
+        //MoveTowardPlayer();
     }
 
     private void Attack()
@@ -136,11 +93,10 @@ public class BatPathing : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
         }
+        myAnimator.SetBool("Attack", false);
 
         if(IsFacingOnAHero())
             Flip();
-
-        myAnimator.SetBool("Attack", false);
     }
 
     
