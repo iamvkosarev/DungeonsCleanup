@@ -40,9 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6485676117677068568}
   - component: {fileID: 6485676117677068575}
-  - component: {fileID: 6485676117677068570}
   - component: {fileID: 6485676117677068571}
   - component: {fileID: 8778842059595453635}
+  - component: {fileID: 1203991289}
   m_Layer: 16
   m_Name: Arrow
   m_TagString: Untagged
@@ -116,19 +116,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6485676117677068570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6485676117677068574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686db098b4b36404dab458faf1bf47b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
 --- !u!50 &6485676117677068571
 Rigidbody2D:
   serializedVersion: 4
@@ -170,3 +157,16 @@ MonoBehaviour:
     m_Bits: 54016
   dontWorkAfterTouch: 0
   destoryAfterTounch: 1
+--- !u!114 &1203991289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485676117677068574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03674469d4b6cbf468d0223b3a0cd11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
