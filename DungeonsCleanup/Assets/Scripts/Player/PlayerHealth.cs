@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+    [SerializeField] private bool canProtectHimself = true;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float reloadingDelay = 2f;
     private PlayerDevelopmentManager playerDevelopmentManager;
@@ -34,7 +35,7 @@ public class PlayerHealth : Health
     }
     public override void TakeAwayHelath(int damage)
     {
-        if (isProtecting) { return; }
+        if (canProtectHimself && isProtecting) { return; }
         base.TakeAwayHelath(damage);
         healthBar.SetHealth(base.GetHealth());
     }
