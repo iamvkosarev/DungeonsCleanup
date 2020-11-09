@@ -42,7 +42,6 @@ public class TrapArrowMovement : MonoBehaviour
     private void CheckRotation()
     {
         float angle = (float)Math.Atan2(-myRigidbody.velocity.y, -myRigidbody.velocity.x) * (float)(180 / Math.PI);
-        Debug.Log(angle);
         gameObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 
