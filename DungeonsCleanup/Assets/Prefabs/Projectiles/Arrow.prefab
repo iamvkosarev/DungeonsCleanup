@@ -154,7 +154,7 @@ MonoBehaviour:
   damage: 10
   whomCanAttacked:
     serializedVersion: 2
-    m_Bits: 54016
+    m_Bits: 55040
   dontWorkAfterTouch: 0
   destoryAfterTounch: 1
 --- !u!114 &1203991289
@@ -169,4 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03674469d4b6cbf468d0223b3a0cd11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 12
+  gravityParam: 1
+  delayBeforeGravity: 0.6
