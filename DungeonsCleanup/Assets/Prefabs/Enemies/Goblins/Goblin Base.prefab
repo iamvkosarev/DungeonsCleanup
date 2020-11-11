@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
   healthCollider: {fileID: 7913969820019337519}
   feetCoolider: {fileID: 4589570954328271067}
   deathAnimationsNum: 5
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
-  amountOfExperience: 10
+  amountOfExperience: 5
 --- !u!114 &5390485869535295272
 MonoBehaviour:
   m_ObjectHideFlags: 0
