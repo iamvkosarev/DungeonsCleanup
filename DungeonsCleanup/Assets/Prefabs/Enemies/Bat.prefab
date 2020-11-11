@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 934885363}
   - component: {fileID: 934885370}
   - component: {fileID: 2006379481109494260}
+  - component: {fileID: 5355345067194931273}
   m_Layer: 10
   m_Name: Bat
   m_TagString: Untagged
@@ -150,7 +151,7 @@ MonoBehaviour:
   delayBeforeDeath: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
-  particlesColor: {r: 0.6132076, g: 0.090631254, b: 0.14066537, a: 1}
+  particlesColor: {r: 0.3207547, g: 0.04438112, b: 0.07139511, a: 1}
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
@@ -218,3 +219,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2, y: -0.8}
   m_Size: {x: 5, y: 2.5}
   m_Direction: 1
+--- !u!114 &5355345067194931273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940110116614799307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4dec835dc2ffb439f5e272c2804d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  amountOfExperience: 2

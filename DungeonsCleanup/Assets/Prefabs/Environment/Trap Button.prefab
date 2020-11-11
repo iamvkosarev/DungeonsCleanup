@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78190428a872d94a9e8e70742ec71cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFeetLayerNum: 0
-  enemieFeetLayerNum: 0
-  canEnemieTouchButton: 1
+  playerFeetLayerNum: 11
+  enemyFeetLayerNum: 20
+  canEnemyTouchButton: 1
 --- !u!50 &1402891687671356595
 Rigidbody2D:
   serializedVersion: 4
