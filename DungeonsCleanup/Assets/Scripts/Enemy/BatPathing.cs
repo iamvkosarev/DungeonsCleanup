@@ -21,6 +21,8 @@ public class BatPathing : MonoBehaviour
     private int currentWayPoint;
     private Rigidbody2D rb;
     private Animator myAnimator;
+    private Health myHealth;
+    private Rigidbody2D myRigidBody;
 
     private void Start()
     {
@@ -29,6 +31,8 @@ public class BatPathing : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
         distanceToAttack = GetComponentInParent<BatSpawn>().GetDistanceToAttack();
+        myHealth = GetComponent<Health>();
+        myRigidBody = GetComponent<Rigidbody2D>();
 
         //For Moving
         waypoints = gameObject.GetComponentInParent<BatSpawn>().GetWaypoints();
@@ -55,6 +59,15 @@ public class BatPathing : MonoBehaviour
         }
     }
 
+    private void Death()
+    {
+        if(myHealth.health == 0)
+        {
+            myAnimator.SetTrigger("Death");
+            myRigidBody.gravityScale = 1;
+            Destroy(gameObject, 2f);
+        }
+    }
     private void Moving()
     {
         var targetPosition = waypoints[waypointIndex].transform.position;
