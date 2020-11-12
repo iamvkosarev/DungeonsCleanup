@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrapButton : MonoBehaviour
 {
-    [SerializeField] private int playerFeetLayerNum;
     [SerializeField] private int enemyFeetLayerNum;
     [SerializeField] private bool canEnemyTouchButton = true;
     private Animator animator;
@@ -16,7 +15,12 @@ public class TrapButton : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(playerFeetLayerNum == other.gameObject.layer || enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
+        if(enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
+        {
+            animator.SetBool("On", true);
+            parentAnimator.SetBool("Shot", true);
+        }
+        else if(enemyFeetLayerNum != other.gameObject.layer)
         {
             animator.SetBool("On", true);
             parentAnimator.SetBool("Shot", true);
@@ -25,7 +29,12 @@ public class TrapButton : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (playerFeetLayerNum == other.gameObject.layer || enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
+        if (enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
+        {
+            animator.SetBool("On", false);
+            parentAnimator.SetBool("Shot", false);
+        }
+        else if (enemyFeetLayerNum != other.gameObject.layer)
         {
             animator.SetBool("On", false);
             parentAnimator.SetBool("Shot", false);
