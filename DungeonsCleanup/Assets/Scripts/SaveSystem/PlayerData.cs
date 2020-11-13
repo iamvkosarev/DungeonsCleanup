@@ -9,6 +9,8 @@ public class PlayerData
     public int playerHealth;
     public int lvl;
     public int currentExp;
+    public int[] listOfItemsId;
+    public int[] listOfItemsTypes;
 
     public PlayerData (PlayerDataManager playerDataManager)
     {
@@ -16,5 +18,7 @@ public class PlayerData
         playerHealth = playerDataManager.currentHealth;
         this.lvl = playerDataManager.lvl;
         this.currentExp = playerDataManager.currentExp;
+        this.listOfItemsId = playerDataManager.listOfItemsId;
+        this.listOfItemsTypes = playerDataManager.listOfItemsTypes;
     }
 }

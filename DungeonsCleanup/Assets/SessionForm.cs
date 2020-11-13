@@ -16,6 +16,8 @@ public class SessionForm : MonoBehaviour
     [SerializeField] int sceneNum;
     [SerializeField] int lvl = 1;
     [SerializeField] int currentExp = 1;
+    [SerializeField] int[] listOfItemsId = new int[6];
+    [SerializeField] int[] listOfItemsTypes = new int[6];
 
 
     bool isSessionSelected;
@@ -35,7 +37,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth,sceneNum, lvl, currentExp);
+        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth,sceneNum, lvl, currentExp, listOfItemsId, listOfItemsTypes);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);
@@ -53,7 +55,7 @@ public class SessionForm : MonoBehaviour
         string currentLevelSettingsName = "currentLevelSetings_session_" + ID.ToString();
         string checkPointLevelSettingsName = "checkPointLevelSetings_session_" + ID.ToString();
 
-        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth, sceneNum, lvl, currentExp);
+        PlayerDataManager playerDataManager = new PlayerDataManager(playerHelth, sceneNum, lvl, currentExp, listOfItemsId, listOfItemsTypes);
 
         SaveSystem.SavePlayer(currentLevelSettingsName, playerDataManager);
         SaveSystem.SavePlayer(checkPointLevelSettingsName, playerDataManager);

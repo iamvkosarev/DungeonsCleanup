@@ -6,9 +6,11 @@ using UnityEngine;
 public class PlayerDevelopmentManager : MonoBehaviour
 {
     [SerializeField] private ListLevelOfDevelopment listLevelOfDevelopment;
+    [SerializeField] private ListsOfItmes listsOfItmes;
     [Header("Level's parameters")]
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
+    [SerializeField] private List<ItemData> items;
     
     private int needExp;
     private PlayerAttackManager attackManager;
@@ -73,6 +75,30 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         return exp;
     }
+    public List<ItemData> GetItmes()
+    {
+        return items;
+    }
+    public int[] GetListOfItemsId()
+    {
+        var length = items.Count;
+        var resultList =new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            resultList[i] = items[i].id;
+        }
+        return resultList;
+    }
+    public int[] GetListOfItemsTypes()
+    {
+        var length = items.Count;
+        var resultList = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            resultList[i] = (int)items[i].itemType;
+        }
+        return resultList;
+    }
     public int GetNeedExp()
     {
         return needExp;
@@ -112,6 +138,44 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public void SetCurrentExp(int exp)
     {
         this.exp = exp;
+    }
+
+    public void SetItems(int[] listOfItemsId, int[] listOfItemsTypes)
+    {
+        int minLangth = Math.Min(listOfItemsId.Length, listOfItemsTypes.Length);
+        for(int index =0; index < minLangth; index++)
+        {
+            var newItem = new ItemData();
+
+            if (listOfItemsTypes[index] == (int)ItemType.TimeCrystal)
+            {
+                if (listsOfItmes.GetTimeCrystalData(listOfItemsId[index]) != null)
+                {
+                    newItem.SetIdAndType(listOfItemsId[index], ItemType.TimeCrystal);
+                }
+                else
+                {
+                    newItem.SetIdAndType(-1, ItemType.TimeCrystal);
+                }
+            }
+            else if (listOfItemsTypes[index] == (int)ItemType.Artifact)
+            {
+                if (listsOfItmes.GetArtifactData(listOfItemsId[index]) != null)
+                {
+                    newItem.SetIdAndType(listOfItemsId[index], ItemType.Artifact);
+                }
+                else
+                {
+                    newItem.SetIdAndType(-1, ItemType.Artifact);
+                }
+            }
+            else
+            {
+                newItem.SetIdAndType(-1, ItemType.Artifact);
+            }
+
+            items.Add(newItem);
+        }
     }
     #endregion
 

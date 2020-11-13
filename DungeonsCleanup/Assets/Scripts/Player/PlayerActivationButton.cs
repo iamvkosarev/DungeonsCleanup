@@ -11,6 +11,7 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] LayerMask elevatorLayer;
     [SerializeField] LayerMask doorLayer;
     [SerializeField] LayerMask tabletLayer;
+    [SerializeField] LayerMask itemLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     [Header("OpenDoor")]
@@ -36,6 +37,7 @@ public class PlayerActivationButton : MonoBehaviour
         OpenDoor();
         TransferPlayer();
         ShowTabletText();
+        ShowItmeCanvas();
     }
     private void Update()
     {
@@ -60,8 +62,9 @@ public class PlayerActivationButton : MonoBehaviour
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
         bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
+        bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
 
-        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet);
+        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem);
     }
 
 
@@ -71,6 +74,7 @@ public class PlayerActivationButton : MonoBehaviour
         Collider2D doorCollider = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
         if (doorCollider != null)
         {
+            Debug.Log("Open door!");
             doorCollider.gameObject.GetComponent<Door>().Open();
         }
     }
@@ -80,16 +84,25 @@ public class PlayerActivationButton : MonoBehaviour
         Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
         if (elevatorCollider != null)
         {
+            Debug.Log("Teleportation!");
             elevatorCollider.gameObject.GetComponent<Elevator>().Transfer(gameObject.transform);
         }
     }
-
+    private void ShowItmeCanvas()
+    {
+        Collider2D itemCollider = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
+        if (itemCollider != null)
+        {
+            Debug.Log("Item!");
+            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas();
+        }
+    }
     private void ShowTabletText()
     {
-        Debug.Log("Tablet Text!");
         Collider2D paperCollider = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
         if (paperCollider != null)
         {
+            Debug.Log("Tablet Text!");
             paperCollider.GetComponent<Paper>().InstansiateTabletCanvas();
         }
     }
