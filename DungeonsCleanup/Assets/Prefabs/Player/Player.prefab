@@ -474,6 +474,9 @@ MonoBehaviour:
   tabletLayer:
     serializedVersion: 2
     m_Bits: 33554432
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   activateSomeThingButton: {fileID: 0}
   doorCheckPoint: {fileID: 6389667949260438817}
   doorCheckSize: {x: 1.5, y: 0.1}
@@ -513,6 +516,8 @@ MonoBehaviour:
   currentSceneNum: 0
   lvl: 1
   currentExp: 0
+  listOfItemsId: 
+  listOfItemsTypes: 
 --- !u!114 &1176042659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,8 +531,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listLevelOfDevelopment: {fileID: 11400000, guid: abac91d596180fb40a223af0b82ada6a, type: 2}
+  listsOfItmes: {fileID: 11400000, guid: 40a9e081411deb143a2508355757a1b9, type: 2}
   lvl: 1
   exp: 0
+  items: []
 --- !u!114 &1080693631
 MonoBehaviour:
   m_ObjectHideFlags: 0
