@@ -28,10 +28,9 @@ public class ArtifactData : ItemData
     {
         return canDestroyAfterActivate;
     }
-    public void Activate(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    public void Activate()
     {
-        Abilities ability = new Abilities();
-        ability.Activate(abilityType, playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+        Abilities.Activate(abilityType);
     }
     public bool CanBeActivated()
     {
