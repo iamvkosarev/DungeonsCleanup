@@ -11,7 +11,11 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
     [SerializeField] private List<ItemData> items;
-    
+    [Header("Activation Ability")]
+    [SerializeField] private int currentItemIndex = 1;
+    [SerializeField] private bool activateAbility;
+    private bool wasActivated;
+
     private int needExp;
     private PlayerAttackManager attackManager;
     private PlayerHealth healthManager;
@@ -20,6 +24,23 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         attackManager = GetComponent<PlayerAttackManager>();
         healthManager = GetComponent<PlayerHealth>();
+    }
+    private void Update()
+    {
+        CheckActivation();
+    }
+
+    private void CheckActivation()
+    {
+        if (activateAbility && !wasActivated)
+        {
+            wasActivated = true;
+            ActivateAbility();
+        }
+        else if(!activateAbility && wasActivated)
+        {
+            wasActivated = false;
+        }
     }
 
     public void AddExp(int exp)
@@ -42,6 +63,15 @@ public class PlayerDevelopmentManager : MonoBehaviour
         healthManager.SetCurrentHealth(healthManager.GetMaxHealth());
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         // shoe some VFX;
+    }
+
+    public void ActivateAbility()
+    {
+        if (items[currentItemIndex].itemType == ItemType.Artifact)
+        {
+            ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentItemIndex].id);
+            artifactData.Activate();
+        }
     }
 
     #region Counters
@@ -139,7 +169,6 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         this.exp = exp;
     }
-
     public void SetItems(int[] listOfItemsId, int[] listOfItemsTypes)
     {
         int minLangth = Math.Min(listOfItemsId.Length, listOfItemsTypes.Length);
