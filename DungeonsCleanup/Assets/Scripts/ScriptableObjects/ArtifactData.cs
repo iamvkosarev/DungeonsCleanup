@@ -13,8 +13,8 @@ public class ArtifactData : ItemData
     [SerializeField] public Sprite icon;
 
     [Header("The activation properties")]
+    [SerializeField] public AbilityType abilityType = AbilityType.Null;
     [SerializeField] public bool canDestroyAfterActivate = false;
-
     [SerializeField] public bool canReactivate = true;
     [SerializeField] public float delayАfterActivation;
     private float timeOfActivation = 0f;
@@ -28,7 +28,10 @@ public class ArtifactData : ItemData
     {
         return canDestroyAfterActivate;
     }
-
+    public void Activate()
+    {
+        Abilities.Activate(abilityType);
+    }
     public bool CanBeActivated()
     {
         if (!hasNumberOfActivations)
