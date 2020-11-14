@@ -15,6 +15,12 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int currentItemIndex = 1;
     [SerializeField] private bool activateAbility;
     private bool wasActivated;
+    
+    [Header("Wind Push")]
+    [SerializeField] private Vector2 windPushRadius;
+    [SerializeField] private LayerMask enemiesLayer;
+    [SerializeField] private float pushXForce;
+    [SerializeField] private float pushYForce;
 
     private int needExp;
     private PlayerAttackManager attackManager;
@@ -69,8 +75,9 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         if (items[currentItemIndex].itemType == ItemType.Artifact)
         {
+            Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentItemIndex].id);
-            artifactData.Activate();
+            artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
         }
     }
 
