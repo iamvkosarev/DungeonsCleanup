@@ -102,7 +102,6 @@ public class Health : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log($"GameObject \"{gameObject.name}\" has destroyed");
             Death();
         }
     }

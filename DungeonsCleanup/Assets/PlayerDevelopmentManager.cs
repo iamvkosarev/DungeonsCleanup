@@ -14,6 +14,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [Header("Activation Ability")]
     [SerializeField] private int currentItemIndex = 1;
     [SerializeField] private bool activateAbility;
+    [SerializeField] private HealthBar healthBar;
     private bool wasActivated;
 
     private int needExp;
@@ -45,7 +46,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
     public void AddExp(int exp)
     {
-        if(exp + this.exp >= needExp)
+        if (exp + this.exp >= needExp)
         {
             this.exp = exp + this.exp - needExp;
             IncreaseLevel();
@@ -54,8 +55,12 @@ public class PlayerDevelopmentManager : MonoBehaviour
         {
             this.exp += exp;
         }
+        SetExpInExpBar();
     }
-
+    public void SetExpInExpBar()
+    {
+        healthBar.SetExpSliderParam(exp, needExp);
+    }
     private void IncreaseLevel()
     {
         lvl++;
