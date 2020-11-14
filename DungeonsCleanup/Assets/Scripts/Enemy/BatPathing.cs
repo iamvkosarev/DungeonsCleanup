@@ -11,6 +11,7 @@ public class BatPathing : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private int batDamage = 15;
     [SerializeField] private float attackRadius = 1f;
+    [SerializeField] private bool shouldBatFly = true;
     private PlayerMovement player;
     private float distanceToAttack;
     private bool reachedEndOfPath = false;
@@ -21,6 +22,8 @@ public class BatPathing : MonoBehaviour
     private int currentWayPoint;
     private Rigidbody2D rb;
     private Animator myAnimator;
+    private Health myHealth;
+    private Rigidbody2D myRigidBody;
 
     private void Start()
     {
@@ -29,6 +32,8 @@ public class BatPathing : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
         distanceToAttack = GetComponentInParent<BatSpawn>().GetDistanceToAttack();
+        myHealth = GetComponent<Health>();
+        myRigidBody = GetComponent<Rigidbody2D>();
 
         //For Moving
         waypoints = gameObject.GetComponentInParent<BatSpawn>().GetWaypoints();
@@ -44,17 +49,40 @@ public class BatPathing : MonoBehaviour
         //Moving();
 
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
-             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)  
+             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)
         {
             MoveTowardPlayer();
         }
-
         else
         {
             Moving();
         }
-    }
 
+        CheckZeroHealth();
+
+        if(IsFacingOnAWaypoint())
+            Flip();
+
+        if(IsFacingOnAHero())
+            Flip();
+    }
+    private void CheckZeroHealth()
+    {
+        if(myHealth.health == 0)
+        {
+            Death();
+        }
+    }
+    private void Death()
+    {
+        if(myHealth.health == 0)
+        {
+            myAnimator.SetTrigger("Death");
+            myRigidBody.gravityScale = 1;
+            Destroy(gameObject, 2f);
+            shouldBatFly = false;
+        }
+    }
     private void Moving()
     {
         var targetPosition = waypoints[waypointIndex].transform.position;
@@ -67,23 +95,26 @@ public class BatPathing : MonoBehaviour
         }
         
 
-        if(IsFacingOnAWaypoint())
-            Flip();
     }
 
     private void MoveTowardPlayer()
     {
-        transform.position = Vector3.MoveTowards
+        if(shouldBatFly)
+        {
+            transform.position = Vector3.MoveTowards
             (transform.position, player.transform.position, towardSpeed * Time.deltaTime);
 
+            if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
+                && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
+            {
+                myAnimator.SetBool("Attack", true);
+                shouldBatFly = false;
+            }
+        
+            //MoveTowardPlayer();
 
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
-            && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
-        {
-            myAnimator.SetBool("Attack", true);
         }
         
-        //MoveTowardPlayer();
     }
 
     private void Attack()
@@ -94,9 +125,7 @@ public class BatPathing : MonoBehaviour
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
         }
         myAnimator.SetBool("Attack", false);
-
-        if(IsFacingOnAHero())
-            Flip();
+        shouldBatFly = true;
     }
 
     
