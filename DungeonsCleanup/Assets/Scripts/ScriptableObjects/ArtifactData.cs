@@ -14,6 +14,7 @@ public class ArtifactData : ItemData
 
     [Header("The activation properties")]
     [SerializeField] public AbilityType abilityType = AbilityType.Null;
+    [SerializeField] private Abilities abilities;
     [SerializeField] public bool canDestroyAfterActivate = false;
     [SerializeField] public bool canReactivate = true;
     [SerializeField] public float delayАfterActivation;
@@ -28,10 +29,9 @@ public class ArtifactData : ItemData
     {
         return canDestroyAfterActivate;
     }
-    public void Activate(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    public void Activate(Vector2 playerPosition, float direction)
     {
-        Abilities ability = new Abilities();
-        ability.Activate(abilityType, playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+        abilities.Activate(abilityType, playerPosition, direction);
     }
     public bool CanBeActivated()
     {

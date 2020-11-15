@@ -9,10 +9,16 @@ public enum AbilityType
     Null,
     WindPush
 }
-public class Abilities : MonoBehaviour
+[CreateAssetMenu(menuName = "Abilitys")]
+public class Abilities : ScriptableObject
 {
-    private Vector2 radiusForPush;
-    public void Activate(AbilityType abilityType, Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    [Header("Wind Push")]
+    [SerializeField] private float windPushRadius;
+    [SerializeField] private LayerMask enemiesLayer;
+    [SerializeField] private float pushXForce;
+    [SerializeField] private float pushYForce;
+
+    public void Activate(AbilityType abilityType, Vector2 playerPosition, float direction)
     {
         if (abilityType == AbilityType.Null)
         {
@@ -21,17 +27,16 @@ public class Abilities : MonoBehaviour
 
         if(abilityType == AbilityType.WindPush)
         {
-            WindPush(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+            WindPush(playerPosition);
         }
     }
 
-    private void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    private void WindPush(Vector2 playerPosition)
     {
         Debug.Log("Do wind push");
-        bool ifGoblinsInWindPushRadius = Physics2D.OverlapBox(playerPosition, windPushRadius, 0, enemiesLayer);
+        bool ifGoblinsInWindPushRadius = Physics2D.OverlapCircle(playerPosition, windPushRadius, 0, enemiesLayer);
         Debug.Log(ifGoblinsInWindPushRadius);
-        radiusForPush = new Vector2(windPushRadius.x/2, windPushRadius.y);
-        Collider2D[] enemiesInWindPushRadius = Physics2D.OverlapBoxAll(playerPosition, windPushRadius, 0, enemiesLayer);
+        Collider2D[] enemiesInWindPushRadius = Physics2D.OverlapCircleAll(playerPosition, windPushRadius, 0, enemiesLayer);
         foreach(Collider2D enemy in enemiesInWindPushRadius)
         {
             Debug.Log(enemy.gameObject.name);
