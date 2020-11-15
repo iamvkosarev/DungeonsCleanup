@@ -75,11 +75,11 @@ public class Item : MonoBehaviour
         itemInfoCanvasScripts.SetItemGameObject(this);
         if (timeCrystalData)
         {
-            itemInfoCanvasScripts.SetDataIntoFiled(timeCrystalData);
+            itemInfoCanvasScripts.SetDataIntoFileds(timeCrystalData);
         }
         else if (artifactData)
         {
-            itemInfoCanvasScripts.SetDataIntoFiled(artifactData);
+            itemInfoCanvasScripts.SetDataIntoFileds(artifactData);
         }
 
     }

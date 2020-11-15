@@ -126,6 +126,14 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         return items;
     }
+    public ItemData GetItem(int itemId)
+    {
+        if(itemId >= items.Count || itemId < 0)
+        {
+            return null;
+        }
+        return items[itemId];
+    }
     public int[] GetListOfItemsId()
     {
         var length = items.Count;

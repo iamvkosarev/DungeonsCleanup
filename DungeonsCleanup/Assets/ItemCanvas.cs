@@ -129,7 +129,7 @@ public class ItemCanvas : MonoBehaviour
         timeCrystalsField.SetActive(false);
     }
 
-    public void SetDataIntoFiled(ArtifactData artifactData)
+    public void SetDataIntoFileds(ArtifactData artifactData)
     {
         itemIndex = artifactData.id;
 
@@ -140,7 +140,7 @@ public class ItemCanvas : MonoBehaviour
         descriptionArtifactField.text += artifactData.description;
         abilityArtifactField.text += artifactData.abilityDescription;
     }
-    public void SetDataIntoFiled(TimeCrystalData timeCrystalData)
+    public void SetDataIntoFileds(TimeCrystalData timeCrystalData)
     {
         itemIndex = timeCrystalData.id;
 
