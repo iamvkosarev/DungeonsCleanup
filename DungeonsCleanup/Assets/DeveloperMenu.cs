@@ -7,6 +7,7 @@ using System;
 
 public class DeveloperMenu : MonoBehaviour
 {
+    [SerializeField] private ListsOfItmes listsOfItmes;
     [Header("Manage with Canvases")] 
     [SerializeField] private GameObject developMenuUI;
     [SerializeField] private GameObject gamepadUI;
@@ -19,6 +20,9 @@ public class DeveloperMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI needExpForm;
     [SerializeField] private TextMeshProUGUI hpForm;
     [SerializeField] private TextMeshProUGUI damageForm;
+
+    [SerializeField] private Sprite baseCrystalSprite;
+    [SerializeField] private GameObject[] itemsIcons;
 
 
     PlayerMovement playerMovement;
@@ -57,6 +61,11 @@ public class DeveloperMenu : MonoBehaviour
         playerBarsUI.SetActive(mode);
     }
 
+    public void OpenItemInfo(int itemIndex)
+    {
+        Debug.Log($"OpenItemInfo: {itemIndex}");
+    }
+
     #region Load Data
 
     private void LoadDataInForms()
@@ -76,8 +85,43 @@ public class DeveloperMenu : MonoBehaviour
         LoadDataAboutLvl();
         LoadDataAboutExp();
         LoadDataAboutHealthAndDamage();
+        LoadDataAboutItems();
     }
 
+    private void LoadDataAboutItems()
+    {
+        List<ItemData> playerItems = playerDevManager.GetItmes();
+        int minLangth = Math.Min(playerItems.Count, itemsIcons.Length);
+        for(int index = 0; index < minLangth; index++)
+        {
+            Image image = itemsIcons[index].GetComponent<Image>();
+            Button button = itemsIcons[index].transform.parent.GetComponent<Button>();
+            if (playerItems[index].id == -1)
+            {
+                image.sprite = null;
+                button.interactable = false;
+                continue;
+            }
+            else
+            {
+                button.interactable = true;
+            }
+            ItemType itemType = playerItems[index].itemType;
+            if (itemType == ItemType.Artifact)
+            {
+                image.sprite = listsOfItmes.GetArtifactData(playerItems[index].id).icon;
+            }
+            else if (itemType == ItemType.TimeCrystal)
+            {
+                image.sprite = baseCrystalSprite;
+                image.color = listsOfItmes.GetTimeCrystalData(playerItems[index].id).color;
+            }
+            else
+            {
+                image.sprite = null;
+            }
+        }
+    }
 
     private void LoadDataAboutLvl()
     {

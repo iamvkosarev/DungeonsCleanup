@@ -20,6 +20,7 @@ public class PlayerActivationButton : MonoBehaviour
 
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
+    PlayerDevelopmentManager playerDevelopmentManager;
     bool canPlayerActivateSomeThing;
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerActivationButton : MonoBehaviour
     }
     private void Start()
     {
+        playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
     }
 
@@ -94,7 +96,7 @@ public class PlayerActivationButton : MonoBehaviour
         if (itemCollider != null)
         {
             Debug.Log("Item!");
-            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas();
+            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas(playerDevelopmentManager);
         }
     }
     private void ShowTabletText()

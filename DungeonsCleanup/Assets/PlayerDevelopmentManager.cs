@@ -93,7 +93,19 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #endregion
 
     #region Getters
-
+    public int GetFreeItemField()
+    {
+        int freeFiledIndex = -1;
+        for (int index = 0; index < items.Count; index++)
+        {
+            if (items[index].id == -1)
+            {
+                freeFiledIndex = index;
+                break;
+            }
+        }
+        return freeFiledIndex;
+    }
     public int GetMaxHealthAccordingLvl()
     {
         return CountMaxHP();
@@ -210,6 +222,20 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
             items.Add(newItem);
         }
+    }
+
+    public void SetItem(int index, int itemId, ItemType itemType)
+    {
+        if (index >= items.Count || index < 0) { return; }
+        var newItem = new ItemData();
+        newItem.SetIdAndType(itemId, itemType);
+        items[index] = newItem;
+    }
+    public ItemData SwitchItem(int index, int itemId, ItemType itemType)
+    {
+        var oldItem = items[index];
+        SetItem(index, itemId, itemType);
+        return oldItem;
     }
     #endregion
 
