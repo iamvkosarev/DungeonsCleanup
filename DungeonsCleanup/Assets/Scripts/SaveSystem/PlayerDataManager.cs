@@ -13,6 +13,7 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] public int currentExp;
     [SerializeField] public int[] listOfItemsId;
     [SerializeField] public int[] listOfItemsTypes;
+    [SerializeField] public int currentSelectedItem;
 
     private PlayerHealth playerHealth;
     private PlayerDevelopmentManager playerDevelopmentManager;
@@ -29,7 +30,7 @@ public class PlayerDataManager : MonoBehaviour
             SetLastSessionData();
         }
     }
-    public PlayerDataManager(int currentPlayerHealth, int currentSceneNum, int lvl, int currentExp, int[] listOfItemsId, int[] listOfItemsTypes)
+    public PlayerDataManager(int currentPlayerHealth, int currentSceneNum, int lvl, int currentExp, int[] listOfItemsId, int[] listOfItemsTypes, int currentSelectedItem)
     {
         this.currentHealth = currentPlayerHealth;
         this.currentSceneNum = currentSceneNum;
@@ -37,6 +38,7 @@ public class PlayerDataManager : MonoBehaviour
         this.currentExp = currentExp;
         this.listOfItemsId = listOfItemsId;
         this.listOfItemsTypes = listOfItemsTypes;
+        this.currentSelectedItem = currentSelectedItem;
     }
     public PlayerDataManager(PlayerData playerData)
     {
@@ -46,6 +48,7 @@ public class PlayerDataManager : MonoBehaviour
         this.currentExp = playerData.currentExp;
         this.listOfItemsId = playerData.listOfItemsId;
         this.listOfItemsTypes = playerData.listOfItemsTypes;
+        this.currentSelectedItem = playerData.currentSelectedItem;
 
     }
     public void SetLastSessionData()
@@ -74,7 +77,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.currentHealth,newStartSceneNum, this.lvl, this.currentExp, this.listOfItemsId, this.listOfItemsTypes));
+            SaveSystem.SavePlayer(fileDataName, new PlayerDataManager(this.currentHealth,newStartSceneNum, this.lvl, this.currentExp, this.listOfItemsId, this.listOfItemsTypes, this.currentSelectedItem));
         }
     }
 
@@ -89,7 +92,7 @@ public class PlayerDataManager : MonoBehaviour
         }
         else
         {
-            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.currentHealth, newStartSceneNum, this.lvl, this.currentExp, this.listOfItemsId, this.listOfItemsTypes));
+            SaveSystem.SavePlayer(fileCheckPointDataName, new PlayerDataManager(this.currentHealth, newStartSceneNum, this.lvl, this.currentExp, this.listOfItemsId, this.listOfItemsTypes, currentSelectedItem));
         }
     }
 
@@ -109,6 +112,7 @@ public class PlayerDataManager : MonoBehaviour
         this.currentExp = playerData.currentExp;
         this.listOfItemsId = playerData.listOfItemsId;
         this.listOfItemsTypes = playerData.listOfItemsTypes;
+        this.currentSelectedItem = playerData.currentSelectedItem;
     }
 
 
@@ -128,6 +132,7 @@ public class PlayerDataManager : MonoBehaviour
         playerDevelopmentManager.SetCurrentLvl(lvl);
         playerDevelopmentManager.SetExpInExpBar();
         playerDevelopmentManager.SetItems(listOfItemsId, listOfItemsTypes);
+        playerDevelopmentManager.SetCurrentSelectedItem(currentSelectedItem);
         playerDevelopmentManager.SetParametersAccordingToTheLvl();
     }
 
@@ -175,6 +180,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         currentExp = playerDevelopmentManager.GetCurrentExp();
         lvl = playerDevelopmentManager.GetCurrentLvl();
+        currentSelectedItem = playerDevelopmentManager.GetCurrentSelectedItem();
     }
 
     private void GetDataAboutScene()

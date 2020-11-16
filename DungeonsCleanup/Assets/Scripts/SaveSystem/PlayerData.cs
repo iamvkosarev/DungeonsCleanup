@@ -11,6 +11,7 @@ public class PlayerData
     public int currentExp;
     public int[] listOfItemsId;
     public int[] listOfItemsTypes;
+    public int currentSelectedItem;
 
     public PlayerData (PlayerDataManager playerDataManager)
     {
@@ -20,5 +21,6 @@ public class PlayerData
         this.currentExp = playerDataManager.currentExp;
         this.listOfItemsId = playerDataManager.listOfItemsId;
         this.listOfItemsTypes = playerDataManager.listOfItemsTypes;
+        this.currentSelectedItem = playerDataManager.currentSelectedItem;
     }
 }

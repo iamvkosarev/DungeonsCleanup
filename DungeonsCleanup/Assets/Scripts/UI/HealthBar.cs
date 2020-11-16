@@ -6,34 +6,60 @@ using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] Slider healthSlider;
-    [SerializeField] Image expSlider;
-    [SerializeField] TextMeshProUGUI healthText;    
+    [SerializeField] private Image healthSlider;
+    [SerializeField] private Image expSlider;
+    [SerializeField] private Image selectedItemIcon;
+    private int maxHealth;
+    private int health;
+    //[SerializeField] TextMeshProUGUI healthText;    
 
     public void SetMaxHealth(int health)
     {
-        healthSlider.maxValue = health;
-        healthText.text = $"{healthSlider.value}/{healthSlider.maxValue}";
+        this.maxHealth = health;
+        SetHPSliderParam();
+        //healthText.text = $"{healthSlider.value}/{healthSlider.maxValue}";
 
     }
     public void SetHealth(int health)
     {
-        healthSlider.value = health;
-        healthText.text = $"{health}/{healthSlider.maxValue}";
+        this.health = health;
+        SetHPSliderParam();
+        //healthText.text = $"{health}/{healthSlider.maxValue}";
+    }
+    public void SetSelectedItem(Sprite newIcon)
+    {
+        selectedItemIcon.sprite = newIcon;
+        selectedItemIcon.color = new Color(1, 1, 1, 1);
+    }
+    public void RemoveSelectedItem()
+    {
+        selectedItemIcon.sprite = null;
+        selectedItemIcon.color = new Color(1, 1, 1, 0);
     }
     public int GetMaxHelath()
     {
-        return (int)healthSlider.maxValue;
+        return maxHealth;
     }
 
     public int GetHelath()
     {
-        return (int)healthSlider.value;
+        return health;
     }
-
+    public void SetHPSliderParam()
+    {
+        float result;
+        if (maxHealth != 0)
+        {
+            result = (float)health / (float)maxHealth;
+        }
+        else
+        {
+            result = 0;
+        }
+        healthSlider.fillAmount = result;
+    }
     public void SetExpSliderParam(int currentExp, int needExp)
     {
-        Debug.Log($"Опыт для замены: {currentExp} и {needExp}");
         float result;
         if (needExp != 0)
         {
@@ -43,7 +69,6 @@ public class HealthBar : MonoBehaviour
         {
             result = 0;
         }
-        Debug.Log($"Изменить слайдер опыта на {result} !!!!");
         expSlider.fillAmount = result;
     }
 }

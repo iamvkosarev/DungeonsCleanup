@@ -12,7 +12,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int exp;
     [SerializeField] private List<ItemData> items;
     [Header("Activation Ability")]
-    [SerializeField] private int currentItemIndex = 1;
+    private int currentSelectedItemIndex = -1;
     [SerializeField] private bool activateAbility;
     [SerializeField] private HealthBar healthBar;
     private bool wasActivated;
@@ -43,7 +43,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
             wasActivated = false;
         }
     }
-
+    
     public void AddExp(int exp)
     {
         if (exp + this.exp >= needExp)
@@ -72,13 +72,17 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
     public void ActivateAbility()
     {
-        if (items[currentItemIndex].itemType == ItemType.Artifact)
+        if (items[currentSelectedItemIndex].itemType == ItemType.Artifact)
         {
-            ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentItemIndex].id);
+            ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
             artifactData.Activate();
         }
     }
-
+    public void DeselectCurrentItem()
+    {
+        this.currentSelectedItemIndex = -1;
+        healthBar.RemoveSelectedItem();
+    }
     #region Counters
     public int CountDamage()
     {
@@ -109,6 +113,10 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public int GetMaxHealthAccordingLvl()
     {
         return CountMaxHP();
+    }
+    public int GetCurrentSelectedItem()
+    {
+        return currentSelectedItemIndex;
     }
     public int GetDamageAccordingLvl()
     {
@@ -186,6 +194,23 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #endregion
 
     #region Set Values
+    public void SetCurrentSelectedItem(int index)
+    {
+        this.currentSelectedItemIndex = index;
+        if (index == -1) {
+            healthBar.RemoveSelectedItem();
+        }
+        else if (items[index].itemType == ItemType.Artifact)
+        {
+            Debug.Log(index);
+            Debug.Log(listsOfItmes.GetArtifactData(items[index].id).nameOfArtifact);
+            healthBar.SetSelectedItem(listsOfItmes.GetArtifactData(items[index].id).icon);
+        }
+        else
+        {
+            healthBar.RemoveSelectedItem();
+        }
+    }
     public void SetCurrentLvl(int lvl)
     {
         this.lvl = lvl;
