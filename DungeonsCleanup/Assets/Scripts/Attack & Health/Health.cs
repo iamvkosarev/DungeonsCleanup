@@ -102,7 +102,6 @@ public class Health : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log($"GameObject \"{gameObject.name}\" has destroyed");
             Death();
         }
     }
@@ -113,7 +112,6 @@ public class Health : MonoBehaviour
 
     public void SetVisibilityOfEnemies(bool mode)
     {
-        if(healthCollider == null) { return; }
         healthCollider.enabled = mode;
     }
     private void Death()
@@ -144,7 +142,6 @@ public class Health : MonoBehaviour
     }
     public void SwitchOffFeetCollider()
     {
-        if(feetCoolider == null) {return;}
         feetCoolider.enabled = false;
     }
     private void DeathAnimaton()

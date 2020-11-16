@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 1940110116614799305}
   - component: {fileID: 1940110116614799304}
   - component: {fileID: 1940110116614799303}
+  - component: {fileID: 6489309077370033570}
   - component: {fileID: 934885363}
+  - component: {fileID: 934885370}
   - component: {fileID: 2006379481109494260}
   - component: {fileID: 5355345067194931273}
-  - component: {fileID: -5274479098104638004}
   m_Layer: 10
   m_Name: Bat
-  m_TagString: Bat
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,12 +123,42 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.01
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6489309077370033570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940110116614799307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  healthCollider: {fileID: 0}
+  feetCoolider: {fileID: 0}
+  deathAnimationsNum: 0
+  timeBefroGoingUnderGround: 3
+  speedOnGoingUnderGround: 0.6
+  timeBeforeDestroyAfterGoingUnderGround: 3
+  delayBeforeDeath: 0
+  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
+  particlesDestroyDelay: 2
+  particlesColor: {r: 0.3207547, g: 0.04438112, b: 0.07139511, a: 1}
+  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
+  floatingPointSpeed: 5
+  maxAngleFloatingPointDirection: 20
+  floatingPointDestroyDelay: 2
+  getHitSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  audioBoost: 0
 --- !u!114 &934885363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +175,34 @@ MonoBehaviour:
   towardSpeed: 3.5
   batDamage: 2
   attackRadius: 1
-  shouldBatFly: 1
+--- !u!114 &934885370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940110116614799307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!70 &2006379481109494260
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -175,33 +233,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
   amountOfExperience: 2
---- !u!114 &-5274479098104638004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940110116614799307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  healthCollider: {fileID: 0}
-  feetCoolider: {fileID: 0}
-  deathAnimationsNum: 0
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.6
-  timeBeforeDestroyAfterGoingUnderGround: 3
-  delayBeforeDeath: 5
-  getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
-  particlesDestroyDelay: 0.2
-  particlesColor: {r: 0, g: 0, b: 0, a: 0}
-  floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
-  floatingPointSpeed: 0
-  maxAngleFloatingPointDirection: 0
-  floatingPointDestroyDelay: 2
-  getHitSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
-  audioBoost: 0

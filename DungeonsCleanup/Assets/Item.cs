@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private ListsOfItmes listsOfItmes;
     [SerializeField] private TimeCrystalData timeCrystalData;
     [SerializeField] private ArtifactData artifactData;
     [SerializeField] private GameObject itemInfoCanvas;
@@ -25,10 +26,12 @@ public class Item : MonoBehaviour
         }
         if (timeCrystalData)
         {
+            myAnimator.enabled = true;
             myAnimator.SetBool("isCrystal", true);
         }
         else
         {
+            myAnimator.SetBool("isCrystal", false);
             myAnimator.enabled = false;
         }
     }
@@ -48,18 +51,35 @@ public class Item : MonoBehaviour
             spriteRenderer.sprite = artifactData.icon;
         }
     }
-
-    public void InstansiateItemInfoCanvas()
+    public void SwitchItem(ItemData itemData)
+    {
+        timeCrystalData = null;
+        artifactData = null;
+        ItemType newItemType = itemData.itemType;
+        if (newItemType == ItemType.Artifact)
+        {
+            artifactData = listsOfItmes.GetArtifactData(itemData.id);
+        }
+        else if(newItemType == ItemType.TimeCrystal)
+        {
+            timeCrystalData = listsOfItmes.GetTimeCrystalData(itemData.id);
+        }
+        LoadShining();
+        LoadSprite();
+    }
+    public void InstansiateItemInfoCanvas(PlayerDevelopmentManager playerDevelopmentManager)
     {
         GameObject canvas = Instantiate(itemInfoCanvas);
         ItemCanvas itemInfoCanvasScripts = canvas.GetComponent<ItemCanvas>();
+        itemInfoCanvasScripts.SetPlayerDeveloperMenu(playerDevelopmentManager);
+        itemInfoCanvasScripts.SetItemGameObject(this);
         if (timeCrystalData)
         {
-            itemInfoCanvasScripts.SetDataIntoFiled(timeCrystalData);
+            itemInfoCanvasScripts.SetDataIntoFileds(timeCrystalData);
         }
         else if (artifactData)
         {
-            itemInfoCanvasScripts.SetDataIntoFiled(artifactData);
+            itemInfoCanvasScripts.SetDataIntoFileds(artifactData);
         }
 
     }

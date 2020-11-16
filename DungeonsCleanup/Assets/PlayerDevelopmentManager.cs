@@ -14,8 +14,8 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [Header("Activation Ability")]
     [SerializeField] private int currentItemIndex = 1;
     [SerializeField] private bool activateAbility;
+    [SerializeField] private HealthBar healthBar;
     private bool wasActivated;
-    
 
     private int needExp;
     private PlayerAttackManager attackManager;
@@ -46,7 +46,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
     public void AddExp(int exp)
     {
-        if(exp + this.exp >= needExp)
+        if (exp + this.exp >= needExp)
         {
             this.exp = exp + this.exp - needExp;
             IncreaseLevel();
@@ -55,8 +55,12 @@ public class PlayerDevelopmentManager : MonoBehaviour
         {
             this.exp += exp;
         }
+        SetExpInExpBar();
     }
-
+    public void SetExpInExpBar()
+    {
+        healthBar.SetExpSliderParam(exp, needExp);
+    }
     private void IncreaseLevel()
     {
         lvl++;
@@ -70,10 +74,8 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         if (items[currentItemIndex].itemType == ItemType.Artifact)
         {
-            Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentItemIndex].id);
-            float direction = Mathf.Sign(transform.rotation.y);
-            artifactData.Activate(playerPosition, direction);
+            artifactData.Activate();
         }
     }
 
@@ -91,7 +93,19 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #endregion
 
     #region Getters
-
+    public int GetFreeItemField()
+    {
+        int freeFiledIndex = -1;
+        for (int index = 0; index < items.Count; index++)
+        {
+            if (items[index].id == -1)
+            {
+                freeFiledIndex = index;
+                break;
+            }
+        }
+        return freeFiledIndex;
+    }
     public int GetMaxHealthAccordingLvl()
     {
         return CountMaxHP();
@@ -111,6 +125,14 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public List<ItemData> GetItmes()
     {
         return items;
+    }
+    public ItemData GetItem(int itemId)
+    {
+        if(itemId >= items.Count || itemId < 0)
+        {
+            return null;
+        }
+        return items[itemId];
     }
     public int[] GetListOfItemsId()
     {
@@ -208,6 +230,20 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
             items.Add(newItem);
         }
+    }
+
+    public void SetItem(int index, int itemId, ItemType itemType)
+    {
+        if (index >= items.Count || index < 0) { return; }
+        var newItem = new ItemData();
+        newItem.SetIdAndType(itemId, itemType);
+        items[index] = newItem;
+    }
+    public ItemData SwitchItem(int index, int itemId, ItemType itemType)
+    {
+        var oldItem = items[index];
+        SetItem(index, itemId, itemType);
+        return oldItem;
     }
     #endregion
 

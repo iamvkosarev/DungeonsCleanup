@@ -14,7 +14,6 @@ public class ArtifactData : ItemData
 
     [Header("The activation properties")]
     [SerializeField] public AbilityType abilityType = AbilityType.Null;
-    [SerializeField] private Abilities abilities;
     [SerializeField] public bool canDestroyAfterActivate = false;
     [SerializeField] public bool canReactivate = true;
     [SerializeField] public float delayАfterActivation;
@@ -29,9 +28,9 @@ public class ArtifactData : ItemData
     {
         return canDestroyAfterActivate;
     }
-    public void Activate(Vector2 playerPosition, float direction)
+    public void Activate()
     {
-        abilities.Activate(abilityType, playerPosition, direction);
+        Abilities.Activate(abilityType);
     }
     public bool CanBeActivated()
     {

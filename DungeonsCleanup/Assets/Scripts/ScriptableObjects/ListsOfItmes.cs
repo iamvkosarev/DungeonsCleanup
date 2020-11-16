@@ -10,7 +10,7 @@ public class ListsOfItmes : ScriptableObject
 
     public ArtifactData GetArtifactData(int id)
     {
-        if (id >= artifactDatas.Length)
+        if (id >= artifactDatas.Length || id < 0)
         {
             return null;
         }

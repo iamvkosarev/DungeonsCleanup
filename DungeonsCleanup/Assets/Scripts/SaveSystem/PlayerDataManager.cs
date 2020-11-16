@@ -126,6 +126,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerDevelopmentManager.SetCurrentExp(currentExp);
         playerDevelopmentManager.SetCurrentLvl(lvl);
+        playerDevelopmentManager.SetExpInExpBar();
         playerDevelopmentManager.SetItems(listOfItemsId, listOfItemsTypes);
         playerDevelopmentManager.SetParametersAccordingToTheLvl();
     }

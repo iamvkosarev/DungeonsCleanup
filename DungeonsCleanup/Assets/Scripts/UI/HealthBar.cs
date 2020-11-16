@@ -7,6 +7,7 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
+    [SerializeField] Image expSlider;
     [SerializeField] TextMeshProUGUI healthText;    
 
     public void SetMaxHealth(int health)
@@ -28,5 +29,21 @@ public class HealthBar : MonoBehaviour
     public int GetHelath()
     {
         return (int)healthSlider.value;
+    }
+
+    public void SetExpSliderParam(int currentExp, int needExp)
+    {
+        Debug.Log($"Опыт для замены: {currentExp} и {needExp}");
+        float result;
+        if (needExp != 0)
+        {
+            result = (float)currentExp / (float)needExp;
+        }
+        else
+        {
+            result = 0;
+        }
+        Debug.Log($"Изменить слайдер опыта на {result} !!!!");
+        expSlider.fillAmount = result;
     }
 }

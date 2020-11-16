@@ -35,7 +35,6 @@ public class HatchManagment : MonoBehaviour
         Collider2D playerCollider = Physics2D.OverlapBox(checkPlayerPoint.position, checkPlayerSize, 0, playerLayer);
         if (playerCollider != null)
         {
-            Debug.Log(playerCollider.gameObject.name);
             if (playerMovement == null)
             {
                 Debug.Log("Player Movement detected");
