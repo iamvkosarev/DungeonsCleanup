@@ -228,9 +228,12 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  getHitSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
-  audioBoost: 0
+  getHitSFX: {fileID: 8300000, guid: f0c640c52fe8ca141a51c5ab6aa5bf4c, type: 3}
+  audioBoostGetHit: 0.5
+  deathSFX: {fileID: 8300000, guid: e58146a40cbcbfb40b947320b8b46cca, type: 3}
+  audioBoostDeathSFX: 0.3
+  bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  audioBoostBodyCrash: 1.2
 --- !u!114 &1157642317395755929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,8 +286,8 @@ MonoBehaviour:
     m_Bits: 16777216
   invisibleWallCheckSize: {x: 0.72, y: 0.11}
   invisibleWallCheckPoint: {fileID: 1174400149388493055}
-  firstStepSFX: {fileID: 8300000, guid: 8b927dc974d470043b6bbd857dd2cae9, type: 3}
-  secondStepSFX: {fileID: 8300000, guid: 5ec0b9976a961fc49855fa2e6cc6d369, type: 3}
+  firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
+  secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
   audioBoost: 1.4
 --- !u!114 &9004536804017886210
 MonoBehaviour:
@@ -339,8 +342,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 3.3982925
-  MaxDistance: 8.561493
+  MinDistance: 1.2614155
+  MaxDistance: 8.435858
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0

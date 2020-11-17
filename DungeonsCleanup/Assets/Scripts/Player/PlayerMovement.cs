@@ -81,6 +81,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maximumResponseTumbleweedTime;
     [SerializeField] private float delayAfterTumbleweed;
     [SerializeField] private LayerMask enemyLayer;
+    [Header("Audio")]
+    [SerializeField] private GameObject myAudioListner;
+    [SerializeField] private AudioClip firstStepSFX;
+    [SerializeField] private AudioClip secondStepSFX;
+    [SerializeField] private float audioBoost;
+    AudioSource myAudioSource;
     enum PressedHorisontalButtons { none, left, right};
     PressedHorisontalButtons lastPressedHorisontalButton = PressedHorisontalButtons.none;
     private bool wasFirstPointTouched;
@@ -129,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myHealth = GetComponent<PlayerHealth>();
@@ -401,6 +408,7 @@ public class PlayerMovement : MonoBehaviour
         wallJumpDirection *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+        myAudioListner.transform.Rotate(0, 180, 0);
     }
 
     public void StartRotaing()

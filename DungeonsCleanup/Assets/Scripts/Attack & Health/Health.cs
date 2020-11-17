@@ -30,8 +30,11 @@ public class Health : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] private AudioClip getHitSFX;
+    [SerializeField] private float audioBoostGetHit;
     [SerializeField] private AudioClip deathSFX;
-    [SerializeField] private float audioBoost;
+    [SerializeField] private float audioBoostDeathSFX;
+    [SerializeField] private AudioClip bodyCrash;
+    [SerializeField] private float audioBoostBodyCrash;
     private AudioSource myAudioSource;
     private GoblinBossAttack goblinBoss;
 
@@ -173,18 +176,15 @@ public class Health : MonoBehaviour
     {
         if (getHitSFX)
         {
-            myAudioSource.PlayOneShot(getHitSFX, audioBoost);
+            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
         }
     }
     private void SpawnDeathSFX()
     {
         if (deathSFX)
         {
-            GameObject deathGO = new GameObject();
-            deathGO.transform.position = transform.position;
-            AudioSource deathAudioSource = deathGO.AddComponent<AudioSource>();
-            deathAudioSource.PlayOneShot(deathSFX, audioBoost);
-            Destroy(deathGO, deathSFX.length);
+            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
+            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
         }
     }
     #endregion

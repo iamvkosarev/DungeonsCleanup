@@ -120,6 +120,45 @@ Transform:
   m_Father: {fileID: 7573613103745708401}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6339706421587032598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5537296551422516482}
+  - component: {fileID: 2717483724648008230}
+  m_Layer: 8
+  m_Name: AudioListner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5537296551422516482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339706421587032598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7081787225086070599}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &2717483724648008230
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339706421587032598}
+  m_Enabled: 1
 --- !u!1 &6445435075852272089
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +276,6 @@ GameObject:
   - component: {fileID: 1080693631}
   - component: {fileID: 250335807196669123}
   - component: {fileID: 6503540306400233640}
-  - component: {fileID: 6749816564060908163}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -260,6 +298,7 @@ Transform:
   - {fileID: 7081787223668988281}
   - {fileID: 3967220042134938645}
   - {fileID: 7573613103745708401}
+  - {fileID: 5537296551422516482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -371,8 +410,11 @@ MonoBehaviour:
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
   getHitSFX: {fileID: 0}
+  audioBoostGetHit: 0
   deathSFX: {fileID: 0}
-  audioBoost: 0
+  audioBoostDeathSFX: 0
+  bodyCrash: {fileID: 0}
+  audioBoostBodyCrash: 0
   canProtectHimself: 1
   healthBar: {fileID: 0}
   reloadingDelay: 2
@@ -433,6 +475,10 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  myAudioListner: {fileID: 6339706421587032598}
+  firstStepSFX: {fileID: 0}
+  secondStepSFX: {fileID: 0}
+  audioBoost: 0
 --- !u!114 &5961501673156388416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,14 +702,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backThemes:
   - {fileID: 8300000, guid: e53aabadc0954384283e3756ad03bb2c, type: 3}
---- !u!81 &6749816564060908163
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 1
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
