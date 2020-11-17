@@ -228,11 +228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
---- !u!1 &8370729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1514099537, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-  m_PrefabInstance: {fileID: 8370728}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8370730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4186234070351334817, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
@@ -2619,6 +2614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1982167871299263054, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.19189453
+      objectReference: {fileID: 0}
     - target: {fileID: 2280419624040277711, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3151,7 +3150,7 @@ PrefabInstance:
     - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: movementButtons
       value: 
-      objectReference: {fileID: 8370729}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
 --- !u!4 &1763410855 stripped

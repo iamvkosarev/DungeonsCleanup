@@ -53,7 +53,10 @@ public class PlayerActivationButton : MonoBehaviour
     }
     private void ActivateHatch()
     {
-        isReadyToActivateHatch = true;
+        if (canActivateHatch)
+        {
+            isReadyToActivateHatch = true;
+        }
     }
 
     internal void CanActivateHatch(bool mode)
