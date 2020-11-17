@@ -36,6 +36,7 @@ public class DeveloperMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rankArtifactField;
     [SerializeField] private TextMeshProUGUI abilityArtifactField;
     [SerializeField] private GameObject chooseItemButton;
+    private int currentArtifactToSelect;
     [Header("Time Crystal's Fields")]
     [SerializeField] private Image iconCrystalImage;
     [SerializeField] private TextMeshProUGUI activationDescriptionCrystalField;
@@ -79,6 +80,12 @@ public class DeveloperMenu : MonoBehaviour
         playerBarsUI.SetActive(mode);
     }
 
+    public void SelectItemToActivate()
+    {
+        playerDevManager.SetCurrentSelectedItem(currentArtifactToSelect);
+        chooseItemButton.SetActive(false);
+    }
+
     public void OpenItemInfo(int itemIndex)
     {
         Debug.Log($"OpenItemInfo: {itemIndex}");
@@ -90,6 +97,7 @@ public class DeveloperMenu : MonoBehaviour
         {
             artifactDescriptionForm.SetActive(true);
             ArtifactData artifactData = listsOfItmes.GetArtifactData(selectedItem.id);
+            currentArtifactToSelect = itemIndex;
             SetDataIntoFileds(artifactData);
         }
         else if(selectedItem.itemType == ItemType.TimeCrystal)
@@ -108,6 +116,14 @@ public class DeveloperMenu : MonoBehaviour
     }
     private void SetDataIntoFileds(ArtifactData artifactData)
     {
+        if (currentArtifactToSelect == playerDevManager.GetCurrentSelectedItem())
+        {
+            chooseItemButton.SetActive(false);
+        }
+        else
+        {
+            chooseItemButton.SetActive(true);
+        }
         iconArtifactImage.sprite = artifactData.icon;
         rankArtifactField.text = "Редкость предмета: " + artifactData.rank;
         nameArtifactField.text = artifactData.nameOfArtifact;
