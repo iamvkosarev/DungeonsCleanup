@@ -21,11 +21,13 @@ public class PlayerActivationButton : MonoBehaviour
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
     PlayerDevelopmentManager playerDevelopmentManager;
+    bool canActivateHatch;
+    bool isReadyToActivateHatch;
     bool canPlayerActivateSomeThing;
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
-        playerActionControls.Land.SwitchWeapon.started += _ => ActivateSomeThing();
+        playerActionControls.Land.ActivateSomething.started += _ => ActivateSomeThing();
     }
     private void Start()
     {
@@ -40,11 +42,31 @@ public class PlayerActivationButton : MonoBehaviour
         TransferPlayer();
         ShowTabletText();
         ShowItmeCanvas();
+        ActivateHatch();
     }
+
+   
     private void Update()
     {
         CheckPossibilityToActivateSomeThing();
         SwitchingActivateButton();
+    }
+    private void ActivateHatch()
+    {
+        isReadyToActivateHatch = true;
+    }
+
+    internal void CanActivateHatch(bool mode)
+    {
+        canActivateHatch = mode;
+        if (!mode)
+        {
+            isReadyToActivateHatch = false;
+        }
+    }
+    public bool IsReadyForActivation()
+    {
+        return isReadyToActivateHatch;
     }
 
     private void SwitchingActivateButton()
@@ -66,7 +88,7 @@ public class PlayerActivationButton : MonoBehaviour
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
 
-        canPlayerActivateSomeThing = (isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem);
+        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem);
     }
 
 

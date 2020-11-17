@@ -20,28 +20,16 @@ public class PlayerDevelopmentManager : MonoBehaviour
     private int needExp;
     private PlayerAttackManager attackManager;
     private PlayerHealth healthManager;
-
+    private PlayerActionControls playerActionControls;
+    private void Awake()
+    {
+        playerActionControls = new PlayerActionControls();
+        playerActionControls.Land.Activateability.started += _ => ActivateAbility();
+    }
     private void Start()
     {
         attackManager = GetComponent<PlayerAttackManager>();
         healthManager = GetComponent<PlayerHealth>();
-    }
-    private void Update()
-    {
-        CheckActivation();
-    }
-
-    private void CheckActivation()
-    {
-        if (activateAbility && !wasActivated)
-        {
-            wasActivated = true;
-            ActivateAbility();
-        }
-        else if(!activateAbility && wasActivated)
-        {
-            wasActivated = false;
-        }
     }
     
     public void AddExp(int exp)
@@ -72,6 +60,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
 
     public void ActivateAbility()
     {
+        if (wasActivated || currentSelectedItemIndex == -1) { return; }
         if (items[currentSelectedItemIndex].itemType == ItemType.Artifact)
         {
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
@@ -273,4 +262,13 @@ public class PlayerDevelopmentManager : MonoBehaviour
     #endregion
 
     #endregion
+
+    private void OnEnable()
+    {
+        playerActionControls.Enable();
+    }
+    private void OnDisable()
+    {
+        playerActionControls.Disable();
+    }
 }
