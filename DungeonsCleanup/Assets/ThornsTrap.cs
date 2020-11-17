@@ -22,7 +22,6 @@ public class ThornsTrap : MonoBehaviour
     {
         while(true)
         {
-            
             SwitchColliderValue(false);
             myAnimator.Play("ThornsDoesntAttack");
             yield return new WaitForSeconds(doesntAttackingTime);
