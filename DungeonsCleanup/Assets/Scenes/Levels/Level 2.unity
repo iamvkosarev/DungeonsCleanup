@@ -309,50 +309,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 138726459, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
     - target: {fileID: 416091628, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 881935058}
-    - target: {fileID: 461348500, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461348501, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
     - target: {fileID: 699171725, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 399620425}
-    - target: {fileID: 1514099538, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1992637263, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1992637264, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
-    - target: {fileID: 570750719522158480, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
-    - target: {fileID: 2939368319310028299, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
-    - target: {fileID: 3355227044057882691, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -441,14 +405,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gamepad Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8275841447626574815, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
-    - target: {fileID: 8959658805270854037, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-      propertyPath: mBM
-      value: 
-      objectReference: {fileID: 1514099539}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
 --- !u!1001 &22344586
@@ -32222,22 +32178,6 @@ Transform:
   m_Father: {fileID: 1540782190}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1514099537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1514099537, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-  m_PrefabInstance: {fileID: 8370728}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1514099539 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3005257401387962384, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
-  m_PrefabInstance: {fileID: 8370728}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514099537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eee6be54e3efad4ca4be401d7b3b61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1520526704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
@@ -32640,10 +32580,6 @@ PrefabInstance:
       propertyPath: activateSomeThingButton
       value: 
       objectReference: {fileID: 732902915}
-    - target: {fileID: 2542656809900335354, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4360314141667563155, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: healthBar
       value: 
@@ -32700,10 +32636,6 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 777554168}
-    - target: {fileID: 7081787225086070649, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: movementButtons
-      value: 
-      objectReference: {fileID: 1514099537}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
 --- !u!4 &1763410855 stripped

@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
     
     [SerializeField] private GameObject joystick;
-    [SerializeField] private GameObject movementButtons;
-    private bool useJoystick;
     private MovementButtonsManager movementButtonsManager;
     [SerializeField] private MovingJoystickProperties movingJoystickProperties;
     private MovementGamepad movementGamepad;
@@ -80,10 +78,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CapsuleCollider2D feetNotTouchingFeetCollide;
     [SerializeField] private Transform firstPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
+    [SerializeField] private float maximumResponseTumbleweedTime;
+    [SerializeField] private float delayAfterTumbleweed;
     [SerializeField] private LayerMask enemyLayer;
+    enum PressedHorisontalButtons { none, left, right};
+    PressedHorisontalButtons lastPressedHorisontalButton = PressedHorisontalButtons.none;
     private bool wasFirstPointTouched;
     private bool wasSecondPointTouched;
     private bool isTumbleweed;
+    private bool wasTumbleweedSuspended;
+    private float timeSinceStartCheckTumbleweed = 0;
 
     //catching files
     private PlayerActionControls playerActionControls;
@@ -96,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     private bool wasJumpRecently = false;
     private bool facingRight = true;
     private bool isAttackButtonPressed;
+    private bool isJumpButtonPressed;
     private bool canRotation = true;
     private float joystickXAxis;
     private float joystickYAxis;
@@ -107,6 +112,9 @@ public class PlayerMovement : MonoBehaviour
         // Attack
         playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
         playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
+        playerActionControls.Land.Jump.started += _ => isJumpButtonPressed = true;
+        playerActionControls.Land.Jump.canceled += _ => isJumpButtonPressed = false;
+        playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();
     }
 
     private void OnEnable()
@@ -124,17 +132,8 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myHealth = GetComponent<PlayerHealth>();
-        movementButtonsManager = movementButtons.GetComponent<MovementButtonsManager>();
         myAttackManager = GetComponent<PlayerAttackManager>();
-        useJoystick = SaveSystem.LoadSettings().useJoystick;
-        if (useJoystick)
-        {
-            movementGamepad = joystick.GetComponent<MovementGamepad>();
-        }
-        else
-        {
-            movementGamepad = movementButtons.GetComponent<MovementGamepad>();
-        }
+        movementGamepad = joystick.GetComponent<MovementGamepad>();
         SettingsData settingsData = SaveSystem.LoadSettings();
         movementGamepad.SetNewAlphaChannel(settingsData.alphaChannelParam);
         movementGamepad.SetNewPos(settingsData.posXParam, settingsData.posYParam);
@@ -144,7 +143,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Inputs();
         CheckTouching();
-        CheckTumbleweed();
         UpdateColliderInBody();
         PlayerRotation();
         CheckingEnemiesDuringATumbleweed();
@@ -165,21 +163,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        Vector2 movementParameters;
-        if (useJoystick)
-        {
-            movementParameters = playerActionControls.Land.Move.ReadValue<Vector2>();
-        }
-        else
-        {
-            movementParameters = movementButtonsManager.GetResult();
-        }
-        joystick.SetActive(useJoystick);
-        movementButtons.SetActive(!useJoystick);
-
-        joystickXAxis = movementParameters.x;
-        joystickYAxis = movementParameters.y;
-        canJump = (joystickYAxis >= movingJoystickProperties.GetJumpLimit()) ? true : false;
+        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
+        canJump = (isJumpButtonPressed) ? true : false;
     }
 
     #region Touching
@@ -245,6 +230,8 @@ public class PlayerMovement : MonoBehaviour
             wasSecondPointTouched = false;
         }
     }
+
+    
     public void TurnAroundIfWentThrowEnemy()
     {
         if (wasSecondPointTouched && wasFirstPointTouched)
@@ -253,15 +240,54 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void CheckTumbleweed()
     {
-        if (joystickYAxis <= -movingJoystickProperties.GetLowerMovementLimit() && Mathf.Abs(joystickXAxis) >= movingJoystickProperties.GetWalkLimit())
+        if (wasTumbleweedSuspended) { return; }
+        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
+        if (joystickXAxis > 0)
         {
-            isTumbleweed = true;
-            SetCollidingOfEnemiesMode(false);
-            myHealth.SetProtectingMode(true);
+            if (lastPressedHorisontalButton != PressedHorisontalButtons.right ||
+                Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
+            {
+                SetNewTumbleweedCheckParameters(PressedHorisontalButtons.right, Time.time);
+            }
+            else
+            {
+                isTumbleweed = true;
+                SetCollidingOfEnemiesMode(false);
+                myHealth.SetProtectingMode(true);
+                StartCoroutine(SuspendTumbleweed());
+            }
+        }
+        else if (joystickXAxis < 0)
+        {
+            if (lastPressedHorisontalButton != PressedHorisontalButtons.left ||
+                Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
+            {
+                SetNewTumbleweedCheckParameters(PressedHorisontalButtons.left, Time.time);
+            }
+            else
+            {
+                isTumbleweed = true;
+                SetCollidingOfEnemiesMode(false);
+                myHealth.SetProtectingMode(true);
+                StartCoroutine(SuspendTumbleweed());
+            }
         }
     }
+    IEnumerator SuspendTumbleweed()
+    {
+        wasTumbleweedSuspended = true;
+        yield return new WaitForSeconds(delayAfterTumbleweed);
+        wasTumbleweedSuspended = false;
+    }
+    private void SetNewTumbleweedCheckParameters(PressedHorisontalButtons direction, float time)
+    {
+        timeSinceStartCheckTumbleweed = time;
+        lastPressedHorisontalButton = direction;
+    }
+
     public bool IsTumbleweed()
     {
         return isTumbleweed;

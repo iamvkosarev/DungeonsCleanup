@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
+using TMPro;
 
 public class ActivateSomeThingButton : MonoBehaviour
 {
     [SerializeField] UnityEngine.UI.Image myImage;
-    [SerializeField] UnityEngine.UI.Image childImage;
+    [SerializeField] GameObject activateText;
     [SerializeField] Color onColor;
     [SerializeField] Color offColor;
 
@@ -18,7 +19,7 @@ public class ActivateSomeThingButton : MonoBehaviour
     public void SwitchOff()
     {
         myImage.color = offColor;
-        childImage.color = offColor;
+        activateText.SetActive(false);
         onScreenButton.enabled = false;
     }
 
@@ -26,7 +27,7 @@ public class ActivateSomeThingButton : MonoBehaviour
     {
 
         myImage.color = onColor;
-        childImage.color = onColor;
+        activateText.SetActive(true);
         onScreenButton.enabled = true;
     }
 }

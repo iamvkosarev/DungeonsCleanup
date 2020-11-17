@@ -16,7 +16,7 @@ public class HatchManagment : MonoBehaviour
     [SerializeField] private GameObject openBody;
     [SerializeField] private GameObject closeBody;
     private PlatformEffector2D myPlatformEffector2D;
-    private PlayerMovement playerMovement;
+    private PlayerActivationButton playerActivationButton;
 
     private void Start()
     {
@@ -35,16 +35,15 @@ public class HatchManagment : MonoBehaviour
         Collider2D playerCollider = Physics2D.OverlapBox(checkPlayerPoint.position, checkPlayerSize, 0, playerLayer);
         if (playerCollider != null)
         {
-            if (playerMovement == null)
+            if (playerActivationButton == null)
             {
                 Debug.Log("Player Movement detected");
-                playerMovement = playerCollider.GetComponent<PlayerMovement>();
-                Debug.Log(playerMovement.GetMovementParameters());
+                playerActivationButton = playerCollider.GetComponent<PlayerActivationButton>();
+                playerActivationButton.CanActivateHatch(true);
             }
             else
             {
-                Vector2 playerMovementManagerValues = playerMovement.GetMovementParameters();
-                if (playerMovementManagerValues.y <= -playerOperatingThreshold && IsPlayerHigher())
+                if (playerActivationButton.IsReadyForActivation())
                 {
                     OpenBody();
                 }
@@ -56,9 +55,10 @@ public class HatchManagment : MonoBehaviour
         }
         else
         {
-            if (playerMovement != null)
+            if (playerActivationButton != null)
             {
-                playerMovement = null;
+                playerActivationButton.CanActivateHatch(false);
+                playerActivationButton = null;
             }
             CloseBody();
         }

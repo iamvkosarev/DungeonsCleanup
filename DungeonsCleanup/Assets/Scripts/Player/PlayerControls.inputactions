@@ -6,10 +6,10 @@
             "id": "50439f32-413f-49dc-b42f-6fb6694e10f5",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Move Horizontal",
                     "type": "Value",
                     "id": "8900bd8e-6aba-4c71-a435-4d6cf2bdb87d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -22,9 +22,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SwitchWeapon",
+                    "name": "Activate ability",
                     "type": "Button",
                     "id": "930d1540-7799-4909-8163-86d6fe08a0ff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "316023ab-6fc5-44d7-b9e7-b8c63f46fc8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Activate Something",
+                    "type": "Button",
+                    "id": "b814d7ac-db8b-4e79-ab7f-68a851983800",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -32,70 +48,48 @@
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "cb618551-5abb-425b-a59a-40aa68947ba0",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "638d4b6d-5fa9-4b23-ac71-500d9435bf4a",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "36ed24c6-aebd-4972-914a-9a9bbc4768f6",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "f8e2d3e5-0298-485d-a309-67c2abfd96f6",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "2db62214-d06b-4e7e-9052-446f80260b1f",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "21506747-d949-4725-8ec1-77097917f216",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "2f394229-6580-48df-9a28-e350e95532b7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Horizontal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "0e39b55a-8ff2-48bf-ad0a-cc4a1561b139",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Horizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "fd73d35f-7af6-4c62-bc0b-7cd9a2f65bd5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Horizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -111,11 +105,33 @@
                 {
                     "name": "",
                     "id": "26299446-13e6-4e7f-85cc-43df41c852d2",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e1627ac-b876-4e2f-8fa2-0c7bf6639ee4",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a23269e4-f350-4c29-ba5d-9f8cc96eb396",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwitchWeapon",
+                    "action": "Activate Something",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
