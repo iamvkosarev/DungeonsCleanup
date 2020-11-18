@@ -37,6 +37,7 @@ public class EnemiesMovement : MonoBehaviour
         Run, Walk, Stand
     }
     private StatesOfMove currentStateMove;
+    private PlayerMovement player;
 
     Vector2 currentTarget;
     Rigidbody2D myRigidbody2D;
@@ -58,6 +59,7 @@ public class EnemiesMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         DetectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
         patrolman = GetComponent<Patrolman>();
+        player = FindObjectOfType<PlayerMovement>();
     }
     private void Update()
     {
@@ -289,6 +291,22 @@ public class EnemiesMovement : MonoBehaviour
         {
             myAudioSource.PlayOneShot(secondStepSFX, audioBoost);
         }
+    }
+
+    public void GetPunch(float pushXForce, float pushYForce)
+    {
+        if(player.gameObject.transform.position.x > transform.position.x)
+            myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+        else
+            myRigidbody2D.AddForce(new Vector2(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+        StartCoroutine(ControlMoving());
+    }
+
+    private IEnumerator ControlMoving()
+    {
+        StopMoving();
+        yield return new WaitForSeconds(1);
+        StartMoving();
     }
     private void OnDrawGizmosSelected()
     {

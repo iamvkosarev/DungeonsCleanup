@@ -585,6 +585,12 @@ MonoBehaviour:
   items: []
   activateAbility: 0
   healthBar: {fileID: 0}
+  windPushRadius: {x: 10, y: 5}
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  pushXForce: 5000
+  pushYForce: 1000
 --- !u!114 &1080693631
 MonoBehaviour:
   m_ObjectHideFlags: 0
