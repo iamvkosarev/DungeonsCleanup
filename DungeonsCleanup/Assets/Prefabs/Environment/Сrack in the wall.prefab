@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2807647799552402896
+--- !u!1 &3785792514257705
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2807647799552402899}
-  - component: {fileID: 2807647799552402898}
-  - component: {fileID: 2807647799552402897}
+  - component: {fileID: 3785792514257703}
+  - component: {fileID: 3785792514257702}
   m_Layer: 0
-  m_Name: Music Player
+  m_Name: "\u0421rack in the wall"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2807647799552402899
+--- !u!4 &3785792514257703
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807647799552402896}
+  m_GameObject: {fileID: 3785792514257705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1109.1469, y: 537.42957, z: -851.78674}
+  m_LocalPosition: {x: 31.2, y: 3.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2807647799552402898
+--- !u!82 &3785792514257702
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807647799552402896}
+  m_GameObject: {fileID: 3785792514257705}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a16453b5585c94240b719e7c460b4771, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a42912cdd6fc234fbe45bbf1ec1bddb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -52,10 +51,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 2.058567
+  MaxDistance: 8.662842
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -63,23 +62,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.48091573
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.19273236
+      outSlope: -0.19273236
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.43082124
     - serializedVersion: 3
-      time: 1
+      time: 0.98931885
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -3.9990098
+      outSlope: -3.9990098
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.49041706
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -87,8 +86,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
+      time: 0.00800705
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -118,7 +117,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -128,17 +127,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2807647799552402897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807647799552402896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61c64be8c7cc3943af424f26566efc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPressSFX: {fileID: 8300000, guid: 2d469e1b0d5c51e4aa6903d27be6abb7, type: 3}
-  audioBoost: 1

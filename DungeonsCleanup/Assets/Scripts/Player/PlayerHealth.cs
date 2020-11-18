@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,16 @@ public class PlayerHealth : Health
     [SerializeField] private bool canProtectHimself = true;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float reloadingDelay = 2f;
+    [SerializeField] private AudioClip heartBitting;
+    [SerializeField] private float audioBoost;
+    private AudioSource myAudioSource;
     private PlayerDevelopmentManager playerDevelopmentManager;
+    private bool isHeartBitting;
     private bool isProtecting;
 
     private void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         SetMaxHealth(playerDevelopmentManager.GetMaxHealthAccordingLvl());
     }
@@ -38,6 +44,26 @@ public class PlayerHealth : Health
         if (canProtectHimself && isProtecting) { return; }
         base.TakeAwayHelath(damage);
         healthBar.SetHealth(base.GetHealth());
+        PlayHeartBittingSVF();
+    }
+
+
+    private void PlayHeartBittingSVF()
+    {
+        if ((float)base.GetHealth()/(float)healthBar.GetMaxHelath() < 0.2f)
+        {
+            if (!isHeartBitting)
+            {
+                myAudioSource.PlayOneShot(heartBitting, audioBoost);
+                StartCoroutine(WaitForNextBitting());
+            }
+        }
+    }
+    IEnumerator WaitForNextBitting()
+    {
+        isHeartBitting = true;
+        yield return new WaitForSeconds(heartBitting.length);
+        isHeartBitting = false;
     }
 
     public override void CheckZeroHealth()

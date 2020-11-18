@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private GameObject myAudioListner;
     [SerializeField] private AudioClip firstStepSFX;
+    [SerializeField] private AudioClip raincoatInFlightSFX;
     [SerializeField] private AudioClip secondStepSFX;
     [SerializeField] private float audioBoost;
     AudioSource myAudioSource;
@@ -602,6 +603,28 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Others
+    public void SpawnRaincoatInFlight()
+    {
+        if (raincoatInFlightSFX)
+        {
+            myAudioSource.PlayOneShot(raincoatInFlightSFX, audioBoost);
+        }
+    }
+    public void SpawnFirstStepSFX()
+    {
+        if (firstStepSFX)
+        {
+            myAudioSource.PlayOneShot(firstStepSFX, audioBoost);
+        }
+
+    }
+    public void SpawnSecondStepSFX()
+    {
+        if (secondStepSFX)
+        {
+            myAudioSource.PlayOneShot(secondStepSFX, audioBoost);
+        }
+    }
     public bool IsAttackButtonPressed()
     {
         return isAttackButtonPressed;

@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     [SerializeField] private Color particlesColor;
 
     [Header("Floating Points")]
+    [SerializeField] private bool showFloatingPoints = false;
     [SerializeField] private GameObject floatingPointsPrefab;
     [SerializeField] private float floatingPointSpeed;
     [SerializeField] private float maxAngleFloatingPointDirection;
@@ -84,6 +85,7 @@ public class Health : MonoBehaviour
 
     private void SpawnFloatingPoints(int damage)
     {
+        if (!showFloatingPoints) { return; }
         GameObject floatingPoint = Instantiate(floatingPointsPrefab, transform.position, Quaternion.identity);
         float randomAngle = UnityEngine.Random.RandomRange(-maxAngleFloatingPointDirection, maxAngleFloatingPointDirection);
         Vector2 direction = new Vector2(Mathf.Sin(randomAngle/90f*Mathf.PI), Mathf.Cos(randomAngle / 90f * Mathf.PI));

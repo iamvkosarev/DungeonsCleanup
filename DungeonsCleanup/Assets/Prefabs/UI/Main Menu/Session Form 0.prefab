@@ -144,6 +144,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: SpawnPressButtonSVF
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1986689830
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +391,9 @@ MonoBehaviour:
   sceneNum: 1
   lvl: 1
   currentExp: 0
+  listOfItemsId: 000000000000000000000000000000000000000000000000
+  listOfItemsTypes: 000000000000000000000000000000000000000000000000
+  currentSelectedItem: -1
 --- !u!1 &830447908828045002
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +516,18 @@ MonoBehaviour:
       - m_Target: {fileID: 830447908751799637}
         m_TargetAssemblyTypeName: SessionForm, Assembly-CSharp
         m_MethodName: SelectSession
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 830447908751799637}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: SpawnPressButtonSVF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -633,6 +660,18 @@ MonoBehaviour:
       - m_Target: {fileID: 830447908751799637}
         m_TargetAssemblyTypeName: SessionForm, Assembly-CSharp
         m_MethodName: LoadSession
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 830447908751799637}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: SpawnPressButtonSVF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1045,6 +1084,18 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SessionsManager, Assembly-CSharp
         m_MethodName: DeselectAllSessionForms
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: SpawnPressButtonSVF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

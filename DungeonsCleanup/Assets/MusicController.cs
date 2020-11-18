@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    AudioSource audioSource;
+    [SerializeField] private AudioClip buttonPressSFX;
+    [SerializeField] private float audioBoost;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +17,10 @@ public class MusicController : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioSource.volume = volume;
+    }
+
+    public void SpawnPressButtonSVF()
+    {
+        audioSource.PlayOneShot(buttonPressSFX, audioBoost);
     }
 }

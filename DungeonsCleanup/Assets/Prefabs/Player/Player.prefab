@@ -413,11 +413,13 @@ MonoBehaviour:
   audioBoostGetHit: 0
   deathSFX: {fileID: 0}
   audioBoostDeathSFX: 0
-  bodyCrash: {fileID: 0}
-  audioBoostBodyCrash: 0
+  bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  audioBoostBodyCrash: 1
   canProtectHimself: 1
   healthBar: {fileID: 0}
   reloadingDelay: 2
+  heartBitting: {fileID: 8300000, guid: 78fb548df699f754a91d79d01614fcab, type: 3}
+  audioBoost: 2
 --- !u!114 &7081787225086070649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +478,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   myAudioListner: {fileID: 6339706421587032598}
-  firstStepSFX: {fileID: 0}
-  secondStepSFX: {fileID: 0}
-  audioBoost: 0
+  firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
+  raincoatInFlightSFX: {fileID: 0}
+  secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
+  audioBoost: 0.5
 --- !u!114 &5961501673156388416
 MonoBehaviour:
   m_ObjectHideFlags: 0
