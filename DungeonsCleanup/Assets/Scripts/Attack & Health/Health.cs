@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     public float speedOnGoingUnderGround = 0.6f;
     public float timeBeforeDestroyAfterGoingUnderGround = 3f;
     public float delayBeforeDeath;
+    [SerializeField] private bool spawnExpWithoutAnimation = false;
     
     [Header("Damage Particles")]
     [SerializeField] private GameObject getDamageParticle;
@@ -123,6 +124,10 @@ public class Health : MonoBehaviour
     {
         SpawnDeathSFX();
         DeathAnimaton();
+        if (spawnExpWithoutAnimation)
+        {
+            SpawnExp();
+        }
         AttackTag attackTag = GetComponent<AttackTag>();
         if (attackTag)
         {
@@ -135,6 +140,7 @@ public class Health : MonoBehaviour
     }
     public void StartGoingUnderGround()
     {
+        if (spawnExpWithoutAnimation) { return; }
         SpawnExp();
         StartCoroutine(GoingUnderGround());
     }

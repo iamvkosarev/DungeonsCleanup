@@ -150,16 +150,21 @@ MonoBehaviour:
   speedOnGoingUnderGround: 0.6
   timeBeforeDestroyAfterGoingUnderGround: 3
   delayBeforeDeath: 0
+  spawnExpWithoutAnimation: 1
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.3207547, g: 0.04438112, b: 0.07139511, a: 1}
+  showFloatingPoints: 0
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
   getHitSFX: {fileID: 0}
+  audioBoostGetHit: 0
   deathSFX: {fileID: 0}
-  audioBoost: 0
+  audioBoostDeathSFX: 0
+  bodyCrash: {fileID: 0}
+  audioBoostBodyCrash: 0
 --- !u!114 &934885363
 MonoBehaviour:
   m_ObjectHideFlags: 0
