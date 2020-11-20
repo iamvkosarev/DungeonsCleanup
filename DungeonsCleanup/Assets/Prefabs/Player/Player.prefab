@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6038624089281843385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6499996, y: 0.2800002, z: 0}
+  m_LocalPosition: {x: 0.797, y: 0.2800002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
@@ -402,6 +402,7 @@ MonoBehaviour:
   speedOnGoingUnderGround: 0.8
   timeBeforeDestroyAfterGoingUnderGround: 3
   delayBeforeDeath: 1
+  spawnExpWithoutAnimation: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.5647059, g: 0, b: 0, a: 1}
@@ -468,7 +469,7 @@ MonoBehaviour:
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
   runParticals: {fileID: 0}
   particlesDestroyDelay: 1
-  tumbleweedSpeed: 10
+  tumbleweedSpeed: 9
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
@@ -498,7 +499,7 @@ MonoBehaviour:
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  numOfAttackAnimations: 2
+  numOfAttackAnimations: 1
   damage: 100
 --- !u!114 &1187377112
 MonoBehaviour:
@@ -737,13 +738,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787225611444493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.109, z: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.08, y: 0.529, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &7081787225611444495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -784,7 +785,7 @@ SpriteRenderer:
   m_SortingLayerID: -767915699
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50be7e40059e8eb4db05e6642cfd6e8a, type: 3}
+  m_Sprite: {fileID: 8793639957104055765, guid: b8738a40f7767464198ac2b8953c3999, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

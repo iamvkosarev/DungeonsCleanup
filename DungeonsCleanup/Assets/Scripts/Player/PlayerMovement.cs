@@ -172,9 +172,18 @@ public class PlayerMovement : MonoBehaviour
     private void Inputs()
     {
         joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
-        canJump = (isJumpButtonPressed) ? true : false;
+        //canJump = (isJumpButtonPressed) ? true : false;
+        StartCoroutine(JumpWorkWithDalay());
+        joystickYAxis = (isJumpButtonPressed) ? 1f : 0f;
     }
-
+    IEnumerator JumpWorkWithDalay()
+    {
+        bool _canJump = (isJumpButtonPressed) ? true : false;
+        if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
+        yield return new WaitForSeconds(0.2f);
+        if (_canJump) { StartHorizontalMovement(); }
+        canJump = _canJump;
+    }
     #region Touching
 
     private void CheckTouching()
@@ -432,10 +441,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ManageStateOfMove()
     {
-        if (IsPlyerStanding())
-        {
-            StartHorizontalMovement();
-        }
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
         if (isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
         previousState = currentState;
@@ -502,7 +507,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMove()
     {
-        if (areHorizontalMovingSuspended) { return; }
+        if (areHorizontalMovingSuspended) {
+            myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
+            return; }
         float velocityYAxis = myRigidbody2D.velocity.y;
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
         if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
