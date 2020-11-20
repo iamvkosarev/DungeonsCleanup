@@ -54,16 +54,18 @@ AnimationClip:
     - time: 0
       value: {fileID: -3297650188656544483, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.083333336
-      value: {fileID: 1427936120346131835, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+      value: {fileID: 42540282074972397, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.16666667
-      value: {fileID: -1450166047590963086, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+      value: {fileID: 1427936120346131835, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.25
-      value: {fileID: 3408046652129433154, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+      value: {fileID: -1450166047590963086, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.33333334
-      value: {fileID: -4386850089186596021, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+      value: {fileID: 3408046652129433154, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.41666666
-      value: {fileID: -8312566940136299171, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+      value: {fileID: -4386850089186596021, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - time: 0.5
+      value: {fileID: -8312566940136299171, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+    - time: 0.5833333
       value: {fileID: 682248077354982294, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     attribute: m_Sprite
     path: Body
@@ -99,6 +101,7 @@ AnimationClip:
       isPPtrCurve: 0
     pptrCurveMapping:
     - {fileID: -3297650188656544483, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
+    - {fileID: 42540282074972397, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - {fileID: 1427936120346131835, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - {fileID: -1450166047590963086, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
     - {fileID: 3408046652129433154, guid: cba5c5d8516b72c4184693905610dce1, type: 3}
@@ -110,7 +113,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -288,14 +291,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.5833333
     functionName: StartHorizontalMovement
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.5833333
     functionName: AttackHasEnded
     data: 
     objectReferenceParameter: {fileID: 0}

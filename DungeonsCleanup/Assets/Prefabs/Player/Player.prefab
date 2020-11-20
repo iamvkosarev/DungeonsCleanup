@@ -369,7 +369,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06322098, y: 0.37412035}
+  m_Offset: {x: 0.06322098, y: 0.13882172}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -380,7 +380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6066246, y: 1.305763}
+  m_Size: {x: 0.6066246, y: 1.7763603}
   m_EdgeRadius: 0
 --- !u!114 &4360314141667563155
 MonoBehaviour:
@@ -417,7 +417,7 @@ MonoBehaviour:
   audioBoostDeathSFX: 0
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1
-  canProtectHimself: 1
+  canProtectHimself: 0
   healthBar: {fileID: 0}
   reloadingDelay: 2
   heartBitting: {fileID: 8300000, guid: 78fb548df699f754a91d79d01614fcab, type: 3}
@@ -475,7 +475,7 @@ MonoBehaviour:
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
   maximumResponseTumbleweedTime: 0.4
-  delayAfterTumbleweed: 0.6
+  delayAfterTumbleweed: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
