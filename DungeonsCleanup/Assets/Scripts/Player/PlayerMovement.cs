@@ -6,7 +6,6 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] private GameObject joystick;
     private MovementButtonsManager movementButtonsManager;
     [SerializeField] private MovingJoystickProperties movingJoystickProperties;
