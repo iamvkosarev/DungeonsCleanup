@@ -149,7 +149,8 @@ public class BatPathing : MonoBehaviour
     {
         if(health.health == 0)
         {
-            myAnimator.Play("BatDeath");
+            shouldBatFly = false;
+            myAnimator.SetTrigger("Death");
             myRigidbody.gravityScale = 1f;
             Destroy(gameObject, 1f);
         }
