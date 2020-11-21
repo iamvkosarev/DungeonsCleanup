@@ -12,6 +12,7 @@ public class BatPathing : MonoBehaviour
     [SerializeField] private int batDamage = 15;
     [SerializeField] private float attackRadius = 1f;
     private PlayerMovement player;
+    private Rigidbody2D myRigidbody;
     private float distanceToAttack;
     private bool reachedEndOfPath = false;
     private float nextWaypointDistance = 3f;
@@ -21,12 +22,16 @@ public class BatPathing : MonoBehaviour
     private int currentWayPoint;
     private Rigidbody2D rb;
     private Animator myAnimator;
+    private Health health;
+    private bool shouldBatFly = true;
 
     private void Start()
     {
         //GetComponent + FindObjectOfType
+        health = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myRigidbody = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         distanceToAttack = GetComponentInParent<BatSpawn>().GetDistanceToAttack();
 
@@ -41,18 +46,23 @@ public class BatPathing : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        //Moving();
+        bool playerInAttackRadius = Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
+                && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack;
 
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
-             && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack)  
+        if(shouldBatFly)
         {
-            MoveTowardPlayer();
+            if(playerInAttackRadius)  
+            {
+                MoveTowardPlayer();
+            }
+
+            else
+            {
+                Moving();
+            }
         }
 
-        else
-        {
-            Moving();
-        }
+        CheckZeroHealth();
     }
 
     private void Moving()
@@ -65,10 +75,10 @@ public class BatPathing : MonoBehaviour
         {
             waypointIndex = Random.Range(0, waypoints.Count);
         }
-        
 
         if(IsFacingOnAWaypoint())
             Flip();
+        
     }
 
     private void MoveTowardPlayer()
@@ -80,8 +90,13 @@ public class BatPathing : MonoBehaviour
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
             && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
+            shouldBatFly = false;
             myAnimator.SetBool("Attack", true);
         }
+
+        
+        if(IsFacingOnAHero())
+            Flip();
         
         //MoveTowardPlayer();
     }
@@ -94,9 +109,7 @@ public class BatPathing : MonoBehaviour
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
         }
         myAnimator.SetBool("Attack", false);
-
-        if(IsFacingOnAHero())
-            Flip();
+        shouldBatFly = true;
     }
 
     
@@ -129,6 +142,16 @@ public class BatPathing : MonoBehaviour
         else
         {
             return Mathf.Sign(transform.localScale.x) > 0;
+        }
+    }
+
+    private void CheckZeroHealth()
+    {
+        if(health.health == 0)
+        {
+            myAnimator.Play("BatDeath");
+            myRigidbody.gravityScale = 1f;
+            Destroy(gameObject, 1f);
         }
     }
 }
