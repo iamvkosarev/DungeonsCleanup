@@ -6,6 +6,7 @@ public class TrapButton : MonoBehaviour
 {
     [SerializeField] private int enemyFeetLayerNum;
     [SerializeField] private bool canEnemyTouchButton = true;
+    [SerializeField] private float timeOnUnpressButton = 5f;
     private Animator animator;
     private Animator parentAnimator;
     private void Start()
@@ -15,26 +16,26 @@ public class TrapButton : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
+        if(enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton
+            || enemyFeetLayerNum != other.gameObject.layer)
         {
             animator.SetBool("On", true);
             parentAnimator.SetBool("Shot", true);
+            StartCoroutine(UnpressButton());
         }
-        else if(enemyFeetLayerNum != other.gameObject.layer)
-        {
-            animator.SetBool("On", true);
-            parentAnimator.SetBool("Shot", true);
-        }
+    }
+
+    IEnumerator UnpressButton()
+    {
+        yield return new WaitForSeconds(timeOnUnpressButton);
+        animator.SetBool("On", false);
+        parentAnimator.SetBool("Shot", false);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton)
-        {
-            animator.SetBool("On", false);
-            parentAnimator.SetBool("Shot", false);
-        }
-        else if (enemyFeetLayerNum != other.gameObject.layer)
+        if (enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton
+            || enemyFeetLayerNum != other.gameObject.layer)
         {
             animator.SetBool("On", false);
             parentAnimator.SetBool("Shot", false);
