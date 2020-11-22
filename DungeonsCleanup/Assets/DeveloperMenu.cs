@@ -169,11 +169,13 @@ public class DeveloperMenu : MonoBehaviour
             if (playerItems[index].id == -1)
             {
                 image.sprite = null;
+                image.color = new Color(1, 1, 1, 0);
                 button.interactable = false;
                 continue;
             }
             else
             {
+                image.color = new Color(1, 1, 1, 1);
                 button.interactable = true;
             }
             ItemType itemType = playerItems[index].itemType;
@@ -189,6 +191,7 @@ public class DeveloperMenu : MonoBehaviour
             else
             {
                 image.sprite = null;
+                image.color = new Color(1, 1, 1, 0);
             }
         }
     }
