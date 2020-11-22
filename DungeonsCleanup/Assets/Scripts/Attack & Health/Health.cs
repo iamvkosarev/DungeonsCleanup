@@ -162,15 +162,15 @@ public class Health : MonoBehaviour
     }
     private void DeathAnimaton()
     {
-        if(gameObject.tag != "Bat")
+        SwitchOffFeetCollider();
+        SetVisibilityOfEnemies(false);
+        if (gameObject.tag != "Bat")
         {
             if (deathAnimationsNum == 0)
             {
                 Destroy(gameObject, delayBeforeDeath);
                 return;
             }
-            SetVisibilityOfEnemies(false);
-            SwitchOffFeetCollider();
             myRB.bodyType = RigidbodyType2D.Kinematic;
             myRB.velocity = new Vector2(0, 0);
             int randomNumOfAnimation = UnityEngine.Random.Range(1, deathAnimationsNum+1);

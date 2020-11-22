@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1940110116614799303}
   - component: {fileID: 6489309077370033570}
   - component: {fileID: 934885363}
-  - component: {fileID: 2006379481109494260}
   - component: {fileID: 5355345067194931273}
+  - component: {fileID: 5268385735622780452}
   m_Layer: 10
   m_Name: Bat
   m_TagString: Bat
@@ -142,13 +142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  healthCollider: {fileID: 0}
-  feetCoolider: {fileID: 0}
+  healthCollider: {fileID: 5268385735622780452}
+  feetCoolider: {fileID: 4667559220020504181}
   deathAnimationsNum: 0
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.6
-  timeBeforeDestroyAfterGoingUnderGround: 3
+  timeBefroStartedSpawnHazeVFX: 3
+  timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0.1
+  timeBeforeDestroyAfterSpawnHazeVFX: 3
   delayBeforeDeath: 0
+  spawnDeathSFXPos: {fileID: 0}
+  deathVFXPrefab: {fileID: 0}
   spawnExpWithoutAnimation: 1
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
@@ -180,22 +182,6 @@ MonoBehaviour:
   towardSpeed: 3.5
   batDamage: 2
   attackRadius: 1
---- !u!70 &2006379481109494260
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940110116614799307}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: -0.8}
-  m_Size: {x: 5, y: 2.5}
-  m_Direction: 1
 --- !u!114 &5355345067194931273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +196,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
   amountOfExperience: 2
+--- !u!61 &5268385735622780452
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940110116614799307}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.043533325, y: -0.37013698}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 10}
+    newSize: {x: 10, y: 10}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.9079266, y: 3.1633744}
+  m_EdgeRadius: 0
 --- !u!1 &5985686971416008568
 GameObject:
   m_ObjectHideFlags: 0

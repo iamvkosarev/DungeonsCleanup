@@ -43,10 +43,10 @@ public class ThornsTrap : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(damage);
         }
-        else if(other.gameObject.layer == enemieLayerNum)
+        /*else if(other.gameObject.layer == enemieLayerNum)
         {
             other.gameObject.GetComponent<Health>().TakeAwayHelath(damage);
-        }
+        }*/
     }
 
     private void SwitchColliderValue(bool value)
