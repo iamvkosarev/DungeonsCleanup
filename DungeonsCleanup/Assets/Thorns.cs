@@ -8,9 +8,9 @@ public class Thorns : MonoBehaviour
     [SerializeField] private bool hasTeleportToStart = false;
     [SerializeField] private Transform startPlayerPos;
     [SerializeField] private int damage = 10;
-    [SerializeField] private float delayOnAttack = 2f;
-    [SerializeField] private int playerLayerNum;
-    [SerializeField] private int enemiesLayerNum;
+    [SerializeField] private float delayOnAttack = 3f;
+    [SerializeField] private int playerLayerNum = 8;
+    [SerializeField] private int enemiesLayerNum = 10;
     private List<AttackedCreature> attackedCreatures = new List<AttackedCreature>();
     void Start()
     {
