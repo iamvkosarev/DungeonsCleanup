@@ -11,6 +11,7 @@ public class Drop : MonoBehaviour
     [SerializeField] float lastPointSpeed;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] AudioClip[] punchSVFs;
+    [SerializeField] private int groundLayerNum = 9;
     [SerializeField] float audioBoostPunchSVF;
 
     Rigidbody2D myRigidbody2D;
@@ -96,10 +97,14 @@ public class Drop : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SpawnPunchSVF();
+        if (collision.gameObject.layer == groundLayerNum)
+        {
+            myRigidbody2D.bodyType = RigidbodyType2D.Static;
+            myRigidbody2D.velocity = new Vector2(0, 0);
+        }
         myBoxCollider2D.isTrigger = false;
         myAnimator.SetTrigger("Drop");
     }
-
     private void SpawnPunchSVF()
     {
         int randomNumOfSound = UnityEngine.Random.Range(0, punchSVFs.Length);
@@ -107,9 +112,4 @@ public class Drop : MonoBehaviour
         Destroy(gameObject, punchSVFs[randomNumOfSound].length);
     }
 
-    public void Destroy()
-    {
-        mySpriteRenderer.sprite = null;
-        Destroy(gameObject, destroyDalay);
-    }
 }

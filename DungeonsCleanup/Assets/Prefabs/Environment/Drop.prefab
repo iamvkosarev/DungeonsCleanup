@@ -104,12 +104,13 @@ MonoBehaviour:
   lastPointSpeed: 0.9
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   punchSVFs:
   - {fileID: 8300000, guid: 0e4e96ef2c1c76743804eea3c811a250, type: 3}
   - {fileID: 8300000, guid: 65f38b1652d1b374d9bbab568162a0a6, type: 3}
   - {fileID: 8300000, guid: e520d640c1e4bfd499cf5e446a6df5f2, type: 3}
-  audioBoostPunchSVF: 0.7
+  groundLayerNum: 9
+  audioBoostPunchSVF: 1
 --- !u!50 &2173154887405600154
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.033752322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.03125, y: 0.03125}
+  m_Size: {x: 0.07622205, y: 0.12869048}
   m_EdgeRadius: 0
 --- !u!95 &7571611952141618858
 Animator:
@@ -196,10 +197,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.34893227
-  MaxDistance: 7.155308
+  MinDistance: 1.5351706
+  MaxDistance: 6.4437294
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

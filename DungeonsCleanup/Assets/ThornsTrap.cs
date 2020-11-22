@@ -10,10 +10,10 @@ public class ThornsTrap : MonoBehaviour
     [SerializeField]private int damage;
     [SerializeField] private AudioClip attackSFX;
     [SerializeField] private float audioBoost = 1f;
-    [SerializeField] private int playerLayerNum;
+    [SerializeField] private int playerLayerNum = 8;
+    [SerializeField] private int enemieLayerNum = 10;
     private Animator myAnimator;
     private AudioSource myAudioSource;
-    private PlayerMovement player;
     void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
@@ -42,6 +42,10 @@ public class ThornsTrap : MonoBehaviour
         if (other.gameObject.layer == playerLayerNum)
         {
             other.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(damage);
+        }
+        else if(other.gameObject.layer == enemieLayerNum)
+        {
+            other.gameObject.GetComponent<Health>().TakeAwayHelath(damage);
         }
     }
 
