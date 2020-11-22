@@ -5,15 +5,18 @@ using UnityEngine;
 public class ThornsTrap : MonoBehaviour
 {
     [Header("Frequency")]
-    [SerializeField] private float attackingTime = 2f;
-    [SerializeField] private float doesntAttackingTime = 5f;
+    [SerializeField] private float attackingTime = 1f;
+    [SerializeField] private float doesntAttackingTime = 2f;
     [SerializeField]private int damage;
+    [SerializeField] private AudioClip attackSFX;
+    [SerializeField] private float audioBoost = 1f;
+    [SerializeField] private int playerLayerNum;
     private Animator myAnimator;
+    private AudioSource myAudioSource;
     private PlayerMovement player;
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
-        
+        myAudioSource = GetComponent<AudioSource>();
         myAnimator = GetComponent<Animator>();
         StartCoroutine(Attacking());
     }
@@ -28,6 +31,7 @@ public class ThornsTrap : MonoBehaviour
 
             SwitchColliderValue(true);
             myAnimator.Play("ThornsAttack");
+            myAudioSource.PlayOneShot(attackSFX, audioBoost);
             yield return new WaitForSeconds(attackingTime);
 
         }
@@ -35,10 +39,9 @@ public class ThornsTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if(other.gameObject == player.gameObject)
+        if (other.gameObject.layer == playerLayerNum)
         {
-            player.GetComponent<PlayerHealth>().TakeAwayHelath(damage);
+            other.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(damage);
         }
     }
 

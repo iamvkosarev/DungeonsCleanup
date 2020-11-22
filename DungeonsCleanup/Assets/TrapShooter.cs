@@ -6,15 +6,23 @@ public class TrapShooter : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform[] spawnProjectilesPoints;
+    [SerializeField] private AudioClip shootSFX;
+    [SerializeField] private float boostAudio;
     [Range(0f,360f)] [SerializeField] private float angle = 0f;
+    private AudioSource[] myAudioSources;
+    private void Start()
+    {
+        myAudioSources = GetComponentsInChildren<AudioSource>();
+    }
     private void Shoot()
     {
-        foreach (Transform spawnProjectilesPoint in spawnProjectilesPoints)
+        for (int index = 0; index < spawnProjectilesPoints.Length; index++)
         {
 
-            GameObject projectile = Instantiate(projectilePrefab, spawnProjectilesPoint.transform.position, Quaternion.identity) as GameObject;
+            GameObject projectile = Instantiate(projectilePrefab, spawnProjectilesPoints[index].transform.position, Quaternion.identity) as GameObject;
             TrapArrowMovement trapArrowMovement = projectile.GetComponent<TrapArrowMovement>();
             trapArrowMovement.SetDirectionByAngle(angle);
+            myAudioSources[index].PlayOneShot(shootSFX, boostAudio);
         }
 
     }

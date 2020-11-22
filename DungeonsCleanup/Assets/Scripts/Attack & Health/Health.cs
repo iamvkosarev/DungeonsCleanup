@@ -12,10 +12,12 @@ public class Health : MonoBehaviour
     public BoxCollider2D healthCollider;
     public Collider2D feetCoolider;
     public int deathAnimationsNum = 0;
-    public float timeBefroGoingUnderGround = 3f;
-    public float speedOnGoingUnderGround = 0.6f;
-    public float timeBeforeDestroyAfterGoingUnderGround = 3f;
+    public float timeBefroStartedSpawnHazeVFX = 3f;
+    public float timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender = 0.1f;
+    public float timeBeforeDestroyAfterSpawnHazeVFX = 3f;
     public float delayBeforeDeath;
+    [SerializeField] private Transform spawnDeathSFXPos;
+    [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] private bool spawnExpWithoutAnimation = false;
     
     [Header("Damage Particles")]
@@ -142,13 +144,16 @@ public class Health : MonoBehaviour
     {
         if (spawnExpWithoutAnimation) { return; }
         SpawnExp();
-        StartCoroutine(GoingUnderGround());
+        StartCoroutine(DeathVFX());
     }
-    IEnumerator GoingUnderGround()
+    IEnumerator DeathVFX()
     {
-        yield return new WaitForSeconds(timeBefroGoingUnderGround);
-        myRB.velocity = Vector2.down * speedOnGoingUnderGround;
-        yield return new WaitForSeconds(timeBeforeDestroyAfterGoingUnderGround);
+        yield return new WaitForSeconds(timeBefroStartedSpawnHazeVFX);
+        GameObject deathVFX = Instantiate(deathVFXPrefab, spawnDeathSFXPos.position, Quaternion.identity);
+        deathVFX.transform.parent = transform;
+        yield return new WaitForSeconds(timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender);
+        GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        yield return new WaitForSeconds(timeBeforeDestroyAfterSpawnHazeVFX);
         Destroy();
     }
     public void SwitchOffFeetCollider()

@@ -352,13 +352,17 @@ MonoBehaviour:
   healthCollider: {fileID: 5602574948176362969}
   feetCoolider: {fileID: 2280272574141709357}
   deathAnimationsNum: 1
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.6
-  timeBeforeDestroyAfterGoingUnderGround: 3
+  timeBefroStartedSpawnHazeVFX: 3
+  timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0
+  timeBeforeDestroyAfterSpawnHazeVFX: 0.5
   delayBeforeDeath: 0
+  spawnDeathSFXPos: {fileID: 751160421445674587}
+  deathVFXPrefab: {fileID: 1304974059871206100, guid: ddcc492906f561042abd485c61de880b, type: 3}
+  spawnExpWithoutAnimation: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.5647059, g: 0, b: 0, a: 1}
+  showFloatingPoints: 0
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
@@ -366,7 +370,7 @@ MonoBehaviour:
   getHitSFX: {fileID: 8300000, guid: f0c640c52fe8ca141a51c5ab6aa5bf4c, type: 3}
   audioBoostGetHit: 0.5
   deathSFX: {fileID: 8300000, guid: e58146a40cbcbfb40b947320b8b46cca, type: 3}
-  audioBoostDeathSFX: 0.3
+  audioBoostDeathSFX: 0.25
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1.2
 --- !u!114 &1946901898
@@ -729,8 +733,39 @@ Transform:
   - {fileID: 1173190190}
   - {fileID: 3548378142020817165}
   - {fileID: 2135581748402439139}
+  - {fileID: 751160421445674587}
   m_Father: {fileID: 2280272574607320913}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5133717103292614366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751160421445674587}
+  m_Layer: 10
+  m_Name: Spawn Death VFX Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &751160421445674587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133717103292614366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.169, y: -0.332, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7527446659138619075}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5645938345465255224
 GameObject:

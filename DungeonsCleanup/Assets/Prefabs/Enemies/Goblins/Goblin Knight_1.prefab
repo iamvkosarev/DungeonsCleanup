@@ -217,13 +217,17 @@ MonoBehaviour:
   healthCollider: {fileID: 558233152892049661}
   feetCoolider: {fileID: 3587912931702186183}
   deathAnimationsNum: 1
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.6
-  timeBeforeDestroyAfterGoingUnderGround: 3
+  timeBefroStartedSpawnHazeVFX: 3
+  timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0
+  timeBeforeDestroyAfterSpawnHazeVFX: 0.5
   delayBeforeDeath: 0
+  spawnDeathSFXPos: {fileID: 2487739833733793128}
+  deathVFXPrefab: {fileID: 1304974059871206100, guid: ddcc492906f561042abd485c61de880b, type: 3}
+  spawnExpWithoutAnimation: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.5647059, g: 0, b: 0, a: 1}
+  showFloatingPoints: 0
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
@@ -231,7 +235,7 @@ MonoBehaviour:
   getHitSFX: {fileID: 8300000, guid: f0c640c52fe8ca141a51c5ab6aa5bf4c, type: 3}
   audioBoostGetHit: 0.5
   deathSFX: {fileID: 8300000, guid: e58146a40cbcbfb40b947320b8b46cca, type: 3}
-  audioBoostDeathSFX: 0.3
+  audioBoostDeathSFX: 0.25
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1.2
 --- !u!114 &1157642317395755929
@@ -671,6 +675,7 @@ Transform:
   - {fileID: 6223966520183027864}
   - {fileID: 748389029203683463}
   - {fileID: 1174400149388493055}
+  - {fileID: 2487739833733793128}
   m_Father: {fileID: 3587912931236608955}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -733,6 +738,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3132326511578775961}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8517533059943320308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2487739833733793128}
+  m_Layer: 10
+  m_Name: Spawn Death VFX Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2487739833733793128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517533059943320308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.111, y: -0.375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3132326511578775961}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8893226315367317066
 GameObject:

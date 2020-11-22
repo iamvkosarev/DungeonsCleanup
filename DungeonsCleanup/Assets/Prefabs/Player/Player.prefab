@@ -398,10 +398,12 @@ MonoBehaviour:
   healthCollider: {fileID: 2542656809900335354}
   feetCoolider: {fileID: 7077148873157811720}
   deathAnimationsNum: 0
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.8
-  timeBeforeDestroyAfterGoingUnderGround: 3
+  timeBefroStartedSpawnHazeVFX: 3
+  timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0.1
+  timeBeforeDestroyAfterSpawnHazeVFX: 3
   delayBeforeDeath: 1
+  spawnDeathSFXPos: {fileID: 0}
+  deathVFXPrefab: {fileID: 0}
   spawnExpWithoutAnimation: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
@@ -483,7 +485,7 @@ MonoBehaviour:
   firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
   raincoatInFlightSFX: {fileID: 0}
   secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
-  audioBoost: 0.5
+  audioBoost: 1.2
 --- !u!114 &5961501673156388416
 MonoBehaviour:
   m_ObjectHideFlags: 0
