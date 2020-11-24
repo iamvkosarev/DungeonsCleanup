@@ -133,11 +133,11 @@ PrefabInstance:
     - target: {fileID: 3090342862460106632, guid: 0cd32979f25563d428043883c6d34b37, type: 3}
       propertyPath: useJoystickToggle
       value: 
-      objectReference: {fileID: 1497057380}
+      objectReference: {fileID: 0}
     - target: {fileID: 3090342862460106632, guid: 0cd32979f25563d428043883c6d34b37, type: 3}
       propertyPath: volumeSlider
       value: 
-      objectReference: {fileID: 1648889699}
+      objectReference: {fileID: 0}
     - target: {fileID: 3090342862460106632, guid: 0cd32979f25563d428043883c6d34b37, type: 3}
       propertyPath: gamepadScaleSlider
       value: 
@@ -751,17 +751,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5212624506062511414, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
   m_PrefabInstance: {fileID: 583605643867483309}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1497057380 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2691525998844544864, guid: 582e665871d6edd4d8f3ab8edff1dde1, type: 3}
-  m_PrefabInstance: {fileID: 367599694}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1630611136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,17 +766,6 @@ MonoBehaviour:
   mainMenuCanvas: {fileID: 126205570}
   settingsMenuCanvas: {fileID: 992466394}
   sessionsMenuCanvas: {fileID: 1297690336}
---- !u!114 &1648889699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5655062524755090754, guid: 582e665871d6edd4d8f3ab8edff1dde1, type: 3}
-  m_PrefabInstance: {fileID: 367599694}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1741592164 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2711713794691820578, guid: 582e665871d6edd4d8f3ab8edff1dde1, type: 3}
@@ -834,9 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 1887131492}
     - target: {fileID: 703763830686678066, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_text
-      value: 'Create
-
-'
+      value: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 1114302662158807405, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -848,9 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 1887131492}
     - target: {fileID: 1422571635084678273, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_text
-      value: 'Create
-
-'
+      value: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 1517559670144545629, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -886,9 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 1887131492}
     - target: {fileID: 3884200059039191124, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_text
-      value: 'Create
-
-'
+      value: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C\n"
       objectReference: {fileID: 0}
     - target: {fileID: 4302495293377662277, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target

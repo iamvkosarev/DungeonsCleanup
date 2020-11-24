@@ -30,7 +30,7 @@ public class LoseMenuScript : PauseMenu
     {
         if(Advertisement.IsReady())
         {
-            Advertisement.Show("video");
+            Advertisement.Show("rewardedVideo");
             //Time.timeScale = 0;
         }
 
