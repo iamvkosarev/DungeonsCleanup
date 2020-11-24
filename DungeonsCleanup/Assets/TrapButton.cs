@@ -32,15 +32,5 @@ public class TrapButton : MonoBehaviour
         parentAnimator.SetBool("Shot", false);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (enemyFeetLayerNum == other.gameObject.layer && canEnemyTouchButton
-            || enemyFeetLayerNum != other.gameObject.layer)
-        {
-            animator.SetBool("On", false);
-            parentAnimator.SetBool("Shot", false);
-        }
-    }
-
 
 }
