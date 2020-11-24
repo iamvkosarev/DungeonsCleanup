@@ -203,8 +203,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030164748, y: 1.313489}
-  m_Size: {x: 0.6343841, y: 1.0369778}
+  m_Offset: {x: -0.030164748, y: 1.2839327}
+  m_Size: {x: 0.6343841, y: 0.97786516}
   m_Direction: 0
 --- !u!1 &7081787223668988230
 GameObject:
@@ -441,7 +441,7 @@ MonoBehaviour:
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
   runSpeed: 8
   walkSpeed: 4
-  startingMovingTransitionTime: 0.2
+  startingMovingTransitionTime: 0
   endingMovingTransitionTime: 0.2
   slowingOnStairsParametr: {x: 1.5, y: 0.8}
   horizontalMovingSuspendDelay: 1
@@ -472,12 +472,12 @@ MonoBehaviour:
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
   runParticals: {fileID: 0}
   particlesDestroyDelay: 1
-  tumbleweedSpeed: 9
+  tumbleweedSpeed: 11
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
-  maximumResponseTumbleweedTime: 0.4
+  maximumResponseTumbleweedTime: 0.6
   delayAfterTumbleweed: 0.5
   enemyLayer:
     serializedVersion: 2

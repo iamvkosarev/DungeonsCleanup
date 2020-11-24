@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
-        yield return new WaitForSeconds((isStandingOnGround)? 0.2f : 0f);
+        yield return new WaitForSeconds((isStandingOnGround)? 0.15f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
     }
@@ -270,7 +270,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                currentState = StateOFMove.Run;
                 isTumbleweed = true;
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
@@ -442,7 +441,7 @@ public class PlayerMovement : MonoBehaviour
     private void ManageStateOfMove()
     {
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-        if (isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
+        if (isTumbleweed ||isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
         previousState = currentState;
 
         #region If player's jumped from wall and then landed on ground before end of supsended we should give acess to move
