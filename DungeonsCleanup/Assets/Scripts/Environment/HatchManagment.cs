@@ -15,11 +15,16 @@ public class HatchManagment : MonoBehaviour
     [SerializeField] private Color checkPlayerInWitchSideColor;
     [SerializeField] private GameObject openBody;
     [SerializeField] private GameObject closeBody;
+    [SerializeField] private AudioClip hatchSFX;
+    [SerializeField] private float audioBoost =1f;
+    private bool wasOpened;
+    private AudioSource myAudioSource;
     private PlatformEffector2D myPlatformEffector2D;
     private PlayerActivationButton playerActivationButton;
 
     private void Start()
     {
+        myAudioSource = GetComponentInChildren<AudioSource>();
         myPlatformEffector2D = GetComponent<PlatformEffector2D>();
         CloseBody();
         
@@ -45,6 +50,11 @@ public class HatchManagment : MonoBehaviour
             {
                 if (playerActivationButton.IsReadyForActivation())
                 {
+                    if (!wasOpened)
+                    {
+                        wasOpened = true;
+                        PlaySFX();
+                    }
                     OpenBody();
                 }
                 else
@@ -59,6 +69,11 @@ public class HatchManagment : MonoBehaviour
             {
                 playerActivationButton.CanActivateHatch(false);
                 playerActivationButton = null;
+            }
+            if (wasOpened)
+            {
+                wasOpened = false;
+                PlaySFX();
             }
             CloseBody();
         }
@@ -92,5 +107,10 @@ public class HatchManagment : MonoBehaviour
         Gizmos.color = checkPlayerInWitchSideColor;
         Gizmos.DrawCube(new Vector2(checkPlayerPoint.position.x, checkPlayerPoint.position.y + checkPlayerSize.y/2f - checkPlayerInWitchSideSize.y/2f), checkPlayerInWitchSideSize);
     }
-    
+    private void PlaySFX()
+    {
+        myAudioSource.clip = hatchSFX;
+        myAudioSource.volume = audioBoost;
+        myAudioSource.Play();
+    }
 }

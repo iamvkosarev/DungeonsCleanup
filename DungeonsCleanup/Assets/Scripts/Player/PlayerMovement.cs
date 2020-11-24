@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private float maximumResponseTumbleweedTime;
     [SerializeField] private float delayAfterTumbleweed;
+    [SerializeField] private float timeOnTumblweed;
     [SerializeField] private LayerMask enemyLayer;
     [Header("Audio")]
     [SerializeField] private GameObject myAudioListner;
@@ -179,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
-        yield return new WaitForSeconds((isStandingOnGround)? 0.2f : 0f);
+        yield return new WaitForSeconds((isStandingOnGround)? 0.15f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
     }
@@ -274,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
                 StartCoroutine(SuspendTumbleweed());
+                StartCoroutine(DoingTumblweed());
             }
         }
         else if (joystickXAxis < 0)
@@ -289,8 +291,14 @@ public class PlayerMovement : MonoBehaviour
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
                 StartCoroutine(SuspendTumbleweed());
+                StartCoroutine(DoingTumblweed());
             }
         }
+    }
+    IEnumerator DoingTumblweed()
+    {
+        yield return new WaitForSeconds(timeOnTumblweed);
+        StopTumbleweed();
     }
     IEnumerator SuspendTumbleweed()
     {
@@ -441,7 +449,7 @@ public class PlayerMovement : MonoBehaviour
     private void ManageStateOfMove()
     {
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-        if (isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
+        if (isTumbleweed ||isMovingStateManagementSuspended && absJpystickXAxis > 0f || currentState == StateOFMove.TransitionDown && isMovingStateManagementSuspended) { return; }
         previousState = currentState;
 
         #region If player's jumped from wall and then landed on ground before end of supsended we should give acess to move
