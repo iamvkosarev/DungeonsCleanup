@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private float maximumResponseTumbleweedTime;
     [SerializeField] private float delayAfterTumbleweed;
+    [SerializeField] private float timeOnTumblweed;
     [SerializeField] private LayerMask enemyLayer;
     [Header("Audio")]
     [SerializeField] private GameObject myAudioListner;
@@ -274,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
                 StartCoroutine(SuspendTumbleweed());
+                StartCoroutine(DoingTumblweed());
             }
         }
         else if (joystickXAxis < 0)
@@ -289,8 +291,14 @@ public class PlayerMovement : MonoBehaviour
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
                 StartCoroutine(SuspendTumbleweed());
+                StartCoroutine(DoingTumblweed());
             }
         }
+    }
+    IEnumerator DoingTumblweed()
+    {
+        yield return new WaitForSeconds(timeOnTumblweed);
+        StopTumbleweed();
     }
     IEnumerator SuspendTumbleweed()
     {

@@ -44,7 +44,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void CheckPlayerPos()
     {
-        if (playerMovementScript.IsTumbleweed() && hasPlayerLowerSpecialAnimation)
+        if (playerMovementScript.IsTumbleweed() && hasPlayerLowerSpecialAnimation && playerMovementScript.IsPlyerStanding())
         {
             isTumbleweed = true;
         }
