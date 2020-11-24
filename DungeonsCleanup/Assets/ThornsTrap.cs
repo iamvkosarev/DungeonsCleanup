@@ -10,8 +10,6 @@ public class ThornsTrap : MonoBehaviour
     [SerializeField]private int damage;
     [SerializeField] private AudioClip attackSFX;
     [SerializeField] private float audioBoost = 1f;
-    [SerializeField] private int playerLayerNum = 8;
-    [SerializeField] private int enemieLayerNum = 10;
     private Animator myAnimator;
     private AudioSource myAudioSource;
     void Start()
@@ -39,14 +37,10 @@ public class ThornsTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == playerLayerNum)
+        if (other.GetComponent<PlayerHealth>())
         {
             other.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(damage);
         }
-        /*else if(other.gameObject.layer == enemieLayerNum)
-        {
-            other.gameObject.GetComponent<Health>().TakeAwayHelath(damage);
-        }*/
     }
 
     private void SwitchColliderValue(bool value)
