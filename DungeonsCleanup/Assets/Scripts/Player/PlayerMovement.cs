@@ -270,6 +270,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                currentState = StateOFMove.Run;
                 isTumbleweed = true;
                 SetCollidingOfEnemiesMode(false);
                 myHealth.SetProtectingMode(true);
