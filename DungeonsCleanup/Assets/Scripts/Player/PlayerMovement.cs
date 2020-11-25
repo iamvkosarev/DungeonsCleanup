@@ -346,6 +346,10 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, -wallSlideSpeed);
         }
     }
+    public bool IsWallSliding()
+    {
+        return isWallSliding;
+    }
     #endregion
 
     #region Jump
