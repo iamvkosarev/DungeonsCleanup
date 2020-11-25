@@ -28,6 +28,7 @@ public class LoseMenuScript : PauseMenu
 
     public void PlayAdvirtisement()
     {
+        Debug.Log("WHERE IS A MISTAKE???");
         if(Advertisement.IsReady())
         {
             Advertisement.Show("rewardedVideo");
