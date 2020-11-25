@@ -17,7 +17,7 @@ public class OptionsController : MonoBehaviour
     private void Start()
     {
         settingsData = SaveSystem.LoadSettings();
-        useJoystickToggle.isOn = settingsData.useJoystick;
+        //useJoystickToggle.isOn = settingsData.useJoystick;
         gamepadScaleSlider.value = settingsData.scaleParam;
         gamepadXPosSlider.value = settingsData.posXParam;
         gamepadYPosSlider.value = settingsData.posYParam;
@@ -33,14 +33,14 @@ public class OptionsController : MonoBehaviour
         var musicPlayer = FindObjectOfType<MusicController>();
         if(musicPlayer)
         {
-            musicPlayer.SetVolume(volumeSlider.value);
+            //musicPlayer.SetVolume(volumeSlider.value);
         }
 
         else
         {
             Debug.LogWarning("some problems with musicPlayer");
         }
-        CheckTypeJoystickToggle();
+        //CheckTypeJoystickToggle();
         CheckScaleGamepadSlider();
         CheckAlphaGamepadSlider();
         CheckPosXGamepadSlider();
