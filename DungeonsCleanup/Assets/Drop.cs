@@ -100,9 +100,10 @@ public class Drop : MonoBehaviour
         if (collision.gameObject.layer == groundLayerNum)
         {
             myRigidbody2D.bodyType = RigidbodyType2D.Static;
+            myBoxCollider2D.isTrigger = true;
             myRigidbody2D.velocity = new Vector2(0, 0);
         }
-        myBoxCollider2D.isTrigger = false;
+        myBoxCollider2D.isTrigger = true;
         myAnimator.SetTrigger("Drop");
     }
     private void SpawnPunchSVF()

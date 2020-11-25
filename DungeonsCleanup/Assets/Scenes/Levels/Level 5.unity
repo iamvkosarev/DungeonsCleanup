@@ -2235,7 +2235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1639725271286249509, guid: a3a188a32bb12764a82e6e5661004011, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1639725271286249509, guid: a3a188a32bb12764a82e6e5661004011, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3098,11 +3098,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3522477
+      value: 2.707664
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7658818
+      value: 0.469448
+      objectReference: {fileID: 0}
+    - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: orthographic size
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3110,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.79452634
+      value: 0.67452633
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574013, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_Follow
@@ -7780,7 +7784,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
