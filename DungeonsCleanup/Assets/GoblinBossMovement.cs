@@ -10,11 +10,13 @@ public class GoblinBossMovement : MonoBehaviour
     private float startXScale;
     private Vector2 playerPoistion;
     private Rigidbody2D myRigidbody;
+    private Animator myAnimator;
     void Start()
     {
         startXScale = transform.localScale.x;
         playerPoistion = player.position;
         myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class GoblinBossMovement : MonoBehaviour
         {
             float xScale = transform.localScale.x;
             myRigidbody.velocity = new Vector2(-Mathf.Sign(xScale) * speed, transform.position.y);
+            //myAnimator.SetBool("isWalking", true);
         }
         
         if(IsNotFacingOnAHero())
