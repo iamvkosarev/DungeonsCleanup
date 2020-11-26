@@ -228,20 +228,27 @@ MonoBehaviour:
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 2117049030}
   deathAnimationsNum: 0
-  timeBefroGoingUnderGround: 3
-  speedOnGoingUnderGround: 0.6
-  timeBeforeDestroyAfterGoingUnderGround: 3
+  timeBefroStartedSpawnHazeVFX: 3
+  timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0.1
+  timeBeforeDestroyAfterSpawnHazeVFX: 3
   delayBeforeDeath: 0
+  spawnDeathSFXPos: {fileID: 0}
+  deathVFXPrefab: {fileID: 0}
+  spawnExpWithoutAnimation: 0
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.6037736, g: 0, b: 0, a: 1}
+  showFloatingPoints: 0
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
   getHitSFX: {fileID: 0}
+  audioBoostGetHit: 0
   deathSFX: {fileID: 0}
-  audioBoost: 0
+  audioBoostDeathSFX: 0
+  bodyCrash: {fileID: 0}
+  audioBoostBodyCrash: 0
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 0}
   reloadingDelay: 2
@@ -275,6 +282,10 @@ MonoBehaviour:
   earthquakeDamage: 1
   pushXForceForEarth: 0
   pushYForceForEarth: 100
+  cam: {fileID: 0}
+  durationOfNoise: 0.7
+  noiseAmplitude: 10
+  noiseFrequency: 5
   numberOfGoblins: 5
   spawnPlace:
   - {x: -12, y: -4.6}

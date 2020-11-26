@@ -203,8 +203,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030164748, y: 1.313489}
-  m_Size: {x: 0.6343841, y: 1.0369778}
+  m_Offset: {x: -0.030164748, y: 1.2839327}
+  m_Size: {x: 0.6343841, y: 0.97786516}
   m_Direction: 0
 --- !u!1 &7081787223668988230
 GameObject:
@@ -369,7 +369,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06322098, y: 0.13882172}
+  m_Offset: {x: 0.032124937, y: 0.16153789}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -380,7 +380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6066246, y: 1.7763603}
+  m_Size: {x: 0.4698022, y: 1.5069652}
   m_EdgeRadius: 0
 --- !u!114 &4360314141667563155
 MonoBehaviour:
@@ -424,6 +424,7 @@ MonoBehaviour:
   reloadingDelay: 2
   heartBitting: {fileID: 8300000, guid: 78fb548df699f754a91d79d01614fcab, type: 3}
   audioBoost: 2
+  loseCanvas: {fileID: 0}
 --- !u!114 &7081787225086070649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ MonoBehaviour:
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
   runSpeed: 8
   walkSpeed: 4
-  startingMovingTransitionTime: 0.2
+  startingMovingTransitionTime: 0
   endingMovingTransitionTime: 0.2
   slowingOnStairsParametr: {x: 1.5, y: 0.8}
   horizontalMovingSuspendDelay: 1
@@ -462,7 +463,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   wallCheckPoint: {fileID: 4780771758210633572}
-  wallCheckSize: {x: 0.11, y: 0.96}
+  wallCheckSize: {x: 0.11, y: 0.12}
   wallJumpForce: 8
   wallJumpDirection: -1
   wallJumpAngle: {x: 1, y: 1.3}
@@ -471,13 +472,14 @@ MonoBehaviour:
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
   runParticals: {fileID: 0}
   particlesDestroyDelay: 1
-  tumbleweedSpeed: 9
+  tumbleweedSpeed: 11
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
-  maximumResponseTumbleweedTime: 0.4
+  maximumResponseTumbleweedTime: 0.6
   delayAfterTumbleweed: 0.5
+  timeOnTumblweed: 0.35
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -837,7 +839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238425143453033020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4239998, y: 0.1420002, z: 0}
+  m_LocalPosition: {x: 0.381, y: 0.845, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}

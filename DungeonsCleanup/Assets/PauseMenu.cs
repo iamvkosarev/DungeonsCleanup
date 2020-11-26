@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private GameObject gamepadUI;
-    [SerializeField] private GameObject playerBarsUI;
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject pauseMenuUI;
+    [SerializeField] public GameObject gamepadUI;
+    [SerializeField] public GameObject playerBarsUI;
+    [SerializeField] public GameObject loseUI;
+    [SerializeField] public GameObject player;
     PlayerMovement playerMovement;
     private void Start()
     {
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         SwitchOtherCanvases(true);
         pauseMenuUI.SetActive(false);
+        loseUI.SetActive(false);
         if (playerMovement)
         {
             playerMovement.StartRotaing();
@@ -38,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void SwitchOtherCanvases(bool mode)
+    public void SwitchOtherCanvases(bool mode)
     {
         gamepadUI.SetActive(mode);
         playerBarsUI.SetActive(mode);

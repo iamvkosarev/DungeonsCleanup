@@ -11,7 +11,7 @@ public class MusicController : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefsController.GetMasterVolume();
+        //audioSource.volume = PlayerPrefsController.GetMasterVolume();
     }
 
     public void SetVolume(float volume)

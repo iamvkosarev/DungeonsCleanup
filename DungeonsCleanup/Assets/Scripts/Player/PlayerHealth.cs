@@ -10,6 +10,7 @@ public class PlayerHealth : Health
     [SerializeField] private float reloadingDelay = 2f;
     [SerializeField] private AudioClip heartBitting;
     [SerializeField] private float audioBoost;
+    [SerializeField] private LoseMenuScript loseCanvas;
     private AudioSource myAudioSource;
     private PlayerDevelopmentManager playerDevelopmentManager;
     private bool isHeartBitting;
@@ -87,7 +88,8 @@ public class PlayerHealth : Health
     IEnumerator Reloading()
     {
         yield return new WaitForSeconds(reloadingDelay);
-        GetComponent<PlayerDataManager>().SetCheckPointSessionData();
+        loseCanvas.SetLoseCanvas();
+        //GetComponent<PlayerDataManager>().SetCheckPointSessionData();
     }
 
     public bool IsPlayerDead()

@@ -12,6 +12,7 @@ public class PlayerAnimation : MonoBehaviour
     PlayerMovement playerMovementScript;
     Rigidbody2D myRigitBody;
     Animator myAnimator;
+    bool wasSlidingOnWall;
 
     bool isAttackButtonPressed;
     // Parameters
@@ -44,9 +45,19 @@ public class PlayerAnimation : MonoBehaviour
 
     private void CheckPlayerPos()
     {
-        if (playerMovementScript.IsTumbleweed() && hasPlayerLowerSpecialAnimation)
+        if (wasSlidingOnWall && !playerMovementScript.IsWallSliding())
+        {
+            wasSlidingOnWall = false;
+            myAnimator.Play("Idle");
+        }
+        if (playerMovementScript.IsTumbleweed() && hasPlayerLowerSpecialAnimation && playerMovementScript.IsPlyerStanding())
         {
             isTumbleweed = true;
+        }
+        else if (playerMovementScript.IsWallSliding())
+        {
+            myAnimator.Play("Wall Slide");
+            wasSlidingOnWall = true;
         }
         else if (playerMovementScript.IsPlyerStanding())
         {
