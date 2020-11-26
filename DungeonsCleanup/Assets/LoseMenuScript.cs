@@ -48,7 +48,7 @@ public class LoseMenuScript : PauseMenu
 
         Debug.Log("YOU HAVE FULL HP NOW!");
 
-        playerHealth.GiveHalfHP();
+        playerHealth.GiveMaxHP();
         playerAnimation.StartReLife(delayBeforeRelife);
         CloseLoseCanvas();
     }

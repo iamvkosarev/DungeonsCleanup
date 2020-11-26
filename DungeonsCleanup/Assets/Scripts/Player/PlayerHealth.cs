@@ -92,9 +92,9 @@ public class PlayerHealth : Health
         playerMovement.SetCollidingOfEnemiesMode(false);
         StartCoroutine(Reloading());
     }
-    public void GiveHalfHP()
+    public void GiveMaxHP()
     {
-        this.SetCurrentHealth((int)((float)this.GetMaxHealth() / 2f));
+        this.SetCurrentHealth(this.GetMaxHealth());
     }
     public void StartToBeAlive()
     {
