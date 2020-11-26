@@ -13,6 +13,7 @@ public class PlayerHealth : Health
     [SerializeField] private LoseMenuScript loseCanvas;
     private AudioSource myAudioSource;
     private PlayerDevelopmentManager playerDevelopmentManager;
+    private PlayerAnimation playerAnimation;
     private bool isHeartBitting;
     private bool isProtecting;
 
@@ -20,6 +21,7 @@ public class PlayerHealth : Health
     {
         myAudioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
+        playerAnimation = GetComponent<PlayerAnimation>();
         SetMaxHealth(playerDevelopmentManager.GetMaxHealthAccordingLvl());
     }
     public void SetMaxHealth(int maxHelath)
@@ -81,6 +83,7 @@ public class PlayerHealth : Health
     private void Death()
     {
         SetVisibilityOfEnemies(false);
+        playerAnimation.DoDeathAnimation();
         GetComponent<PlayerMovement>().SetCollidingOfEnemiesMode(false);
         StartCoroutine(Reloading());
     }

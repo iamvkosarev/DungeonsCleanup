@@ -42,6 +42,10 @@ public class PlayerAnimation : MonoBehaviour
         SetParameters();
     }
 
+    public void DoDeathAnimation()
+    {
+        myAnimator.Play("Death");
+    }
 
     private void CheckPlayerPos()
     {
