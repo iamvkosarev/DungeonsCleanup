@@ -165,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         WallJump();
         SlowingOnStairs();
-        tumbleweedMove();
+        TumbleweedMove();
     }
 
 
@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region Tumbleweed (Подкат)
 
-    private void tumbleweedMove()
+    private void TumbleweedMove()
     {
         if (isTumbleweed)
         {

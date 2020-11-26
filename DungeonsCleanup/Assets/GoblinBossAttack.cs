@@ -19,6 +19,7 @@ public class GoblinBossAttack : MonoBehaviour
 
     [Header("Simple Attack")]
     [SerializeField] private int simpleAttackDamage = 20;
+    private SpawnerOfAttackingWave spawnerOfAttackingWave;
 
     [Header("Push Attack")]
     [SerializeField] private float minPushXForce = 800f;
@@ -58,6 +59,7 @@ public class GoblinBossAttack : MonoBehaviour
 
     private void Start()
     {
+        spawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
         movement = GetComponent<GoblinBossMovement>();
@@ -84,47 +86,34 @@ public class GoblinBossAttack : MonoBehaviour
         {
             if (isPlayerInAttackZoneToPush)
             {
-                movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Simple Attack");
             }
         }
-
-        if (currentAttackType == AttackTypes.Push)
+        else if (currentAttackType == AttackTypes.Push)
         {
             if (isPlayerInAttackZoneToPush)
             {
-                movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Push Attack");
             }
         }
 
-        if (currentAttackType == AttackTypes.Earthquake)
+        else if(currentAttackType == AttackTypes.Earthquake)
         {
             if (isPlayerInAttackZoneToEarthquake)
             {
                 currentAttackType = AttackTypes.Simple;
-                movement.shouldGoToPlayer = false;
                 myAnimator.SetTrigger("Earthquake Attack");
             }
         }
-        if (currentAttackType == AttackTypes.SpawnGoblins)
+        else if (currentAttackType == AttackTypes.SpawnGoblins)
         {
             currentAttackType = AttackTypes.Simple;
-            movement.shouldGoToPlayer = false;
             myAnimator.SetBool("Spawn Goblins", true);
         }
 
         CommingOutOfTheShadow();
     }
 
-    public void SimpleAttack()
-    {
-        if (isPlayerInAttackZoneToPush)
-        {
-            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(simpleAttackDamage);
-        }
-        movement.shouldGoToPlayer = true;
-    }
 
     public void PushAttack()
     {
@@ -132,16 +121,16 @@ public class GoblinBossAttack : MonoBehaviour
         {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce);
+            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.rotation.y), pushYForce);
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
         }
         currentAttackType = AttackTypes.Simple;
-        movement.shouldGoToPlayer = true;
     }
 
     public void EarthquakeAttack()
     {
         GameObject earthquakeChild = Instantiate(earthquake, transform.position, transform.rotation);
+        earthquakeChild.GetComponent<Earthquake>().SetBoss(this);
         StartCoroutine(MakeANoise());
         Destroy(earthquakeChild, timeForDestroy);
     }
@@ -165,7 +154,7 @@ public class GoblinBossAttack : MonoBehaviour
         if(myAnimator.GetBool("Spawn Goblins") && currentNumberOfGoblins == 0)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
-            movement.shouldGoToPlayer = true;
+            movement.StartHorizontalMove();
             myAnimator.SetBool("Spawn Goblins", false);
             currentNumberOfGoblins = 1;
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class GoblinBossMovement : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float speed = 5f;
-    public bool shouldGoToPlayer = true;
+    private bool goToPlayer = true;
+    private bool doingRotate = true;
+    private bool facingRight = false;
     private float startXScale;
     private Vector2 playerPoistion;
     private Rigidbody2D myRigidbody;
@@ -22,34 +25,64 @@ public class GoblinBossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shouldGoToPlayer)
+        BossRotation();
+        
+    }
+
+    private void FixedUpdate()
+    {
+        HorizontalMove();
+    }
+    
+    #region Movement
+    private void HorizontalMove()
+    {
+        if (goToPlayer)
         {
             float xScale = transform.localScale.x;
-            myRigidbody.velocity = new Vector2(-Mathf.Sign(xScale) * speed, transform.position.y);
+            myRigidbody.velocity = new Vector2(-Mathf.Sign(transform.rotation.y) * speed, transform.position.y);
             //myAnimator.SetBool("isWalking", true);
         }
-        
-        if(IsNotFacingOnAHero())
+    }
+    public void StopHorizontalMove()
+    {
+        goToPlayer = false;
+    }
+    public void StartHorizontalMove()
+    {
+        goToPlayer = true;
+    }
+    #endregion
+    #region Rotation
+    private void BossRotation()
+    {
+        if (!doingRotate) { return; }
+        if (IsNotFacingOnAHero() > 0 && facingRight)
+        {
+            Flip();
+        }
+        else if (IsNotFacingOnAHero() < 0 && !facingRight)
         {
             Flip();
         }
     }
-
-    private bool IsNotFacingOnAHero()
+    private void StopRotation()
     {
-        Vector2 startPos = transform.position;
-        if(startPos.x >= player.transform.position.x)
-        {
-            return Mathf.Sign(transform.localScale.x) <= 0;
-        }
-        else
-        {
-            return Mathf.Sign(transform.localScale.x) > 0;
-        }
+        doingRotate = false;
+    }
+    private void StartRotation()
+    {
+        doingRotate = true;
+    }
+    private float IsNotFacingOnAHero()
+    {
+        return transform.position.x - player.transform.position.x;
     }
 
     private void Flip()
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(transform.localScale.x)) * Mathf.Abs(startXScale), transform.localScale.y);
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
+    #endregion
 }
