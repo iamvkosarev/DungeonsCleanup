@@ -5,10 +5,13 @@ using UnityEngine.Advertisements;
 
 public class LoseMenuScript : PauseMenu
 {
+    [SerializeField] private float delayBeforeRelife = 1.5f;
     PlayerHealth playerHealth;
+    private PlayerAnimation playerAnimation;
     private void Start()
     {
         playerHealth = player.GetComponent<PlayerHealth>();
+        playerAnimation = player.GetComponent<PlayerAnimation>();
 
         //ads
         if(Advertisement.isSupported)
@@ -25,6 +28,14 @@ public class LoseMenuScript : PauseMenu
 
         loseUI.SetActive(true);
     }
+    public void CloseLoseCanvas()
+    {
+        gamepadUI.SetActive(true);
+        playerBarsUI.SetActive(true);
+
+        loseUI.SetActive(false);
+
+    }
 
     public void PlayAdvirtisement()
     {
@@ -36,7 +47,10 @@ public class LoseMenuScript : PauseMenu
         }
 
         Debug.Log("YOU HAVE FULL HP NOW!");
-        playerHealth.gameObject.GetComponent<PlayerDataManager>().SetCheckPointSessionData();
+
+        playerHealth.GiveHalfHP();
+        playerAnimation.StartReLife(delayBeforeRelife);
+        CloseLoseCanvas();
     }
 
     public void UpdateLastCheckpoint()

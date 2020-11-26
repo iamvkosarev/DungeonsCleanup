@@ -13,12 +13,14 @@ public class PlayerHealth : Health
     [SerializeField] private LoseMenuScript loseCanvas;
     private AudioSource myAudioSource;
     private PlayerDevelopmentManager playerDevelopmentManager;
+    private PlayerMovement playerMovement;
     private PlayerAnimation playerAnimation;
     private bool isHeartBitting;
     private bool isProtecting;
 
     private void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         myAudioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -84,10 +86,25 @@ public class PlayerHealth : Health
     {
         SetVisibilityOfEnemies(false);
         playerAnimation.DoDeathAnimation();
-        GetComponent<PlayerMovement>().SetCollidingOfEnemiesMode(false);
+        playerMovement.StopHorizontalMovement();
+        playerMovement.StopRotating();
+        playerMovement.StopGroundJumps();
+        playerMovement.SetCollidingOfEnemiesMode(false);
         StartCoroutine(Reloading());
     }
-
+    public void GiveHalfHP()
+    {
+        this.SetCurrentHealth((int)((float)this.GetMaxHealth() / 2f));
+    }
+    public void StartToBeAlive()
+    {
+        SetVisibilityOfEnemies(true);
+        playerAnimation.DoIdle();
+        playerMovement.StartHorizontalMovement();
+        playerMovement.StartRotaing();
+        playerMovement.StartGroundJumps();
+        playerMovement.SetCollidingOfEnemiesMode(true);
+    }
     IEnumerator Reloading()
     {
         yield return new WaitForSeconds(reloadingDelay);

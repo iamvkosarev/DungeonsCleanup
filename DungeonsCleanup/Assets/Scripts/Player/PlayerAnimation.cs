@@ -46,7 +46,21 @@ public class PlayerAnimation : MonoBehaviour
     {
         myAnimator.Play("Death");
     }
+    public void DoIdle()
+    {
+        myAnimator.Play("Idle");
+    }
+    public void StartReLife(float delayBeforeRelife)
+    {
+        StartCoroutine(StartingReLife(delayBeforeRelife));
+    }
+    IEnumerator StartingReLife(float delayBeforeRelife)
+    {
+        yield return new WaitForSeconds(delayBeforeRelife);
 
+        Debug.Log("Сделать анимацию перерождения");
+        myAnimator.Play("ReLife");
+    }
     private void CheckPlayerPos()
     {
         if (wasSlidingOnWall && !playerMovementScript.IsWallSliding())

@@ -260,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTumbleweed()
     {
-        if (wasTumbleweedSuspended) { return; }
+        if (wasTumbleweedSuspended || areHorizontalMovingSuspended) { return; }
         joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
         if (joystickXAxis > 0)
         {
@@ -369,14 +369,23 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator SuspendGroundJumps()
     {
-        areGroundJumpsSuspended = true;
+        StopGroundJumps();
         yield return new WaitForSeconds(groundJumpsDelay);
+        StartGroundJumps();
+    }
+    public void StopGroundJumps()
+    {
+        areGroundJumpsSuspended = true;
+    }
+    public void StartGroundJumps()
+    {
         areGroundJumpsSuspended = false;
     }
     #endregion
     #region Wall Jump 
     private void WallJump()
     {
+        if (areWallJumpsSuspended) { return; }
         if ((isWallSliding || isTouchingWall) && canJump && !areWallJumpsSuspended)
         {
 
