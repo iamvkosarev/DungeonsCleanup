@@ -39,8 +39,7 @@ public class GoblinBossMovement : MonoBehaviour
     {
         if (goToPlayer)
         {
-            float xScale = transform.localScale.x;
-            myRigidbody.velocity = new Vector2(-Mathf.Sign(transform.rotation.y) * speed, transform.position.y);
+            myRigidbody.velocity = new Vector2(-Mathf.Sign(transform.rotation.y) * speed, myRigidbody.velocity.y);
             //myAnimator.SetBool("isWalking", true);
         }
     }

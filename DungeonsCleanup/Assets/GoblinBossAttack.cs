@@ -46,6 +46,7 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private Vector2[] spawnPlace;
     [SerializeField] private GameObject[] goblinPreafb;
     private Animator myAnimator;
+    private CinemachineBasicMultiChannelPerlin cinemachine;
     public int currentNumberOfGoblins = 1;
 
     private enum AttackTypes
@@ -59,6 +60,7 @@ public class GoblinBossAttack : MonoBehaviour
 
     private void Start()
     {
+        cinemachine = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         spawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -174,12 +176,12 @@ public class GoblinBossAttack : MonoBehaviour
 
     private IEnumerator MakeANoise()
     {
-        cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = noiseAmplitude;
-        cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = noiseFrequency;
+        cinemachine.m_AmplitudeGain = noiseAmplitude;
+        cinemachine.m_FrequencyGain = noiseFrequency;
         yield return new WaitForSecondsRealtime(durationOfNoise);
 
-        cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
-        cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+        cinemachine.m_AmplitudeGain = 0;
+        cinemachine.m_FrequencyGain = 0;
     }
 
 

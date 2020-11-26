@@ -9,6 +9,7 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] Vector2 damageZone;
     [SerializeField] int damage;
     [SerializeField] LayerMask whomCanAttacked;
+    [SerializeField] bool chechWorkWitchAnyThing = true;
     [SerializeField] bool dontWorkAfterTouch = true;
     [SerializeField] bool destoryAfterTounch = false;
     private bool canAttack = true;
@@ -39,11 +40,22 @@ public class DamageDealer : MonoBehaviour
         if (attackedObjectsHealthScripts != null)
         {
             attackedObjectsHealthScripts.TakeAwayHelath(damage);
+            CheckWorkProperties();
         }
         else if (attackedObjectsPlayerHealthScripts != null)
         {
             attackedObjectsPlayerHealthScripts.TakeAwayHelath(damage);
+            CheckWorkProperties();
+
         }
+        if (chechWorkWitchAnyThing)
+        {
+            CheckWorkProperties();
+        }
+    }
+
+    private void CheckWorkProperties()
+    {
         if (dontWorkAfterTouch)
         {
             canAttack = false;
