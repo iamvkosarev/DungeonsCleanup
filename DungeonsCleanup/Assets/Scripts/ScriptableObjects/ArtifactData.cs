@@ -28,11 +28,32 @@ public class ArtifactData : ItemData
     {
         return canDestroyAfterActivate;
     }
+    #region Activations
     public void Activate(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
     {
         Abilities ability = new Abilities();
-        ability.Activate(abilityType, playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+        if(abilityType == AbilityType.Null)
+        {
+            return;
+        }
+        else if (abilityType == AbilityType.WindPush)
+        {
+            ability.WindPush(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+        }
     }
+    public void Activate(Transform playerTransform, int shadowsBottleId)
+    {
+        Abilities ability = new Abilities();
+        if (abilityType == AbilityType.Null)
+        {
+            return;
+        }
+        else if (abilityType == AbilityType.CallOfTheShadows)
+        {
+            ability.CallOfTheShadows(playerTransform, shadowsBottleId);
+        }
+    }
+    #endregion
     public bool CanBeActivated()
     {
         if (!hasNumberOfActivations)

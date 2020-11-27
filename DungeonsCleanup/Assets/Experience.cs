@@ -47,9 +47,9 @@ public class Experience : MonoBehaviour
     {
         Collider2D playerCollider_toMoveCheck = Physics2D.OverlapCircle(transform.position, radiusOfDetectPlayer, playerLayer);
         Collider2D playerCollider_toAddExpCheck = Physics2D.OverlapCircle(transform.position, radiusOfAddExpToPlayer, playerLayer);
-        if (playerCollider_toMoveCheck)
+        if (playerCollider_toMoveCheck )
         {
-            if (playerCollider_toAddExpCheck)
+            if (playerCollider_toAddExpCheck && playerCollider_toAddExpCheck.gameObject.tag != "Shadow")
             {
                 playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>().AddExp(amountOfExperience);
                 Debug.Log("Опыт достиг игрока");
@@ -63,7 +63,15 @@ public class Experience : MonoBehaviour
             float distanceBetweenPointAndPlayer = Mathf.Sqrt(
                 Mathf.Pow(playerX - expX, 2) +
                 Mathf.Pow(playerY - expY, 2));
-            Vector2 force = approximationСoefficient / Mathf.Pow(distanceBetweenPointAndPlayer, 3) * new Vector2(playerX - expX, playerY - expY);
+            Vector2 force;
+            if (playerCollider_toMoveCheck.gameObject.tag == "Shadow")
+            {
+                force = new Vector2(0,0);
+            }
+            else
+            {
+                force = approximationСoefficient / Mathf.Pow(distanceBetweenPointAndPlayer, 3) * new Vector2(playerX - expX, playerY - expY);
+            }
             myRb.velocity = force;
         }
     }

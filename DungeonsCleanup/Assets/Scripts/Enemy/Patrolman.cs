@@ -190,7 +190,7 @@ public class Patrolman : MonoBehaviour
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
         RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndCollidingEnvironmentLayers);
         if (!hit) { return; }
-        if (hit.collider.gameObject.layer == playerLayerNum)
+        if (hit.collider.gameObject.layer == playerLayerNum && !hit.collider.gameObject.GetComponent<BatPathing>())
         {
             StartPursuingPlayer(hit.collider.gameObject.transform);
             Debug.Log($"{gameObject.name} обнаружил игрока");

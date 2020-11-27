@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemiesMovement : MonoBehaviour
 {
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private LayerMask groundLayer;

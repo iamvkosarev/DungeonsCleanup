@@ -7,25 +7,33 @@ using UnityEngine;
 public enum AbilityType
 {
     Null,
-    WindPush
+    WindPush,
+    CallOfTheShadows
 }
 public class Abilities : MonoBehaviour
 {
     private Vector2 radiusForPush;
-    public void Activate(AbilityType abilityType, Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
-    {
-        if (abilityType == AbilityType.Null)
-        {
-            return;
-        }
 
-        if(abilityType == AbilityType.WindPush)
+    public void CallOfTheShadows(Transform playerTransform, int shadowsBottleId)
+    {
+        ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(shadowsBottleId);
+        if (shadowBorrleData.HasShadows())
         {
-            WindPush(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+            GameObject newShadow = Instantiate(shadowBorrleData.GetShadow(), playerTransform.position, Quaternion.identity);
+            newShadow.GetComponent<Shadow>().SetPlayer(playerTransform.gameObject.GetComponentInChildren<PatrolPoint>());
         }
     }
-
-    private void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    public void AddShadowsIntoTheBorrle(int shadowsBottleId, int newShadowId)
+    {
+        ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(shadowsBottleId);
+        bool resultOfAdding = shadowBorrleData.AddShadow(newShadowId);
+        if (resultOfAdding)
+        {
+            Debug.Log("Тень была сохранена");
+            SaveSystem.SaveShadowBorrleData(shadowsBottleId, shadowBorrleData.listOfShadows);
+        }
+    }
+    public void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
     {
         Debug.Log("Do wind push");
         bool ifGoblinsInWindPushRadius = Physics2D.OverlapBox(playerPosition, windPushRadius, 0, enemiesLayer);

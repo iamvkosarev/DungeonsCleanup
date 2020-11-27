@@ -149,8 +149,11 @@ public class Health : MonoBehaviour
     IEnumerator DeathVFX()
     {
         yield return new WaitForSeconds(timeBefroStartedSpawnHazeVFX);
-        GameObject deathVFX = Instantiate(deathVFXPrefab, spawnDeathSFXPos.position, Quaternion.identity);
-        deathVFX.transform.parent = transform;
+        if (deathVFXPrefab)
+        {
+            GameObject deathVFX = Instantiate(deathVFXPrefab, spawnDeathSFXPos.position, Quaternion.identity);
+            deathVFX.transform.parent = transform;
+        }
         yield return new WaitForSeconds(timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender);
         GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         yield return new WaitForSeconds(timeBeforeDestroyAfterSpawnHazeVFX);

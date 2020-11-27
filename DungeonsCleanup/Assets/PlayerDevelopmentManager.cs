@@ -72,6 +72,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
             artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+            artifactData.Activate(gameObject.transform, currentSelectedItemIndex);
         }
     }
     public void DeselectCurrentItem()

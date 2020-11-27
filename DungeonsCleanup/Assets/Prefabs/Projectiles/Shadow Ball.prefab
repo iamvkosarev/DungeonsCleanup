@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6485676117677068571}
   - component: {fileID: 8778842059595453635}
   m_Layer: 16
-  m_Name: Ball
+  m_Name: Shadow Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,10 +164,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageSpawnPoint: {fileID: 7677762521696907723}
   damageZone: {x: 0.14, y: 0.16}
-  damage: 10
+  damage: 13
   whomCanAttacked:
     serializedVersion: 2
-    m_Bits: 54016
+    m_Bits: 54784
   chechWorkWitchAnyThing: 1
   dontWorkAfterTouch: 0
   destoryAfterTounch: 1

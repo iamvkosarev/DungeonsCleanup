@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+    #region Player
     public static void SavePlayer(string saveName, PlayerDataManager playerDataManager)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -43,7 +44,9 @@ public static class SaveSystem
             return null;
         }
     }
+    #endregion
 
+    #region Sessions
     public static void SaveSession(bool[] sessionActivity, bool[] createdSessions)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -63,6 +66,8 @@ public static class SaveSystem
 
         stream.Close();
     }
+    
+
 
     public static SessionData LoadSession()
     {
@@ -84,7 +89,9 @@ public static class SaveSystem
             return data;
         }
     }
+    #endregion
 
+    #region Settings
     public static void SaveSettings(bool useJoystick, float scaleParam, float posXParam, float posYParam, float alphaChannelParam)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -126,5 +133,50 @@ public static class SaveSystem
         SaveSettings(data.useJoystick, data.scaleParam, data.posXParam, data.posYParam, data.alphaChannelParam);
         return data;
     }
+    #endregion
+
+    #region Abilities
+    public static void SaveShadowBorrleData(int shadowsBottleId, int[] listOfShadows)
+    {
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        int currentSessionNum = LoadSession().GetActiveSessionNum();
+        if (!Directory.Exists(Application.persistentDataPath + "/saves" + $"/Session_{currentSessionNum}"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/saves" + $"/Session_{currentSessionNum}");
+        }
+        string path = Application.persistentDataPath + "/saves/" + $"/Session_{currentSessionNum}/" +
+            $"shadowsBottle_{shadowsBottleId}" + ".save";
+
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        ShadowBorrleData data = new ShadowBorrleData(listOfShadows);
+
+        binaryFormatter.Serialize(stream, data);
+
+        stream.Close();
+
+    }
+    public static ShadowBorrleData LoadShadowBorrleData(int shadowsBottleId)
+    {
+        int currentSessionNum = LoadSession().GetActiveSessionNum();
+        string path = Application.persistentDataPath + "/saves/" + $"/Session_{currentSessionNum}/" +
+            $"shadowsBottle_{shadowsBottleId}" + ".save";
+        if (File.Exists(path))
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            ShadowBorrleData shadowBorrleData = binaryFormatter.Deserialize(stream) as ShadowBorrleData;
+
+            stream.Close();
+
+            return shadowBorrleData;
+        }
+        else
+        {
+            SaveShadowBorrleData(shadowsBottleId, new int[3]);
+            return new ShadowBorrleData(new int[3]);
+        }
+    }
+    #endregion
 
 }
