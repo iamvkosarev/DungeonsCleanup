@@ -101,7 +101,6 @@ public class Drop : MonoBehaviour
         {
             myRigidbody2D.bodyType = RigidbodyType2D.Static;
             myBoxCollider2D.isTrigger = true;
-            myRigidbody2D.velocity = new Vector2(0, 0);
         }
         myBoxCollider2D.isTrigger = true;
         myAnimator.SetTrigger("Drop");

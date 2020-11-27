@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerActivationButton : MonoBehaviour
 {
+    [SerializeField] string baseButtonName = "Открыть";
+    [SerializeField] string absorptionButtonName = "Поглатить";
     [SerializeField] float checkRadius;
     [Header("Layers")]
     [SerializeField] LayerMask weaponLayer;
@@ -12,6 +14,7 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] LayerMask doorLayer;
     [SerializeField] LayerMask tabletLayer;
     [SerializeField] LayerMask itemLayer;
+    [SerializeField] LayerMask absorptionShadowLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     [Header("OpenDoor")]
@@ -21,9 +24,12 @@ public class PlayerActivationButton : MonoBehaviour
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
     PlayerDevelopmentManager playerDevelopmentManager;
+    TextMeshProUGUI buttonsTextMPro;
     bool canActivateHatch;
     bool isReadyToActivateHatch;
+    bool isReadyToActivateAbsorption;
     bool canPlayerActivateSomeThing;
+    bool canActivateAbsorption;
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
@@ -31,6 +37,7 @@ public class PlayerActivationButton : MonoBehaviour
     }
     private void Start()
     {
+        buttonsTextMPro = activateSomeThingButton.GetComponentInChildren<TextMeshProUGUI>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
     }
@@ -43,9 +50,30 @@ public class PlayerActivationButton : MonoBehaviour
         ShowTabletText();
         ShowItmeCanvas();
         ActivateHatch();
+        AbsorptionShadow();
     }
 
-   
+    private void AbsorptionShadow()
+    {
+        if (canActivateAbsorption)
+        {
+            isReadyToActivateAbsorption = true;
+        }
+    }
+
+    public void CanActivateAbsorption(bool mode)
+    {
+        canActivateAbsorption = mode;
+        if (!mode)
+        {
+            isReadyToActivateAbsorption = false;
+        }
+    }
+    public bool IsReadyForActivationAbsorption()
+    {
+        return isReadyToActivateAbsorption;
+    }
+
     private void Update()
     {
         CheckPossibilityToActivateSomeThing();
@@ -67,7 +95,7 @@ public class PlayerActivationButton : MonoBehaviour
             isReadyToActivateHatch = false;
         }
     }
-    public bool IsReadyForActivation()
+    public bool IsReadyForActivationHatch()
     {
         return isReadyToActivateHatch;
     }
@@ -76,6 +104,14 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (canPlayerActivateSomeThing)
         {
+            if (canActivateAbsorption)
+            {
+                buttonsTextMPro.text = absorptionButtonName;
+            }
+            else
+            {
+                buttonsTextMPro.text = baseButtonName;
+            }
             activateSomeThingButton.SwitchOn();
         }
         else
@@ -90,8 +126,9 @@ public class PlayerActivationButton : MonoBehaviour
         bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
-
-        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem);
+        bool isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
+        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption);
     }
 
 

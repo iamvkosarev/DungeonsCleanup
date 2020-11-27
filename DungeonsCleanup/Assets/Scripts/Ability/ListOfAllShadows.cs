@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName ="List Of Shadows")]
+
+[CreateAssetMenu(menuName = "List Of All Shadows")]
 public class ListOfAllShadows : ScriptableObject
 {
     [SerializeField] private GameObject[] shadowsPrefabs;
 
-    public GameObject GetShadow(int shadowIndex)
+    public  GameObject GetShadow(int shadowIndex)
     {
-        if (shadowsPrefabs.Length >= shadowIndex || shadowIndex < 0)
+        if (shadowsPrefabs.Length <= shadowIndex || shadowIndex < 0)
         {
             return null;
         }

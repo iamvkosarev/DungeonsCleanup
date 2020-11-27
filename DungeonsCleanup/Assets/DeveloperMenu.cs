@@ -116,7 +116,7 @@ public class DeveloperMenu : MonoBehaviour
     }
     private void SetDataIntoFileds(ArtifactData artifactData)
     {
-        if (currentArtifactToSelect == playerDevManager.GetCurrentSelectedItem())
+        if (currentArtifactToSelect == playerDevManager.GetCurrentSelectedItemIndex())
         {
             chooseItemButton.SetActive(false);
         }

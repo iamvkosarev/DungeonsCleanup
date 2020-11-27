@@ -12,16 +12,20 @@ public enum AbilityType
 }
 public class Abilities : MonoBehaviour
 {
+    [SerializeField] private ListOfAllShadows listOfAllShadows;
     private Vector2 radiusForPush;
 
-    public void CallOfTheShadows(Transform playerTransform, int shadowsBottleId)
+    public  void CallOfTheShadows(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)
     {
-        ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(shadowsBottleId);
-        if (shadowBorrleData.HasShadows())
+        Debug.Log("Запуск Вызов теней");
+        if (!shadow)
         {
-            GameObject newShadow = Instantiate(shadowBorrleData.GetShadow(), playerTransform.position, Quaternion.identity);
-            newShadow.GetComponent<Shadow>().SetPlayer(playerTransform.gameObject.GetComponentInChildren<PatrolPoint>());
+            Debug.Log("Тень не указана");
+            return;
         }
+        GameObject newShadow = Instantiate(shadow, playerTransform.position, Quaternion.identity);
+        newShadow.GetComponent<Shadow>().SetPlayer(playerPatrolPoint, playerTransform);
+        
     }
     public void AddShadowsIntoTheBorrle(int shadowsBottleId, int newShadowId)
     {

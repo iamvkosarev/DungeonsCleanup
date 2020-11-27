@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerDevelopmentManager : MonoBehaviour
 {
     [SerializeField] private ListLevelOfDevelopment listLevelOfDevelopment;
+    [SerializeField] private ListOfAllShadows listOfAllShadows;
     [SerializeField] private ListsOfItmes listsOfItmes;
     [Header("Level's parameters")]
     [SerializeField] private int lvl;
@@ -72,7 +73,30 @@ public class PlayerDevelopmentManager : MonoBehaviour
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
             artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
-            artifactData.Activate(gameObject.transform, currentSelectedItemIndex);
+            ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
+            if (shadowBorrleData.HasShadows())
+            {
+                artifactData.Activate(gameObject.transform, listOfAllShadows.GetShadow(shadowBorrleData.GetShadowId()),
+                    GetComponentInChildren<PatrolPoint>());
+                SaveSystem.SaveShadowBorrleData(items[currentSelectedItemIndex].id, shadowBorrleData.listOfShadows);
+            }
+            else
+            {
+                Debug.Log("Фляга пуста");
+            }
+        }
+    }
+    public void AddShadow(int shadowId)
+    {
+        ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
+        if (shadowBorrleData.AddShadow(shadowId))
+        {
+            Debug.Log($"Тень была добавлена в флягу с id {items[currentSelectedItemIndex].id}");
+            SaveSystem.SaveShadowBorrleData(items[currentSelectedItemIndex].id, shadowBorrleData.listOfShadows);
+        }
+        else
+        {
+            Debug.Log($"Фляга с id {items[currentSelectedItemIndex].id} заполнена");
         }
     }
     public void DeselectCurrentItem()
@@ -111,7 +135,19 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         return CountMaxHP();
     }
-    public int GetCurrentSelectedItem()
+    public bool IsCurrentSelectedItemAShadowBorrle()
+    {
+        if (items[currentSelectedItemIndex].itemType == ItemType.Artifact)
+        {
+            ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
+            if (artifactData.abilityType == AbilityType.CallOfTheShadows)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public int GetCurrentSelectedItemIndex()
     {
         return currentSelectedItemIndex;
     }
@@ -199,8 +235,6 @@ public class PlayerDevelopmentManager : MonoBehaviour
         }
         else if (items[index].itemType == ItemType.Artifact)
         {
-            Debug.Log(index);
-            Debug.Log(listsOfItmes.GetArtifactData(items[index].id).nameOfArtifact);
             healthBar.SetSelectedItem(listsOfItmes.GetArtifactData(items[index].id).icon);
         }
         else

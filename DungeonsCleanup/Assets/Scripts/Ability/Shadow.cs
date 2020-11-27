@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Shadow : MonoBehaviour
 {
+    [SerializeField] private float distanceToTeleport =  12f;
     private EnemiesMovement enemiesMovement;
-    public PatrolPoint playerPatrolPoint;
+    private PatrolPoint playerPatrolPoint;
     private Patrolman patrolman;
+    private Transform playerTransform;
 
     private void Start()
     {
@@ -20,7 +22,16 @@ public class Shadow : MonoBehaviour
     private void Update()
     {
         CheckFreeShadow();
-        
+        CheckPlayerPosToTeleport();
+    }
+
+    private void CheckPlayerPosToTeleport()
+    {
+        if(Mathf.Sqrt(Mathf.Pow(playerTransform.position.x - transform.position.x, 2) +
+            Mathf.Pow(playerTransform.position.y - transform.position.y, 2)) >= distanceToTeleport)
+        {
+            transform.position = playerTransform.position;
+        }
     }
 
     private void CheckFreeShadow()
@@ -34,8 +45,13 @@ public class Shadow : MonoBehaviour
         }
     }
 
-    public void SetPlayer(PatrolPoint playerPatrolPoint)
+    public void SetPlayer(PatrolPoint playerPatrolPoint, Transform playerTransform)
     {
+        if (!patrolman)
+        {
+            patrolman = GetComponent<Patrolman>();
+            this.playerTransform = playerTransform;
+        }
         this.playerPatrolPoint = playerPatrolPoint;
         enemiesMovement = GetComponent<EnemiesMovement>();
         patrolman.SetPatrolPoint(playerPatrolPoint, 0);

@@ -41,7 +41,7 @@ public class ArtifactData : ItemData
             ability.WindPush(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
         }
     }
-    public void Activate(Transform playerTransform, int shadowsBottleId)
+    public void Activate(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)
     {
         Abilities ability = new Abilities();
         if (abilityType == AbilityType.Null)
@@ -50,7 +50,7 @@ public class ArtifactData : ItemData
         }
         else if (abilityType == AbilityType.CallOfTheShadows)
         {
-            ability.CallOfTheShadows(playerTransform, shadowsBottleId);
+            ability.CallOfTheShadows(playerTransform, shadow, playerPatrolPoint);
         }
     }
     #endregion

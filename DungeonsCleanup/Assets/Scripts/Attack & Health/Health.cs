@@ -145,6 +145,12 @@ public class Health : MonoBehaviour
         if (spawnExpWithoutAnimation) { return; }
         SpawnExp();
         StartCoroutine(DeathVFX());
+        
+        AbsorptionShadow absorptionShadow = GetComponentInChildren<AbsorptionShadow>();
+        if (absorptionShadow)
+        {
+            absorptionShadow.CanBeAbsorpted(true);
+        }
     }
     IEnumerator DeathVFX()
     {

@@ -580,6 +580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4c4c60693cfa5419997b142228cbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseButtonName: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+  absorptionButtonName: "\u041F\u043E\u0433\u043B\u0430\u0442\u0438\u0442\u044C"
   checkRadius: 0.5
   weaponLayer:
     serializedVersion: 2
@@ -596,6 +598,9 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 8192
+  absorptionShadowLayer:
+    serializedVersion: 2
+    m_Bits: 536870912
   activateSomeThingButton: {fileID: 0}
   doorCheckPoint: {fileID: 6389667949260438817}
   doorCheckSize: {x: 1.5, y: 0.1}
@@ -651,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listLevelOfDevelopment: {fileID: 11400000, guid: abac91d596180fb40a223af0b82ada6a, type: 2}
+  listOfAllShadows: {fileID: 11400000, guid: c0b5a2c40a0ff124d8a09f03dd3eb3b0, type: 2}
   listsOfItmes: {fileID: 11400000, guid: 40a9e081411deb143a2508355757a1b9, type: 2}
   lvl: 1
   exp: 0

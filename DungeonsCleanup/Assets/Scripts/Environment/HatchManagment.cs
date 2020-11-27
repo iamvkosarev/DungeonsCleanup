@@ -48,7 +48,7 @@ public class HatchManagment : MonoBehaviour
             }
             else
             {
-                if (playerActivationButton.IsReadyForActivation())
+                if (playerActivationButton.IsReadyForActivationHatch())
                 {
                     if (!wasOpened)
                     {

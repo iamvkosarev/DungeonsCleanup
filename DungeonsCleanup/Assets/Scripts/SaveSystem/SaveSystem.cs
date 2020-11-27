@@ -136,7 +136,7 @@ public static class SaveSystem
     #endregion
 
     #region Abilities
-    public static void SaveShadowBorrleData(int shadowsBottleId, int[] listOfShadows)
+    public static void SaveShadowBorrleData(int shadowsBottleId, int[] listOfShadows, bool setNullShadows = false)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         int currentSessionNum = LoadSession().GetActiveSessionNum();
@@ -149,7 +149,7 @@ public static class SaveSystem
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        ShadowBorrleData data = new ShadowBorrleData(listOfShadows);
+        ShadowBorrleData data = new ShadowBorrleData(listOfShadows, setNullShadows);
 
         binaryFormatter.Serialize(stream, data);
 
@@ -173,7 +173,7 @@ public static class SaveSystem
         }
         else
         {
-            SaveShadowBorrleData(shadowsBottleId, new int[3]);
+            SaveShadowBorrleData(shadowsBottleId, new int[3], setNullShadows: true);
             return new ShadowBorrleData(new int[3]);
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class ShadowBorrleData
 {
-    [SerializeField] private ListOfAllShadows listOfAllShadows;
     public int[] listOfShadows;
 
     public ShadowBorrleData(int[] listOfShadows, bool setNullShadown = true)
@@ -51,18 +50,18 @@ public class ShadowBorrleData
         return hasShadows;
     }
 
-    public GameObject GetShadow()
+    public int GetShadowId()
     {
         for (int i = 0; i < listOfShadows.Length; i++)
         {
             if (listOfShadows[i] != -1)
             {
-                listOfAllShadows.GetShadow(listOfShadows[i]);
+                int result = listOfShadows[i];
                 listOfShadows[i] = -1;
-                break;
+                return result;
             }
         }
-        return null;
+        return -1;
     }
 
 }

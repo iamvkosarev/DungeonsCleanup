@@ -180,7 +180,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         currentExp = playerDevelopmentManager.GetCurrentExp();
         lvl = playerDevelopmentManager.GetCurrentLvl();
-        currentSelectedItem = playerDevelopmentManager.GetCurrentSelectedItem();
+        currentSelectedItem = playerDevelopmentManager.GetCurrentSelectedItemIndex();
     }
 
     private void GetDataAboutScene()
