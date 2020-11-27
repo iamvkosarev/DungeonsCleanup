@@ -51,7 +51,11 @@ public class Experience : MonoBehaviour
         {
             if (playerCollider_toAddExpCheck && playerCollider_toAddExpCheck.gameObject.tag != "Shadow")
             {
-                playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>().AddExp(amountOfExperience);
+                PlayerDevelopmentManager playerDevelopmentManager = playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>();
+                if (playerDevelopmentManager)
+                {
+                    playerDevelopmentManager.AddExp(amountOfExperience);
+                }
                 Debug.Log("Опыт достиг игрока");
                 Destroy(gameObject);
                 return;

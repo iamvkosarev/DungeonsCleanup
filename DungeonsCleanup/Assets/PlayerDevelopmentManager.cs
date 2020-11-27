@@ -137,6 +137,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     }
     public bool IsCurrentSelectedItemAShadowBorrle()
     {
+        if (currentSelectedItemIndex == -1) { return false; }
         if (items[currentSelectedItemIndex].itemType == ItemType.Artifact)
         {
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
