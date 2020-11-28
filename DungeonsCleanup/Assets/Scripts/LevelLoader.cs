@@ -108,4 +108,9 @@ public class LevelLoader : MonoBehaviour
     {
         SceneManager.LoadScene("SavingMenu");
     }
+
+    public void LoadLastScene()
+    {
+        SceneManager.LoadScene("The End");
+    }
 }
