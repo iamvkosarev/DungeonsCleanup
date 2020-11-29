@@ -65,7 +65,7 @@ public class GoblinBossAttack : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
         movement = GetComponent<GoblinBossMovement>();
-        
+
         StartCoroutine(SetSpecialAttack());
     }
 
@@ -81,6 +81,8 @@ public class GoblinBossAttack : MonoBehaviour
         isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
         isPlayerInAttackZoneToEarthquake = (Mathf.Abs(transform.position.x - player.position.x) < distanceToEarthquake);
     }
+
+
 
     private void Attack()
     {
