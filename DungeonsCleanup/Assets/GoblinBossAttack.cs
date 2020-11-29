@@ -30,8 +30,8 @@ public class GoblinBossAttack : MonoBehaviour
 
     [Header("Earthquake")]
     [SerializeField] private GameObject earthquake;
+    [SerializeField] public Transform earthquakeSpawnPosition;
     public int numberOfGrounds = 7;
-    public float groundYPosition = -5.5f;
     public float perionOfSpawn = 0.03f;
     public float timeForDestroy = 2f;
     public int earthquakeDamage = 100;
@@ -65,7 +65,7 @@ public class GoblinBossAttack : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
         movement = GetComponent<GoblinBossMovement>();
-        
+
         StartCoroutine(SetSpecialAttack());
     }
 
@@ -81,6 +81,8 @@ public class GoblinBossAttack : MonoBehaviour
         isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
         isPlayerInAttackZoneToEarthquake = (Mathf.Abs(transform.position.x - player.position.x) < distanceToEarthquake);
     }
+
+
 
     private void Attack()
     {
@@ -131,7 +133,7 @@ public class GoblinBossAttack : MonoBehaviour
 
     public void EarthquakeAttack()
     {
-        GameObject earthquakeChild = Instantiate(earthquake, transform.position, transform.rotation);
+        GameObject earthquakeChild = Instantiate(earthquake, earthquakeSpawnPosition.position, earthquakeSpawnPosition.rotation);
         earthquakeChild.GetComponent<Earthquake>().SetBoss(this);
         StartCoroutine(MakeANoise());
         Destroy(earthquakeChild, timeForDestroy);

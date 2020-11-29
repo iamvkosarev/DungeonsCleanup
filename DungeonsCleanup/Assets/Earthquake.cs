@@ -21,7 +21,7 @@ public class Earthquake : MonoBehaviour
         {
             GameObject ground = Instantiate(forEarthquakeGround, 
                 new Vector2(transform.position.x - 
-                Mathf.Sign(goblinBoss.gameObject.transform.rotation.y) * ((startNumberOfGrounds - goblinBoss.numberOfGrounds) * 0.6f + 1f), goblinBoss.groundYPosition), transform.rotation);
+                Mathf.Sign(goblinBoss.gameObject.transform.rotation.y) * ((startNumberOfGrounds - goblinBoss.numberOfGrounds) * 0.6f + 1f), goblinBoss.earthquakeSpawnPosition.position.y), transform.rotation);
             yield return new WaitForSeconds(goblinBoss.perionOfSpawn);
             ground.transform.SetParent(gameObject.transform);
             goblinBoss.numberOfGrounds--;

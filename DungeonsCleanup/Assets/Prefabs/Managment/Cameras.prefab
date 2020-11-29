@@ -57,16 +57,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 60.749603, y: -11.316931}
-      - {x: 60.596714, y: -12.073398}
-      - {x: 43.605656, y: -12.1913}
-      - {x: 43.761875, y: -32.91132}
-      - {x: 103.38442, y: -33.28487}
-      - {x: 103.31497, y: -13.252575}
-      - {x: 102.50385, y: -12.792442}
-      - {x: 85.078285, y: -12.664265}
-      - {x: 85.53268, y: 18.893265}
-      - {x: -6.556433, y: 18.422462}
-      - {x: -6.4101686, y: -11.540478}
+      - {x: 151.322, y: -10.57628}
+      - {x: 151.47922, y: 19.06411}
+      - {x: 26.704788, y: 18.29465}
+      - {x: 26.682976, y: -11.615798}
 --- !u!1 &22700304972447109
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22700304972447109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.455874, y: 0.7045263, z: 0.3049593}
+  m_LocalPosition: {x: 81.895874, y: -0.12547347, z: 0.3049593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22700306303663780}
@@ -126,7 +120,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -202,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22700305356574011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.455874, y: 0.7045263, z: 0.3049593}
+  m_LocalPosition: {x: 81.895874, y: -0.12547347, z: 0.3049593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22700305966391274}
@@ -272,6 +266,7 @@ GameObject:
   - component: {fileID: 22700305966391274}
   - component: {fileID: 22700305966391276}
   - component: {fileID: 22700305966391277}
+  - component: {fileID: 1089888021}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -326,7 +321,7 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.62
+  m_ScreenY: 0.54
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.07
   m_DeadZoneHeight: 0
@@ -348,6 +343,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1089888021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22700305966391275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: b241f91b9ccf8ff489abf204b30d3112, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &22700306303663781
 GameObject:
   m_ObjectHideFlags: 0

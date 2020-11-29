@@ -14,6 +14,7 @@ public class GoblinBossMovement : MonoBehaviour
     private Vector2 playerPoistion;
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
+    public bool sittingOnAThrone = true;
     void Start()
     {
         startXScale = transform.localScale.x;
@@ -31,7 +32,13 @@ public class GoblinBossMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HorizontalMove();
+        if(!sittingOnAThrone)
+            HorizontalMove();
+    }
+    
+    public void StandUp()
+    {
+        sittingOnAThrone = false;
     }
     
     #region Movement
