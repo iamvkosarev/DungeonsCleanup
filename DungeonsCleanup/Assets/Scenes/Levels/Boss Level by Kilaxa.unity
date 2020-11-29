@@ -930,6 +930,14 @@ PrefabInstance:
       propertyPath: m_NoiseProfile
       value: 
       objectReference: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 52.975876
+      objectReference: {fileID: 0}
+    - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 52.975876
+      objectReference: {fileID: 0}
     - target: {fileID: 22700305356574013, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_Follow
       value: 
@@ -23637,7 +23645,7 @@ PrefabInstance:
       objectReference: {fileID: 1329193108}
     - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: health
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1934708355, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_IsTrigger
@@ -23669,7 +23677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: currentAttackType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: earthquakeSpawnPosition
@@ -23690,6 +23698,10 @@ PrefabInstance:
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: timeForDestroy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: distanceToPush
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2165740724162628953, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24314,7 +24326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070599, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 85.5
+      value: 56.58
       objectReference: {fileID: 0}
     - target: {fileID: 7081787225086070599, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_LocalPosition.y
