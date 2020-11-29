@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1379524028}
+  - {fileID: 1970059615}
   m_Father: {fileID: 2165740724162628953}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,11 +56,112 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379524027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -0.83, z: 0}
+  m_LocalPosition: {x: -0.72, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1308268616}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1948749580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948749581}
+  - component: {fileID: 1948749582}
+  - component: {fileID: 1948749583}
+  m_Layer: 10
+  m_Name: ActivationBossTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948749581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948749580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.44, y: 1.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2165740724162628953}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1948749582
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948749580}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10}
+  m_EdgeRadius: 0
+--- !u!114 &1948749583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948749580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee36060104c82840b73d76b86d92379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goblinBoss: {fileID: 1626112920}
+--- !u!1 &1970059614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970059615}
+  m_Layer: 10
+  m_Name: Earthquake Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1970059615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970059614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1308268616}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117049028
 GameObject:
@@ -145,6 +247,7 @@ Transform:
   m_Children:
   - {fileID: 2117049029}
   - {fileID: 1308268616}
+  - {fileID: 1948749581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,7 +333,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.033166528, y: -0.8903794}
@@ -256,9 +359,9 @@ Animator:
   m_GameObject: {fileID: 9161436766510927752}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 087ca112143bdc940be42681f07f54e6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 42f1cea18dccd254bbc73157dbbe37b1, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -277,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 600
+  health: 100
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 644723066}
   deathAnimationsNum: 0
@@ -303,7 +406,7 @@ MonoBehaviour:
   bodyCrash: {fileID: 0}
   audioBoostBodyCrash: 0
   healthBar: {fileID: 0}
-  playerHealthCollider: {fileID: 0}
+  playerHealthCollider: {fileID: 1934708355}
   reloadingDelay: 2
 --- !u!114 &1934708359
 MonoBehaviour:
@@ -319,36 +422,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   frequencyOfSpecialAttack: 15
-  distanceToPush: 2
+  distanceToPush: 3
   distanceToEarthquake: 5
   simpleAttackDamage: 1
   minPushXForce: 800
-  maxPushXForce: 1200
+  maxPushXForce: 0
   minPushYForce: 300
-  maxPushYForce: 500
+  maxPushYForce: 0
   pushDamage: 2
   earthquake: {fileID: 2618176875629545307, guid: d2aa9919cefcec14ca12702bc2d869a3, type: 3}
+  earthquakeSpawnPosition: {fileID: 1970059615}
   numberOfGrounds: 10
-  groundYPosition: -5.5
   perionOfSpawn: 0.03
-  timeForDestroy: 0.7
-  earthquakeDamage: 1
+  timeForDestroy: 1
+  earthquakeDamage: 3
   pushXForceForEarth: 0
   pushYForceForEarth: 100
   cam: {fileID: 0}
   durationOfNoise: 0.7
-  noiseAmplitude: 10
-  noiseFrequency: 5
+  noiseAmplitude: 15
+  noiseFrequency: 7
   numberOfGoblins: 1
   spawnPlace:
-  - {x: -12, y: -4.6}
-  - {x: 0, y: -4.6}
+  - {x: 70, y: 1.5}
+  - {x: 119, y: 1.5}
   goblinPreafb:
   - {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
   - {fileID: 2280272574607320918, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
   - {fileID: 3587912931236608956, guid: 4fa2d9dee1703f646a44acdb43d4902d, type: 3}
   currentNumberOfGoblins: 1
-  currentAttackType: 2
+  currentAttackType: 0
 --- !u!114 &1626112920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 4
+  sittingOnAThrone: 1
 --- !u!114 &603595621
 MonoBehaviour:
   m_ObjectHideFlags: 0
