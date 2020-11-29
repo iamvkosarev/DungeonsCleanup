@@ -37,17 +37,29 @@ public class Abilities : MonoBehaviour
             SaveSystem.SaveShadowBorrleData(shadowsBottleId, shadowBorrleData.listOfShadows);
         }
     }
-    public void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    public void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushForce)
     {
         Debug.Log("Do wind push");
         bool ifGoblinsInWindPushRadius = Physics2D.OverlapBox(playerPosition, windPushRadius, 0, enemiesLayer);
         Debug.Log(ifGoblinsInWindPushRadius);
-        radiusForPush = new Vector2(windPushRadius.x/2, windPushRadius.y);
         Collider2D[] enemiesInWindPushRadius = Physics2D.OverlapBoxAll(playerPosition, windPushRadius, 0, enemiesLayer);
         foreach(Collider2D enemy in enemiesInWindPushRadius)
         {
-            Debug.Log(enemy.gameObject.name);
-            enemy.gameObject.GetComponent<EnemiesMovement>().GetPunch(pushXForce, pushYForce);
+            Vector2 feetPosition = enemy.gameObject.transform.parent.position;
+            Debug.Log(feetPosition +" "+ playerPosition);
+            float gipotenusa = Mathf.Sqrt(Mathf.Pow(feetPosition.x - playerPosition.x, 2) + Mathf.Pow(feetPosition.y - playerPosition.y,2));
+            Vector2 singleVector;
+            if (gipotenusa == 0)
+            {
+                singleVector = new Vector2(0, 0);
+            }
+            else { singleVector = new Vector2(feetPosition.x - playerPosition.x / gipotenusa, feetPosition.y - playerPosition.y / gipotenusa); }
+
+            EnemiesMovement enemiesMovement = enemy.gameObject.GetComponentInParent<EnemiesMovement>();
+            if (enemiesMovement)
+            {
+                enemiesMovement.GetPunch(singleVector.x * pushForce, singleVector.y * pushForce);
+            }
         }
     }
 }

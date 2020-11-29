@@ -25,8 +25,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [Header("Wind Push")]
     [SerializeField] private Vector2 windPushRadius;
     [SerializeField] private LayerMask enemiesLayer;
-    [SerializeField] private float pushXForce;
-    [SerializeField] private float pushYForce;
+    [SerializeField] private float pushForce;
     
     private void Awake()
     {
@@ -72,7 +71,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
         {
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
-            artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+            artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushForce);
             ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
             if (shadowBorrleData.HasShadows())
             {

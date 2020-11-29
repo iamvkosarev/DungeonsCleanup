@@ -21,29 +21,29 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -3316543167459877813, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.1
+    - time: 0.11111111
       value: {fileID: -4561140491649568499, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.2
+    - time: 0.22222222
       value: {fileID: -8690625837858855543, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.3
+    - time: 0.33333334
       value: {fileID: -7514080720495144117, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.4
+    - time: 0.44444445
       value: {fileID: -5571631759136927896, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.5
+    - time: 0.5555556
       value: {fileID: -8631488570802900744, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.7
+    - time: 0.7777778
       value: {fileID: -3686327652169362806, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.8
+    - time: 0.8888889
       value: {fileID: -8116708968233077202, guid: c2362e8aaf613de408574277947fe303, type: 3}
-    - time: 0.9
-      value: {fileID: 5293382739543002186, guid: c2362e8aaf613de408574277947fe303, type: 3}
     - time: 1
+      value: {fileID: 5293382739543002186, guid: c2362e8aaf613de408574277947fe303, type: 3}
+    - time: 1.1111112
       value: {fileID: 5981723723774568114, guid: c2362e8aaf613de408574277947fe303, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 10
+  m_SampleRate: 9
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -73,7 +73,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1
+    m_StopTime: 1.2222223
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -100,28 +100,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.1
+  - time: 0.11111111
     functionName: StopRotation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.7
+  - time: 0.7777778
     functionName: SpawnAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 1.1111112
     functionName: StartHorizontalMove
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 1.1111112
     functionName: StartRotation
     data: 
     objectReferenceParameter: {fileID: 0}

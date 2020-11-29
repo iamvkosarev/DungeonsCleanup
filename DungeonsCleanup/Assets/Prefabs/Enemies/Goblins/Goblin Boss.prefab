@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1934708359}
   - component: {fileID: 1626112920}
   - component: {fileID: 603595621}
+  - component: {fileID: -2510440457684404761}
   m_Layer: 10
   m_Name: Goblin Boss
   m_TagString: Untagged
@@ -382,3 +383,18 @@ MonoBehaviour:
   changeDirectionOfWaveInOpposite: 0
   attackSFX: {fileID: 0}
   audioBoost: 0
+--- !u!114 &-2510440457684404761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161436766510927752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4dec835dc2ffb439f5e272c2804d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  amountOfExperience: 200
+  maxExpPointsToSpawn: 30

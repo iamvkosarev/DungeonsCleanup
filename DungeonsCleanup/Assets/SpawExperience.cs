@@ -6,10 +6,11 @@ public class SpawExperience : MonoBehaviour
 {
     [SerializeField] private GameObject expPrefab;
     [SerializeField] private int amountOfExperience;
+    [SerializeField] private int maxExpPointsToSpawn = 5;
 
     public void SpawnExp()
     {
-        int numOfSpawnPoints = Random.Range(1, amountOfExperience);
+        int numOfSpawnPoints = Random.Range(1, maxExpPointsToSpawn);
         int minExpInPoint = (amountOfExperience - amountOfExperience % numOfSpawnPoints) / numOfSpawnPoints;
         int numOfMaxPoints = amountOfExperience % numOfSpawnPoints;
         int numOfMinPoints = numOfSpawnPoints - numOfMaxPoints;

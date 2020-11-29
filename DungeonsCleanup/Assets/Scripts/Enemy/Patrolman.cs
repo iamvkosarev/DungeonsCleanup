@@ -193,7 +193,6 @@ public class Patrolman : MonoBehaviour
         if (hit.collider.gameObject.layer == playerLayerNum && !hit.collider.gameObject.GetComponent<BatPathing>())
         {
             StartPursuingPlayer(hit.collider.gameObject.transform);
-            Debug.Log($"{gameObject.name} обнаружил игрока");
         }
     }
 

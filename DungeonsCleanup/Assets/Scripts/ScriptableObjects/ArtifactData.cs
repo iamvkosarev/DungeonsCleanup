@@ -29,7 +29,7 @@ public class ArtifactData : ItemData
         return canDestroyAfterActivate;
     }
     #region Activations
-    public void Activate(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushXForce, float pushYForce)
+    public void Activate(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushForce)
     {
         Abilities ability = new Abilities();
         if(abilityType == AbilityType.Null)
@@ -38,7 +38,7 @@ public class ArtifactData : ItemData
         }
         else if (abilityType == AbilityType.WindPush)
         {
-            ability.WindPush(playerPosition, windPushRadius, enemiesLayer, pushXForce, pushYForce);
+            ability.WindPush(playerPosition, windPushRadius, enemiesLayer, pushForce);
         }
     }
     public void Activate(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)

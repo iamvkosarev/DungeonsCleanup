@@ -76828,6 +76828,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 66290227273581978, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
   m_PrefabInstance: {fileID: 1445175505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1445175507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3974891269408189539, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
+  m_PrefabInstance: {fileID: 1445175505}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445175506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a047429bb88c985489d0e4ffbfce1af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1465675516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
@@ -80446,6 +80457,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 682688637}
+    - target: {fileID: 4360314141667563155, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: loseCanvas
+      value: 
+      objectReference: {fileID: 1445175507}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player
