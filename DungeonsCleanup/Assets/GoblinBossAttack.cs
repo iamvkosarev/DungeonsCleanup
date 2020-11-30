@@ -128,7 +128,7 @@ public class GoblinBossAttack : MonoBehaviour
         {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.rotation.y), pushYForce);
+            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.position.x), pushYForce);
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
         }
         currentAttackType = AttackTypes.Simple;

@@ -660,7 +660,7 @@ public class PlayerMovement : MonoBehaviour
     public void GetPunch(float pushXForce, float pushYForce)
     {
         myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
-        StartCoroutine(SuspendHorizontalMoving());
+        //StartCoroutine(SuspendHorizontalMoving());
     }
     private void UpdateColliderInBody()
     {
