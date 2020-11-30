@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goblinBoss: {fileID: 1626112920}
+  bossCanvas: {fileID: 0}
 --- !u!1 &1970059614
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9161436766510927752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.28, y: -4.3, z: -0.4213995}
+  m_LocalPosition: {x: -10.28, y: -4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children:
   - {fileID: 2117049029}
@@ -423,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   frequencyOfSpecialAttack: 15
+  distanceToAttack: 2
   distanceToPush: 3
   distanceToEarthquake: 5
   simpleAttackDamage: 1
