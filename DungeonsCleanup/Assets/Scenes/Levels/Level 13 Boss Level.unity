@@ -561,7 +561,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
   m_PrefabInstance: {fileID: 1295151617}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1295151618}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
@@ -23745,11 +23745,15 @@ PrefabInstance:
       objectReference: {fileID: 1329193108}
     - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: health
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1934708355, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708355, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: player
@@ -23814,6 +23818,14 @@ PrefabInstance:
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: distanceToAttack
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: pushDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: simpleAttackDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1934708360, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_Controller
@@ -23895,12 +23907,46 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8793639957104055765, guid: d6e63233568085f4d84fe7097af13f0e, type: 3}
+    - target: {fileID: 3115761337754519693, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115761337754519693, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115761337754519693, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9161436766510927752, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_Name
       value: Goblin Boss
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2510440457684404761, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+--- !u!1 &1295151618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9161436766510927752, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+  m_PrefabInstance: {fileID: 1295151617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1295151619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295151618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  amountOfElement: 65
+  maxPointsToSpawn: 30
+  hasRandom: 0
 --- !u!114 &1329193108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 691152584332324290, guid: 002fd42de41c5ac44ae02c459286df0f, type: 3}
