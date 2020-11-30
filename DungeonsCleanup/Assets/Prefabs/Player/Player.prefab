@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6038624089281843385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.797, y: 0.2800002, z: 0}
+  m_LocalPosition: {x: 0.44, y: 0.2800002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
@@ -535,14 +535,14 @@ MonoBehaviour:
   runParticlesPrefab: {fileID: 3797855521148534348, guid: ce69989cc29cf98458f8de4cf7478326, type: 3}
   runParticals: {fileID: 0}
   particlesDestroyDelay: 1
-  tumbleweedSpeed: 11
+  tumbleweedSpeed: 10
   feetCollider: {fileID: 7077148873157811720}
   feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
   maximumResponseTumbleweedTime: 0.6
-  delayAfterTumbleweed: 0.5
-  timeOnTumblweed: 0.35
+  delayAfterTumbleweed: 0.3
+  timeOnTumblweed: 0.3
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024

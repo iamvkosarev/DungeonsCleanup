@@ -118,4 +118,8 @@ public class ArtifactData : ItemData
         }
     }
 
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
 }
