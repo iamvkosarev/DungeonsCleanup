@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] private TimeCrystalData timeCrystalData;
     [SerializeField] private ArtifactData artifactData;
     [SerializeField] private GameObject itemInfoCanvas;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] public SpriteRenderer spriteRenderer;
     private Animator myAnimator;
 
     private void Start()
@@ -26,30 +26,30 @@ public class Item : MonoBehaviour
         }
         if (timeCrystalData)
         {
-            myAnimator.enabled = true;
             myAnimator.SetBool("isCrystal", true);
         }
         else
         {
             myAnimator.SetBool("isCrystal", false);
-            myAnimator.enabled = false;
         }
+    }
+    private void LateUpdate()
+    {
+        LoadSprite();
+        return;
     }
 
     public void LoadSprite()
     {
-        if (!spriteRenderer)
-        {
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        }
         if (timeCrystalData)
         {
             spriteRenderer.color = timeCrystalData.color;
         }
         else if (artifactData)
         {
-            spriteRenderer.sprite = artifactData.icon;
+            spriteRenderer.sprite = artifactData.GetIcon();
         }
+        myAnimator.StopRecording();
     }
     public void SwitchItem(ItemData itemData)
     {

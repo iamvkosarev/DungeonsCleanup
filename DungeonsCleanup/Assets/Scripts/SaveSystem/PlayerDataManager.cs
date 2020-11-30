@@ -54,6 +54,7 @@ public class PlayerDataManager : MonoBehaviour
     public void SetLastSessionData()
     {
         string fileDataName = "currentLevelSetings_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+        Debug.Log("Start loading data from" + fileDataName);
         LoadData(fileDataName);
 
     }

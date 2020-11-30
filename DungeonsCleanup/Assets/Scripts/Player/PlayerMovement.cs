@@ -260,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckTumbleweed()
     {
-        if (wasTumbleweedSuspended || areHorizontalMovingSuspended) { return; }
+        if (wasTumbleweedSuspended) { return; }
         joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
         if (joystickXAxis > 0)
         {
