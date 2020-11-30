@@ -118,7 +118,7 @@ public class GoblinBossAttack : MonoBehaviour
             myAnimator.SetBool("Spawn Goblins", true);
         }
 
-        CommingOutOfTheShadow();
+        //CommingOutOfTheShadow();
     }
 
 
@@ -144,16 +144,15 @@ public class GoblinBossAttack : MonoBehaviour
 
     public void SpawnGoblins()
     {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            for (int i = 0; i < numberOfGoblins; i++)
-            {
-               int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
-               int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
-               Instantiate(goblinPreafb[randomGoblin], new Vector2(spawnPlace[randomPosition].x, spawnPlace[randomPosition].y), Quaternion.identity);
-            }
-        
-
-        currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
+       //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
+        int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
+        Instantiate(goblinPreafb[randomGoblin], new Vector2(transform.position.x + 3f, 10f), Quaternion.identity);
+        Instantiate(goblinPreafb[randomGoblin], new Vector2(transform.position.x - 3f, 10f), Quaternion.identity);
+            
+        movement.StartHorizontalMove();
+        myAnimator.SetBool("Spawn Goblins", false);
+        //currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
     }
 
     private void CommingOutOfTheShadow()
