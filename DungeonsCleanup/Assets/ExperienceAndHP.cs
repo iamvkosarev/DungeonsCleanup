@@ -2,10 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Experience : MonoBehaviour
+public enum TypeOfElement
 {
-    [SerializeField] private int amountOfExperience = 1;
+    exp,
+    hp
+}
+public class ExperienceAndHP : MonoBehaviour
+{
+    
+    [SerializeField] private TypeOfElement typeOfElement = TypeOfElement.exp;
+    [SerializeField] private int amount = 1;
     [Header("Start Push Up")]
     [SerializeField] private Vector2 pushBoundaries;
     [Header("Interacting with player")]
@@ -26,9 +32,9 @@ public class Experience : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeStartContact);
         canContant = true;
     }
-    public void SetExpAmount(int expAmount)
+    public void SetAmount(int amount)
     {
-        this.amountOfExperience = expAmount;
+        this.amount = amount;
     }
     private Vector2 GetStartForce()
     {
@@ -54,19 +60,25 @@ public class Experience : MonoBehaviour
                 PlayerDevelopmentManager playerDevelopmentManager = playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>();
                 if (playerDevelopmentManager)
                 {
-                    playerDevelopmentManager.AddExp(amountOfExperience);
+                    if (typeOfElement == TypeOfElement.exp)
+                    {
+                        playerDevelopmentManager.AddExp(amount);
+                    }
+                    else if (typeOfElement == TypeOfElement.hp)
+                    {
+                        playerDevelopmentManager.AddHealth(amount);
+                    }
                 }
-                Debug.Log("Опыт достиг игрока");
                 Destroy(gameObject);
                 return;
             }
             float playerX = playerCollider_toMoveCheck.gameObject.transform.position.x;
             float playerY = playerCollider_toMoveCheck.gameObject.transform.position.y;
-            float expX = transform.position.x;
-            float expY = transform.position.y;
+            float elementX = transform.position.x;
+            float elementY = transform.position.y;
             float distanceBetweenPointAndPlayer = Mathf.Sqrt(
-                Mathf.Pow(playerX - expX, 2) +
-                Mathf.Pow(playerY - expY, 2));
+                Mathf.Pow(playerX - elementX, 2) +
+                Mathf.Pow(playerY - elementY, 2));
             Vector2 force;
             if (playerCollider_toMoveCheck.gameObject.tag == "Shadow")
             {
@@ -74,7 +86,7 @@ public class Experience : MonoBehaviour
             }
             else
             {
-                force = approximationСoefficient / Mathf.Pow(distanceBetweenPointAndPlayer, 3) * new Vector2(playerX - expX, playerY - expY);
+                force = approximationСoefficient / Mathf.Pow(distanceBetweenPointAndPlayer, 3) * new Vector2(playerX - elementX, playerY - elementY);
             }
             myRb.velocity = force;
         }

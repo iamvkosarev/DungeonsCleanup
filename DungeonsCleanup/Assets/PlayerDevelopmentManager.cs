@@ -59,9 +59,13 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         lvl++;
         SetParametersAccordingToTheLvl();
-        healthManager.SetCurrentHealth(healthManager.GetMaxHealth());
+        healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.4f));
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         // shoe some VFX;
+    }
+    public void AddHealth(int helth)
+    {
+        healthManager.AddHealth(helth   );
     }
 
     public void ActivateAbility()

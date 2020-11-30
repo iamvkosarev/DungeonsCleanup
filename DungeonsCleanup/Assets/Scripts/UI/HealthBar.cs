@@ -26,6 +26,18 @@ public class HealthBar : MonoBehaviour
         SetHPSliderParam();
         //healthText.text = $"{health}/{healthSlider.maxValue}";
     }
+    public void AddHealth(int health)
+    {
+        if (this.health + health < this.maxHealth)
+        {
+            this.health += health;
+        }
+        else
+        {
+            this.health = this.maxHealth;
+        }
+        SetHPSliderParam();
+    }
     public void SetSelectedItem(Sprite newIcon)
     {
         selectedItemIcon.sprite = newIcon;
