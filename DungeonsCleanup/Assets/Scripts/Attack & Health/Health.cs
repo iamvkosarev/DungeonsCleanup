@@ -190,10 +190,10 @@ public class Health : MonoBehaviour
 
     private void SpawnExp()
     {
-        SpawExperience spawExperience = GetComponent<SpawExperience>();
-        if (spawExperience)
+        SpawnHealthAndExpElements[] SpawExperienceOrHelathArr = GetComponents<SpawnHealthAndExpElements>();
+        foreach(SpawnHealthAndExpElements spawExperienceOrHelath in SpawExperienceOrHelathArr)
         {
-            spawExperience.SpawnExp();
+            spawExperienceOrHelath.Spawn();
         }
     }
 

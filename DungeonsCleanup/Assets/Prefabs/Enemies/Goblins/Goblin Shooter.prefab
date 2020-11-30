@@ -185,9 +185,10 @@ GameObject:
   - component: {fileID: 8277692384100688374}
   - component: {fileID: 1946901898}
   - component: {fileID: 4509940345892652521}
-  - component: {fileID: 4530351246512950523}
   - component: {fileID: 5254085417022651802}
   - component: {fileID: 1617858513235112073}
+  - component: {fileID: 7999171698790813792}
+  - component: {fileID: 7419904015023977522}
   m_Layer: 10
   m_Name: Goblin Shooter
   m_TagString: Untagged
@@ -426,21 +427,6 @@ MonoBehaviour:
   firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
   secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
   audioBoost: 1.4
---- !u!114 &4530351246512950523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280272574607320918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4dec835dc2ffb439f5e272c2804d37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
-  amountOfExperience: 20
-  maxExpPointsToSpawn: 5
 --- !u!114 &5254085417022651802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +542,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7999171698790813792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280272574607320918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  amountOfElement: 20
+  maxPointsToSpawn: 5
+  hasRandom: 0
+--- !u!114 &7419904015023977522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280272574607320918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
+  amountOfElement: 15
+  maxPointsToSpawn: 2
+  hasRandom: 0
 --- !u!1 &2280272574921672724
 GameObject:
   m_ObjectHideFlags: 0

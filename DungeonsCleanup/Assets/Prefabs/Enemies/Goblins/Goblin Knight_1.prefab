@@ -48,9 +48,10 @@ GameObject:
   - component: {fileID: 3917650031436235617}
   - component: {fileID: 1157642317395755929}
   - component: {fileID: 2702256087767928130}
-  - component: {fileID: 9004536804017886210}
   - component: {fileID: 4250387820777202497}
   - component: {fileID: 2877660572403697870}
+  - component: {fileID: 1319442751385842807}
+  - component: {fileID: 8366013399226667120}
   m_Layer: 10
   m_Name: Goblin Knight_1
   m_TagString: Untagged
@@ -291,21 +292,6 @@ MonoBehaviour:
   firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
   secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
   audioBoost: 1.4
---- !u!114 &9004536804017886210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3587912931236608956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4dec835dc2ffb439f5e272c2804d37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
-  amountOfExperience: 30
-  maxExpPointsToSpawn: 5
 --- !u!114 &4250387820777202497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +407,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1319442751385842807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587912931236608956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  amountOfElement: 30
+  maxPointsToSpawn: 6
+  hasRandom: 0
+--- !u!114 &8366013399226667120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587912931236608956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
+  amountOfElement: 25
+  maxPointsToSpawn: 2
+  hasRandom: 0
 --- !u!1 &3587912931459601662
 GameObject:
   m_ObjectHideFlags: 0

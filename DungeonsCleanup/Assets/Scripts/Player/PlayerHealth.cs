@@ -30,6 +30,10 @@ public class PlayerHealth : Health
     {
         healthBar.SetMaxHealth(maxHelath);
     }
+    public void AddHealth(int health)
+    {
+        healthBar.AddHealth(health);
+    }
     public void SetCurrentHealth(int health)
     {
         healthBar.SetHealth(health);
