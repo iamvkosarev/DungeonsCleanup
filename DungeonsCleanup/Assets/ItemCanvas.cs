@@ -35,7 +35,7 @@ public class ItemCanvas : MonoBehaviour
 
     private void Start()
     {
-        //StopGame();
+        StopGame();
     }
     public void StopGame()
     {
@@ -43,7 +43,7 @@ public class ItemCanvas : MonoBehaviour
     }
     public void DestroyCanvas()
     {
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         Destroy(gameObject);
     }
 

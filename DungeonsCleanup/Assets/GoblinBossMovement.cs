@@ -7,6 +7,9 @@ public class GoblinBossMovement : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float stepNoize;
+    [SerializeField] private float noiseStepAmplitude;
+    [SerializeField] private float noiseStepFrequency;
     private bool goToPlayer = true;
     private bool doingRotate = true;
     private bool facingRight = false;
@@ -14,9 +17,11 @@ public class GoblinBossMovement : MonoBehaviour
     private Vector2 playerPoistion;
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
+    private GoblinBossAttack goblinBossAttack;
     public bool sittingOnAThrone = true;
     void Start()
     {
+        goblinBossAttack = GetComponent<GoblinBossAttack>();
         startXScale = transform.localScale.x;
         playerPoistion = player.position;
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -35,7 +40,10 @@ public class GoblinBossMovement : MonoBehaviour
         if(!sittingOnAThrone)
             HorizontalMove();
     }
-    
+    public void MakeStepNoize()
+    {
+        StartCoroutine(goblinBossAttack.MakeANoise(stepNoize, noiseStepAmplitude, noiseStepFrequency));
+    }
     public void StandUp()
     {
         sittingOnAThrone = false;

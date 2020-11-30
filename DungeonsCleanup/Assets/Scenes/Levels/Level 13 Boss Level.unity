@@ -329,6 +329,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
   m_PrefabInstance: {fileID: 1763410854}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85628210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503540306400233640, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+  m_PrefabInstance: {fileID: 1763410854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85628209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fbe790f6027304ba1df51accb72fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &85628212 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3175382458436422066, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
@@ -23735,6 +23746,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1763410855}
+    - target: {fileID: 1626112920, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626112920, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: stepNoize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626112920, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: noiseStepAmplitude
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626112920, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: noiseStepFrequency
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: playerHealthCollider
       value: 
@@ -23863,6 +23890,14 @@ PrefabInstance:
       propertyPath: bossCanvas
       value: 
       objectReference: {fileID: 294921356}
+    - target: {fileID: 1948749583, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: playerSoundManager
+      value: 
+      objectReference: {fileID: 85628210}
+    - target: {fileID: 1948749583, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: newBackTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c31179ad60511f49ab12d2f9fe4a2ad, type: 3}
     - target: {fileID: 1970059615, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -24514,6 +24549,22 @@ PrefabInstance:
       propertyPath: activateSomeThingButton
       value: 
       objectReference: {fileID: 732902915}
+    - target: {fileID: 250335807196669123, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250335807196669123, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[1].time
+      value: 0.26299846
+      objectReference: {fileID: 0}
+    - target: {fileID: 250335807196669123, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 250335807196669123, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
     - target: {fileID: 4360314141667563155, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: healthBar
       value: 
@@ -24522,6 +24573,10 @@ PrefabInstance:
       propertyPath: loseCanvas
       value: 
       objectReference: {fileID: 204593666}
+    - target: {fileID: 6503540306400233640, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: backThemes.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18c15fb5052d14c4f9f839e804083414, type: 3}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player

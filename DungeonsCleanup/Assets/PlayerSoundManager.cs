@@ -25,6 +25,11 @@ public class PlayerSoundManager : MonoBehaviour
             audioSource.Play();
         }
     }
+    public void SetBackTheme(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    } 
 
     private AudioClip ChooseBackTheme()
     {
