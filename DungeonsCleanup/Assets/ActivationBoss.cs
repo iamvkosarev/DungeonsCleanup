@@ -6,6 +6,8 @@ public class ActivationBoss : MonoBehaviour
 {
     [SerializeField] private GoblinBossMovement goblinBoss;
     [SerializeField] private GameObject bossCanvas;
+    [SerializeField] private PlayerSoundManager playerSoundManager;
+    [SerializeField] private AudioClip newBackTheme;
     private void Start()
     {
         bossCanvas.SetActive(false);
@@ -16,6 +18,7 @@ public class ActivationBoss : MonoBehaviour
         {
             goblinBoss.GetComponent<Animator>().SetTrigger("Start");
             bossCanvas.SetActive(true);
+            playerSoundManager.SetBackTheme(newBackTheme);
             Destroy(gameObject);
         }
     }

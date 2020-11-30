@@ -138,7 +138,7 @@ public class GoblinBossAttack : MonoBehaviour
     {
         GameObject earthquakeChild = Instantiate(earthquake, earthquakeSpawnPosition.position, earthquakeSpawnPosition.rotation);
         earthquakeChild.GetComponent<Earthquake>().SetBoss(this);
-        StartCoroutine(MakeANoise());
+        StartCoroutine(MakeANoise(durationOfNoise, noiseAmplitude, noiseFrequency));
         Destroy(earthquakeChild, timeForDestroy);
     }
 
@@ -179,11 +179,11 @@ public class GoblinBossAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator MakeANoise()
+    public IEnumerator MakeANoise(float timeOnNoize, float noiseAmplitude, float noiseFrequency)
     {
         cinemachine.m_AmplitudeGain = noiseAmplitude;
         cinemachine.m_FrequencyGain = noiseFrequency;
-        yield return new WaitForSecondsRealtime(durationOfNoise);
+        yield return new WaitForSecondsRealtime(timeOnNoize);
 
         cinemachine.m_AmplitudeGain = 0;
         cinemachine.m_FrequencyGain = 0;
