@@ -44,8 +44,7 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private float noiseAmplitude = 5f;
     [SerializeField] private float noiseFrequency = 5f;
     [Header("Spawn Goblins")]
-    [SerializeField] private int numberOfGoblins = 5;
-    [SerializeField] private Vector2[] spawnPlace;
+    [SerializeField] private Vector3[] spawnPlace;
     [SerializeField] private GameObject[] goblinPreafb;
     private Animator myAnimator;
     private CinemachineBasicMultiChannelPerlin cinemachine;
@@ -146,9 +145,12 @@ public class GoblinBossAttack : MonoBehaviour
     {
        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
         //int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
-        int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
-        Instantiate(goblinPreafb[randomGoblin], new Vector2(transform.position.x + 3f, 10f), Quaternion.identity);
-        Instantiate(goblinPreafb[randomGoblin], new Vector2(transform.position.x - 3f, 10f), Quaternion.identity);
+        for(int i = 0; i < spawnPlace.Length; i++)
+        {
+            int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
+            Instantiate(goblinPreafb[randomGoblin], transform.position + spawnPlace[i], Quaternion.identity);
+
+        }
             
         movement.StartHorizontalMove();
         myAnimator.SetBool("Spawn Goblins", false);

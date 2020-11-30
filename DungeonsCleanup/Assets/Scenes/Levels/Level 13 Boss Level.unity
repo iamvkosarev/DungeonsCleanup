@@ -23812,7 +23812,7 @@ PrefabInstance:
       objectReference: {fileID: 355849936}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: spawnPlace.Array.data[0].x
-      value: 90
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: spawnPlace.Array.data[0].y
@@ -23824,7 +23824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: spawnPlace.Array.data[1].x
-      value: 96
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: currentAttackType
@@ -23881,6 +23881,14 @@ PrefabInstance:
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: minPushYForce
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: spawnPlace.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: spawnPlace.Array.data[1].z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1934708360, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_Controller
