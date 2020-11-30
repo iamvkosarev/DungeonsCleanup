@@ -9,10 +9,12 @@ public class HealthUI : Health
     [SerializeField] BoxCollider2D playerHealthCollider;
     [SerializeField] float reloadingDelay = 2f;
     bool isProtecting;
+    AudioSource myAudioSource;
     private void Start()
     {
         SetMaxHealth(base.health);
         SetCurrentHealth(base.health);
+        myAudioSource = GetComponent<AudioSource>();
     }
     public void SetMaxHealth(int maxHelath)
     {
@@ -66,7 +68,21 @@ public class HealthUI : Health
         yield return new WaitForSeconds(reloadingDelay);
         GetComponent<PlayerDataManager>().SetCheckPointSessionData();
     }
-
+    private void SpawnGetHitSFX()
+    {
+        if (getHitSFX)
+        {
+            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
+        }
+    }
+    private void SpawnDeathSFX()
+    {
+        if (deathSFX)
+        {
+            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
+            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
+        }
+    }
     public bool IsPlayerDead()
     {
         if (base.GetHealth() == 0)

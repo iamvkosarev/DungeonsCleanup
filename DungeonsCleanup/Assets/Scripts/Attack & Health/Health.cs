@@ -33,12 +33,12 @@ public class Health : MonoBehaviour
     [SerializeField] private float floatingPointDestroyDelay = 2f;
 
     [Header("SFX")]
-    [SerializeField] private AudioClip getHitSFX;
-    [SerializeField] private float audioBoostGetHit;
-    [SerializeField] private AudioClip deathSFX;
-    [SerializeField] private float audioBoostDeathSFX;
-    [SerializeField] private AudioClip bodyCrash;
-    [SerializeField] private float audioBoostBodyCrash;
+    [SerializeField] public AudioClip getHitSFX;
+    [SerializeField] public float audioBoostGetHit;
+    [SerializeField] public AudioClip deathSFX;
+    [SerializeField] public float audioBoostDeathSFX;
+    [SerializeField] public AudioClip bodyCrash;
+    [SerializeField] public float audioBoostBodyCrash;
     private AudioSource myAudioSource;
     private GoblinBossAttack goblinBoss;
 

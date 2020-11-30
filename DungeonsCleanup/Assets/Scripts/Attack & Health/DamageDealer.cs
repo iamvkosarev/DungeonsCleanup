@@ -12,7 +12,10 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] bool chechWorkWitchAnyThing = true;
     [SerializeField] bool dontWorkAfterTouch = true;
     [SerializeField] bool destoryAfterTounch = false;
+    [SerializeField] AudioClip attackSFX;
+    [SerializeField] float audioBoost = 1f;
     private bool canAttack = true;
+    private AudioSource myAudioSource;
 
     public void SetDamage(int damage)
     {
@@ -48,10 +51,21 @@ public class DamageDealer : MonoBehaviour
             CheckWorkProperties();
 
         }
+        SpawnGivenDamageSFX();
         if (chechWorkWitchAnyThing)
         {
             CheckWorkProperties();
         }
+    }
+
+    private void SpawnGivenDamageSFX()
+    {
+        if (!myAudioSource)
+        {
+            myAudioSource = GetComponent<AudioSource>();
+        }
+        if (!myAudioSource || !attackSFX) { return; }
+        myAudioSource.PlayOneShot(attackSFX, audioBoost);
     }
 
     private void CheckWorkProperties()

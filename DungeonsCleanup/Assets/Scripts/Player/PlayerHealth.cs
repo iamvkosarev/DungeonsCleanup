@@ -88,6 +88,7 @@ public class PlayerHealth : Health
     }
     private void Death()
     {
+        SpawnDeathSFX();
         SetVisibilityOfEnemies(false);
         playerAnimation.DoDeathAnimation();
         playerMovement.StopHorizontalMovement();
@@ -116,6 +117,21 @@ public class PlayerHealth : Health
         //GetComponent<PlayerDataManager>().SetCheckPointSessionData();
     }
 
+    private void SpawnGetHitSFX()
+    {
+        if (getHitSFX)
+        {
+            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
+        }
+    }
+    private void SpawnDeathSFX()
+    {
+        if (deathSFX)
+        {
+            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
+            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
+        }
+    }
     public bool IsPlayerDead()
     {
         if (base.GetHealth() == 0)
