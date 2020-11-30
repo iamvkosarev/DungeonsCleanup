@@ -44,8 +44,7 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private float noiseAmplitude = 5f;
     [SerializeField] private float noiseFrequency = 5f;
     [Header("Spawn Goblins")]
-    [SerializeField] private int numberOfGoblins = 5;
-    [SerializeField] private Vector2[] spawnPlace;
+    [SerializeField] private Vector3[] spawnPlace;
     [SerializeField] private GameObject[] goblinPreafb;
     private Animator myAnimator;
     private CinemachineBasicMultiChannelPerlin cinemachine;
@@ -118,7 +117,7 @@ public class GoblinBossAttack : MonoBehaviour
             myAnimator.SetBool("Spawn Goblins", true);
         }
 
-        CommingOutOfTheShadow();
+        //CommingOutOfTheShadow();
     }
 
 
@@ -128,7 +127,7 @@ public class GoblinBossAttack : MonoBehaviour
         {
             float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
             float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.rotation.y), pushYForce);
+            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.position.x), pushYForce);
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
         }
         currentAttackType = AttackTypes.Simple;
@@ -144,16 +143,18 @@ public class GoblinBossAttack : MonoBehaviour
 
     public void SpawnGoblins()
     {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            for (int i = 0; i < numberOfGoblins; i++)
-            {
-               int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
-               int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
-               Instantiate(goblinPreafb[randomGoblin], new Vector2(spawnPlace[randomPosition].x, spawnPlace[randomPosition].y), Quaternion.identity);
-            }
-        
+       //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //int randomPosition = UnityEngine.Random.Range(0, spawnPlace.Length);
+        for(int i = 0; i < spawnPlace.Length; i++)
+        {
+            int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
+            Instantiate(goblinPreafb[randomGoblin], transform.position + spawnPlace[i], Quaternion.identity);
 
-        currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
+        }
+            
+        movement.StartHorizontalMove();
+        myAnimator.SetBool("Spawn Goblins", false);
+        //currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
     }
 
     private void CommingOutOfTheShadow()
