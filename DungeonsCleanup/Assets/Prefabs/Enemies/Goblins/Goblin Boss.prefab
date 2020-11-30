@@ -438,8 +438,8 @@ MonoBehaviour:
   audioBoostGetHit: 0
   deathSFX: {fileID: 0}
   audioBoostDeathSFX: 0
-  bodyCrash: {fileID: 0}
-  audioBoostBodyCrash: 0
+  bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  audioBoostBodyCrash: 1
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 1934708355}
   reloadingDelay: 2
@@ -470,7 +470,7 @@ MonoBehaviour:
   earthquakeSpawnPosition: {fileID: 1970059615}
   numberOfGrounds: 10
   perionOfSpawn: 0.03
-  timeForDestroy: 1
+  timeForDestroy: 0.7
   earthquakeDamage: 3
   pushXForceForEarth: 0
   pushYForceForEarth: 100
