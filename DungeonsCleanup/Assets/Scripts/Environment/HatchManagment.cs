@@ -42,9 +42,16 @@ public class HatchManagment : MonoBehaviour
         {
             if (playerActivationButton == null)
             {
-                Debug.Log("Player Movement detected");
                 playerActivationButton = playerCollider.GetComponent<PlayerActivationButton>();
-                playerActivationButton.CanActivateHatch(true);
+                if (playerActivationButton)
+                {
+
+                    playerActivationButton.CanActivateHatch(true);
+                }
+                else
+                {
+                    playerActivationButton = null;
+                }
             }
             else
             {

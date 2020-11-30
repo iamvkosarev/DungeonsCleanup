@@ -35,11 +35,19 @@ public class AbsorptionShadow : MonoBehaviour
         Collider2D playerCollider = Physics2D.OverlapBox(transform.position, checkPlayerSize, 0, playerLayer);
         if (playerCollider != null)
         {
-            if (playerActivationButton == null)
+            if (playerActivationButton == null )
             {
                 playerActivationButton = playerCollider.GetComponent<PlayerActivationButton>();
                 playerDevelopmentManager = playerCollider.GetComponent<PlayerDevelopmentManager>();
-                playerActivationButton.CanActivateAbsorption(true);
+                if (playerActivationButton)
+                {
+                    playerActivationButton.CanActivateAbsorption(true);
+                }
+                else
+                {
+                    playerActivationButton = null;
+                    playerDevelopmentManager = null;
+                }
             }
             else
             {

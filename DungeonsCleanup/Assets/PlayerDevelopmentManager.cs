@@ -65,7 +65,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     }
     public void AddHealth(int helth)
     {
-        healthManager.AddHealth(helth);
+        healthManager.AddHealth(helth   );
     }
 
     public void ActivateAbility()
