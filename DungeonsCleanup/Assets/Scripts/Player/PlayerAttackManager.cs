@@ -7,15 +7,22 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private LayerMask enemiesLayer;
     [SerializeField] private int numOfAttackAnimations = 1;
     [SerializeField] private int damage = 100;
+    [SerializeField] private AudioClip attackWind;
+    [SerializeField] private float audioBoostAttackWind;
+    [SerializeField] private AudioClip[] attackPunch;
+    [SerializeField] private float audioBoostPunch;
+
     private SpawnerOfAttackingWave mySpawnerOfAttackingWave;
     private int currentAttackNum;
     private bool isAnimationContinue;
     private PlayerMovement playerMovement;
+    private AudioSource audioSource;
     private Animator myAnimator;
     private PlayerDevelopmentManager playerDevelopmentManager;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         mySpawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -54,5 +61,20 @@ public class PlayerAttackManager : MonoBehaviour
     public void AttackHasEnded()
     {
         isAnimationContinue = false;
+    }
+
+    public void SpawnAttackWindSFX()
+    {
+        if(attackWind)
+        audioSource.PlayOneShot(attackWind, audioBoostAttackWind);
+    }
+
+    public void SpawnPunchSFX()
+    {
+        int attackPunchSoundsCount = attackPunch.Length;
+        if (attackPunchSoundsCount != 0)
+        {
+            audioSource.PlayOneShot(attackPunch[Random.Range(0, attackPunchSoundsCount)], audioBoostPunch);
+        }
     }
 }

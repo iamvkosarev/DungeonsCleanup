@@ -284,6 +284,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.16666667
+    functionName: SpawnAttackWindSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.22222222
     functionName: AttackEnemyByWave
     data: 
@@ -292,14 +299,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: StartHorizontalMovement
+    functionName: AttackHasEnded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: AttackHasEnded
+    functionName: StartHorizontalMovement
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

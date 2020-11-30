@@ -568,6 +568,10 @@ MonoBehaviour:
     m_Bits: 1024
   numOfAttackAnimations: 1
   damage: 100
+  attackWind: {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
+  audioBoostAttackWind: 0.2
+  attackPunch: []
+  audioBoostPunch: 1
 --- !u!114 &1187377112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +750,15 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26299846
       value: 0
       inSlope: 0
       outSlope: 0
