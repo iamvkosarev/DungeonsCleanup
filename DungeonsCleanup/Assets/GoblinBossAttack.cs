@@ -12,8 +12,10 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] float frequencyOfSpecialAttack = 10f;
 
     [Header("Check Player")]
-    [SerializeField] private float distanceToPush = 2f;
+    [SerializeField] private float distanceToAttack = 2f;
+    [SerializeField] private float distanceToPush = 3f;
     [SerializeField] private float distanceToEarthquake = 5f;
+    private bool isPlayerInAttackZoneToAttack;
     private bool isPlayerInAttackZoneToPush;
     private bool isPlayerInAttackZoneToEarthquake;
 
@@ -78,6 +80,7 @@ public class GoblinBossAttack : MonoBehaviour
 
     private void CheckDistanceToAttack()
     {
+        isPlayerInAttackZoneToAttack = (Mathf.Abs(transform.position.x - player.position.x) < distanceToAttack);
         isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
         isPlayerInAttackZoneToEarthquake = (Mathf.Abs(transform.position.x - player.position.x) < distanceToEarthquake);
     }
@@ -88,7 +91,7 @@ public class GoblinBossAttack : MonoBehaviour
     {
         if (currentAttackType == AttackTypes.Simple)
         {
-            if (isPlayerInAttackZoneToPush)
+            if (isPlayerInAttackZoneToAttack)
             {
                 myAnimator.SetTrigger("Simple Attack");
             }
