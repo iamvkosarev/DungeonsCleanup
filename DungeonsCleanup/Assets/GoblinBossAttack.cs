@@ -148,8 +148,8 @@ public class GoblinBossAttack : MonoBehaviour
         for(int i = 0; i < spawnPlace.Length; i++)
         {
             int randomGoblin = UnityEngine.Random.Range(0, goblinPreafb.Length);
-            Instantiate(goblinPreafb[randomGoblin], transform.position + spawnPlace[i], Quaternion.identity);
-
+            GameObject newEnemie =  Instantiate(goblinPreafb[randomGoblin], transform.position + spawnPlace[i], Quaternion.identity) as GameObject;
+            newEnemie.GetComponent<EnemiesMovement>().SetTarget(player.transform.position);
         }
             
         movement.StartHorizontalMove();
