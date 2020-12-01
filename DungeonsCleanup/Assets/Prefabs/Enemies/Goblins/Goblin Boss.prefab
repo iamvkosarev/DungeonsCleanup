@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 1379524028}
   - {fileID: 1970059615}
-  - {fileID: 4527478636885555491}
+  - {fileID: 8073022237904129572}
   - {fileID: 9147947960757044982}
   m_Father: {fileID: 2165740724162628953}
   m_RootOrder: 1
@@ -215,36 +215,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.031973124, y: -1.1740743}
   m_Size: {x: 1, y: 1.69}
   m_Direction: 0
---- !u!1 &395443786559972226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4527478636885555491}
-  m_Layer: 10
-  m_Name: Earthquake Spawn Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4527478636885555491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395443786559972226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1308268616}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257688893902831807
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +245,36 @@ Transform:
   m_Father: {fileID: 1308268616}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6217131327628605407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8073022237904129572}
+  m_Layer: 10
+  m_Name: Earthquake Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8073022237904129572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217131327628605407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1308268616}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9161436766510927752
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 1626112920}
   - component: {fileID: 603595621}
   - component: {fileID: 1295151619}
-  - component: {fileID: 8377274757688562993}
+  - component: {fileID: 4350401160949844917}
   m_Layer: 10
   m_Name: Goblin Boss
   m_TagString: Untagged
@@ -358,7 +358,7 @@ SpriteRenderer:
   m_SortingLayerID: -974317227
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1866460142958320428, guid: 8e0e327de57f5ca40bd834b8f31e6c94, type: 3}
+  m_Sprite: {fileID: 8793639957104055765, guid: d6e63233568085f4d84fe7097af13f0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -381,7 +381,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 250
+  m_Mass: 40
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 1200
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 644723066}
   deathAnimationsNum: 0
@@ -488,11 +488,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  frequencyOfSpecialAttack: 15
+  frequencyOfSpecialAttack: 20
   distanceToAttack: 1
   distanceToPush: 3
   distanceToEarthquake: 5
-  simpleAttackDamage: 35
+  simpleAttackDamage: 20
   minPushXForce: 500
   maxPushXForce: 300
   minPushYForce: 300
@@ -503,7 +503,7 @@ MonoBehaviour:
   numberOfGrounds: 10
   perionOfSpawn: 0.03
   timeForDestroy: 0.7
-  earthquakeDamage: 3
+  earthquakeDamage: 7
   pushXForceForEarth: 0
   pushYForceForEarth: 100
   cam: {fileID: 0}
@@ -518,7 +518,7 @@ MonoBehaviour:
   - {fileID: 2280272574607320918, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
   - {fileID: 3587912931236608956, guid: 4fa2d9dee1703f646a44acdb43d4902d, type: 3}
   currentNumberOfGoblins: 1
-  currentAttackType: 3
+  currentAttackType: 0
 --- !u!114 &1626112920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +572,7 @@ MonoBehaviour:
   amountOfElement: 65
   maxPointsToSpawn: 30
   hasRandom: 0
---- !u!114 &8377274757688562993
+--- !u!114 &4350401160949844917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

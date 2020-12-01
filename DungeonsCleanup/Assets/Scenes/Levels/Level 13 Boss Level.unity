@@ -948,11 +948,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.944633
+      value: 34.694633
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12711474
+      value: -0.12620208
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23792,7 +23792,7 @@ PrefabInstance:
       objectReference: {fileID: 1329193108}
     - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: health
-      value: 1000
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 1934708355, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_IsTrigger
@@ -23828,7 +23828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: currentAttackType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: earthquakeSpawnPosition
@@ -23836,7 +23836,7 @@ PrefabInstance:
       objectReference: {fileID: 1970059615}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: earthquakeDamage
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: noiseAmplitude
@@ -23872,7 +23872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: simpleAttackDamage
-      value: 35
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: minPushXForce
@@ -23889,6 +23889,10 @@ PrefabInstance:
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: spawnPlace.Array.data[1].z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: frequencyOfSpecialAttack
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1934708360, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: m_Controller
