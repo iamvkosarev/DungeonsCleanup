@@ -15,7 +15,10 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] LayerMask tabletLayer;
     [SerializeField] LayerMask itemLayer;
     [SerializeField] LayerMask absorptionShadowLayer;
+    [SerializeField] LayerMask portalLayer;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
+
+    [SerializeField] SpriteRenderer bodySpriteRenderer;
 
     [Header("OpenDoor")]
     [SerializeField] Transform doorCheckPoint;
@@ -24,8 +27,10 @@ public class PlayerActivationButton : MonoBehaviour
     LoseMenuScript loseMenuScript;
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
+    PlayerMovement playerMovement;
     PlayerDevelopmentManager playerDevelopmentManager;
     TextMeshProUGUI buttonsTextMPro;
+    PlayerHealth playerHealth;
     bool canActivateHatch;
     bool isReadyToActivateHatch;
     bool isReadyToActivateAbsorption;
@@ -39,10 +44,12 @@ public class PlayerActivationButton : MonoBehaviour
     }
     private void Start()
     {
+        playerHealth = GetComponent<PlayerHealth>();
+        playerMovement = GetComponent<PlayerMovement>();
         buttonsTextMPro = activateSomeThingButton.GetComponentInChildren<TextMeshProUGUI>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
-        loseMenuScript = GetComponent<PlayerHealth>().GetLoseCanvasScripts();
+        loseMenuScript = playerHealth.GetLoseCanvasScripts();
     }
 
     private void ActivateSomeThing()
@@ -52,8 +59,19 @@ public class PlayerActivationButton : MonoBehaviour
         TransferPlayer();
         ShowTabletText();
         ShowItmeCanvas();
+        ShowPortalCanvas();
         ActivateHatch();
         AbsorptionShadow();
+    }
+
+    private void ShowPortalCanvas()
+    {
+        Collider2D portalCollider = Physics2D.OverlapCircle(transform.position, checkRadius, portalLayer);
+        if (portalCollider != null)
+        {
+            Debug.Log("Portal!");
+            portalCollider.GetComponent<Portal>().InstansiatePortalInfoCanvas(playerHealth,transform,playerMovement,loseMenuScript, bodySpriteRenderer);
+        }
     }
 
     private void AbsorptionShadow()
@@ -129,9 +147,10 @@ public class PlayerActivationButton : MonoBehaviour
         bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
+        bool isPlayerTouchPortal = Physics2D.OverlapCircle(transform.position, checkRadius, portalLayer);
         bool isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
         bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
-        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
+        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchPortal || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 
 
