@@ -52,6 +52,7 @@ public class GoblinBossAttack : MonoBehaviour
 
 
     [Header("Spawn Goblins")]
+    [SerializeField] private int maxNumberOfGoblins = 2;
     [SerializeField] private Vector3[] spawnPlace;
     [SerializeField] private GameObject[] goblinPreafb;
     private Animator myAnimator;
@@ -183,7 +184,6 @@ public class GoblinBossAttack : MonoBehaviour
             
         movement.StartHorizontalMove();
         myAnimator.SetBool("Spawn Goblins", false);
-        //currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
     }
 
     private void CommingOutOfTheShadow()
@@ -199,10 +199,20 @@ public class GoblinBossAttack : MonoBehaviour
     
     private IEnumerator SetSpecialAttack()
     {
+        int number;
         while(true)
         {
             yield return new WaitForSeconds(frequencyOfSpecialAttack);
-            int number = UnityEngine.Random.Range(1, Enum.GetNames(typeof(AttackTypes)).Length);
+            currentNumberOfGoblins = FindObjectsOfType<GoblinAnimation>().Length;
+            if(currentNumberOfGoblins < maxNumberOfGoblins)
+            {
+                number = UnityEngine.Random.Range(1, Enum.GetNames(typeof(AttackTypes)).Length);
+            }
+            else
+            {
+                number = UnityEngine.Random.Range(1, Enum.GetNames(typeof(AttackTypes)).Length - 1);
+            }
+                
             currentAttackType = (AttackTypes)number;
             Debug.Log(currentAttackType);
 

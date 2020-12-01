@@ -20,10 +20,15 @@ public class GoblinBossEarth : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject == player.gameObject)
+        if(other.GetComponent<PlayerMovement>())
         {
             player.GetPunch(Mathf.Sign(goblinBoss.gameObject.transform.localScale.x) * goblinBoss.pushXForceForEarth, goblinBoss.pushYForceForEarth);
             player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(goblinBoss.earthquakeDamage);
+        }
+        
+        else if(other.GetComponent<Shadow>())
+        {
+            Destroy(gameObject);
         }
     }
 }
