@@ -21,6 +21,7 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] Transform doorCheckPoint;
     [SerializeField] Vector2 doorCheckSize;
 
+    LoseMenuScript loseMenuScript;
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
     PlayerDevelopmentManager playerDevelopmentManager;
@@ -34,12 +35,14 @@ public class PlayerActivationButton : MonoBehaviour
     {
         playerActionControls = new PlayerActionControls();
         playerActionControls.Land.ActivateSomething.started += _ => ActivateSomeThing();
+
     }
     private void Start()
     {
         buttonsTextMPro = activateSomeThingButton.GetComponentInChildren<TextMeshProUGUI>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
+        loseMenuScript = GetComponent<PlayerHealth>().GetLoseCanvasScripts();
     }
 
     private void ActivateSomeThing()
@@ -158,7 +161,7 @@ public class PlayerActivationButton : MonoBehaviour
         if (itemCollider != null)
         {
             Debug.Log("Item!");
-            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas(playerDevelopmentManager);
+            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas(playerDevelopmentManager, loseMenuScript);
         }
     }
     private void ShowTabletText()

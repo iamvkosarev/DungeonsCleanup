@@ -32,6 +32,7 @@ public class ItemCanvas : MonoBehaviour
     private int freePlayerInventoryIndex;
     private int selectedPlayerInventoryIndex;
     private PlayerDevelopmentManager playerDevelopmentManager;
+    private LoseMenuScript loseMenuScript;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class ItemCanvas : MonoBehaviour
     public void DestroyCanvas()
     {
         Time.timeScale = 1f;
+        loseMenuScript.ManagePlayerBarsAndGamepad(true);
         Destroy(gameObject);
     }
 
@@ -122,7 +124,11 @@ public class ItemCanvas : MonoBehaviour
         item.SwitchItem(newItemData);
         DestroyCanvas();
     }
-
+    public void SetLoseMenuScript(LoseMenuScript loseMenuScript)
+    {
+        this.loseMenuScript = loseMenuScript;
+        loseMenuScript.ManagePlayerBarsAndGamepad(false);
+    }
     private void SwitchOffAllFields()
     {
         artifactsField.SetActive(false);

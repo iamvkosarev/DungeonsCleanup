@@ -67,11 +67,12 @@ public class Item : MonoBehaviour
         LoadShining();
         LoadSprite();
     }
-    public void InstansiateItemInfoCanvas(PlayerDevelopmentManager playerDevelopmentManager)
+    public void InstansiateItemInfoCanvas(PlayerDevelopmentManager playerDevelopmentManager, LoseMenuScript loseMenuScript)
     {
         GameObject canvas = Instantiate(itemInfoCanvas);
         ItemCanvas itemInfoCanvasScripts = canvas.GetComponent<ItemCanvas>();
         itemInfoCanvasScripts.SetPlayerDeveloperMenu(playerDevelopmentManager);
+        itemInfoCanvasScripts.SetLoseMenuScript(loseMenuScript);
         itemInfoCanvasScripts.SetItemGameObject(this);
         if (timeCrystalData)
         {

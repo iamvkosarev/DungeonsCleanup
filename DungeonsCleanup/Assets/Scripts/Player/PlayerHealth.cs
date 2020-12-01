@@ -140,4 +140,10 @@ public class PlayerHealth : Health
         }
         return false;
     }
+
+
+    public LoseMenuScript GetLoseCanvasScripts()
+    {
+        return loseCanvas;
+    }
 }
