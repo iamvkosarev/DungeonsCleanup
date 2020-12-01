@@ -9,17 +9,19 @@ public class TextMover : MonoBehaviour
     [SerializeField] private LevelLoader levelLoader;
     private RectTransform rectTransform;
     private Vector3 canvasPosition;
+    private float startPos;
     void Start()
     {
         canvasPosition = GetComponentInParent<Transform>().position;
         rectTransform = GetComponent<RectTransform>();
+        startPos = transform.localPosition.y;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(0, speed, 0);
-        if(transform.position.y + canvasPosition.y > rectTransform.rect.height)
+        if(transform.localPosition.y >= -startPos)
         {
             StartCoroutine(SetDelayBeforeLoadMainMenu());
         }
@@ -28,6 +30,6 @@ public class TextMover : MonoBehaviour
     private IEnumerator SetDelayBeforeLoadMainMenu()
     {
         yield return new WaitForSeconds(delayBeforeLoadMainMenu);
-        levelLoader.LoadMainMenu();
+        levelLoader.LoadMainMenuFromGameScene();
     }
 }
