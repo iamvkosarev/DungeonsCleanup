@@ -39,18 +39,18 @@ public class LoseMenuScript : PauseMenu
 
     public void PlayAdvirtisement()
     {
-        Debug.Log("WHERE IS A MISTAKE???");
         if(Advertisement.IsReady())
         {
             Advertisement.Show("rewardedVideo");
-            //Time.timeScale = 0;
+            playerHealth.GiveMaxHP();
+            playerAnimation.StartReLife(delayBeforeRelife);
+            CloseLoseCanvas();
         }
 
-        Debug.Log("YOU HAVE FULL HP NOW!");
-
-        playerHealth.GiveMaxHP();
-        playerAnimation.StartReLife(delayBeforeRelife);
-        CloseLoseCanvas();
+        else
+        {
+            Debug.Log("There isn't internet connection...");
+        }
     }
 
     public void UpdateLastCheckpoint()
