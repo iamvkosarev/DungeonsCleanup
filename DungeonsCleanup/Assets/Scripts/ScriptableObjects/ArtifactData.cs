@@ -41,6 +41,19 @@ public class ArtifactData : ItemData
             ability.WindPush(playerPos, checkPoint, checkZone, checkLayer, pushForce);
         }
     }
+    public bool Activate(PlayerHealth playerHealth, int addingHealth)
+    {
+        Abilities ability = new Abilities();
+        if (abilityType == AbilityType.Null)
+        {
+            return false;
+        }
+        else if (abilityType == AbilityType.HealthAdding)
+        {
+            return ability.HealthAdding(playerHealth, addingHealth);
+        }
+        return false;
+    }
     public void Activate(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)
     {
         Abilities ability = new Abilities();

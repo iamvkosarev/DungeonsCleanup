@@ -21,7 +21,9 @@ public class PlayerDevelopmentManager : MonoBehaviour
     private PlayerAttackManager attackManager;
     private PlayerHealth healthManager;
     private PlayerActionControls playerActionControls;
-
+    [Header("Health Adding")]
+    [SerializeField] private GameObject healthParticals;
+    [SerializeField] private int addingHealth;
     [Header("Wind Push")]
     [SerializeField] private Vector2 windPushRadius;
     [SerializeField] private LayerMask enemiesLayer;
@@ -62,7 +64,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         lvl++;
         SetParametersAccordingToTheLvl();
-        healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.4f));
+        healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.7f));
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
         // shoe some VFX;
     }
@@ -79,6 +81,10 @@ public class PlayerDevelopmentManager : MonoBehaviour
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
             artifactData.Activate(transform.position, playerWindPushPointPos.position, windPushCheckZone, enemiesLayer, pushForce);
+            if(artifactData.Activate(healthManager, addingHealth))
+            {
+                SpawnHealthVFX();
+            }
             ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
             if (shadowBorrleData.HasShadows())
             {
@@ -91,6 +97,13 @@ public class PlayerDevelopmentManager : MonoBehaviour
                 Debug.Log("Фляга пуста");
             }
         }
+    }
+    private void SpawnHealthVFX()
+    {
+        GameObject particals = Instantiate(healthParticals);
+        particals.transform.parent = transform;
+        particals.transform.localPosition = new Vector2(0, 0);
+        Destroy(particals, 6f);
     }
     public void AddShadow(int shadowId)
     {

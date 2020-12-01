@@ -188,7 +188,7 @@ public class Health : MonoBehaviour
         
     }
 
-    private void SpawnExp()
+    public void SpawnExp()
     {
         SpawnHealthAndExpElements[] SpawExperienceOrHelathArr = GetComponents<SpawnHealthAndExpElements>();
         foreach(SpawnHealthAndExpElements spawExperienceOrHelath in SpawExperienceOrHelathArr)

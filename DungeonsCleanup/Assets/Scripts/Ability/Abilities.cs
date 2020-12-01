@@ -8,13 +8,19 @@ public enum AbilityType
 {
     Null,
     WindPush,
-    CallOfTheShadows
+    CallOfTheShadows,
+    HealthAdding
 }
 public class Abilities : MonoBehaviour
 {
     [SerializeField] private ListOfAllShadows listOfAllShadows;
     private Vector2 radiusForPush;
 
+    public bool HealthAdding(PlayerHealth playerHealth, int addingHealth)
+    {
+        playerHealth.AddHealth(addingHealth);
+        return true;
+    }
     public  void CallOfTheShadows(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)
     {
         Debug.Log("Запуск Вызов теней");
