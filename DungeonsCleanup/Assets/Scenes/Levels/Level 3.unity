@@ -2372,11 +2372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.125624
+      value: -14.981148
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0208888
+      value: -3.034319
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: orthographic size
@@ -36953,6 +36953,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 85628209}
+    - target: {fileID: 7832711160144550187, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
 --- !u!1001 &963977834
@@ -39201,6 +39205,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.19189453
       objectReference: {fileID: 0}
+    - target: {fileID: 2256508371424924596, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -109.990234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256508371424924596, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -259.69995
+      objectReference: {fileID: 0}
     - target: {fileID: 2280419624040277711, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -40135,6 +40147,10 @@ PrefabInstance:
     - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: nextSceneBuildIndex
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
+      propertyPath: isCheckPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: m_Name

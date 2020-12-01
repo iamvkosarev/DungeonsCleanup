@@ -8713,6 +8713,14 @@ CompositeCollider2D:
         Y: 360000000
       - X: 700000000
         Y: 360000000
+    - - X: 870000000
+        Y: 350000000
+      - X: 850000000
+        Y: 350000000
+      - X: 850000000
+        Y: 340000000
+      - X: 870000000
+        Y: 340000000
     - - X: 750000000
         Y: 350000000
       - X: 730000000
@@ -8728,14 +8736,6 @@ CompositeCollider2D:
       - X: 800000000
         Y: 340000000
       - X: 820000000
-        Y: 340000000
-    - - X: 870000000
-        Y: 350000000
-      - X: 850000000
-        Y: 350000000
-      - X: 850000000
-        Y: 340000000
-      - X: 870000000
         Y: 340000000
     - - X: 960000000
         Y: 310000000
@@ -37668,7 +37668,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -64775,13 +64775,13 @@ Tilemap:
     m_Data: {fileID: -2554943260452219379, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 47
     m_Data: {fileID: -1597994625274825740, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
-  - m_RefCount: 12
+  - m_RefCount: 11
     m_Data: {fileID: -5796557363019955347, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 4337
     m_Data: {fileID: -3393358963518623437, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 35
     m_Data: {fileID: 9141736311224076987, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
-  - m_RefCount: 394
+  - m_RefCount: 395
     m_Data: {fileID: -1539401892969633084, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 370
     m_Data: {fileID: -7960313808425017430, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
@@ -90162,6 +90162,10 @@ PrefabInstance:
     - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: nextSceneBuildIndex
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
+      propertyPath: isCheckPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: m_Name
