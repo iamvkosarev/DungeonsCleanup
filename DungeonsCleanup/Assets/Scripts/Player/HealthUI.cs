@@ -8,11 +8,14 @@ public class HealthUI : Health
     [SerializeField] HealthBar healthBar;
     [SerializeField] BoxCollider2D playerHealthCollider;
     [SerializeField] float reloadingDelay = 2f;
+    [SerializeField] float parametrOfStartingDeathAnimation = 0.05f;
     bool isProtecting;
     AudioSource myAudioSource;
+    Animator myAnimator;
     private void Start()
     {
         SetMaxHealth(base.health);
+        myAnimator = GetComponent<Animator>();
         SetCurrentHealth(base.health);
         myAudioSource = GetComponent<AudioSource>();
     }
@@ -47,7 +50,11 @@ public class HealthUI : Health
 
     public override void CheckZeroHealth()
     {
-        if (base.GetHealth() == 0)
+        if (base.GetHealth() <= (int)(parametrOfStartingDeathAnimation * GetMaxHealth()) && base.GetHealth()>0f)
+        {
+            myAnimator.Play("Boss Start Death");
+        }
+        else if (base.GetHealth() <= 0f)
         {
             Death();
         }
@@ -58,16 +65,11 @@ public class HealthUI : Health
     }
     private void Death()
     {
+        myAnimator.SetTrigger("EndDeath");
         SetVisibilityOfEnemies(false);
-        GetComponent<PlayerMovement>().SetCollidingOfEnemiesMode(false);
-        StartCoroutine(Reloading());
+
     }
 
-    IEnumerator Reloading()
-    {
-        yield return new WaitForSeconds(reloadingDelay);
-        GetComponent<PlayerDataManager>().SetCheckPointSessionData();
-    }
     private void SpawnGetHitSFX()
     {
         if (getHitSFX)
