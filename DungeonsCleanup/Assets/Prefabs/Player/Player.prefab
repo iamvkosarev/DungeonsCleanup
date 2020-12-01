@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &283424321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 283424322}
+  m_Layer: 0
+  m_Name: Wind Push Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &283424322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283424321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.63, y: 0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7573613103745708401}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1152575905
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,8 +700,10 @@ MonoBehaviour:
   windPushRadius: {x: 7, y: 2}
   enemiesLayer:
     serializedVersion: 2
-    m_Bits: 1048576
-  pushForce: 45
+    m_Bits: 1024
+  pushForce: 12
+  playerWindPushPointPos: {fileID: 283424322}
+  windPushCheckZone: {x: 4.82, y: 1.42}
 --- !u!114 &1080693631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backThemes:
-  - {fileID: 8300000, guid: e53aabadc0954384283e3756ad03bb2c, type: 3}
+  - {fileID: 8300000, guid: 18c15fb5052d14c4f9f839e804083414, type: 3}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +991,7 @@ Transform:
   - {fileID: 2341413517242835245}
   - {fileID: 8097216924597165889}
   - {fileID: 4916847372946655527}
+  - {fileID: 283424322}
   m_Father: {fileID: 7081787225086070599}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

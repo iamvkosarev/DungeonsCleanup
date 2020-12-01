@@ -26,7 +26,10 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private Vector2 windPushRadius;
     [SerializeField] private LayerMask enemiesLayer;
     [SerializeField] private float pushForce;
-    
+    [SerializeField] private Transform playerWindPushPointPos;
+    [SerializeField] private Vector2 windPushCheckZone;
+
+
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
@@ -75,7 +78,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
         {
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
-            artifactData.Activate(playerPosition, windPushRadius, enemiesLayer, pushForce);
+            artifactData.Activate(transform.position, playerWindPushPointPos.position, windPushCheckZone, enemiesLayer, pushForce);
             ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
             if (shadowBorrleData.HasShadows())
             {
@@ -316,5 +319,12 @@ public class PlayerDevelopmentManager : MonoBehaviour
     private void OnDisable()
     {
         playerActionControls.Disable();
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(playerWindPushPointPos.position, windPushCheckZone);
     }
 }

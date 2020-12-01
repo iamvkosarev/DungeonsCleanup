@@ -24,11 +24,12 @@ public class GoblinBossAttack : MonoBehaviour
     private SpawnerOfAttackingWave spawnerOfAttackingWave;
 
     [Header("Push Attack")]
-    [SerializeField] private float minPushXForce = 800f;
-    [SerializeField] private float maxPushXForce = 1200f;
-    [SerializeField] private float minPushYForce = 300f;
-    [SerializeField] private float maxPushYForce = 500f;
+    [SerializeField] private float minPushForce = 800f;
+    [SerializeField] private float maxPushForce = 1200f;
     [SerializeField] private int pushDamage = 25;
+    [SerializeField] private Transform pointToCheckPush;
+    [SerializeField] private Vector2 sizeOfPushZone;
+    [SerializeField] private LayerMask playerLayer;
 
     [Header("Earthquake")]
     [SerializeField] private GameObject earthquake;
@@ -49,7 +50,7 @@ public class GoblinBossAttack : MonoBehaviour
     private Animator myAnimator;
     private CinemachineBasicMultiChannelPerlin cinemachine;
     public int currentNumberOfGoblins = 1;
-
+    private PlayerHealth playerHealth;
     private enum AttackTypes
     {
         Simple,
@@ -66,7 +67,7 @@ public class GoblinBossAttack : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
         movement = GetComponent<GoblinBossMovement>();
-
+        playerHealth = player.gameObject.GetComponent<PlayerHealth>();
         StartCoroutine(SetSpecialAttack());
     }
 
@@ -80,10 +81,9 @@ public class GoblinBossAttack : MonoBehaviour
     private void CheckDistanceToAttack()
     {
         isPlayerInAttackZoneToAttack = (Mathf.Abs(transform.position.x - player.position.x) < distanceToAttack);
-        isPlayerInAttackZoneToPush = (Mathf.Abs(transform.position.x - player.position.x) < distanceToPush);
+        isPlayerInAttackZoneToPush = Physics2D.OverlapBox(pointToCheckPush.position, sizeOfPushZone,0,playerLayer);
         isPlayerInAttackZoneToEarthquake = (Mathf.Abs(transform.position.x - player.position.x) < distanceToEarthquake);
     }
-
 
 
     private void Attack()
@@ -123,12 +123,31 @@ public class GoblinBossAttack : MonoBehaviour
 
     public void PushAttack()
     {
-        if (isPlayerInAttackZoneToPush)
+        RaycastHit2D[] raycastHit2Ds = Physics2D.BoxCastAll(pointToCheckPush.position, sizeOfPushZone, 0, new Vector2(1f, 0), 0, playerLayer);
+        foreach (RaycastHit2D raycastHit2D in raycastHit2Ds)
         {
-            float pushXForce = UnityEngine.Random.Range(minPushXForce, maxPushXForce);
-            float pushYForce = UnityEngine.Random.Range(minPushYForce, maxPushYForce);
-            playerMovement.GetPunch(pushXForce * Mathf.Sign(transform.position.x), pushYForce);
-            player.gameObject.GetComponent<PlayerHealth>().TakeAwayHelath(pushDamage);
+            if (raycastHit2D.collider.gameObject)
+            {
+                float pushForce = UnityEngine.Random.Range(minPushForce, maxPushForce);
+                GameObject detectedObject = raycastHit2D.collider.gameObject;
+
+                PlayerMovement playerMovement = detectedObject.GetComponent<PlayerMovement>();
+                EnemiesMovement enemiesMovement = detectedObject.GetComponent<EnemiesMovement>();
+                Health health = detectedObject.gameObject.GetComponent<Health>();
+
+                Vector2 singleVecotor = new Vector2(Mathf.Sign(detectedObject.transform.position.x 
+                    - transform.position.x), 0.2f) ;
+                if (playerMovement)
+                {
+                    playerMovement.GetPunch(singleVecotor.x * pushForce, singleVecotor.y * pushForce);
+                    playerHealth.TakeAwayHelath(pushDamage);
+                }
+                if (enemiesMovement)
+                {
+                    enemiesMovement.GetPunch(singleVecotor.x * pushForce, singleVecotor.y * pushForce);
+                    health.TakeAwayHelath(pushDamage);
+                }
+            }
         }
         currentAttackType = AttackTypes.Simple;
     }
@@ -190,11 +209,15 @@ public class GoblinBossAttack : MonoBehaviour
         cinemachine.m_FrequencyGain = 0;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(pointToCheckPush.position, sizeOfPushZone);
+    }
 
 
 
 
-    
 
-    
+
 }

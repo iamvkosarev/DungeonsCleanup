@@ -111,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canRotation = true;
     private float joystickXAxis;
     private float joystickYAxis;
+    private bool readyForPunch = false;
 
     #region Customization Player Action Controls
     private void Awake()
@@ -391,7 +392,7 @@ public class PlayerMovement : MonoBehaviour
 
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
             float playerDirection = Mathf.Sign(transform.rotation.y);
-            StartCoroutine(SuspendHorizontalMoving());
+            StartCoroutine(SuspendHorizontalMoving(horizontalMovingSuspendDelay, false));
             myRigidbody2D.velocity = new Vector2(wallJumpForce * -playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
             canJump = false;
             StartCoroutine(SuspendWallJumps());
@@ -452,10 +453,18 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Horizontal move
-    IEnumerator SuspendHorizontalMoving()
+    IEnumerator SuspendHorizontalMoving(float horizontalMovingSuspendDelay, bool readyForPunch)
     {
+        if (readyForPunch)
+        {
+            this.readyForPunch = true;
+        }
         StopHorizontalMovement();
         yield return new WaitForSeconds(horizontalMovingSuspendDelay);
+        if (readyForPunch)
+        {
+            this.readyForPunch = false;
+        }
         StartHorizontalMovement();
 
     }
@@ -528,8 +537,16 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMove()
     {
         if (areHorizontalMovingSuspended) {
-            myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
-            return; }
+            if (!readyForPunch)
+            {
+                myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
+            }
+            else
+            {
+                myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, myRigidbody2D.velocity.y);
+            }
+            return;
+        }
         float velocityYAxis = myRigidbody2D.velocity.y;
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
         if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
@@ -659,7 +676,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetPunch(float pushXForce, float pushYForce)
     {
-        myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+        StartCoroutine(SuspendHorizontalMoving(0.5f, true));
+        myRigidbody2D.velocity += new Vector2(pushXForce, pushYForce);
         //StartCoroutine(SuspendHorizontalMoving());
     }
     private void UpdateColliderInBody()

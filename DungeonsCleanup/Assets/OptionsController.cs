@@ -17,7 +17,7 @@ public class OptionsController : MonoBehaviour
     private void Start()
     {
         //settingsData = SaveSystem.LoadSettings();
-        gamepadAlphaSlider.value = settingsData.alphaChannelParam;
+        //gamepadAlphaSlider.value = settingsData.alphaChannelParam;
         volumeSlider.value = defaultVolume;
 
     }
