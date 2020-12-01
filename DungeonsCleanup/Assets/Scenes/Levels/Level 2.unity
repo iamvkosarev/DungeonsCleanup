@@ -1029,11 +1029,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8053045
+      value: 2.5958738
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.032547742
+      value: -0.14847347
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1057,11 +1057,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5958734
+      value: 2.5958738
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.031526357
+      value: -0.14847347
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3885,6 +3885,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 85628209}
+    - target: {fileID: 7832711160144550187, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
 --- !u!1 &687624278 stripped
@@ -30994,15 +30998,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 562500921, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
       propertyPath: mainText
-      value: "\u0420\u0443\u0431\u0438\u0442\u0435 \u043A\u0430\u0436\u0434\u0443\u044E
-        \u0442\u0432\u0430\u0440\u044C, \u0447\u0442\u043E \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0442\u0441\u044F
-        \u0443 \u0432\u0430\u0441 \u043D\u0430 \u043F\u0443\u0442\u0438!\n\n\u041D\u0435
-        \u0437\u0430\u0431\u044B\u0432\u0430\u0439\u0442\u0435 \u0438 \u043E \u0441\u043E\u0431\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u043C
-        \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435: \u043E\u0442\u0445\u043E\u0434\u0438\u0442\u0435
+      value: "\u0420\u0443\u0431\u0438 \u043A\u0430\u0436\u0434\u0443\u044E \u0442\u0432\u0430\u0440\u044C,
+        \u0447\u0442\u043E \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0442\u0441\u044F
+        \u0443 \u0442\u0435\u0431\u044F \u043D\u0430 \u043F\u0443\u0442\u0438! \u0412
+        \u044D\u0442\u043E\u043C \u043C\u0435\u0441\u0442\u0435 \u0432\u0440\u044F\u0434
+        \u043B\u0438 \u0442\u0435\u0431\u0435 \u043A\u0442\u043E-\u0442\u043E \u043F\u043E\u043C\u043E\u0436\u0435\u0442..\n\n\u041D\u0435
+        \u0437\u0430\u0431\u044B\u0432\u0430\u0439 \u0438 \u043E \u0441\u043E\u0431\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u043C
+        \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435: \u043E\u0442\u0445\u043E\u0434\u0438
         \u043E\u0442 \u0432\u0440\u0430\u0433\u0430 \u0432\u043E \u0432\u0440\u0435\u043C\u044F
-        \u0435\u0433\u043E \u0443\u0434\u0430\u0440\u0430 \u0438\u043B\u0438 \u0443\u0432\u043E\u0440\u0430\u0447\u0438\u0432\u0430\u0439\u0442\u0435\u0441\u044C
+        \u0435\u0433\u043E \u0443\u0434\u0430\u0440\u0430 \u0438\u043B\u0438 \u0443\u0432\u043E\u0440\u0430\u0447\u0438\u0432\u0430\u0439\u0442
         \u043E\u0442 \u0430\u0442\u0430\u043A\u0438 \u0434\u0432\u043E\u0439\u043D\u044B\u043C
-        \u043D\u0430\u0436\u0430\u0442\u0438\u0435\u043C \u0441\u0442\u0440\u0435\u043B\u043A\u0438"
+        \u043D\u0430\u0436\u0430\u0442\u0438\u0435\u043C \u0441\u0442\u0440\u0435\u043B\u043A\u0438..
+        \u041D\u0443, \u0442\u044B \u043F\u043E\u043C\u043D\u0438\u0448\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 3083563224270360962, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
       propertyPath: m_Name
@@ -31871,6 +31878,14 @@ PrefabInstance:
     - target: {fileID: 1982167871299263054, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.19189453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256508371424924596, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -109.990234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256508371424924596, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -259.69995
       objectReference: {fileID: 0}
     - target: {fileID: 2280419624040277711, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_AnchorMax.x
@@ -33851,14 +33866,14 @@ PrefabInstance:
     - target: {fileID: 562500921, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
       propertyPath: mainText
       value: "\u0423\u0431\u0438\u0432\u0430\u044F \u0432\u0441\u044F\u043A\u0438\u0445
-        \u043C\u0440\u0430\u0437\u0435\u0439 \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0435
+        \u043C\u0440\u0430\u0437\u0435\u0439 \u0442\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0448\u044C
         \u0431\u0435\u0441\u0446\u0435\u043D\u043D\u044B\u0439 \u043E\u043F\u044B\u0442,
         \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043F\u043E\u0432\u044B\u0448\u0430\u0435\u0442
-        \u0432\u0430\u0448\u0438 \u0431\u043E\u0435\u0432\u044B\u0435 \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438"
+        \u0442\u0432\u043E\u0438 \u0431\u043E\u0435\u0432\u044B\u0435 \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438."
       objectReference: {fileID: 0}
     - target: {fileID: 562500921, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
       propertyPath: headerText
-      value: "\u041E\u043F\u044B\u0442\n"
+      value: "\u041E\u0433\u043E! \u0422\u044B \u0435\u0449\u0451 \u0436\u0438\u0432\u043E\u0439...\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3083563224270360962, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
       propertyPath: m_Name
