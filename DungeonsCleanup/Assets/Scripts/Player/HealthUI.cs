@@ -71,6 +71,7 @@ public class HealthUI : Health
     }
     private void Death()
     {
+        SpawnDeathSFX();
         myAnimator.SetTrigger("EndDeath");
         SetVisibilityOfEnemies(false);
         activationBoss.BossDeath();

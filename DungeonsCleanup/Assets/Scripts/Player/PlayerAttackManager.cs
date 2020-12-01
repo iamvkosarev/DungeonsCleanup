@@ -7,7 +7,8 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private LayerMask enemiesLayer;
     [SerializeField] private int numOfAttackAnimations = 1;
     [SerializeField] private int damage = 100;
-    [SerializeField] private AudioClip attackWind;
+    [SerializeField] private AudioClip[] attackWinds;
+    private int attackWindsLength;
     [SerializeField] private float audioBoostAttackWind;
     [SerializeField] private AudioClip[] attackPunch;
     [SerializeField] private float audioBoostPunch;
@@ -22,7 +23,8 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        attackWindsLength = attackWinds.Length;
+           audioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         mySpawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -65,8 +67,10 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void SpawnAttackWindSFX()
     {
-        if(attackWind)
-        audioSource.PlayOneShot(attackWind, audioBoostAttackWind);
+        if(attackWindsLength > 0)
+        {
+            audioSource.PlayOneShot(attackWinds[Random.Range(0, attackWindsLength)], audioBoostAttackWind);
+        }
     }
 
     public void SpawnPunchSFX()

@@ -30,6 +30,8 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private Transform pointToCheckPush;
     [SerializeField] private Vector2 sizeOfPushZone;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private AudioClip pushSFX;
+    [SerializeField] private float audioBoosPushSFX;
 
     [Header("Earthquake")]
     [SerializeField] private GameObject earthquake;
@@ -44,6 +46,11 @@ public class GoblinBossAttack : MonoBehaviour
     [SerializeField] private float durationOfNoise;
     [SerializeField] private float noiseAmplitude = 5f;
     [SerializeField] private float noiseFrequency = 5f;
+
+    [SerializeField] private AudioClip earthquakeSFX;
+    [SerializeField] private float audioBoosEarthquakeSFX;
+
+
     [Header("Spawn Goblins")]
     [SerializeField] private Vector3[] spawnPlace;
     [SerializeField] private GameObject[] goblinPreafb;
@@ -60,9 +67,12 @@ public class GoblinBossAttack : MonoBehaviour
     }
     [SerializeField] AttackTypes currentAttackType;
 
+    private AudioSource myAudioSource;
+
     private void Start()
     {
-        cinemachine = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        myAudioSource = GetComponent<AudioSource>();
+           cinemachine = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         spawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
         myAnimator = GetComponent<Animator>();
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -215,7 +225,21 @@ public class GoblinBossAttack : MonoBehaviour
         Gizmos.DrawCube(pointToCheckPush.position, sizeOfPushZone);
     }
 
+    public void SpawnEarthquakeSFX()
+    {
+        if (earthquakeSFX)
+        {
+            myAudioSource.PlayOneShot(earthquakeSFX, audioBoosEarthquakeSFX);
+        }
+    }
 
+    public void SpawnRoatSFX()
+    {
+        if (pushSFX)
+        {
+            myAudioSource.PlayOneShot(pushSFX, audioBoosPushSFX);
+        }
+    }
 
 
 

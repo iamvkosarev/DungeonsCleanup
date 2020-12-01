@@ -250,7 +250,9 @@ MonoBehaviour:
   goblinBoss: {fileID: 1626112920}
   bossCanvas: {fileID: 0}
   playerSoundManager: {fileID: 0}
-  newBackTheme: {fileID: 8300000, guid: 2c31179ad60511f49ab12d2f9fe4a2ad, type: 3}
+  newBackStartTheme: {fileID: 8300000, guid: bae01964311120743b9cc5007dd95b26, type: 3}
+  newBackIdleTheme: {fileID: 8300000, guid: 3d46bbd950b3f954591ed48ae79be2e4, type: 3}
+  baseBackTheme: {fileID: 8300000, guid: e53aabadc0954384283e3756ad03bb2c, type: 3}
 --- !u!1 &1970059614
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1400
+  health: 100
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 644723066}
   deathAnimationsNum: 0
@@ -533,7 +535,7 @@ MonoBehaviour:
   deathSFX: {fileID: 0}
   audioBoostDeathSFX: 0
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
-  audioBoostBodyCrash: 1
+  audioBoostBodyCrash: 1.2
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 1934708355}
   reloadingDelay: 2
@@ -585,7 +587,7 @@ MonoBehaviour:
   - {fileID: 2280272574607320918, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
   - {fileID: 3587912931236608956, guid: 4fa2d9dee1703f646a44acdb43d4902d, type: 3}
   currentNumberOfGoblins: 1
-  currentAttackType: 1
+  currentAttackType: 2
 --- !u!114 &1626112920
 MonoBehaviour:
   m_ObjectHideFlags: 0
