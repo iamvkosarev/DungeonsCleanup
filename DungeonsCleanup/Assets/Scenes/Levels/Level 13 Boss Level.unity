@@ -23738,7 +23738,11 @@ PrefabInstance:
       objectReference: {fileID: 1329193108}
     - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: health
-      value: 1400
+      value: 2200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: parametrOfStartingDeathAnimation
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: player
