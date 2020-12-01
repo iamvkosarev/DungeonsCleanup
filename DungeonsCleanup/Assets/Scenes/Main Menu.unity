@@ -707,7 +707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100feebf35944084991fdab0a29a99ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveHorisontal: 1
   speed: 2
+  updateSpeed: 0
+  hasStopPosition: 0
+  stopPosition: 0
 --- !u!50 &430608093
 Rigidbody2D:
   serializedVersion: 4
@@ -2322,7 +2326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5212624506062511414, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7941103620451494607, guid: 80909f0f59489684db737732e2b1e0fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2720,6 +2724,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4456141067703032337, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -498.22852
+      objectReference: {fileID: 0}
     - target: {fileID: 7099971956826890080, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2728,6 +2736,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1887131492}
+    - target: {fileID: 7099971956826890082, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7099971957067083798, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2750,7 +2762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099971958059515440, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7099971958059515444, guid: dbbcaa97c93107948bc662dfeb98f318, type: 3}
       propertyPath: m_LocalPosition.x

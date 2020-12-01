@@ -16,11 +16,7 @@ public class OptionsController : MonoBehaviour
     private SettingsData settingsData;
     private void Start()
     {
-        settingsData = SaveSystem.LoadSettings();
-        //useJoystickToggle.isOn = settingsData.useJoystick;
-        gamepadScaleSlider.value = settingsData.scaleParam;
-        gamepadXPosSlider.value = settingsData.posXParam;
-        gamepadYPosSlider.value = settingsData.posYParam;
+        //settingsData = SaveSystem.LoadSettings();
         gamepadAlphaSlider.value = settingsData.alphaChannelParam;
         volumeSlider.value = defaultVolume;
 
@@ -29,7 +25,7 @@ public class OptionsController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        settingsData = SaveSystem.LoadSettings();
+        //settingsData = SaveSystem.LoadSettings();
         var musicPlayer = FindObjectOfType<MusicController>();
         if(musicPlayer)
         {
@@ -41,13 +37,13 @@ public class OptionsController : MonoBehaviour
             Debug.LogWarning("some problems with musicPlayer");
         }
         //CheckTypeJoystickToggle();
-        CheckScaleGamepadSlider();
+        /*CheckScaleGamepadSlider();
         CheckAlphaGamepadSlider();
         CheckPosXGamepadSlider();
-        CheckPosYGamepadSlider();
+        CheckPosYGamepadSlider();*/
     }
 
-    private void CheckScaleGamepadSlider()
+    /*private void CheckScaleGamepadSlider()
     {
         float currentValue = settingsData.scaleParam;
         if(gamepadScaleSlider.value != currentValue)
@@ -99,5 +95,5 @@ public class OptionsController : MonoBehaviour
         gamepadYPosSlider.value = settingsData.posYParam;
         gamepadAlphaSlider.value = settingsData.alphaChannelParam;
         volumeSlider.value = defaultVolume;
-    }
+    }*/
 }

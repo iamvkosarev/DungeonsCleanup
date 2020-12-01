@@ -91,7 +91,7 @@ public static class SaveSystem
     }
     #endregion
 
-    #region Settings
+    /*#region Settings
     public static void SaveSettings(bool useJoystick, float scaleParam, float posXParam, float posYParam, float alphaChannelParam)
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -133,7 +133,7 @@ public static class SaveSystem
         SaveSettings(data.useJoystick, data.scaleParam, data.posXParam, data.posYParam, data.alphaChannelParam);
         return data;
     }
-    #endregion
+    #endregion*/
 
     #region Abilities
     public static void SaveShadowBorrleData(int shadowsBottleId, int[] listOfShadows, bool setNullShadows = false)

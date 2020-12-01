@@ -142,10 +142,10 @@ public class PlayerMovement : MonoBehaviour
         myHealth = GetComponent<PlayerHealth>();
         myAttackManager = GetComponent<PlayerAttackManager>();
         movementGamepad = joystick.GetComponent<MovementGamepad>();
-        SettingsData settingsData = SaveSystem.LoadSettings();
+        /*SettingsData settingsData = SaveSystem.LoadSettings();
         movementGamepad.SetNewAlphaChannel(settingsData.alphaChannelParam);
         movementGamepad.SetNewPos(settingsData.posXParam, settingsData.posYParam);
-        movementGamepad.SetNewScale(settingsData.scaleParam);
+        movementGamepad.SetNewScale(settingsData.scaleParam);*/
     }
     void Update()
     {
