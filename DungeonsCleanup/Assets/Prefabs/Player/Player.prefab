@@ -598,7 +598,7 @@ MonoBehaviour:
     m_Bits: 1024
   numOfAttackAnimations: 1
   damage: 100
-  attackWind: {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
+  attackWinds: []
   audioBoostAttackWind: 0.2
   attackPunch: []
   audioBoostPunch: 1
@@ -635,7 +635,11 @@ MonoBehaviour:
   absorptionShadowLayer:
     serializedVersion: 2
     m_Bits: 536870912
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 0
   activateSomeThingButton: {fileID: 0}
+  bodySpriteRenderer: {fileID: 7081787225611444495}
   doorCheckPoint: {fileID: 6389667949260438817}
   doorCheckSize: {x: 1.5, y: 0.1}
 --- !u!114 &2769539842428143087
