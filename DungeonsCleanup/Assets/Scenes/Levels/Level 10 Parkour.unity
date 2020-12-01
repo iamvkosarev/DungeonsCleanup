@@ -8713,6 +8713,14 @@ CompositeCollider2D:
         Y: 360000000
       - X: 700000000
         Y: 360000000
+    - - X: 870000000
+        Y: 350000000
+      - X: 850000000
+        Y: 350000000
+      - X: 850000000
+        Y: 340000000
+      - X: 870000000
+        Y: 340000000
     - - X: 750000000
         Y: 350000000
       - X: 730000000
@@ -8728,14 +8736,6 @@ CompositeCollider2D:
       - X: 800000000
         Y: 340000000
       - X: 820000000
-        Y: 340000000
-    - - X: 870000000
-        Y: 350000000
-      - X: 850000000
-        Y: 350000000
-      - X: 850000000
-        Y: 340000000
-      - X: 870000000
         Y: 340000000
     - - X: 960000000
         Y: 310000000
@@ -37668,7 +37668,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -64775,13 +64775,13 @@ Tilemap:
     m_Data: {fileID: -2554943260452219379, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 47
     m_Data: {fileID: -1597994625274825740, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
-  - m_RefCount: 12
+  - m_RefCount: 11
     m_Data: {fileID: -5796557363019955347, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 4337
     m_Data: {fileID: -3393358963518623437, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 35
     m_Data: {fileID: 9141736311224076987, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
-  - m_RefCount: 394
+  - m_RefCount: 395
     m_Data: {fileID: -1539401892969633084, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
   - m_RefCount: 370
     m_Data: {fileID: -7960313808425017430, guid: 0096b81d93bb88d418b792efc52001b9, type: 3}
@@ -112152,10 +112152,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6480464650217399048, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: damage
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.5
@@ -112199,14 +112195,6 @@ PrefabInstance:
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -42.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
@@ -113188,6 +113176,14 @@ PrefabInstance:
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 87.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}

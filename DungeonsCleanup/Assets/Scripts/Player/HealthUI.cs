@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class HealthUI : Health
 {
+    [SerializeField] AudioClip[] getHitsSFX;
+    private int getHitsSFXLength;
+    [SerializeField] float audioBoostGetHitSFX;
     [SerializeField] HealthBar healthBar;
     [SerializeField] BoxCollider2D playerHealthCollider;
     [SerializeField] float reloadingDelay = 2f;
@@ -16,6 +19,7 @@ public class HealthUI : Health
     Animator myAnimator;
     private void Start()
     {
+        getHitsSFXLength = getHitsSFX.Length;
         SetMaxHealth(base.health);
         myAnimator = GetComponent<Animator>();
         SetCurrentHealth(base.health);
@@ -47,7 +51,13 @@ public class HealthUI : Health
     {
         if (isProtecting) { return; }
         base.TakeAwayHelath(damage);
+        SpawnHitSFX();
         healthBar.SetHealth(base.GetHealth());
+    }
+
+    private void SpawnHitSFX()
+    {
+        myAudioSource.PlayOneShot(getHitsSFX[UnityEngine.Random.Range(0, getHitsSFXLength)], audioBoostGetHitSFX);
     }
 
     public override void CheckZeroHealth()

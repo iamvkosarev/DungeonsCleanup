@@ -12,9 +12,10 @@ public class Portal : MonoBehaviour
     private Transform playerTransform;
     private PlayerMovement playerMovement;
     private SpriteRenderer playerSpriteRenderer;
+    private AudioSource audioSource;
     private void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
     public void InstansiatePortalInfoCanvas(PlayerHealth playerHealth, Transform playerTransform, PlayerMovement playerMovement, LoseMenuScript loseMenuScript, SpriteRenderer playerSpriteRenderer)
@@ -27,6 +28,10 @@ public class Portal : MonoBehaviour
         this.playerSpriteRenderer = playerSpriteRenderer;
         this.playerTransform = playerTransform;
         teleportCanvas.SetParameters(playerHealth.GetHealth(), damage, this, loseMenuScript);
+    }
+    public void PlaySFX()
+    {
+        audioSource.Play();
     }
     public void PlayerInvis()
     {

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+    [SerializeField] AudioClip[] getHitsSFX;
+    private int getHitsSFXLength;
+    [SerializeField] float audioBoostGetHitSFX;
     [SerializeField] private bool canProtectHimself = true;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float reloadingDelay = 2f;
@@ -20,6 +23,7 @@ public class PlayerHealth : Health
 
     private void Start()
     {
+        getHitsSFXLength = getHitsSFX.Length;
         playerMovement = GetComponent<PlayerMovement>();
         myAudioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
@@ -54,9 +58,13 @@ public class PlayerHealth : Health
         base.TakeAwayHelath(damage);
         healthBar.SetHealth(base.GetHealth());
         PlayHeartBittingSVF();
+        SpawnHitSFX();
     }
 
-
+    private void SpawnHitSFX()
+    {
+        myAudioSource.PlayOneShot(getHitsSFX[UnityEngine.Random.Range(0, getHitsSFXLength)], audioBoostGetHitSFX);
+    }
     private void PlayHeartBittingSVF()
     {
         if ((float)base.GetHealth()/(float)healthBar.GetMaxHelath() < 0.2f)

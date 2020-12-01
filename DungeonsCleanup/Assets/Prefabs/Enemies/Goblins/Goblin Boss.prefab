@@ -165,7 +165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -974317227
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 8793639957104055765, guid: d6e63233568085f4d84fe7097af13f0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 603595621}
   - component: {fileID: 1295151619}
   - component: {fileID: 4350401160949844917}
+  - component: {fileID: 265641893}
   m_Layer: 10
   m_Name: Goblin Boss
   m_TagString: Untagged
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1400
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 644723066}
   deathAnimationsNum: 0
@@ -532,10 +533,16 @@ MonoBehaviour:
   floatingPointDestroyDelay: 2
   getHitSFX: {fileID: 0}
   audioBoostGetHit: 0
-  deathSFX: {fileID: 0}
-  audioBoostDeathSFX: 0
+  deathSFX: {fileID: 8300000, guid: 3b3167d82c9bc614d95be92ee11dc09f, type: 3}
+  audioBoostDeathSFX: 1
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1.2
+  getHitsSFX:
+  - {fileID: 8300000, guid: 602c6deaac766a64fa5fed58e2456975, type: 3}
+  - {fileID: 8300000, guid: d26271454dec2a548bb5ebd02c160f6d, type: 3}
+  - {fileID: 8300000, guid: b5e9157bee1cf6b4786aa5463bb56fdd, type: 3}
+  - {fileID: 8300000, guid: aede95725ef8dbb4ca3da7aab43f539b, type: 3}
+  audioBoostGetHitSFX: 1.2
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 1934708355}
   reloadingDelay: 2
@@ -567,6 +574,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  pushSFX: {fileID: 8300000, guid: 3b3167d82c9bc614d95be92ee11dc09f, type: 3}
+  audioBoosPushSFX: 0.8
   earthquake: {fileID: 2618176875629545307, guid: d2aa9919cefcec14ca12702bc2d869a3, type: 3}
   earthquakeSpawnPosition: {fileID: 1970059615}
   numberOfGrounds: 10
@@ -579,6 +588,8 @@ MonoBehaviour:
   durationOfNoise: 0.7
   noiseAmplitude: 15
   noiseFrequency: 7
+  earthquakeSFX: {fileID: 8300000, guid: 54f6f2154f2ce8c43907b058678e2cc9, type: 3}
+  audioBoosEarthquakeSFX: 1
   spawnPlace:
   - {x: 3, y: 10, z: 0}
   - {x: -3, y: 10, z: 0}
@@ -656,3 +667,99 @@ MonoBehaviour:
   amountOfElement: 65
   maxPointsToSpawn: 30
   hasRandom: 0
+--- !u!82 &265641893
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161436766510927752}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 103
+  DopplerLevel: 1
+  MinDistance: 4.93042
+  MaxDistance: 12.425545
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.48091573
+      value: 1
+      inSlope: -0.19273236
+      outSlope: -0.19273236
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.43082124
+    - serializedVersion: 3
+      time: 0.98931885
+      value: 0
+      inSlope: -3.9990098
+      outSlope: -3.9990098
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.49041706
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00800705
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

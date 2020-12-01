@@ -512,6 +512,10 @@ MonoBehaviour:
   audioBoostDeathSFX: 1
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1
+  getHitsSFX:
+  - {fileID: 8300000, guid: f5004da6b4dcbc9449db82518fd9ad11, type: 3}
+  - {fileID: 8300000, guid: edc0624192f5ded4384b5ab304d27da0, type: 3}
+  audioBoostGetHitSFX: 1.2
   canProtectHimself: 0
   healthBar: {fileID: 0}
   reloadingDelay: 2
