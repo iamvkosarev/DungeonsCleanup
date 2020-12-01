@@ -22,4 +22,8 @@ public class ActivationBoss : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void BossDeath()
+    {
+        bossCanvas.SetActive(false);
+    }
 }

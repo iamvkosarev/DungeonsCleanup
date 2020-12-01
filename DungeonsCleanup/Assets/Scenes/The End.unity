@@ -16349,6 +16349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1072028846382327303, guid: de87a5d63c59f6e4b80e866b5a5355f0, type: 3}
+      propertyPath: damage
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1072028846382327308, guid: de87a5d63c59f6e4b80e866b5a5355f0, type: 3}
       propertyPath: m_Name
       value: Anvil
@@ -17534,7 +17538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487906008859918012, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.34
+      value: 3.41
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolmen.Array.size

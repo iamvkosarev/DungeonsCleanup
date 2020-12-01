@@ -9,6 +9,8 @@ public class HealthUI : Health
     [SerializeField] BoxCollider2D playerHealthCollider;
     [SerializeField] float reloadingDelay = 2f;
     [SerializeField] float parametrOfStartingDeathAnimation = 0.05f;
+    [SerializeField] ActivationBoss activationBoss;
+    bool wasStartedDeath = false;
     bool isProtecting;
     AudioSource myAudioSource;
     Animator myAnimator;
@@ -52,7 +54,11 @@ public class HealthUI : Health
     {
         if (base.GetHealth() <= (int)(parametrOfStartingDeathAnimation * GetMaxHealth()) && base.GetHealth()>0f)
         {
-            myAnimator.Play("Boss Start Death");
+            if (!wasStartedDeath)
+            {
+                wasStartedDeath = true;
+                myAnimator.Play("Boss Start Death");
+            }
         }
         else if (base.GetHealth() <= 0f)
         {
@@ -67,6 +73,7 @@ public class HealthUI : Health
     {
         myAnimator.SetTrigger("EndDeath");
         SetVisibilityOfEnemies(false);
+        activationBoss.BossDeath();
 
     }
 

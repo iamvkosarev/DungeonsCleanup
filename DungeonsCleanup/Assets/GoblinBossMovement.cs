@@ -17,10 +17,11 @@ public class GoblinBossMovement : MonoBehaviour
     private Vector2 playerPoistion;
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
+    private HealthUI healthUI;
     private GoblinBossAttack goblinBossAttack;
-    public bool sittingOnAThrone = true;
     void Start()
     {
+        healthUI = GetComponent<HealthUI>();
         goblinBossAttack = GetComponent<GoblinBossAttack>();
         startXScale = transform.localScale.x;
         playerPoistion = player.position;
@@ -37,16 +38,11 @@ public class GoblinBossMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!sittingOnAThrone)
-            HorizontalMove();
+        HorizontalMove();
     }
     public void MakeStepNoize()
     {
         StartCoroutine(goblinBossAttack.MakeANoise(stepNoize, noiseStepAmplitude, noiseStepFrequency));
-    }
-    public void StandUp()
-    {
-        sittingOnAThrone = false;
     }
     
     #region Movement
@@ -61,10 +57,18 @@ public class GoblinBossMovement : MonoBehaviour
     public void StopHorizontalMove()
     {
         goToPlayer = false;
+        myRigidbody.bodyType = RigidbodyType2D.Static;
     }
     public void StartHorizontalMove()
     {
         goToPlayer = true;
+        myRigidbody.bodyType = RigidbodyType2D.Dynamic;
+    }
+    public void StopBeeingTouchible()
+    {
+        healthUI.healthCollider.enabled = false;
+        myRigidbody.bodyType = RigidbodyType2D.Static;
+        healthUI.feetCoolider.enabled = false;
     }
     #endregion
     #region Rotation
