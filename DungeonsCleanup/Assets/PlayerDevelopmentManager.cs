@@ -12,6 +12,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
     [SerializeField] private List<ItemData> items;
+    [SerializeField] private LevelUpText levelUpText;
     [Header("Activation Ability")]
     private int currentSelectedItemIndex = -1;
     [SerializeField] private bool activateAbility;
@@ -41,6 +42,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         attackManager = GetComponent<PlayerAttackManager>();
         healthManager = GetComponent<PlayerHealth>();
+        Debug.Log(levelUpText);
     }
     
     public void AddExp(int exp)
@@ -66,11 +68,12 @@ public class PlayerDevelopmentManager : MonoBehaviour
         SetParametersAccordingToTheLvl();
         healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.7f));
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
+        levelUpText.ActivateText();
         // shoe some VFX;
     }
     public void AddHealth(int helth)
     {
-        healthManager.AddHealth(helth   );
+        healthManager.AddHealth(helth);
     }
 
     public void ActivateAbility()

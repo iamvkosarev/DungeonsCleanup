@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14847347
+      value: 0.031526357
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1061,7 +1061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14847347
+      value: 0.031526357
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3616,6 +3616,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1749993065, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749993067, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
       propertyPath: m_Name
       value: Player Canvas
@@ -3715,6 +3723,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5053a72cdf67344ab05b5316274f7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &682688638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1749993070, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
+  m_PrefabInstance: {fileID: 682688636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b548e007d3d48f848ba9f912c793f48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &685576120
@@ -33997,6 +34016,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 682688637}
+    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: levelUpText
+      value: 
+      objectReference: {fileID: 682688638}
     - target: {fileID: 1187377112, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: activateSomeThingButton
       value: 
@@ -36627,6 +36650,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593281826}
     m_Modifications:
+    - target: {fileID: 1954250485, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: amountOfElement
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954250486, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: amountOfElement
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base

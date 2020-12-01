@@ -589,6 +589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lose Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 66290227273581978, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 66290227273581982, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2613,29 +2617,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3297534056681188766, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3297534056681188766, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077124491735051197, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077124491735051197, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
       propertyPath: m_Name
       value: Player Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4824862934397184829, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23257,6 +23241,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759461798795068233, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5376158579989925706, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23356,6 +23352,10 @@ PrefabInstance:
     - target: {fileID: 5376158579989925710, guid: d89208649f2b89849ad095f48170fa39, type: 3}
       propertyPath: m_Name
       value: Developer Player Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376158579989925710, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89208649f2b89849ad095f48170fa39, type: 3}
@@ -23626,6 +23626,10 @@ PrefabInstance:
     - target: {fileID: 5431953423425727920, guid: 002fd42de41c5ac44ae02c459286df0f, type: 3}
       propertyPath: m_Name
       value: Boss Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431953423425727920, guid: 002fd42de41c5ac44ae02c459286df0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5431953423425727924, guid: 002fd42de41c5ac44ae02c459286df0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24358,6 +24362,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4186234071548517220, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
   m_PrefabInstance: {fileID: 8370728}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1749993070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1749993070, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
+  m_PrefabInstance: {fileID: 682688636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b548e007d3d48f848ba9f912c793f48c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1763410854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24365,6 +24380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: levelUpText
+      value: 
+      objectReference: {fileID: 1749993070}
     - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: healthBar
       value: 
