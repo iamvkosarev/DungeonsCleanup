@@ -602,7 +602,9 @@ MonoBehaviour:
     m_Bits: 1024
   numOfAttackAnimations: 1
   damage: 100
-  attackWinds: []
+  attackWinds:
+  - {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
+  - {fileID: 8300000, guid: 14cd7d376f3212347880e7cbe43058ed, type: 3}
   audioBoostAttackWind: 0.2
   attackPunch: []
   audioBoostPunch: 1
@@ -697,13 +699,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d75b41926e6d9f4081cf31dc03411c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelUpSFX: {fileID: 8300000, guid: 084d1579145aa934a99fc1de2e5ac931, type: 3}
   listLevelOfDevelopment: {fileID: 11400000, guid: abac91d596180fb40a223af0b82ada6a, type: 2}
   listOfAllShadows: {fileID: 11400000, guid: c0b5a2c40a0ff124d8a09f03dd3eb3b0, type: 2}
   listsOfItmes: {fileID: 11400000, guid: 40a9e081411deb143a2508355757a1b9, type: 2}
   lvl: 1
   exp: 0
   items: []
-  levelUpText: {fileID: 0}
   activateAbility: 0
   healthBar: {fileID: 0}
   healthParticals: {fileID: 7111640718242244711, guid: dd223bc54fb09e246a41f6c626d62564, type: 3}
@@ -711,7 +713,7 @@ MonoBehaviour:
   windPushRadius: {x: 7, y: 2}
   enemiesLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1048576
   pushForce: 12
   playerWindPushPointPos: {fileID: 283424322}
   windPushCheckZone: {x: 4.82, y: 1.42}

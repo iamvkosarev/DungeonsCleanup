@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerDevelopmentManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip levelUpSFX;
     [SerializeField] private ListLevelOfDevelopment listLevelOfDevelopment;
     [SerializeField] private ListOfAllShadows listOfAllShadows;
     [SerializeField] private ListsOfItmes listsOfItmes;
@@ -12,7 +13,6 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
     [SerializeField] private List<ItemData> items;
-    [SerializeField] private LevelUpText levelUpText;
     [Header("Activation Ability")]
     private int currentSelectedItemIndex = -1;
     [SerializeField] private bool activateAbility;
@@ -31,7 +31,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private float pushForce;
     [SerializeField] private Transform playerWindPushPointPos;
     [SerializeField] private Vector2 windPushCheckZone;
-
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -40,9 +40,9 @@ public class PlayerDevelopmentManager : MonoBehaviour
     }
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         attackManager = GetComponent<PlayerAttackManager>();
         healthManager = GetComponent<PlayerHealth>();
-        Debug.Log(levelUpText);
     }
     
     public void AddExp(int exp)
@@ -68,7 +68,8 @@ public class PlayerDevelopmentManager : MonoBehaviour
         SetParametersAccordingToTheLvl();
         healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.7f));
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
-        levelUpText.ActivateText();
+        healthBar.LevelUpText.PlayUpAnimation();
+        audioSource.PlayOneShot(levelUpSFX);
         // shoe some VFX;
     }
     public void AddHealth(int helth)

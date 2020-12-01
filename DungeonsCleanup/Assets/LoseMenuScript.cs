@@ -55,7 +55,7 @@ public class LoseMenuScript : PauseMenu
 
     public void UpdateLastCheckpoint()
     {
-        playerHealth.gameObject.GetComponent<PlayerDataManager>().SetCheckPointSessionData();
+        playerHealth.gameObject.GetComponent<PlayerDataManager>().SetLastSessionData();
     }
 
 

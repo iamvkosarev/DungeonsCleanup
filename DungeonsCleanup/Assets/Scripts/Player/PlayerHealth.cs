@@ -36,6 +36,14 @@ public class PlayerHealth : Health
     }
     public void AddHealth(int health)
     {
+        if (base.health + health < healthBar.GetMaxHelath())
+        {
+            base.health += health;
+        }
+        else
+        {
+            base.health = healthBar.GetMaxHelath();
+        }
         healthBar.AddHealth(health);
     }
     public void SetCurrentHealth(int health)
