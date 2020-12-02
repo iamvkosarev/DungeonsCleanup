@@ -10,6 +10,8 @@ public class SpawnerOfAttackingWave : MonoBehaviour
     [SerializeField] bool setDamage;
     [SerializeField] int damage;
     [SerializeField] bool changeDirectionOfWaveInOpposite;
+    [SerializeField] private bool useLowerParametr = false;
+    [SerializeField] private float attackLowerParametr = 1f;
 
     [Header("SFX")]
     [SerializeField] private AudioClip attackSFX;
@@ -30,9 +32,15 @@ public class SpawnerOfAttackingWave : MonoBehaviour
         }
         attackWave.transform.localScale = 
                 new Vector2(attackWave.transform.localScale.x * changeDirectionParam * Mathf.Sign(transform.rotation.y), attackWave.transform.localScale.y);
+        DamageDealer damageDealer = attackWave.GetComponent<DamageDealer>();
         if (setDamage)
         {
-            attackWave.GetComponent<DamageDealer>().SetDamage(damage);
+            damageDealer.SetDamage(damage);
+            
+        }
+        if (useLowerParametr)
+        {
+            damageDealer.SetDamage((int)((float)damageDealer.GetDamge()*attackLowerParametr));
         }
     }
 
