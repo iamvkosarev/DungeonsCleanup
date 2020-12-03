@@ -294,7 +294,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6485676117677068574, guid: 544fe0ad3e1c87f4faac6236a7e9ba21, type: 3}
   spawnProjectilePoint: {fileID: 4884064678594896278}
   setProjectileDamage: 1
-  damage: 10
+  damage: 7
   changeDirectionOfWaveInOpposite: 0
 --- !u!114 &1144908394897137451
 MonoBehaviour:
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 20
   healthCollider: {fileID: 5602574948176362969}
   feetCoolider: {fileID: 2280272574141709357}
   deathAnimationsNum: 1

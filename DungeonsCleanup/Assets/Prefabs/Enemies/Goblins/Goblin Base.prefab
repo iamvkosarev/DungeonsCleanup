@@ -345,8 +345,10 @@ MonoBehaviour:
   attackWavePrefab: {fileID: 1629830435181536908, guid: ee0bb2874d3225a46aeb435a5fcbfd63, type: 3}
   pointOfSpwan: {fileID: 7193347388596663648}
   setDamage: 1
-  damage: 5
+  damage: 2
   changeDirectionOfWaveInOpposite: 0
+  useLowerParametr: 0
+  attackLowerParametr: 1
   attackSFX: {fileID: 8300000, guid: d6e11e4d16e161948bdadd44bbc7f651, type: 3}
   audioBoost: 0
 --- !u!114 &5930750086390548145
@@ -402,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714ecd97e2f40c746bdb4b5578eda174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 25
   healthCollider: {fileID: 7913969820019337519}
   feetCoolider: {fileID: 4589570954328271067}
   deathAnimationsNum: 5
@@ -461,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 4
-  runSpeed: 6
+  runSpeed: 7
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
