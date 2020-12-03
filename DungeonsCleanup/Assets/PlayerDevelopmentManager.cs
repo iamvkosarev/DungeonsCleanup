@@ -273,6 +273,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public void SetCurrentExp(int exp)
     {
         this.exp = exp;
+        SetExpInExpBar();
     }
     public void SetItems(int[] listOfItemsId, int[] listOfItemsTypes)
     {

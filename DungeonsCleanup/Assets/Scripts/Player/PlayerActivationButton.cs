@@ -125,7 +125,7 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (canPlayerActivateSomeThing)
         {
-            if (canActivateAbsorption)
+            if (canActivateAbsorption && playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle())
             {
                 buttonsTextMPro.text = absorptionButtonName;
             }

@@ -4942,6 +4942,8 @@ MonoBehaviour:
   setDamage: 1
   damage: 4
   changeDirectionOfWaveInOpposite: 0
+  useLowerParametr: 0
+  attackLowerParametr: 1
   attackSFX: {fileID: 8300000, guid: d6e11e4d16e161948bdadd44bbc7f651, type: 3}
   audioBoost: 0
 --- !u!114 &7473920698556090958
@@ -5086,10 +5088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f6e81475c10dd4cad115c63040e152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTagSprites:
-  - {fileID: -8334908125956167650, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
-  - {fileID: -8687764546562108101, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
-  - {fileID: -6629335157355587682, guid: da4f28b3a1dd8994c8dc34376e82076d, type: 3}
+  attackTagSprites: []
   attakTagSortingLayerName: VFX
   attackTagPos: {fileID: 2670037999330273826}
   delayToDestory: 0.5

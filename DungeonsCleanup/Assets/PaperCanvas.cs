@@ -5,6 +5,8 @@ using TMPro;
 
 public class PaperCanvas : MonoBehaviour
 {
+    [SerializeField] private float delayToBeAbleDestroy = 0.5f;
+    private bool canBeDestroy = false;
     [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private TextMeshProUGUI mainText;
     Animator myAnimator;
@@ -13,6 +15,13 @@ public class PaperCanvas : MonoBehaviour
     private void Start()
     {
         myAnimator= GetComponent<Animator>();
+        StartCoroutine(WaitingToBeAbleDestroy());
+    }
+    IEnumerator WaitingToBeAbleDestroy()
+    {
+        canBeDestroy = false;
+        yield return new WaitForSeconds(delayToBeAbleDestroy);
+        canBeDestroy = true;
     }
     public void StopGame()
     {
@@ -26,6 +35,7 @@ public class PaperCanvas : MonoBehaviour
     }
     public void DestroyCanvas()
     {
+        if (!canBeDestroy) { return; }
         Time.timeScale = 1f;
         Destroy(gameObject);
     }

@@ -10,8 +10,18 @@ public class AttackTag : MonoBehaviour
     [SerializeField] private float delayToDestory = 0.5f;
     GameObject attackTag;
     SpriteRenderer attackTagSpriteRenderer;
+    private int attackTagsLength;
+    
+    private void Start()
+    {
+        attackTagsLength = attackTagSprites.Length;
+    }
     public void SetAttackTag(int num)
     {
+        if (attackTagsLength == 0)
+        {
+            return;
+        }
         if(attackTagSprites.Length > num)
         {
             if (num == 0)
@@ -42,6 +52,10 @@ public class AttackTag : MonoBehaviour
 
     public void DestroyAttackTag()
     {
+        if (attackTagsLength == 0)
+        {
+            return;
+        }
         if (attackTag)
         {
             Destroy(attackTag);
