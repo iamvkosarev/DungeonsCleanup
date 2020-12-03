@@ -407,7 +407,6 @@ GameObject:
   - component: {fileID: 1626112920}
   - component: {fileID: 603595621}
   - component: {fileID: 1295151619}
-  - component: {fileID: 4350401160949844917}
   - component: {fileID: 265641893}
   m_Layer: 10
   m_Name: Goblin Boss
@@ -590,6 +589,7 @@ MonoBehaviour:
   noiseFrequency: 7
   earthquakeSFX: {fileID: 8300000, guid: 54f6f2154f2ce8c43907b058678e2cc9, type: 3}
   audioBoosEarthquakeSFX: 1
+  maxNumberOfGoblins: 2
   spawnPlace:
   - {x: 3, y: 10, z: 0}
   - {x: -3, y: 10, z: 0}
@@ -633,25 +633,11 @@ MonoBehaviour:
   setDamage: 1
   damage: 30
   changeDirectionOfWaveInOpposite: 0
+  useLowerParametr: 0
+  attackLowerParametr: 1
   attackSFX: {fileID: 0}
   audioBoost: 0
 --- !u!114 &1295151619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9161436766510927752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
-  amountOfElement: 65
-  maxPointsToSpawn: 30
-  hasRandom: 0
---- !u!114 &4350401160949844917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
