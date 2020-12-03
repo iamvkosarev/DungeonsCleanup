@@ -907,11 +907,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.702291
+      value: 9.952232
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13076568
+      value: -0.122193575
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: orthographic size
@@ -2169,29 +2169,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3297534056681188766, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3297534056681188766, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077124491735051197, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077124491735051197, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
       propertyPath: m_Name
       value: Player Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4824862934397184825, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4824862934397184829, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2288,17 +2268,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5053a72cdf67344ab05b5316274f7da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &682688638 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1749993070, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-  m_PrefabInstance: {fileID: 682688636}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b548e007d3d48f848ba9f912c793f48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &685754397 stripped
@@ -25950,21 +25919,9 @@ PrefabInstance:
       propertyPath: playerDataManager
       value: 
       objectReference: {fileID: 85628212}
-    - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: nextSceneBuildIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399188801449762173, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: isCheckPoint
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
       propertyPath: m_Name
       value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399188801449762175, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d86fa7805e75af4cb33a3431e9c44d8, type: 3}
@@ -27482,30 +27439,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 682688637}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: enemiesLayer.m_Bits
-      value: 1048576
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: windPushRadius.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: windPushRadius.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: pushYForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: pushXForce
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: levelUpText
-      value: 
-      objectReference: {fileID: 682688638}
     - target: {fileID: 1187377112, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: activateSomeThingButton
       value: 
@@ -27518,18 +27451,6 @@ PrefabInstance:
       propertyPath: loseCanvas
       value: 
       objectReference: {fileID: 1126976612}
-    - target: {fileID: 5961501673156388416, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: attackWinds.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961501673156388416, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: attackWinds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
-    - target: {fileID: 5961501673156388416, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: attackWinds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 14cd7d376f3212347880e7cbe43058ed, type: 3}
     - target: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: m_Name
       value: Player

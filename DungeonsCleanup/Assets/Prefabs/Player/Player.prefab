@@ -176,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6038624089281843385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.2800002, z: 0}
+  m_LocalPosition: {x: 0.378, y: 0.2800002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
@@ -512,6 +512,10 @@ MonoBehaviour:
   audioBoostDeathSFX: 1
   bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
   audioBoostBodyCrash: 1
+  getHitsSFX:
+  - {fileID: 8300000, guid: f5004da6b4dcbc9449db82518fd9ad11, type: 3}
+  - {fileID: 8300000, guid: edc0624192f5ded4384b5ab304d27da0, type: 3}
+  audioBoostGetHitSFX: 1.2
   canProtectHimself: 0
   healthBar: {fileID: 0}
   reloadingDelay: 2
@@ -598,7 +602,9 @@ MonoBehaviour:
     m_Bits: 1024
   numOfAttackAnimations: 1
   damage: 100
-  attackWinds: []
+  attackWinds:
+  - {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
+  - {fileID: 8300000, guid: 14cd7d376f3212347880e7cbe43058ed, type: 3}
   audioBoostAttackWind: 0.2
   attackPunch: []
   audioBoostPunch: 1
@@ -659,6 +665,8 @@ MonoBehaviour:
   setDamage: 1
   damage: 0
   changeDirectionOfWaveInOpposite: 1
+  useLowerParametr: 1
+  attackLowerParametr: 0.8
   attackSFX: {fileID: 0}
   audioBoost: 0
 --- !u!114 &3175382458436422066
@@ -693,19 +701,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d75b41926e6d9f4081cf31dc03411c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelUpSFX: {fileID: 8300000, guid: 084d1579145aa934a99fc1de2e5ac931, type: 3}
   listLevelOfDevelopment: {fileID: 11400000, guid: abac91d596180fb40a223af0b82ada6a, type: 2}
   listOfAllShadows: {fileID: 11400000, guid: c0b5a2c40a0ff124d8a09f03dd3eb3b0, type: 2}
   listsOfItmes: {fileID: 11400000, guid: 40a9e081411deb143a2508355757a1b9, type: 2}
   lvl: 1
   exp: 0
   items: []
-  levelUpText: {fileID: 0}
   activateAbility: 0
   healthBar: {fileID: 0}
+  healthParticals: {fileID: 7111640718242244711, guid: dd223bc54fb09e246a41f6c626d62564, type: 3}
+  addingHealth: 3
   windPushRadius: {x: 7, y: 2}
   enemiesLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1048576
   pushForce: 12
   playerWindPushPointPos: {fileID: 283424322}
   windPushCheckZone: {x: 4.82, y: 1.42}
@@ -834,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backThemes:
-  - {fileID: 8300000, guid: 18c15fb5052d14c4f9f839e804083414, type: 3}
+  - {fileID: 8300000, guid: e53aabadc0954384283e3756ad03bb2c, type: 3}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0

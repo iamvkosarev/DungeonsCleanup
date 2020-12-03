@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Image healthSlider;
     [SerializeField] private Image expSlider;
     [SerializeField] private Image selectedItemIcon;
+    [SerializeField] public LevelUpText LevelUpText;
     private int maxHealth;
     private int health;
     //[SerializeField] TextMeshProUGUI healthText;    

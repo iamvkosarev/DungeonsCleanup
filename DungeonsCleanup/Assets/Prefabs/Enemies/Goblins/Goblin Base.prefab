@@ -239,7 +239,6 @@ GameObject:
   - component: {fileID: 5390485869535295272}
   - component: {fileID: 1732000173}
   - component: {fileID: 1954250486}
-  - component: {fileID: 1954250485}
   m_Layer: 10
   m_Name: Goblin Base
   m_TagString: Untagged
@@ -470,7 +469,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 1743894881820148256}
   feetCollider: {fileID: 4589570954328271067}
   groundCheckSize: {x: 0.5, y: 0.3}
-  slowingOnStairsParametr: {x: 1.1, y: 0.8}
+  slowingOnStairsParametr: {x: 1.05, y: 0.5}
   timeOnSlowing: 0.2
   invisibleWallLayer:
     serializedVersion: 2
@@ -610,22 +609,6 @@ MonoBehaviour:
   elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
   amountOfElement: 10
   maxPointsToSpawn: 5
-  hasRandom: 0
---- !u!114 &1954250485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589570952654697376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
-  amountOfElement: 20
-  maxPointsToSpawn: 2
   hasRandom: 0
 --- !u!1 &4589570952976817378
 GameObject:

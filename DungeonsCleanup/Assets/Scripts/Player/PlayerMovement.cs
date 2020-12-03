@@ -106,8 +106,8 @@ public class PlayerMovement : MonoBehaviour
     // param
     private bool wasJumpRecently = false;
     private bool facingRight = true;
-    private bool isAttackButtonPressed;
-    private bool isJumpButtonPressed;
+    private bool isAttackButtonPressed = false;
+    private bool isJumpButtonPressed = false;
     private bool canRotation = true;
     private float joystickXAxis;
     private float joystickYAxis;
@@ -118,10 +118,9 @@ public class PlayerMovement : MonoBehaviour
     {
         playerActionControls = new PlayerActionControls();
         // Attack
-        playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
-        playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
-        playerActionControls.Land.Jump.started += _ => isJumpButtonPressed = true;
-        playerActionControls.Land.Jump.canceled += _ => isJumpButtonPressed = false;
+        playerActionControls.Land.Attack.performed += _ => isAttackButtonPressed = !isAttackButtonPressed;
+        playerActionControls.Land.Jump.performed += _ => isJumpButtonPressed = !isJumpButtonPressed;
+        playerActionControls.Land.MoveHorizontal.performed += _ => joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
         playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();
     }
 
@@ -172,13 +171,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
         //canJump = (isJumpButtonPressed) ? true : false;
         StartCoroutine(JumpWorkWithDalay());
         joystickYAxis = (isJumpButtonPressed) ? 1f : 0f;
     }
     IEnumerator JumpWorkWithDalay()
     {
+
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
         yield return new WaitForSeconds((isStandingOnGround)? 0.15f : 0f);

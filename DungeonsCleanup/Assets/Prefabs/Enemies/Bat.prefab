@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6489309077370033570}
   - component: {fileID: 934885363}
   - component: {fileID: 5268385735622780452}
-  - component: {fileID: 9207209195914689242}
   - component: {fileID: 5791278001463055445}
   - component: {fileID: 6355290582930128414}
   m_Layer: 10
@@ -182,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   towardSpeed: 3.5
-  batDamage: 5
+  batDamage: 1
   attackRadius: 1.5
   batAttacks:
   - {fileID: 8300000, guid: d317a999a11b07f4094ade9b265bfc01, type: 3}
@@ -214,22 +213,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.9079266, y: 3.1633744}
   m_EdgeRadius: 0
---- !u!114 &9207209195914689242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940110116614799307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
-  amountOfElement: 7
-  maxPointsToSpawn: 1
-  hasRandom: 1
 --- !u!114 &5791278001463055445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,10 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 2423374732035870417, guid: 6197882c18c26d94cab19636bfdc6b87, type: 3}
+  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
   amountOfElement: 5
-  maxPointsToSpawn: 5
-  hasRandom: 0
+  maxPointsToSpawn: 1
+  hasRandom: 1
 --- !u!82 &6355290582930128414
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerDevelopmentManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip levelUpSFX;
     [SerializeField] private ListLevelOfDevelopment listLevelOfDevelopment;
     [SerializeField] private ListOfAllShadows listOfAllShadows;
     [SerializeField] private ListsOfItmes listsOfItmes;
@@ -12,7 +13,6 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private int lvl;
     [SerializeField] private int exp;
     [SerializeField] private List<ItemData> items;
-    [SerializeField] private LevelUpText levelUpText;
     [Header("Activation Ability")]
     private int currentSelectedItemIndex = -1;
     [SerializeField] private bool activateAbility;
@@ -22,14 +22,16 @@ public class PlayerDevelopmentManager : MonoBehaviour
     private PlayerAttackManager attackManager;
     private PlayerHealth healthManager;
     private PlayerActionControls playerActionControls;
-
+    [Header("Health Adding")]
+    [SerializeField] private GameObject healthParticals;
+    [SerializeField] private int addingHealth;
     [Header("Wind Push")]
     [SerializeField] private Vector2 windPushRadius;
     [SerializeField] private LayerMask enemiesLayer;
     [SerializeField] private float pushForce;
     [SerializeField] private Transform playerWindPushPointPos;
     [SerializeField] private Vector2 windPushCheckZone;
-
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -38,9 +40,9 @@ public class PlayerDevelopmentManager : MonoBehaviour
     }
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         attackManager = GetComponent<PlayerAttackManager>();
         healthManager = GetComponent<PlayerHealth>();
-        Debug.Log(levelUpText);
     }
     
     public void AddExp(int exp)
@@ -64,9 +66,10 @@ public class PlayerDevelopmentManager : MonoBehaviour
     {
         lvl++;
         SetParametersAccordingToTheLvl();
-        healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.4f));
+        healthManager.AddHealth((int)(healthManager.GetMaxHealth()*0.7f));
         needExp = listLevelOfDevelopment.GetParammeterOfLevel(lvl).GetNeedExp();
-        levelUpText.ActivateText();
+        healthBar.LevelUpText.PlayUpAnimation();
+        audioSource.PlayOneShot(levelUpSFX);
         // shoe some VFX;
     }
     public void AddHealth(int helth)
@@ -82,6 +85,10 @@ public class PlayerDevelopmentManager : MonoBehaviour
             Vector2 playerPosition = gameObject.transform.position;
             ArtifactData artifactData = listsOfItmes.GetArtifactData(items[currentSelectedItemIndex].id);
             artifactData.Activate(transform.position, playerWindPushPointPos.position, windPushCheckZone, enemiesLayer, pushForce);
+            if(artifactData.Activate(healthManager, addingHealth))
+            {
+                SpawnHealthVFX();
+            }
             ShadowBorrleData shadowBorrleData = SaveSystem.LoadShadowBorrleData(items[currentSelectedItemIndex].id);
             if (shadowBorrleData.HasShadows())
             {
@@ -94,6 +101,13 @@ public class PlayerDevelopmentManager : MonoBehaviour
                 Debug.Log("Фляга пуста");
             }
         }
+    }
+    private void SpawnHealthVFX()
+    {
+        GameObject particals = Instantiate(healthParticals);
+        particals.transform.parent = transform;
+        particals.transform.localPosition = new Vector2(0, 0);
+        Destroy(particals, 6f);
     }
     public void AddShadow(int shadowId)
     {
@@ -259,6 +273,7 @@ public class PlayerDevelopmentManager : MonoBehaviour
     public void SetCurrentExp(int exp)
     {
         this.exp = exp;
+        SetExpInExpBar();
     }
     public void SetItems(int[] listOfItemsId, int[] listOfItemsTypes)
     {

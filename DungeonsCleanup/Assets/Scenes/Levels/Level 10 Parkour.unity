@@ -6826,17 +6826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5053a72cdf67344ab05b5316274f7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &682688638 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1749993070, guid: c0c22b23b60034b46b47f33e1ff8bc21, type: 3}
-  m_PrefabInstance: {fileID: 682688636}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b548e007d3d48f848ba9f912c793f48c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &684857579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93858,9 +93847,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 682688637}
     - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
-      propertyPath: levelUpText
+      propertyPath: addingHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176042659, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
+      propertyPath: healthParticals
       value: 
-      objectReference: {fileID: 682688638}
+      objectReference: {fileID: 7111640718242244711, guid: dd223bc54fb09e246a41f6c626d62564, type: 3}
     - target: {fileID: 1187377112, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
       propertyPath: activateSomeThingButton
       value: 
@@ -112171,10 +112164,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6480464650217399048, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: damage
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.5
@@ -112218,14 +112207,6 @@ PrefabInstance:
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -42.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
@@ -113207,6 +113188,14 @@ PrefabInstance:
     - target: {fileID: 6480464650217399051, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 87.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480464650347219629, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c24b9d5ccba96b4a8914aeaa3b59a01, type: 3}

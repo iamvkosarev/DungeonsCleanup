@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSpawnPoint: {fileID: 3564933718781891518}
-  damageZone: {x: 1.23, y: 2.63}
+  damageZone: {x: 0.9, y: 1.64}
   damage: 10
   whomCanAttacked:
     serializedVersion: 2
@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5652980269032380645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.017, y: 0.058, z: 0}
+  m_LocalPosition: {x: -0.029, y: 0.058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2752937768995809596}
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8c816d330ffa3d949b773ae84205448c, type: 3}
-  m_Color: {r: 0.7773585, g: 1, b: 0.9559235, a: 0}
+  m_Color: {r: 0.7773585, g: 1, b: 0.9559235, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

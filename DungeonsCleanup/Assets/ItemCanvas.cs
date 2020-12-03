@@ -7,6 +7,8 @@ using TMPro;
 
 public class ItemCanvas : MonoBehaviour
 {
+    [SerializeField] private float delayToBeAbleDestroy = 0.5f;
+    private bool canBeDestroy = false;
     [SerializeField] private GameObject artifactsField;
     [SerializeField] private GameObject timeCrystalsField;
     private ItemType itemType;
@@ -37,6 +39,13 @@ public class ItemCanvas : MonoBehaviour
     private void Start()
     {
         StopGame();
+        StartCoroutine(WaitingToBeAbleDestroy());
+    }
+    IEnumerator WaitingToBeAbleDestroy()
+    {
+        canBeDestroy = false;
+        yield return new WaitForSeconds(delayToBeAbleDestroy);
+        canBeDestroy = true;
     }
     public void StopGame()
     {
@@ -44,6 +53,7 @@ public class ItemCanvas : MonoBehaviour
     }
     public void DestroyCanvas()
     {
+        if (!canBeDestroy) { return; }
         Time.timeScale = 1f;
         loseMenuScript.ManagePlayerBarsAndGamepad(true);
         Destroy(gameObject);
