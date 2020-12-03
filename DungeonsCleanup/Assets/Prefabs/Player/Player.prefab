@@ -176,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6038624089281843385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.2800002, z: 0}
+  m_LocalPosition: {x: 0.378, y: 0.2800002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
@@ -665,6 +665,8 @@ MonoBehaviour:
   setDamage: 1
   damage: 0
   changeDirectionOfWaveInOpposite: 1
+  useLowerParametr: 1
+  attackLowerParametr: 0.8
   attackSFX: {fileID: 0}
   audioBoost: 0
 --- !u!114 &3175382458436422066
@@ -842,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backThemes:
-  - {fileID: 8300000, guid: 18c15fb5052d14c4f9f839e804083414, type: 3}
+  - {fileID: 8300000, guid: e53aabadc0954384283e3756ad03bb2c, type: 3}
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0

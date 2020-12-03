@@ -128,6 +128,7 @@ public class PlayerHealth : Health
     }
     IEnumerator Reloading()
     {
+        loseCanvas.ManagePlayerGamepad(false);
         yield return new WaitForSeconds(reloadingDelay);
         loseCanvas.SetLoseCanvas();
         //GetComponent<PlayerDataManager>().SetCheckPointSessionData();

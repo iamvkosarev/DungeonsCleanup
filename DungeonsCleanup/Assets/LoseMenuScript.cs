@@ -65,5 +65,9 @@ public class LoseMenuScript : PauseMenu
         gamepadUI.SetActive(mood);
     }
 
-    
+    public void ManagePlayerGamepad(bool mood)
+    {
+        gamepadUI.SetActive(mood);
+    }
+
 }
