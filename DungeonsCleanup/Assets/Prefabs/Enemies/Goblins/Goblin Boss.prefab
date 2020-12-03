@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1400
+  health: 2200
   healthCollider: {fileID: 1934708355}
   feetCoolider: {fileID: 644723066}
   deathAnimationsNum: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   playerHealthCollider: {fileID: 1934708355}
   reloadingDelay: 2
-  parametrOfStartingDeathAnimation: 0.17
+  parametrOfStartingDeathAnimation: 0.1
   activationBoss: {fileID: 1948749583}
 --- !u!114 &1934708359
 MonoBehaviour:
@@ -673,8 +673,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 103
   DopplerLevel: 1
-  MinDistance: 4.93042
-  MaxDistance: 12.425545
+  MinDistance: 5.3823395
+  MaxDistance: 13.181923
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
