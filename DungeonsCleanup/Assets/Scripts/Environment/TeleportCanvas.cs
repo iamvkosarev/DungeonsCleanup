@@ -5,8 +5,6 @@ using TMPro;
 
 public class TeleportCanvas : MonoBehaviour
 {
-    [SerializeField] private float delayToBeAbleDestroy = 0.5f;
-    private bool canBeDestroy = false;
     [SerializeField] private TextMeshProUGUI currentHealthField;
     [SerializeField] private TextMeshProUGUI damageField;
     LoseMenuScript loseMenuScript;
@@ -23,13 +21,6 @@ public class TeleportCanvas : MonoBehaviour
     private void Start()
     {
         StopGame();
-        StartCoroutine(WaitingToBeAbleDestroy());
-    }
-    IEnumerator WaitingToBeAbleDestroy()
-    {
-        canBeDestroy = false;
-        yield return new WaitForSeconds(delayToBeAbleDestroy);
-        canBeDestroy = true;
     }
     public void ActivatePortal()
     {
@@ -42,7 +33,6 @@ public class TeleportCanvas : MonoBehaviour
     }
     public void DestroyCanvas()
     {
-        if (!canBeDestroy) { return; }
         Time.timeScale = 1f;
         loseMenuScript.ManagePlayerBarsAndGamepad(true);
         Destroy(gameObject);
