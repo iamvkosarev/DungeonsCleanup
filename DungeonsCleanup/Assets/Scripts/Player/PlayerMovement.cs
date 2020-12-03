@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttackButtonPressed = attackData;
         isJumpButtonPressed = jumpData;
-        if (horizontalData)
+        if (horizontalData && !jumpData)
         {
             CheckTumbleweed(horizontalMoveData);
         }
