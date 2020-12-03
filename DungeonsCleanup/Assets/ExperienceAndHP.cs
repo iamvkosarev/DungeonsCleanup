@@ -51,13 +51,13 @@ public class ExperienceAndHP : MonoBehaviour
 
     private void MoveToPlayer()
     {
-        Collider2D playerCollider_toMoveCheck = Physics2D.OverlapCircle(transform.position, radiusOfDetectPlayer, playerLayer);
-        Collider2D playerCollider_toAddExpCheck = Physics2D.OverlapCircle(transform.position, radiusOfAddExpToPlayer, playerLayer);
-        if (playerCollider_toMoveCheck )
+        Collider2D[] playerCollider_toMoveCheck = Physics2D.OverlapCircleAll(transform.position, radiusOfDetectPlayer, playerLayer);
+        Collider2D[] playerCollider_toAddExpCheck = Physics2D.OverlapCircleAll(transform.position, radiusOfAddExpToPlayer, playerLayer);
+        foreach (Collider2D collider2D in playerCollider_toAddExpCheck)
         {
-            if (playerCollider_toAddExpCheck && playerCollider_toAddExpCheck.gameObject.tag != "Shadow")
+            if (collider2D.gameObject.tag != "Shadow")
             {
-                PlayerDevelopmentManager playerDevelopmentManager = playerCollider_toAddExpCheck.gameObject.GetComponent<PlayerDevelopmentManager>();
+                PlayerDevelopmentManager playerDevelopmentManager = collider2D.gameObject.GetComponent<PlayerDevelopmentManager>();
                 if (playerDevelopmentManager)
                 {
                     if (typeOfElement == TypeOfElement.exp)
@@ -72,24 +72,27 @@ public class ExperienceAndHP : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-            float playerX = playerCollider_toMoveCheck.gameObject.transform.position.x;
-            float playerY = playerCollider_toMoveCheck.gameObject.transform.position.y;
+        }
+        foreach (Collider2D collider2D in playerCollider_toMoveCheck)
+        {
+            if (collider2D.gameObject.tag == "Shadow") { continue; }
+            float playerX = collider2D.gameObject.transform.position.x;
+            float playerY = collider2D.gameObject.transform.position.y;
             float elementX = transform.position.x;
             float elementY = transform.position.y;
             float distanceBetweenPointAndPlayer = Mathf.Sqrt(
-                Mathf.Pow(playerX - elementX, 2) +
-                Mathf.Pow(playerY - elementY, 2));
+            Mathf.Pow(playerX - elementX, 2) +
+            Mathf.Pow(playerY - elementY, 2));
             Vector2 force;
-            if (playerCollider_toMoveCheck.gameObject.tag == "Shadow")
-            {
-                force = new Vector2(0,0);
+            if (collider2D.gameObject.tag == "Shadow"){
+                 force = new Vector2(0, 0);
             }
-            else
-            {
+            else{
                 force = approximationСoefficient / Mathf.Pow(distanceBetweenPointAndPlayer, 3) * new Vector2(playerX - elementX, playerY - elementY);
             }
             myRb.velocity = force;
         }
+    
     }
 
     private void OnDrawGizmosSelected()
