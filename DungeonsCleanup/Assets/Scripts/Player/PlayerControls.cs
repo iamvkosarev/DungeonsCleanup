@@ -24,7 +24,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""id"": ""8900bd8e-6aba-4c71-a435-4d6cf2bdb87d"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Attack"",
@@ -32,7 +32,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""id"": ""20978280-0f33-44aa-b282-3580d39da63d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Activate ability"",
@@ -48,7 +48,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""id"": ""316023ab-6fc5-44d7-b9e7-b8c63f46fc8c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Activate Something"",
