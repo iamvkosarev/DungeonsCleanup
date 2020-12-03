@@ -114,14 +114,27 @@ public class PlayerMovement : MonoBehaviour
     private bool readyForPunch = false;
 
     #region Customization Player Action Controls
+    public void SetDataFromGamePad(float horizontalMoveData, bool horizontalData, bool jumpData, bool attackData)
+    {
+        isAttackButtonPressed = attackData;
+        isJumpButtonPressed = jumpData;
+        if (horizontalData)
+        {
+            CheckTumbleweed(horizontalMoveData);
+        }
+    }
+    public void SetHorizontalMoveDataFromGamePad(float horizontalMoveData)
+    {
+        joystickXAxis = horizontalMoveData;
+    }
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
         // Attack
-        playerActionControls.Land.Attack.performed += _ => isAttackButtonPressed = !isAttackButtonPressed;
+        /*playerActionControls.Land.Attack.performed += _ => isAttackButtonPressed = !isAttackButtonPressed;
         playerActionControls.Land.Jump.performed += _ => isJumpButtonPressed = !isJumpButtonPressed;
         playerActionControls.Land.MoveHorizontal.performed += _ => joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
-        playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();
+        playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();*/
     }
 
     private void OnEnable()
@@ -258,11 +271,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void CheckTumbleweed()
+    private void CheckTumbleweed(float horizontalMoveData)
     {
         if (wasTumbleweedSuspended) { return; }
-        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
-        if (joystickXAxis > 0)
+        if (horizontalMoveData > 0)
         {
             if (lastPressedHorisontalButton != PressedHorisontalButtons.right ||
                 Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
@@ -278,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(DoingTumblweed());
             }
         }
-        else if (joystickXAxis < 0)
+        else if (horizontalMoveData < 0)
         {
             if (lastPressedHorisontalButton != PressedHorisontalButtons.left ||
                 Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
