@@ -33,9 +33,9 @@ public class PlayerActivationButton : MonoBehaviour
     PlayerHealth playerHealth;
     bool canActivateHatch;
     bool isReadyToActivateHatch;
-    bool isReadyToActivateAbsorption;
     bool canPlayerActivateSomeThing;
-    bool canActivateAbsorption;
+    bool isEnemyReadyToAbsorption;
+    bool isCurrentItemIsShadowBottle;
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
@@ -76,23 +76,15 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void AbsorptionShadow()
     {
-        if (canActivateAbsorption)
+        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        Collider2D absorptionCollider = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
+        if (absorptionCollider && isCurrentItemIsShadowBottle)
         {
-            isReadyToActivateAbsorption = true;
+            AbsorptionShadow absorptionShadow = absorptionCollider.gameObject.GetComponent<AbsorptionShadow>();
+            playerDevelopmentManager.AddShadow(absorptionShadow.shadowId);
+            Destroy(absorptionCollider.gameObject);
         }
-    }
 
-    public void CanActivateAbsorption(bool mode)
-    {
-        canActivateAbsorption = mode;
-        if (!mode)
-        {
-            isReadyToActivateAbsorption = false;
-        }
-    }
-    public bool IsReadyForActivationAbsorption()
-    {
-        return isReadyToActivateAbsorption;
     }
 
     private void Update()
@@ -125,7 +117,7 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (canPlayerActivateSomeThing)
         {
-            if (canActivateAbsorption && playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle())
+            if (isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle)
             {
                 buttonsTextMPro.text = absorptionButtonName;
             }
@@ -148,8 +140,8 @@ public class PlayerActivationButton : MonoBehaviour
         bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
         bool isPlayerTouchPortal = Physics2D.OverlapCircle(transform.position, checkRadius, portalLayer);
-        bool isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
-        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
+        isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
         canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchPortal || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 

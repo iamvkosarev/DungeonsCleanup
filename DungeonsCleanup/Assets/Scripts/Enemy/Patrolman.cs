@@ -88,7 +88,10 @@ public class Patrolman : MonoBehaviour
         yield return new WaitForSeconds(timeOnWaitPlayer);
         if (currentTarget != Target.enemie)
         {
-            OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this});
+            if(OnPatrolFreeEvent!= null)
+            {
+                OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this });
+            }
         }
     }
 
@@ -122,7 +125,10 @@ public class Patrolman : MonoBehaviour
         myLastPatrolPoint.StopPursuing();
         if (currentTarget != Target.enemie)
         {
-            OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this });
+            if (OnPatrolFreeEvent != null)
+            {
+                OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this });
+            }
 
             Debug.Log($"{this.gameObject.name} приянл новую точку {currentPatrolPoint}");
         }
