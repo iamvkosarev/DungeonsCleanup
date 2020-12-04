@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 85628218}
+    - target: {fileID: 3146449712392109631, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: activateAbilityButtons
+      value: 
+      objectReference: {fileID: 756379746}
     - target: {fileID: 4186234070042386618, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -29885,6 +29889,11 @@ Transform:
   m_Father: {fileID: 1540782190}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &756379746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7151916719900417187, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+  m_PrefabInstance: {fileID: 8370728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &773384791
 GameObject:
   m_ObjectHideFlags: 0

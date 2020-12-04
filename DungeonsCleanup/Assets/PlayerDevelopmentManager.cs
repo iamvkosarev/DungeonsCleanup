@@ -15,6 +15,11 @@ public class PlayerDevelopmentManager : MonoBehaviour
     [SerializeField] private List<ItemData> items;
     [Header("Activation Ability")]
     private int currentSelectedItemIndex = -1;
+    public event EventHandler<OnSettingNewItemAsArtifactEventArgs> OnSettingNewItem;
+    public class OnSettingNewItemAsArtifactEventArgs : EventArgs
+    {
+        public bool canItemBeActivated;
+    }
     [SerializeField] private bool activateAbility;
     [SerializeField] private HealthBar healthBar;
     private bool wasActivated;
@@ -256,14 +261,17 @@ public class PlayerDevelopmentManager : MonoBehaviour
         this.currentSelectedItemIndex = index;
         if (index == -1) {
             healthBar.RemoveSelectedItem();
+            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false});
         }
         else if (items[index].itemType == ItemType.Artifact)
         {
             healthBar.SetSelectedItem(listsOfItmes.GetArtifactData(items[index].id).icon);
+            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = true});
         }
         else
         {
             healthBar.RemoveSelectedItem();
+            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false });
         }
     }
     public void SetCurrentLvl(int lvl)

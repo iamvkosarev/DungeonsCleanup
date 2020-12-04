@@ -9,12 +9,28 @@ using System;
 
 public class GamepadManager : MonoBehaviour
 {
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] bool isDesktopWork;
+    [Header("Manage Player")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private bool isDesktopWork;
     private float horizontalMoveData = 0f;
     private bool horizontalData;
     private bool jumpData;
     private bool attackData;
+
+
+    [Header("Manage Buttons")]
+    [SerializeField] private GameObject activateAbilityButtons;
+    private PlayerDevelopmentManager playerDevelopmentManager;
+    
+    private void Start()
+    {
+        playerDevelopmentManager = playerMovement.gameObject.GetComponent<PlayerDevelopmentManager>();
+        playerDevelopmentManager.OnSettingNewItem += SwitchActivateButton;
+    }
+    private void SwitchActivateButton(object sender, PlayerDevelopmentManager.OnSettingNewItemAsArtifactEventArgs e)
+    {
+        activateAbilityButtons.SetActive(e.canItemBeActivated);
+    }
     public void ManageEvent(string buttonName, bool pressedParam)
     {
         if (buttonName == "moveButton_left")
