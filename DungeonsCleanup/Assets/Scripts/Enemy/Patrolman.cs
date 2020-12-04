@@ -27,13 +27,21 @@ public class Patrolman : MonoBehaviour
     float parameterOfTurningRayAlongXAxis = -1;
 
     bool waitingOnPoint;
-    bool canPatrolmanGetNewPoint;
-    bool goToPoint;
-    bool goToPlayer;
-    int countStopWaintingForPlayer;
     Vector2 directionPlayerDetecterRay;
-
+    public EventHandler<OnPatrolFreeEventArgs> OnPatrolFreeEvent;
+    public class OnPatrolFreeEventArgs : EventArgs
+    {
+        public Patrolman patrolman;
+    }
     EnemiesMovement myMovementScript;
+
+    enum Target
+    {
+        nothing,
+        point,
+        enemie
+    }
+    Target currentTarget =  Target.nothing;
 
     private void Start()
     {
@@ -56,22 +64,19 @@ public class Patrolman : MonoBehaviour
 
     private void CheckReachingLastPlayerPosition()
     {
-        if(!goToPlayer) { return; }
+        if(currentTarget != Target.enemie) { return; }
         if (currentPatrolPoint != null)
         {
             currentPatrolPoint.StopPursuing();
             currentPatrolPoint = null;
         }
-        countStopWaintingForPlayer = 0;
-        goToPoint = false;
 
         Vector2 cheakerPlayerCircleCoordinates = transform.position;
         Vector2 lastPlayerPos = myMovementScript.GetCurrentTragetPos();
 
         if ((Mathf.Abs(lastPlayerPos.x - cheakerPlayerCircleCoordinates.x) 
-            <= Mathf.Abs(radiusOfPointReachingZone ) || myMovementScript.IsTouchingInvisibleWall()) && goToPlayer)
+            <= Mathf.Abs(radiusOfPointReachingZone ) || myMovementScript.IsTouchingInvisibleWall()))
         {
-            goToPlayer = false;
             StartCoroutine(WaitingForPlayer());
         }
 
@@ -79,67 +84,69 @@ public class Patrolman : MonoBehaviour
 
     IEnumerator WaitingForPlayer()
     {
-        goToPlayer = false;
+        currentTarget = Target.nothing;
         yield return new WaitForSeconds(timeOnWaitPlayer);
-        if (!goToPlayer)
+        if (currentTarget != Target.enemie)
         {
-            countStopWaintingForPlayer++;
-            if (countStopWaintingForPlayer <= 1)
-            {
-                Debug.Log("Гоблин свободен псоле патруля игрока");
-                canPatrolmanGetNewPoint = true;
-            }
+            OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this});
         }
-
     }
 
     private void CheckReachingPoint()
     {
-        if (goToPlayer) { return; }
-        if (currentPatrolPoint == null) { return; }
+        if (currentTarget == Target.enemie || currentPatrolPoint == null) { return; }
         Collider2D pointsCollider = (Collider2D)Physics2D.OverlapCircle(patrolPointCheackerCoordinates.position,
             radiusOfPointReachingZone, patrolPointsLayer);
         if (pointsCollider == null) { return; }
         if (pointsCollider.gameObject == currentPatrolPoint.gameObject)
         {
-
+            Debug.Log($"{this.gameObject.name} достиг точку {currentPatrolPoint}");
             StartCoroutine(WaitingOnPoint());
 
         }
     }
     public void StartPursuingPlayer(Transform playersPos)
     {
-        goToPlayer = true;
+        currentTarget =  Target.enemie;
         myMovementScript.SetTarget(playersPos.position);
     }
     IEnumerator WaitingOnPoint()
     {
         PatrolPoint myLastPatrolPoint = currentPatrolPoint;
         currentPatrolPoint = null;
-        goToPoint = false;
         waitingOnPoint = true;
+        if (currentTarget != Target.enemie) { currentTarget = Target.nothing; }           
         yield return new WaitForSeconds(myLastPatrolPoint.GetTimeOnStand());
+        Debug.Log($"{this.gameObject.name} отстоял на {myLastPatrolPoint}");
         waitingOnPoint = false;
         myLastPatrolPoint.StopPursuing();
-        if (!goToPlayer)
+        if (currentTarget != Target.enemie)
         {
-            canPatrolmanGetNewPoint = true;
+            OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this });
+
+            Debug.Log($"{this.gameObject.name} приянл новую точку {currentPatrolPoint}");
         }
     }
     public void SetPatrolPoint(PatrolPoint patrolPoint, int patrolPointNum)
     {
-        this.currentPatrolPoint = patrolPoint;
-        this.currentPatrolPointNum = patrolPointNum;
-        canPatrolmanGetNewPoint = false;
+        
+        if (currentTarget != Target.enemie)
+        {
+            this.currentPatrolPoint = patrolPoint;
+            this.currentPatrolPointNum = patrolPointNum;
+        }
     }
     private void CheckIsPointFree()
     {
-        if (goToPoint || currentPatrolPoint == null) { return; }
+        if (currentTarget == Target.point || currentPatrolPoint == null) { return; }
         bool isPointFree = currentPatrolPoint.IsPointFree();
         if (isPointFree)
         {
             currentPatrolPoint.StartedPursuing();
-            goToPoint = true;
+            if (currentTarget != Target.enemie)
+            {
+                currentTarget = Target.point;
+            }
             myMovementScript.SetTarget(currentPatrolPoint.transform.position);
         }
     }
@@ -149,17 +156,17 @@ public class Patrolman : MonoBehaviour
     }
     public bool ShoulIGoToPatrolPoint()
     {
-        return goToPoint;
+        return currentTarget == Target.point;
     }
     public bool ShoulIGoToPlayer()
     {
-        return goToPlayer;
+        return currentTarget == Target.enemie;
     }
-
     public bool CanPatrolmanGetNewPoint()
     {
-        return canPatrolmanGetNewPoint;
+        return currentTarget == Target.nothing;
     }
+
     private void UpdatePlayerDetecterRayAngle()
     {
         if (currentTimeInLoop >= timeOnRayLoopUpdate)
@@ -188,6 +195,7 @@ public class Patrolman : MonoBehaviour
         parameterOfTurningRayAlongXAxis = (transform.rotation.y < 0 ? -1 : 1) * (turnRayInOppositeDirection ? 1 : -1);
         directionPlayerDetecterRay = new Vector2(Mathf.Cos(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay * parameterOfTurningRayAlongXAxis,
             Mathf.Sin(currentAngle / 90f * Mathf.PI) * sizeOfPlayerDetecterRay);
+
         RaycastHit2D hit = Physics2D.Raycast(detectorPoint.position, directionPlayerDetecterRay, sizeOfPlayerDetecterRay, playerAndCollidingEnvironmentLayers);
         if (!hit) { return; }
         if (hit.collider.gameObject.layer == playerLayerNum && !hit.collider.gameObject.GetComponent<BatPathing>())
