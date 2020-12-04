@@ -623,27 +623,22 @@ MonoBehaviour:
   baseButtonName: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
   absorptionButtonName: "\u041F\u043E\u0433\u043B\u0430\u0442\u0438\u0442\u044C"
   checkRadius: 0.5
+  interactionWithPlayerLayer:
+    serializedVersion: 2
+    m_Bits: 2097152
   weaponLayer:
     serializedVersion: 2
     m_Bits: 8192
-  elevatorLayer:
-    serializedVersion: 2
-    m_Bits: 2097152
+  elevatorTag: Elevator
   doorLayer:
     serializedVersion: 2
     m_Bits: 32768
-  tabletLayer:
-    serializedVersion: 2
-    m_Bits: 33554432
+  tabletTag: Tablet
   itemLayer:
     serializedVersion: 2
     m_Bits: 8192
-  absorptionShadowLayer:
-    serializedVersion: 2
-    m_Bits: 536870912
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  absorptionShadowTag: Absorption Shadow
+  portalTag: Portal
   activateSomeThingButton: {fileID: 0}
   bodySpriteRenderer: {fileID: 7081787225611444495}
   doorCheckPoint: {fileID: 6389667949260438817}
