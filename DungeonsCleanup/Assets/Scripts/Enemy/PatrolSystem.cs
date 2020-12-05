@@ -11,6 +11,10 @@ public class PatrolSystem : MonoBehaviour
 
     private void Start()
     {
+        foreach(Patrolman patrolman in patrolmen)
+        {
+            patrolman.OnPatrolFreeEvent += SetPoint;
+        }
         numOfPoints = patrolPoints.Length;
         for (int patrolmanNum = 0; patrolmanNum < patrolmen.Length; patrolmanNum++)
         {
@@ -26,30 +30,20 @@ public class PatrolSystem : MonoBehaviour
             patrolmen[patrolmanNum].SetPatrolPoint(patrolPoints[yourPointNum], yourPointNum);
         }
     }
-    private void Update()
+    private void SetPoint(object sender, Patrolman.OnPatrolFreeEventArgs e)
     {
-        CheckEmployment();
-    }
-
-    private void CheckEmployment()
-    {
-        foreach (Patrolman patrolman in patrolmen)
+        Patrolman patrolman = e.patrolman;
+        int lastPatrolPointNum = patrolman.GetCurrentPatrolPointNum();
+        int newPatrolPointNum;
+        if (lastPatrolPointNum + 1 >= numOfPoints)
         {
-            if (patrolman.CanPatrolmanGetNewPoint())
-            {
-                int lastPatrolPointNum = patrolman.GetCurrentPatrolPointNum();
-                int newPatrolPointNum;
-                if(lastPatrolPointNum+1>= numOfPoints)
-                {
-                    newPatrolPointNum = 0;
-                }
-                else
-                {
-                    newPatrolPointNum = lastPatrolPointNum + 1;
-                }
-                patrolman.SetPatrolPoint(patrolPoints[newPatrolPointNum], newPatrolPointNum);
-
-            }
+            newPatrolPointNum = 0;
         }
+        else
+        {
+            newPatrolPointNum = lastPatrolPointNum + 1;
+        }
+        patrolman.SetPatrolPoint(patrolPoints[newPatrolPointNum], newPatrolPointNum);
+
     }
 }

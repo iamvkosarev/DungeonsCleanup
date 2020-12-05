@@ -97,7 +97,6 @@ public class PlayerMovement : MonoBehaviour
     private float timeSinceStartCheckTumbleweed = 0;
 
     //catching files
-    private PlayerActionControls playerActionControls;
     private Rigidbody2D myRigidbody2D;
     private Animator myAnimator;
     private PlayerHealth myHealth;
@@ -113,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
     private float joystickYAxis;
     private bool readyForPunch = false;
 
-    #region Customization Player Action Controls
+    #region Set Data From Gamepad
     public void SetDataFromGamePad(float horizontalMoveData, bool horizontalData, bool jumpData, bool attackData)
     {
         isAttackButtonPressed = attackData;
@@ -126,24 +125,6 @@ public class PlayerMovement : MonoBehaviour
     public void SetHorizontalMoveDataFromGamePad(float horizontalMoveData)
     {
         joystickXAxis = horizontalMoveData;
-    }
-    private void Awake()
-    {
-        playerActionControls = new PlayerActionControls();
-        // Attack
-        /*playerActionControls.Land.Attack.performed += _ => isAttackButtonPressed = !isAttackButtonPressed;
-        playerActionControls.Land.Jump.performed += _ => isJumpButtonPressed = !isJumpButtonPressed;
-        playerActionControls.Land.MoveHorizontal.performed += _ => joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
-        playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();*/
-    }
-
-    private void OnEnable()
-    {
-        playerActionControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerActionControls.Disable();
     }
     #endregion
 

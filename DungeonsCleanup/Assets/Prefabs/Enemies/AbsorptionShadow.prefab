@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3920471920679565267}
   - component: {fileID: 6039136659056509993}
   - component: {fileID: 5615528073244024111}
-  m_Layer: 29
+  m_Layer: 21
   m_Name: AbsorptionShadow
-  m_TagString: Untagged
+  m_TagString: Absorption Shadow
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowId: 0
-  checkPlayerSize: {x: 1.12, y: 0.74}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!61 &5615528073244024111
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,13 +9,14 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] string absorptionButtonName = "Поглатить";
     [SerializeField] float checkRadius;
     [Header("Layers")]
+    [SerializeField] LayerMask interactionWithPlayerLayer;
     [SerializeField] LayerMask weaponLayer;
-    [SerializeField] LayerMask elevatorLayer;
+    [SerializeField] string elevatorTag;
     [SerializeField] LayerMask doorLayer;
-    [SerializeField] LayerMask tabletLayer;
+    [SerializeField] string tabletTag;
     [SerializeField] LayerMask itemLayer;
-    [SerializeField] LayerMask absorptionShadowLayer;
-    [SerializeField] LayerMask portalLayer;
+    [SerializeField] string absorptionShadowTag;
+    [SerializeField] string portalTag;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
 
     [SerializeField] SpriteRenderer bodySpriteRenderer;
@@ -33,9 +34,9 @@ public class PlayerActivationButton : MonoBehaviour
     PlayerHealth playerHealth;
     bool canActivateHatch;
     bool isReadyToActivateHatch;
-    bool isReadyToActivateAbsorption;
     bool canPlayerActivateSomeThing;
-    bool canActivateAbsorption;
+    bool isEnemyReadyToAbsorption;
+    bool isCurrentItemIsShadowBottle;
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
@@ -66,8 +67,8 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void ShowPortalCanvas()
     {
-        Collider2D portalCollider = Physics2D.OverlapCircle(transform.position, checkRadius, portalLayer);
-        if (portalCollider != null)
+        Collider2D portalCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (portalCollider != null && portalCollider.gameObject.tag == portalTag)
         {
             Debug.Log("Portal!");
             portalCollider.GetComponent<Portal>().InstansiatePortalInfoCanvas(playerHealth,transform,playerMovement,loseMenuScript, bodySpriteRenderer);
@@ -76,23 +77,15 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void AbsorptionShadow()
     {
-        if (canActivateAbsorption)
+        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        Collider2D absorptionCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (absorptionCollider && isCurrentItemIsShadowBottle && absorptionCollider.gameObject.tag == absorptionShadowTag)
         {
-            isReadyToActivateAbsorption = true;
+            AbsorptionShadow absorptionShadow = absorptionCollider.gameObject.GetComponent<AbsorptionShadow>();
+            playerDevelopmentManager.AddShadow(absorptionShadow.shadowId);
+            Destroy(absorptionCollider.gameObject);
         }
-    }
 
-    public void CanActivateAbsorption(bool mode)
-    {
-        canActivateAbsorption = mode;
-        if (!mode)
-        {
-            isReadyToActivateAbsorption = false;
-        }
-    }
-    public bool IsReadyForActivationAbsorption()
-    {
-        return isReadyToActivateAbsorption;
     }
 
     private void Update()
@@ -125,7 +118,7 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (canPlayerActivateSomeThing)
         {
-            if (canActivateAbsorption && playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle())
+            if (isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle)
             {
                 buttonsTextMPro.text = absorptionButtonName;
             }
@@ -144,13 +137,10 @@ public class PlayerActivationButton : MonoBehaviour
     private void CheckPossibilityToActivateSomeThing()
     {
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
-        bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
-        bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
+        bool isTouchInteractibleObject = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
-        bool isPlayerTouchPortal = Physics2D.OverlapCircle(transform.position, checkRadius, portalLayer);
-        bool isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
-        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
-        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchPortal || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
+        isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        canPlayerActivateSomeThing = (canActivateHatch|| isTouchInteractibleObject || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 
 
@@ -167,8 +157,8 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void TransferPlayer()
     {
-        Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
-        if (elevatorCollider != null)
+        Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (elevatorCollider != null && elevatorCollider.gameObject.tag == elevatorTag)
         {
             Debug.Log("Teleportation!");
             elevatorCollider.gameObject.GetComponent<Elevator>().Transfer(gameObject.transform);
@@ -185,8 +175,8 @@ public class PlayerActivationButton : MonoBehaviour
     }
     private void ShowTabletText()
     {
-        Collider2D paperCollider = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
-        if (paperCollider != null)
+        Collider2D paperCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (paperCollider != null && paperCollider.gameObject.tag == tabletTag)
         {
             Debug.Log("Tablet Text!");
             paperCollider.GetComponent<Paper>().InstansiateTabletCanvas();
