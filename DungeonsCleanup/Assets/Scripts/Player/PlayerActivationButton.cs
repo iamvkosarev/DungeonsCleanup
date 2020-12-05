@@ -140,7 +140,7 @@ public class PlayerActivationButton : MonoBehaviour
         bool isTouchInteractibleObject = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
         isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
-        canPlayerActivateSomeThing = (canActivateHatch|| isTouchInteractibleObject || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
+        canPlayerActivateSomeThing = (canActivateHatch|| isPlayerTouchDoor|| isTouchInteractibleObject || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 
 
