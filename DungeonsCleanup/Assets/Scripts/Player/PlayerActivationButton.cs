@@ -137,10 +137,21 @@ public class PlayerActivationButton : MonoBehaviour
     private void CheckPossibilityToActivateSomeThing()
     {
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
-        bool isTouchInteractibleObject = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        bool isTouchPortal = false;
+        bool isTouchElevator = false;
+        bool isTouchTablet = false;
+        Collider2D colliderToTouchInteractibleObject = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (colliderToTouchInteractibleObject)
+        {
+            isTouchPortal = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == portalTag;
+            isTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == elevatorTag;
+            isTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == tabletTag;
+            isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == absorptionShadowTag;
+        }
+
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
         isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
-        canPlayerActivateSomeThing = (canActivateHatch|| isTouchInteractibleObject || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
+        canPlayerActivateSomeThing = (canActivateHatch|| isTouchElevator || isTouchTablet || isPlayerTouchDoor || isTouchPortal || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 
 

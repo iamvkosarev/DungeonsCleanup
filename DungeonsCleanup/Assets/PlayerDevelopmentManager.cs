@@ -261,17 +261,20 @@ public class PlayerDevelopmentManager : MonoBehaviour
         this.currentSelectedItemIndex = index;
         if (index == -1) {
             healthBar.RemoveSelectedItem();
-            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false});
+            if (OnSettingNewItem != null)
+                OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false});
         }
         else if (items[index].itemType == ItemType.Artifact)
         {
             healthBar.SetSelectedItem(listsOfItmes.GetArtifactData(items[index].id).icon);
-            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = true});
+            if (OnSettingNewItem != null)
+                OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = true});
         }
         else
         {
             healthBar.RemoveSelectedItem();
-            OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false });
+            if (OnSettingNewItem != null)
+                OnSettingNewItem.Invoke(this, new OnSettingNewItemAsArtifactEventArgs { canItemBeActivated = false });
         }
     }
     public void SetCurrentLvl(int lvl)

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ActivationBoss : MonoBehaviour
 {
+    [SerializeField] private DialogCanvas dialogCanvas;
     [SerializeField] private GoblinBossMovement goblinBoss;
     [SerializeField] private GameObject bossCanvas;
     [SerializeField] private PlayerSoundManager playerSoundManager;
@@ -14,16 +15,14 @@ public class ActivationBoss : MonoBehaviour
     private void Start()
     {
         bossCanvas.SetActive(false);
+        dialogCanvas.OnCloseDialogCanvas += ActivateBoss;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void ActivateBoss(object obj, EventArgs e)
     {
-        if(other.GetComponent<PlayerMovement>())
-        {
-            goblinBoss.GetComponent<Animator>().SetTrigger("Start");
-            bossCanvas.SetActive(true);
-            StartCoroutine(SwitchingBackTheme());
-            GetComponent<BoxCollider2D>().enabled = false;
-        }
+        goblinBoss.GetComponent<Animator>().SetTrigger("Start");
+        bossCanvas.SetActive(true);
+        StartCoroutine(SwitchingBackTheme());
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     IEnumerator  SwitchingBackTheme()

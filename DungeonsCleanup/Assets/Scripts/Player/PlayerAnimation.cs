@@ -115,7 +115,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             isMakingJump = true;
         }
-        else if(joystickXAxisAbs < movingJoystickProperties.GetWalkLimit())
+        else if(Mathf.Abs(myRigitBody.velocity.x) <= 0.5f)
         {
             isIdling = true;
         }
@@ -123,7 +123,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             isWalking = true;
         }
-        else if(joystickXAxisAbs >= movingJoystickProperties.GetRunLimit())
+        else if(Mathf.Abs(myRigitBody.velocity.x) > 1f)
         {
             isRunning = true;
         }
