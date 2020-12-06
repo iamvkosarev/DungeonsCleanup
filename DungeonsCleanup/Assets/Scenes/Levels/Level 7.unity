@@ -672,12 +672,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 302086446}
   - {fileID: 2093913423}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 82328354}
+  patrolZoneSize: {x: 25, y: 3}
+  patrolZoneColorCheck: {r: 0.8867924, g: 0.12270074, b: 0.12270074, a: 0.25490198}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!1 &85628209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7081787225086070597, guid: 11c7aaa712eeb1e4da4a1e10560cf81f, type: 3}
@@ -1361,6 +1361,7 @@ Transform:
   - {fileID: 1767509734}
   - {fileID: 1325733151}
   - {fileID: 303315505}
+  - {fileID: 1282477406}
   m_Father: {fileID: 518597199}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1384,12 +1385,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 1325733152}
   - {fileID: 303315506}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 1282477406}
+  patrolZoneSize: {x: 40, y: 10}
+  patrolZoneColorCheck: {r: 0.8773585, g: 0.13794939, b: 0.13794939, a: 0.21960784}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!4 &263762969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7956282963267143571, guid: a03ef0cc864f54049a0c506abd18eb42, type: 3}
@@ -2169,11 +2170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.120513
+      value: 4.3703613
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0550303
+      value: -4.041262
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4781,12 +4782,12 @@ MonoBehaviour:
   - {fileID: 1491229004}
   patrolmen:
   - {fileID: 1158403623}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 660177486}
+  patrolZoneSize: {x: 15, y: 3}
+  patrolZoneColorCheck: {r: 0.8490566, g: 0.16553926, b: 0.16553926, a: 0.1764706}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!4 &674274778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798947457989069464, guid: 61366670036abc543afcb3997086434d, type: 3}
@@ -5155,12 +5156,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 1036180175}
   - {fileID: 1977936215}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 717851063}
+  patrolZoneSize: {x: 25, y: 3}
+  patrolZoneColorCheck: {r: 0.8207547, g: 0.16776428, b: 0.16776428, a: 0.22745098}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!114 &732902915 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5316739237223312822, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
@@ -32774,12 +32775,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 1880647883}
   - {fileID: 1641710451}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 882224298}
+  patrolZoneSize: {x: 20, y: 3}
+  patrolZoneColorCheck: {r: 0.8867924, g: 0.22309236, b: 0.22309236, a: 0.21176471}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!1001 &882483669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32923,6 +32924,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61366670036abc543afcb3997086434d, type: 3}
+--- !u!1 &917821674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917821675}
+  m_Layer: 0
+  m_Name: Check Player Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &917821675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917821674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2306796338893231400}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &927566917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798947457989069464, guid: 61366670036abc543afcb3997086434d, type: 3}
@@ -36487,6 +36518,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7798947457989069464, guid: 61366670036abc543afcb3997086434d, type: 3}
   m_PrefabInstance: {fileID: 219596953}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1282477405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282477406}
+  m_Layer: 0
+  m_Name: Check Player Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1282477406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282477405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.3, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 244294670}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1286102006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37752,12 +37813,12 @@ MonoBehaviour:
   - {fileID: 104965514}
   patrolmen:
   - {fileID: 1757541218}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 1496877119}
+  patrolZoneSize: {x: 15, y: 3}
+  patrolZoneColorCheck: {r: 0.8584906, g: 0.11068583, b: 0.11068583, a: 0.28235295}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!4 &1500494184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798947457989069464, guid: 61366670036abc543afcb3997086434d, type: 3}
@@ -37948,11 +38009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.25
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.045
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 2280272574607320913, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44033,12 +44094,12 @@ MonoBehaviour:
   - {fileID: 1083449817}
   patrolmen:
   - {fileID: 170072384}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 2111465800}
+  patrolZoneSize: {x: 10, y: 3}
+  patrolZoneColorCheck: {r: 0.8679245, g: 0.13646607, b: 0.13646607, a: 0.28235295}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!1001 &2117537970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44865,6 +44926,7 @@ Transform:
   - {fileID: 2306796337593190061}
   - {fileID: 2306796338662553864}
   - {fileID: 646485282}
+  - {fileID: 917821675}
   m_Father: {fileID: 518597199}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44885,12 +44947,12 @@ MonoBehaviour:
   - {fileID: 2306796338102481870}
   patrolmen:
   - {fileID: 646485283}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 917821675}
+  patrolZoneSize: {x: 15, y: 3}
+  patrolZoneColorCheck: {r: 0.8396226, g: 0.100332186, b: 0.100332186, a: 0.20392157}
   playerZoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4194304
 --- !u!1 &2306796338893231403
 GameObject:
   m_ObjectHideFlags: 0
@@ -44916,7 +44978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2746232418038054871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.42, y: 3.13, z: 0}
+  m_LocalPosition: {x: -4.1299953, y: 0.6749997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2746232419902544140}
@@ -44978,7 +45040,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2746232419604755759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.64, y: 0, z: 0}
+  m_LocalPosition: {x: -15.909996, y: -2.4550004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2746232419902544140}
@@ -45035,7 +45097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2746232419902544143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.14, y: 0.66, z: 0}
+  m_LocalPosition: {x: 45.51, y: 3.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2746232418038054868}
@@ -45060,9 +45122,9 @@ MonoBehaviour:
   - {fileID: 2746232418038054890}
   patrolmen:
   - {fileID: 241821304}
-  patrolZonePoint: {fileID: 0}
-  patrolZoneSize: {x: 0, y: 0}
-  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  patrolZonePoint: {fileID: 2746232419902544140}
+  patrolZoneSize: {x: 15, y: 5}
+  patrolZoneColorCheck: {r: 0.764151, g: 0.19944817, b: 0.19944817, a: 0.19215687}
   playerZoneLayer:
     serializedVersion: 2
     m_Bits: 0
