@@ -7,6 +7,8 @@ using System;
 public class DialogCanvas : MonoBehaviour
 {
     [Header("Manage Properties")]
+    [SerializeField] private bool playByCollider = true;
+    [SerializeField] private bool startCreatingPhrasesAuto = true;
     [SerializeField] private GameObject closeWindow;
     [SerializeField] private GameObject completionWindow;
     [SerializeField] private GameObject textFormPrefab;
@@ -17,7 +19,7 @@ public class DialogCanvas : MonoBehaviour
     [Header("Dialog")]
     public Transform[] speakerPoint;
     public PhraseInDialog[] dialogs;
-
+    public event EventHandler OnReadyForCreatPhrases;
     private Animator animator;
     private PlayerMovement playerMovement;
     private LoseMenuScript loseMenuScript;
@@ -25,21 +27,36 @@ public class DialogCanvas : MonoBehaviour
     private TextInDialog currentTextInDialog;
     private void Start()
     {
-        closeWindow.SetActive(false);
-        completionWindow.SetActive(false);
-        blackLinesForm.SetActive(false);
-        animator = GetComponent<Animator>();
-        playerMovement = player.GetComponent<PlayerMovement>();
-        loseMenuScript = player.GetComponent<PlayerHealth>().GetLoseCanvasScripts();
+        if (playByCollider)
+        {
+            closeWindow.SetActive(false);
+            completionWindow.SetActive(false);
+            blackLinesForm.SetActive(false);
+            animator = GetComponent<Animator>();
+            playerMovement = player.GetComponent<PlayerMovement>();
+            loseMenuScript = player.GetComponent<PlayerHealth>().GetLoseCanvasScripts();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        OpenDialogWindow();
+        if (playByCollider)
+        {
+            OpenDialogWindow();
+        }
     }
 
-    private void OpenDialogWindow()
+    public void OpenDialogWindow()
     {
+        if (!playByCollider)
+        {
+            closeWindow.SetActive(false);
+            completionWindow.SetActive(false);
+            blackLinesForm.SetActive(false);
+            animator = GetComponent<Animator>();
+            playerMovement = player.GetComponent<PlayerMovement>();
+            loseMenuScript = player.GetComponent<PlayerHealth>().GetLoseCanvasScripts();
+        }
         cvCamera.Follow = transform;
         blackLinesForm.SetActive(true);
         playerMovement.StopHorizontalMovement();
@@ -47,11 +64,24 @@ public class DialogCanvas : MonoBehaviour
         animator.Play("Open Dialog Canvas");
 
     }
+    public void StartCreatingPhrases(int fromDialogOnStart = -1)
+    {
+        if (startCreatingPhrasesAuto || fromDialogOnStart != -1)
+        {
+            CreatPhrase();
+        }
+        if (OnReadyForCreatPhrases != null && fromDialogOnStart == -1)
+        {
+            OnReadyForCreatPhrases.Invoke(this, EventArgs.Empty);
+        }
+    }
     public void CreatPhrase()
     {
-        if (currentPhraseNum == dialogs.Length) { CloseDialogWindow(); }
-        GameObject newTextObject = Instantiate(textFormPrefab, speakerPoint[dialogs[currentPhraseNum].speaker]);
-        newTextObject.transform.parent = transform;
+        if (currentPhraseNum == dialogs.Length) { CloseDialogWindow(); return; }
+        GameObject newTextObject = Instantiate(textFormPrefab);
+        RectTransform rectTransform = newTextObject.GetComponent<RectTransform>();
+        rectTransform.SetParent(speakerPoint[dialogs[currentPhraseNum].speaker]);
+        rectTransform.localPosition = new Vector2(0f, 0f);
         currentTextInDialog = newTextObject.GetComponent<TextInDialog>();
         currentTextInDialog.SetPropertes(dialogs[currentPhraseNum].phrase, true, dialogs[currentPhraseNum].time);
         currentTextInDialog.OnTextCompletion += CanClosePhrase;
@@ -93,6 +123,7 @@ public class DialogCanvas : MonoBehaviour
         playerMovement.StartHorizontalMovement();
         loseMenuScript.ManagePlayerBarsAndGamepad(true);
         cvCamera.Follow = player.transform;
+        Destroy(gameObject);
     }
     public void SwitchOffActiveBlackLines(){
         blackLinesForm.SetActive(false);
