@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1763410856}
+    - target: {fileID: 3146449712392109631, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: isDesktopWork
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6168,6 +6172,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61366670036abc543afcb3997086434d, type: 3}
+--- !u!1 &586367070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586367071}
+  m_Layer: 0
+  m_Name: Point For Player Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586367071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586367070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.27, y: 0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1653439844}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &595026181
 GameObject:
   m_ObjectHideFlags: 0
@@ -54923,6 +54957,38 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 2096333874}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 586367071}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneColorCheck.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneColorCheck.g
+      value: 0.32055888
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneColorCheck.b
+      value: 0.32055888
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneColorCheck.a
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: playerZoneLayer.m_Bits
+      value: 4194304
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 31.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 6.29
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1375465
