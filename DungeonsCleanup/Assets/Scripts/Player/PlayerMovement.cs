@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private MovementButtonsManager movementButtonsManager;
     [SerializeField] private MovingJoystickProperties movingJoystickProperties;
     private MovementGamepad movementGamepad;
+    private EchoEffect echoEffect;
 
     [Header("For Horizontal Movement")]
     [SerializeField] public float runSpeed;
@@ -130,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        echoEffect = GetComponent<EchoEffect>();
         myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -218,7 +220,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isTumbleweed)
         {
+            echoEffect.work = true;
             myRigidbody2D.velocity = new Vector2(tumbleweedSpeed * Mathf.Sign(transform.rotation.y), myRigidbody2D.velocity.y);
+        }
+        else
+        {
+            echoEffect.work = false;
         }
     }
 

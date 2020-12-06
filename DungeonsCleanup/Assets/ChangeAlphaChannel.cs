@@ -16,7 +16,7 @@ public class ChangeAlphaChannel : MonoBehaviour
     private void Start()
     {
         mySR = GetComponent<SpriteRenderer>();
-        mySR.color = new Color(1,1,1,startAlphaChannel);
+        mySR.color = new Color(mySR.color.r, mySR.color.g, mySR.color.b, startAlphaChannel);
         timeSicneStart = Time.time;
     }
     private void Update()
@@ -24,12 +24,12 @@ public class ChangeAlphaChannel : MonoBehaviour
         if (timeOnChange == -1) { return; }
         if (timeOnChange  + timeSicneStart < Time.deltaTime)
         {
-            mySR.color = new Color(1, 1, 1, endAlphaChannel);
+            mySR.color = new Color(mySR.color.r, mySR.color.g, mySR.color.b, endAlphaChannel);
         }
         else
         {
             float changeParam = (Time.time - timeSicneStart) / timeOnChange;
-            mySR.color = new Color(1, 1, 1, startAlphaChannel - (startAlphaChannel - endAlphaChannel) * changeParam);
+            mySR.color = new Color(mySR.color.r, mySR.color.g, mySR.color.b, startAlphaChannel - (startAlphaChannel - endAlphaChannel) * changeParam);
         }
     }
 

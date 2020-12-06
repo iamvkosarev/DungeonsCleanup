@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EchoEffect : MonoBehaviour
 {
-    [SerializeField] private bool work;
+    [SerializeField] public bool work;
     [SerializeField] private float startTimeBtwSpawns = 3f;
     [SerializeField] private float destroyDelay = 0.2f;
     [SerializeField] private GameObject echo;
+    [SerializeField] private Color echoColor;
 
     private float timeBtwSpawns;
     private void Update()
@@ -16,7 +17,7 @@ public class EchoEffect : MonoBehaviour
         if (timeBtwSpawns <= 0)
         {
             GameObject newClone =  Instantiate(echo, echo.transform.position, Quaternion.identity);
-            if(echo.transform.rotation.z == 0)
+            if(echo.transform.rotation.y == 0)
             {
                 newClone.transform.rotation = transform.rotation;
             }
@@ -24,6 +25,9 @@ public class EchoEffect : MonoBehaviour
             {
                 newClone.transform.rotation = echo.transform.rotation;
             }
+            SpriteRenderer spriteRenderer = newClone.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = echoColor;
+            spriteRenderer.sortingOrder = -1;
             newClone.GetComponent<ChangeAlphaChannel>().SetTimeOnChange(destroyDelay);
             Destroy(newClone, destroyDelay);
             timeBtwSpawns = startTimeBtwSpawns;

@@ -722,15 +722,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787225086070597}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee181750bb31bb74a82c8a360481ed09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   work: 0
-  startTimeBtwSpawns: 0.1
-  destroyDelay: 0.2
+  startTimeBtwSpawns: 0.07
+  destroyDelay: 0.25
   echo: {fileID: 7081787225611444493}
+  echoColor: {r: 0.85882354, g: 0.79762745, b: 0.7254902, a: 0.7254902}
 --- !u!82 &250335807196669123
 AudioSource:
   m_ObjectHideFlags: 0
