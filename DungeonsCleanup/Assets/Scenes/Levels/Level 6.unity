@@ -48100,6 +48100,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347237303}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.592
+      objectReference: {fileID: 0}
     - target: {fileID: 3446608802089039571, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -48110,7 +48114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 11.958
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -53065,6 +53069,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 1208226087}
   - {fileID: 1149127264}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1342912735
 GameObject:
   m_ObjectHideFlags: 0
@@ -53427,6 +53437,12 @@ MonoBehaviour:
   - {fileID: 1987061025}
   - {fileID: 1417419029}
   - {fileID: 1012667856}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1417419027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53924,6 +53940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347237303}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.582
+      objectReference: {fileID: 0}
     - target: {fileID: 3446608802089039571, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -53934,7 +53954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22
+      value: 21.958
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -56071,6 +56091,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347237303}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.583
+      objectReference: {fileID: 0}
     - target: {fileID: 3446608802089039571, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -56081,7 +56105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67
+      value: 67.029
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62223,6 +62247,12 @@ MonoBehaviour:
   - {fileID: 1487906009602089290}
   patrolmen:
   - {fileID: 988040579}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1487906008245356463
 GameObject:
   m_ObjectHideFlags: 0
@@ -62500,6 +62530,12 @@ MonoBehaviour:
   - {fileID: 1487906008060036479}
   patrolmen:
   - {fileID: 53250206}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1487906009924281241
 Transform:
   m_ObjectHideFlags: 0
@@ -62838,6 +62874,12 @@ MonoBehaviour:
   - {fileID: 1799281988}
   patrolmen:
   - {fileID: 2099907471}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2397915621453309705
 GameObject:
   m_ObjectHideFlags: 0
@@ -63130,6 +63172,12 @@ MonoBehaviour:
   - {fileID: 4996643103678472422}
   patrolmen:
   - {fileID: 1776544841}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &4996643102394692453
 Transform:
   m_ObjectHideFlags: 0

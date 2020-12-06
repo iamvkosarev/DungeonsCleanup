@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 85628218}
+    - target: {fileID: 3146449712392109631, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: isDesktopWork
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -593,6 +597,10 @@ PrefabInstance:
     - target: {fileID: 598250031207829754, guid: 94b5f9f78580ca445b9bfc76ccce3cb1, type: 3}
       propertyPath: m_Name
       value: Dialog Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 598250031207829754, guid: 94b5f9f78580ca445b9bfc76ccce3cb1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 598250031207829756, guid: 94b5f9f78580ca445b9bfc76ccce3cb1, type: 3}
       propertyPath: dialogs.Array.size
@@ -5952,9 +5960,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 597178839}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.589
+      objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 114
+      value: 114.034
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y

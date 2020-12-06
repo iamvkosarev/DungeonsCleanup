@@ -3681,9 +3681,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1679808197}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.578
+      objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 3.034
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3966,7 +3970,6 @@ Transform:
   - {fileID: 300477043}
   - {fileID: 2139433955}
   - {fileID: 913122757}
-  - {fileID: 1964549165}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25168,9 +25171,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1679808197}
     m_Modifications:
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.578
+      objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: 11.034
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28089,6 +28096,7 @@ Transform:
   m_Children:
   - {fileID: 1935499964}
   - {fileID: 741591214}
+  - {fileID: 1964549165}
   m_Father: {fileID: 621178852}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30942,6 +30950,12 @@ MonoBehaviour:
   - {fileID: 576543910}
   patrolmen:
   - {fileID: 28567191}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1935499964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
@@ -31101,11 +31115,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 621178852}
+    m_TransformParent: {fileID: 1679808197}
     m_Modifications:
     - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960174800096024606, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487907, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_Offset.x
@@ -31113,7 +31131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62
+      value: 61.971
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31141,7 +31159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -31539,6 +31557,12 @@ MonoBehaviour:
   - {fileID: 798803898}
   patrolmen:
   - {fileID: 614504994}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2064271297 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1144908394897137451, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
@@ -32475,6 +32499,12 @@ MonoBehaviour:
   - {fileID: 2554748256972254148}
   patrolmen:
   - {fileID: 27347818}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 0, y: 0}
+  patrolZoneColorCheck: {r: 0, g: 0, b: 0, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6328406293470799465
 Rigidbody2D:
   serializedVersion: 4
