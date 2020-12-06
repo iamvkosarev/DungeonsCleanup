@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
 
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
-        yield return new WaitForSeconds((isStandingOnGround)? 0.15f : 0f);
+        yield return new WaitForSeconds((isStandingOnGround)? 0.1f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
     }

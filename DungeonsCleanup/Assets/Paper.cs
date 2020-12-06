@@ -29,7 +29,7 @@ public class Paper : MonoBehaviour
         GameObject canvas = Instantiate(paperCanvas);
         PaperCanvas paperCanvasScripts = canvas.GetComponent<PaperCanvas>();
         paperCanvasScripts.SetHeaderText(headerText, headerTextFontSize);
-        paperCanvasScripts.SetMainText(mainText, mainTextFontSize);
+        paperCanvasScripts.SetProperties(mainText, mainTextFontSize);
         canvas.GetComponent<Animator>().SetBool("Show Paper", true);
     }
 
