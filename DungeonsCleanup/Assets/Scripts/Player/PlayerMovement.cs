@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private MovementGamepad movementGamepad;
 
     [Header("For Horizontal Movement")]
-    [SerializeField] private float runSpeed;
+    [SerializeField] public float runSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float startingMovingTransitionTime;
     [SerializeField] private float endingMovingTransitionTime;
@@ -522,7 +522,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isMovingStateManagementSuspended = true;
         timeSinceStartTransition = Time.time;
-        velocityOnTheStartOfTransition = myRigidbody2D.velocity.x ;
+        velocityOnTheStartOfTransition = myRigidbody2D.velocity.x * Mathf.Sign(joystickXAxis);
         velocityInTheEndOfTransition = velocityInTheEndOfTransition_input * Mathf.Sign(joystickXAxis);
     }
 
@@ -643,6 +643,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (raincoatInFlightSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(raincoatInFlightSFX, audioBoost);
         }
     }
@@ -650,6 +654,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (firstStepSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(firstStepSFX, audioBoost);
         }
 
@@ -658,6 +666,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (secondStepSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(secondStepSFX, audioBoost);
         }
     }

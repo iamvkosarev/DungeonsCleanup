@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 21
   m_Name: SpeakerPoint 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -32,7 +32,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.41, y: 0.49}
+  m_AnchoredPosition: {x: 0, y: 1.26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &598250029966663551
@@ -73,7 +73,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.6281719, y: 0}
+  m_SizeDelta: {x: 3.7237816, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &598250029966663523
 CanvasRenderer:
@@ -202,7 +202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0010848045, y: 1.0977998}
+  m_AnchoredPosition: {x: -0.0010852814, y: 1.0977998}
   m_SizeDelta: {x: -0.0023800284, y: -5.141686}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &598250030086609937
@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 598250031207829756}
   - component: {fileID: 598250031207829755}
   - component: {fileID: 598250031207829729}
+  - component: {fileID: 680975466}
   m_Layer: 21
   m_Name: Dialog Canvas
   m_TagString: Untagged
@@ -360,6 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723b39314d4572747aaf019328a87fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playByCollider: 0
+  startCreatingPhrasesAuto: 0
   closeWindow: {fileID: 4539879006231781121}
   completionWindow: {fileID: 6617500562558419318}
   textFormPrefab: {fileID: 6606233859480986155, guid: 712bdbc1d59dae047ba07feee1a9c196, type: 3}
@@ -367,11 +370,17 @@ MonoBehaviour:
   cvCamera: {fileID: 0}
   player: {fileID: 0}
   speakerPoint:
-  - {fileID: 0}
+  - {fileID: 483856640}
   dialogs:
-  - phrase: "\u0423\u0440\u043E\u0434, \u0414\u0430 \u043A\u0430\u043A \u0442\u044B
-      \u0441\u043C\u0435\u0435\u0448\u044C!"
+  - phrase: "\u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u0434\u043B\u044F \u043C\u0435\u043D\u044F
+      \u044D\u0442\u043E \u0443\u0436\u0435 \u0441\u0435\u0434\u044C\u043C\u043E\u0435
+      \u043F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u0435..."
     speaker: 0
+    time: 3
+  - phrase: "\u0410 \u043E\u0449\u0443\u0449\u0435\u043D\u0438\u044F \u043A\u0430\u043A
+      \u0432 \u043F\u0435\u0440\u0432\u044B\u0439 \u0440\u0430\u0437."
+    speaker: 0
+    time: 1.8
 --- !u!61 &598250031207829755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -396,7 +405,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.2892513, y: 3.843063}
+  m_Size: {x: 2.858003, y: 3.843063}
   m_EdgeRadius: 0
 --- !u!95 &598250031207829729
 Animator:
@@ -417,6 +426,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &680975466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598250031207829754}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28595f1c71f9a9d4c90a0e5a8d0596e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDialogMovement: {fileID: 0}
 --- !u!1 &598250031618329465
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +591,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 5649439581141438343}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -700,7 +722,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 3519449244889907110}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
