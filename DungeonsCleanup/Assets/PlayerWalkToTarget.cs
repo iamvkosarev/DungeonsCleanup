@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerWalkOnStart : MonoBehaviour
+public class PlayerWalkToTarget : MonoBehaviour
 {
     [SerializeField] private Transform pointToGo;
     private PlayerMovement playerMovement;
@@ -13,7 +13,7 @@ public class PlayerWalkOnStart : MonoBehaviour
     private Animator myAnimator;
     private PlayerAnimation playerAnimation;
     private bool isStoped = false;
-    void Start()
+    public void StartWalk()
     {
         playerMovement = GetComponent<PlayerMovement>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -39,7 +39,7 @@ public class PlayerWalkOnStart : MonoBehaviour
                 OnReadyForTalk.Invoke(this, EventArgs.Empty);
             }
             Destroy(pointToGo.gameObject);
-            Destroy(GetComponent<PlayerWalkOnStart>());
+            Destroy(GetComponent<PlayerWalkToTarget>());
             return;
         }
     }

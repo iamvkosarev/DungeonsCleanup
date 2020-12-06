@@ -20,6 +20,7 @@ public class DialogCanvas : MonoBehaviour
     public Transform[] speakerPoint;
     public PhraseInDialog[] dialogs;
     public event EventHandler OnReadyForCreatPhrases;
+    public event EventHandler OnCloseDialogCanvas;
     private Animator animator;
     private PlayerMovement playerMovement;
     private LoseMenuScript loseMenuScript;
@@ -27,11 +28,11 @@ public class DialogCanvas : MonoBehaviour
     private TextInDialog currentTextInDialog;
     private void Start()
     {
+        blackLinesForm.SetActive(false);
+        closeWindow.SetActive(false);
+        completionWindow.SetActive(false);
         if (playByCollider)
         {
-            closeWindow.SetActive(false);
-            completionWindow.SetActive(false);
-            blackLinesForm.SetActive(false);
             animator = GetComponent<Animator>();
             playerMovement = player.GetComponent<PlayerMovement>();
             loseMenuScript = player.GetComponent<PlayerHealth>().GetLoseCanvasScripts();
@@ -50,9 +51,6 @@ public class DialogCanvas : MonoBehaviour
     {
         if (!playByCollider)
         {
-            closeWindow.SetActive(false);
-            completionWindow.SetActive(false);
-            blackLinesForm.SetActive(false);
             animator = GetComponent<Animator>();
             playerMovement = player.GetComponent<PlayerMovement>();
             loseMenuScript = player.GetComponent<PlayerHealth>().GetLoseCanvasScripts();
@@ -120,6 +118,10 @@ public class DialogCanvas : MonoBehaviour
     }
     public void LetPlayerMove()
     {
+        if (OnCloseDialogCanvas != null)
+        {
+            OnCloseDialogCanvas.Invoke(this, EventArgs.Empty);
+        }
         playerMovement.StartHorizontalMovement();
         loseMenuScript.ManagePlayerBarsAndGamepad(true);
         cvCamera.Follow = player.transform;
