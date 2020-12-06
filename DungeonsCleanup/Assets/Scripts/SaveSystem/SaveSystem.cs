@@ -91,6 +91,51 @@ public static class SaveSystem
     }
     #endregion
 
+    #region Progress
+    public static void SaveProgress(string saveName, PlayerProgress playerProgress)
+    {
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+        if (!Directory.Exists(Application.persistentDataPath + "/saves"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/saves");
+        }
+
+        string path = Application.persistentDataPath + "/saves/" + saveName + ".save";
+
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerProgress data = new PlayerProgress(playerProgress);
+
+        binaryFormatter.Serialize(stream, data);
+
+        stream.Close();
+    }
+
+    public static PlayerProgress LoadProgress(string saveName)
+    {
+        string path = Application.persistentDataPath + "/saves/" + saveName + ".save";
+        if (File.Exists(path))
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            PlayerProgress playerProgress = binaryFormatter.Deserialize(stream) as PlayerProgress;
+
+            stream.Close();
+
+            return playerProgress;
+        }
+        else
+        {
+            string fileDataName = "currentPlayerProgress_session_" + SaveSystem.LoadSession().GetActiveSessionNum().ToString();
+            PlayerProgress data = new PlayerProgress(System.DateTime.Now.Day, System.DateTime.Now.Year,
+                System.DateTime.Now.Month, System.DateTime.Now.Hour, System.DateTime.Now.Minute,
+                System.DateTime.Now.Second, 0, 0);
+            SaveProgress(fileDataName, data);
+            return data;
+        }
+    }
+    #endregion
     /*#region Settings
     public static void SaveSettings(bool useJoystick, float scaleParam, float posXParam, float posYParam, float alphaChannelParam)
     {
