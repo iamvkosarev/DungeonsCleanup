@@ -1444,11 +1444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.4549932
+      value: 3.565874
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13303971
+      value: -0.13547349
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: orthographic size
@@ -1456,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5658736
+      value: 3.565874
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3836,6 +3836,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 840402854}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 507703484}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.13
@@ -4464,6 +4468,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 667553032}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.75
@@ -4751,6 +4763,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 1332060020}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 685336623}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.1
@@ -37486,6 +37506,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 798857461}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 825266684}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.47
@@ -38218,6 +38242,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 949204379}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 979675413}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.33
@@ -38284,6 +38316,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1152061005}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 992763127}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.54
@@ -41137,6 +41173,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[2]
       value: 
       objectReference: {fileID: 1902111215}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1447344369}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.84
@@ -41260,6 +41304,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 820334506}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1486003092}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.82
@@ -42580,6 +42632,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1062722404}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1778997128}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 78.15
@@ -46495,6 +46551,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2046225573}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.9
@@ -46631,6 +46695,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1862872912}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2068425023}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 86.4
@@ -46701,6 +46773,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 846398300}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2099119489}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 68.11

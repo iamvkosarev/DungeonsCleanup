@@ -304,6 +304,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 488236996}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 10935819}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.62
@@ -1779,11 +1787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2824116
+      value: 2.0324621
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1621661
+      value: -1.1541774
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: orthographic size
@@ -4625,6 +4633,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 541694506}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 610247639}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 101.86
@@ -5180,6 +5196,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 735707527}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 699682907}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 90.31
@@ -55951,6 +55975,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1730356895}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 759453217}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.58
@@ -57039,6 +57071,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 1729310789}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1027466483}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.41
@@ -59166,6 +59206,18 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 776232037}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1528856167}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.23
@@ -59426,6 +59478,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 239701440}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1673117817}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 87.35
@@ -59570,6 +59630,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 1765517076}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1722015562}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.08
@@ -64191,6 +64259,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1750867458}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 1798282660}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5526047
@@ -64524,6 +64600,18 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 152936779}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2027741424}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.19
@@ -64606,6 +64694,14 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[1]
       value: 
       objectReference: {fileID: 2054985488}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2047579659}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.067394
@@ -65050,6 +65146,10 @@ PrefabInstance:
       propertyPath: patrolmen.Array.data[0]
       value: 
       objectReference: {fileID: 1394229619}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZonePoint
+      value: 
+      objectReference: {fileID: 2107595530}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.6

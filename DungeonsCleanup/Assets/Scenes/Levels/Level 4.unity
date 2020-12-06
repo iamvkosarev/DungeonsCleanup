@@ -350,6 +350,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.47
@@ -446,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol System (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
 --- !u!114 &45453540 stripped
@@ -466,6 +474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.47
@@ -561,6 +573,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -2874,6 +2890,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.1
@@ -2973,6 +2993,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -6154,36 +6178,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
   m_PrefabInstance: {fileID: 1374735052}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &499883375
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 499883376}
-  m_Layer: 0
-  m_Name: Check Player Zone Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &499883376
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499883375}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.65, y: -2.36, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2006391236}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &505598753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77001,17 +76995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341ea04d09c464440b54d66b8f7350b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &757410833 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1487906008367664095, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-  m_PrefabInstance: {fileID: 1398161215}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341ea04d09c464440b54d66b8f7350b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &765557982
 GameObject:
   m_ObjectHideFlags: 0
@@ -78795,63 +78778,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6988287, y: 3.7111206, z: 1}
   m_Center: {x: -0.2796588, y: -1.5922451, z: 0}
---- !u!1001 &912730019
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2006391236}
-    m_Modifications:
-    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_Name
-      value: Goblin Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.032
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
 --- !u!1 &912805022
 GameObject:
   m_ObjectHideFlags: 0
@@ -78954,6 +78880,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.13
@@ -79073,6 +79003,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -79575,17 +79509,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a047429bb88c985489d0e4ffbfce1af8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1004866416 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1487906008859918010, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-  m_PrefabInstance: {fileID: 1398161215}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341ea04d09c464440b54d66b8f7350b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1007089865
@@ -83699,6 +83622,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.58
@@ -83802,6 +83729,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -84552,54 +84483,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
-    - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolmen.Array.data[0]
-      value: 
-      objectReference: {fileID: 1573515869}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 757410833}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1004866416}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZonePoint
-      value: 
-      objectReference: {fileID: 499883376}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneSize.x
-      value: 56.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneSize.y
-      value: 14.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneColorCheck.r
-      value: 0.5660378
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneColorCheck.g
-      value: 0.087575614
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneColorCheck.b
-      value: 0.087575614
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: patrolZoneColorCheck.a
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
-      propertyPath: playerZoneLayer.m_Bits
-      value: 4194304
-      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64.75876
@@ -85725,17 +85608,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425110787667098384, guid: 6a08b006263ac454a8757dd2aa360e19, type: 3}
   m_PrefabInstance: {fileID: 1565558533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1573515869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5930750086390548145, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
-  m_PrefabInstance: {fileID: 912730019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1599308329
 GameObject:
   m_ObjectHideFlags: 0
@@ -93609,6 +93481,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.83
@@ -93732,6 +93608,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -94384,6 +94264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.13
@@ -94503,6 +94387,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -94659,6 +94547,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221126522}
     m_Modifications:
+    - target: {fileID: 499883376, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906008367664097, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.49
@@ -94778,6 +94670,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
