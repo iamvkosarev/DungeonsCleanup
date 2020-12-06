@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1763410856}
+    - target: {fileID: 3146449712392109631, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
+      propertyPath: isDesktopWork
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4186234071548517216, guid: e8e7032744aa53f4388c2d1dde455be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -535,6 +539,7 @@ Transform:
   - {fileID: 697108836}
   - {fileID: 1237590440}
   - {fileID: 1711911041}
+  - {fileID: 1363411916}
   m_Father: {fileID: 995921972}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -557,6 +562,12 @@ MonoBehaviour:
   - {fileID: 697108838}
   patrolmen:
   - {fileID: 730611971}
+  patrolZonePoint: {fileID: 1363411916}
+  patrolZoneSize: {x: 51.54, y: 8.7}
+  patrolZoneColorCheck: {r: 1, g: 0, b: 0, a: 0.019607844}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1 &109919756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1098,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3785792514257703, guid: b413d9a618ce72340bcaad088637ee40, type: 3}
   m_PrefabInstance: {fileID: 158134730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &158917248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 158917249}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &158917249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158917248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.6, y: 1.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 966673003}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &160753436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,6 +1138,10 @@ PrefabInstance:
     - target: {fileID: 780934220303145426, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_Name
       value: BatSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 780934220303145426, guid: 141153ed91f9011418335f653d74ccac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1373,6 +1418,7 @@ Transform:
   - {fileID: 1365794459}
   - {fileID: 1751304594}
   - {fileID: 219167745}
+  - {fileID: 544087913}
   m_Father: {fileID: 995921972}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1395,6 +1441,12 @@ MonoBehaviour:
   - {fileID: 415051593}
   patrolmen:
   - {fileID: 1567952774}
+  patrolZonePoint: {fileID: 544087913}
+  patrolZoneSize: {x: 55.7, y: 15.18}
+  patrolZoneColorCheck: {r: 0.8584906, g: 0.08422924, b: 0.7632109, a: 0.08627451}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1 &266328568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 66290227273581978, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
@@ -2450,7 +2502,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: enemiesLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: checkEnemiesSize.x
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: checkEnemiesSize.y
+      value: 9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+      propertyPath: checkEnemiesColor.a
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6823674762916492439, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
 --- !u!114 &399620425 stripped
 MonoBehaviour:
@@ -4558,6 +4631,36 @@ Transform:
   m_Father: {fileID: 1602933111}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &544087912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544087913}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544087913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544087912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.67, y: 5.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 262309198}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &545363456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3083563224270360988, guid: 4450a45125d53de47af2789d079ab6c7, type: 3}
@@ -4901,6 +5004,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5366,6 +5473,7 @@ Transform:
   - {fileID: 806897566}
   - {fileID: 560287460}
   - {fileID: 1298840132}
+  - {fileID: 1572827465}
   m_Father: {fileID: 995921972}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5389,6 +5497,12 @@ MonoBehaviour:
   patrolmen:
   - {fileID: 980146856}
   - {fileID: 606763805}
+  patrolZonePoint: {fileID: 1572827465}
+  patrolZoneSize: {x: 72.63, y: 13.34}
+  patrolZoneColorCheck: {r: 0.9811321, g: 0.20733352, b: 0.96203166, a: 0.07058824}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1001 &662400015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5470,6 +5584,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5593,6 +5711,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6016,6 +6138,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36226,6 +36352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatSpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 780934220303145426, guid: 141153ed91f9011418335f653d74ccac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.33
@@ -36281,6 +36411,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 849706395924445391, guid: 61366670036abc543afcb3997086434d, type: 3}
   m_PrefabInstance: {fileID: 729842751}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &899060735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899060736}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899060736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899060735}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.04, y: 3.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 932697305}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &900168955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36378,6 +36538,7 @@ Transform:
   - {fileID: 1527635654}
   - {fileID: 140623555}
   - {fileID: 1597615985}
+  - {fileID: 1258781642}
   m_Father: {fileID: 995921972}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36398,6 +36559,12 @@ MonoBehaviour:
   - {fileID: 1527635656}
   patrolmen:
   - {fileID: 677765059}
+  patrolZonePoint: {fileID: 1258781642}
+  patrolZoneSize: {x: 39.41, y: 10.36}
+  patrolZoneColorCheck: {r: 1, g: 0.088679194, b: 0.9795678, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1001 &912137272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36412,6 +36579,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36614,6 +36785,7 @@ Transform:
   - {fileID: 268199190}
   - {fileID: 2083401722}
   - {fileID: 1693423381}
+  - {fileID: 899060736}
   m_Father: {fileID: 995921972}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36633,6 +36805,12 @@ MonoBehaviour:
   - {fileID: 268199192}
   patrolmen:
   - {fileID: 313708595}
+  patrolZonePoint: {fileID: 899060736}
+  patrolZoneSize: {x: 12.05, y: 9.61}
+  patrolZoneColorCheck: {r: 1, g: 0, b: 0, a: 0.07058824}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1001 &945121877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36705,6 +36883,10 @@ PrefabInstance:
     - target: {fileID: 66290227273581978, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
       propertyPath: m_Name
       value: Lose Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 66290227273581978, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 66290227273581982, guid: baa61ec0384d5e043a49c77959eae6dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36906,6 +37088,7 @@ Transform:
   - {fileID: 1717885140}
   - {fileID: 603608894}
   - {fileID: 1681344803}
+  - {fileID: 158917249}
   m_Father: {fileID: 995921972}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36926,6 +37109,43 @@ MonoBehaviour:
   - {fileID: 1717885142}
   patrolmen:
   - {fileID: 1356456667}
+  patrolZonePoint: {fileID: 158917249}
+  patrolZoneSize: {x: 39.2, y: 9.5}
+  patrolZoneColorCheck: {r: 1, g: 0, b: 0.96678877, a: 0.08627451}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
+--- !u!1 &967450827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4845224149361458836, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
+  m_PrefabInstance: {fileID: 391626255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &967450829
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967450827}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 18.49, y: 9.37}
+  m_EdgeRadius: 0
 --- !u!1001 &967797572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37002,6 +37222,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37209,6 +37433,7 @@ Transform:
   - {fileID: 278201528}
   - {fileID: 284730354}
   - {fileID: 287957365}
+  - {fileID: 1769519209}
   m_Father: {fileID: 995921972}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37229,6 +37454,12 @@ MonoBehaviour:
   - {fileID: 284730356}
   patrolmen:
   - {fileID: 57418483}
+  patrolZonePoint: {fileID: 1769519209}
+  patrolZoneSize: {x: 14.36, y: 5.72}
+  patrolZoneColorCheck: {r: 1, g: 0, b: 0.890306, a: 0.015686275}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!4 &1016297327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798947457989069464, guid: 61366670036abc543afcb3997086434d, type: 3}
@@ -39048,6 +39279,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425110787667098384, guid: 6a08b006263ac454a8757dd2aa360e19, type: 3}
   m_PrefabInstance: {fileID: 1130934409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1147662237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5930750086390548145, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+  m_PrefabInstance: {fileID: 1894514516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1158843397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40314,6 +40556,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1639725271286249509, guid: a3a188a32bb12764a82e6e5661004011, type: 3}
   m_PrefabInstance: {fileID: 1258091346}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1258781641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258781642}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1258781642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258781641}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.23, y: 1.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 904854362}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1265021746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40808,6 +41080,7 @@ Transform:
   - {fileID: 1189300165}
   - {fileID: 399655420}
   - {fileID: 1796720034}
+  - {fileID: 1809378918}
   m_Father: {fileID: 995921972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40828,6 +41101,13 @@ MonoBehaviour:
   - {fileID: 399655422}
   patrolmen:
   - {fileID: 1722346822}
+  - {fileID: 1147662237}
+  patrolZonePoint: {fileID: 1809378918}
+  patrolZoneSize: {x: 21.47, y: 5.51}
+  patrolZoneColorCheck: {r: 0.990566, g: 0.2653969, b: 0.9502206, a: 0}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1001 &1356192527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40905,6 +41185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Base (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
       value: 92.14
@@ -40967,6 +41251,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
   m_PrefabInstance: {fileID: 1356456666}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1363411915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363411916}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363411916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363411915}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.68, y: 3.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 109811231}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365794458
 GameObject:
   m_ObjectHideFlags: 0
@@ -41543,6 +41857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Base (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73.94
@@ -41605,6 +41923,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1572827464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572827465}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1572827465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572827464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.8, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 651701675}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1575644270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 849706395924445391, guid: 61366670036abc543afcb3997086434d, type: 3}
@@ -42033,6 +42381,10 @@ PrefabInstance:
     - target: {fileID: 780934220303145426, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_Name
       value: BatSpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 780934220303145426, guid: 141153ed91f9011418335f653d74ccac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 780934220303145428, guid: 141153ed91f9011418335f653d74ccac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42753,6 +43105,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45184,6 +45540,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1769519208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769519209}
+  m_Layer: 0
+  m_Name: Check Player Zone Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769519209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769519208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.13, y: 0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 999819814}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1775663290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45674,6 +46060,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8182470875867487908, guid: 9d056097c6219ab4f912d2dfffb46b84, type: 3}
   m_PrefabInstance: {fileID: 740321639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1809378917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809378918}
+  m_Layer: 0
+  m_Name: Zone Check Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809378918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809378917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.68, y: 0.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1349294852}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1809570118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45728,6 +46144,10 @@ PrefabInstance:
     - target: {fileID: 3585034089770214909, guid: ee9632a1980b10c4ba5a3e83506e39d5, type: 3}
       propertyPath: m_Name
       value: For Bat Path
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585034089770214909, guid: ee9632a1980b10c4ba5a3e83506e39d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee9632a1980b10c4ba5a3e83506e39d5, type: 3}
@@ -45940,6 +46360,10 @@ PrefabInstance:
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
       value: Goblin Base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697383, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_LocalPosition.x

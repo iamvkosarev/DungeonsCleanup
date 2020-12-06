@@ -103,7 +103,7 @@ public class Patrolman : MonoBehaviour
         if (pointsCollider == null) { return; }
         if (pointsCollider.gameObject == currentPatrolPoint.gameObject)
         {
-            Debug.Log($"{this.gameObject.name} достиг точку {currentPatrolPoint}");
+            //Debug.Log($"{this.gameObject.name} достиг точку {currentPatrolPoint}");
             StartCoroutine(WaitingOnPoint());
 
         }
@@ -120,7 +120,7 @@ public class Patrolman : MonoBehaviour
         waitingOnPoint = true;
         if (currentTarget != Target.enemie) { currentTarget = Target.nothing; }           
         yield return new WaitForSeconds(myLastPatrolPoint.GetTimeOnStand());
-        Debug.Log($"{this.gameObject.name} отстоял на {myLastPatrolPoint}");
+        //Debug.Log($"{this.gameObject.name} отстоял на {myLastPatrolPoint}");
         waitingOnPoint = false;
         myLastPatrolPoint.StopPursuing();
         if (currentTarget != Target.enemie)
@@ -130,7 +130,7 @@ public class Patrolman : MonoBehaviour
                 OnPatrolFreeEvent.Invoke(this, new OnPatrolFreeEventArgs { patrolman = this });
             }
 
-            Debug.Log($"{this.gameObject.name} приянл новую точку {currentPatrolPoint}");
+            //Debug.Log($"{this.gameObject.name} приянл новую точку {currentPatrolPoint}");
         }
     }
     public void SetPatrolPoint(PatrolPoint patrolPoint, int patrolPointNum)
