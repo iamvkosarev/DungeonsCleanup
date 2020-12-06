@@ -365,6 +365,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593281826}
     m_Modifications:
+    - target: {fileID: 3540123447407174938, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540123447407174938, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: deathParticlesPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3663855194411197544, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: setDamage
       value: 0
@@ -1296,7 +1304,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 31
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2858,8 +2866,8 @@ Tilemap:
     m_Data: {fileID: 7524139123946700527, guid: 185ebd64c16bba54f911740966eb4881, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 2450107721981448600, guid: 70c4aa76238dfcd44963c0ba09eacd55, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -3204068425192864431, guid: 185ebd64c16bba54f911740966eb4881, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 2553649720429248718, guid: e5a2460a6f098c6469b6de258c6e6621, type: 3}
   - m_RefCount: 5
@@ -2896,6 +2904,14 @@ Tilemap:
     m_Data: {fileID: -4991842794258398643, guid: 185ebd64c16bba54f911740966eb4881, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -5035140346792537808, guid: 185ebd64c16bba54f911740966eb4881, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -3204068425192864431, guid: 185ebd64c16bba54f911740966eb4881, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 169
     m_Data:
@@ -4635,11 +4651,31 @@ CompositeCollider2D:
         Y: -260000000
       - X: 870000000
         Y: -260000000
-      - X: 880000000
+      - X: 879999930
+        Y: -250000071
+      - X: 879999959
+        Y: -250000100
+      - X: 890000041
+        Y: -250000100
+      - X: 890000100
+        Y: -250000041
+      - X: 890000100
         Y: -250000000
       - X: 900000000
         Y: -250000000
       - X: 900000000
+        Y: -240000000
+      - X: 890000100
+        Y: -240000000
+      - X: 890000100
+        Y: -239999959
+      - X: 890000041
+        Y: -239999900
+      - X: 879999959
+        Y: -239999900
+      - X: 879999900
+        Y: -239999959
+      - X: 879999900
         Y: -240000000
       - X: 870000000
         Y: -240000000
@@ -4764,7 +4800,7 @@ CompositeCollider2D:
       - {x: 83.00001, y: -28.999994}
       - {x: 86.000015, y: -26}
       - {x: 87.00001, y: -25.999992}
-      - {x: 88.000015, y: -25}
+      - {x: 88.00001, y: -25.00001}
       - {x: 90, y: -24.999971}
       - {x: 89.99997, y: -24}
       - {x: 86.99999, y: -23.999992}
@@ -11628,7 +11664,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -29667,10 +29703,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 2
     m_Data: {fileID: 6514004779422000694, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1379347857803705507, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 7995927475602838741, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
   - m_RefCount: 69
@@ -36608,6 +36644,14 @@ PrefabInstance:
     - target: {fileID: 1954250486, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: amountOfElement
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540123447407174938, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540123447407174938, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
+      propertyPath: deathParticlesPrefab
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4589570952654697376, guid: 7658835b1c1deca4d85a2f25807ab873, type: 3}
       propertyPath: m_Name
