@@ -307,10 +307,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 10935819}
+      objectReference: {fileID: 590172287}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 25
+      value: 25.6
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +359,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570953151892213, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -979,6 +987,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 5.210692}
   m_EdgeRadius: 0
+--- !u!1 &212244808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212244809}
+  m_Layer: 0
+  m_Name: Point chech player zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &212244809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212244808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.86, y: -0.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1722015562}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228312851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,11 +1825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0324621
+      value: 3.2824116
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1541774
+      value: -1.1621661
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447110, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: orthographic size
@@ -4544,6 +4582,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425110787667098384, guid: 6a08b006263ac454a8757dd2aa360e19, type: 3}
   m_PrefabInstance: {fileID: 567284555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &590172286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590172287}
+  m_Layer: 0
+  m_Name: Point chech player zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &590172287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590172286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.39, y: 0.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 10935819}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &606989092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5199,10 +5267,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 699682907}
+      objectReference: {fileID: 1168218539}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 20
+      value: 45.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6326,6 +6398,18 @@ CompositeCollider2D:
       - X: 1900000000
         Y: -210000000
       - X: 1900000000
+        Y: -70000100
+      - X: 1900000041
+        Y: -70000100
+      - X: 1900000100
+        Y: -70000041
+      - X: 1900000100
+        Y: -19999959
+      - X: 1900000041
+        Y: -19999900
+      - X: 1900000000
+        Y: -19999900
+      - X: 1900000000
         Y: 110000000
       - X: 1890000000
         Y: 120000000
@@ -6573,24 +6657,58 @@ CompositeCollider2D:
         Y: -110000000
       - X: 810000000
         Y: -120000000
-      - X: 830000000
+      - X: 829999900
         Y: -120000000
+      - X: 829999900
+        Y: -130000041
+      - X: 829999959
+        Y: -130000100
+      - X: 830000000
+        Y: -130000100
       - X: 830000000
         Y: -140000000
       - X: 840000000
         Y: -140000000
       - X: 840000000
-        Y: -120000000
+        Y: -130000100
+      - X: 840000041
+        Y: -130000100
+      - X: 840000100
+        Y: -130000041
+      - X: 840000100
+        Y: -119999959
+      - X: 840000071
+        Y: -119999930
       - X: 860000000
         Y: -100000000
       - X: 910000000
         Y: -100000000
+      - X: 929999930
+        Y: -119999930
+      - X: 929999900
+        Y: -119999959
+      - X: 929999900
+        Y: -130000041
+      - X: 929999959
+        Y: -130000100
       - X: 930000000
-        Y: -120000000
+        Y: -130000100
       - X: 930000000
         Y: -140000000
       - X: 940000000
         Y: -140000000
+      - X: 940000000
+        Y: -130000100
+      - X: 940000041
+        Y: -130000100
+      - X: 940000100
+        Y: -130000041
+      - X: 940000100
+        Y: -119999959
+      - X: 940000041
+        Y: -119999900
+      - X: 940000000
+        Y: -119999900
       - X: 940000000
         Y: -90000000
       - X: 930000000
@@ -6703,9 +6821,9 @@ CompositeCollider2D:
         Y: -40000000
       - X: 1710000000
         Y: -20000000
-      - X: 1890000000
+      - X: 1889999900
         Y: -20000000
-      - X: 1890000000
+      - X: 1889999900
         Y: -70000000
       - X: 1720000000
         Y: -70000000
@@ -6895,13 +7013,13 @@ CompositeCollider2D:
       - {x: 70.00003, y: -11}
       - {x: 80.00001, y: -11.000008}
       - {x: 81.000015, y: -12}
-      - {x: 83, y: -12.00003}
+      - {x: 82.999985, y: -12.00003}
       - {x: 83.00003, y: -14}
       - {x: 84, y: -13.999971}
-      - {x: 84.00001, y: -11.999993}
+      - {x: 84.000015, y: -11.999986}
       - {x: 86.000015, y: -10}
       - {x: 91.00001, y: -10.000008}
-      - {x: 93, y: -12.000011}
+      - {x: 92.999985, y: -12.000007}
       - {x: 93.00003, y: -14}
       - {x: 94, y: -13.999971}
       - {x: 93.99999, y: -8.999992}
@@ -6960,7 +7078,7 @@ CompositeCollider2D:
       - {x: 165.00002, y: -4}
       - {x: 169.00002, y: -3.9999924}
       - {x: 171.00002, y: -2}
-      - {x: 189, y: -2.0000293}
+      - {x: 188.99998, y: -2.0000293}
       - {x: 188.99997, y: -7}
       - {x: 171.99998, y: -7.000008}
       - {x: 170.99998, y: -8}
@@ -23299,7 +23417,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -23308,7 +23426,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -30346,7 +30464,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -31021,7 +31139,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -31741,7 +31859,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -32695,7 +32813,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34054,7 +34172,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -55830,8 +55948,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 7
+    m_Data: {fileID: 8113802490851096567, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
   - m_RefCount: 78
     m_Data: {fileID: 334573336042931983, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
   - m_RefCount: 16
@@ -55850,8 +55968,8 @@ Tilemap:
     m_Data: {fileID: 5444756049244522124, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 7995927475602838741, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
-  - m_RefCount: 7
-    m_Data: {fileID: -1379347857803705507, guid: cdabea140ad8f6a48a146ef22b7bdc61, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 5411
     m_Data:
@@ -55978,10 +56096,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 759453217}
+      objectReference: {fileID: 1199744392}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 20
+      value: 60.98
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56030,6 +56148,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570953151892213, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -57074,10 +57200,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 1027466483}
+      objectReference: {fileID: 1199744392}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 30
+      value: 61.1
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57218,6 +57344,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1639725271286249509, guid: a3a188a32bb12764a82e6e5661004011, type: 3}
   m_PrefabInstance: {fileID: 1034549444}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1042569264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042569265}
+  m_Layer: 0
+  m_Name: Point chech player zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1042569265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042569264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1673117817}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1098653171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58195,6 +58351,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89208649f2b89849ad095f48170fa39, type: 3}
+--- !u!1 &1168218538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1168218539}
+  m_Layer: 0
+  m_Name: Point chech player zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1168218539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168218538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.82, y: -0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2027741424}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1191989947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58390,6 +58576,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227d8ff026c83c74c818980d9592afc1, type: 3}
+--- !u!1 &1199744391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199744392}
+  m_Layer: 0
+  m_Name: Point chech player zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1199744392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199744391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.4, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 759453217}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215982457
 GameObject:
   m_ObjectHideFlags: 0
@@ -59484,11 +59700,11 @@ PrefabInstance:
       objectReference: {fileID: 1673117817}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 25
+      value: 28.6
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.35
+      value: 84.7
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59533,6 +59749,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570953151892213, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -59633,10 +59857,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 1722015562}
+      objectReference: {fileID: 212244809}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 25
+      value: 21.8
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59685,6 +59909,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106618, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_Name
       value: Patrol System (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570953151892213, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
@@ -64262,10 +64494,14 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 1798282660}
+      objectReference: {fileID: 2047579659}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 20
+      value: 61.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64603,10 +64839,10 @@ PrefabInstance:
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZonePoint
       value: 
-      objectReference: {fileID: 2027741424}
+      objectReference: {fileID: 1168218539}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 35
+      value: 45.4
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.y
@@ -64660,6 +64896,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol System (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589570953151892213, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589570954348079931, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
 --- !u!4 &2027741424 stripped
@@ -64700,7 +64944,11 @@ PrefabInstance:
       objectReference: {fileID: 2047579659}
     - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: patrolZoneSize.x
-      value: 30
+      value: 61.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.y
+      value: 6.06
       objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65150,6 +65398,10 @@ PrefabInstance:
       propertyPath: patrolZonePoint
       value: 
       objectReference: {fileID: 2107595530}
+    - target: {fileID: 1487906009691106616, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
+      propertyPath: patrolZoneSize.x
+      value: 11.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1487906009691106617, guid: c13dedb86fc15d9458921c9fe5265b4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.6
