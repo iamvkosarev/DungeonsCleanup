@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 934885363}
   - component: {fileID: 5268385735622780452}
   - component: {fileID: 6355290582930128414}
+  - component: {fileID: 7663017565283426446}
   m_Layer: 10
   m_Name: Bat
   m_TagString: Bat
@@ -308,6 +309,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7663017565283426446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940110116614799307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dddae102d06845b9c6b5a590a62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 7237474580294192111, guid: 6b544588addb6ad42b33cea980106695, type: 3}
+  amountOfElement: 5
+  maxPointsToSpawn: 1
+  hasRandom: 0
 --- !u!1 &5985686971416008568
 GameObject:
   m_ObjectHideFlags: 0
