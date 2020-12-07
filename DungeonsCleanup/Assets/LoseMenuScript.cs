@@ -6,6 +6,7 @@ using UnityEngine.Advertisements;
 public class LoseMenuScript : PauseMenu
 {
     [SerializeField] private float delayBeforeRelife = 1.5f;
+    [SerializeField] private GameObject adsIsntReady;
     PlayerHealth playerHealth;
     private PlayerAnimation playerAnimation;
     private void Start()
@@ -39,8 +40,10 @@ public class LoseMenuScript : PauseMenu
 
     public void PlayAdvirtisement()
     {
+        Debug.Log("im here");
         if(Advertisement.IsReady())
         {
+            Debug.Log("isReady");
             Advertisement.Show("rewardedVideo");
             playerHealth.GiveMaxHP();
             playerAnimation.StartReLife(delayBeforeRelife);
@@ -49,7 +52,7 @@ public class LoseMenuScript : PauseMenu
 
         else
         {
-            Debug.Log("There isn't internet connection...");
+            Instantiate(adsIsntReady);
         }
     }
 

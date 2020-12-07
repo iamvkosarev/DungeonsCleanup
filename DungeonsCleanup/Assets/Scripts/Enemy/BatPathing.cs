@@ -13,6 +13,7 @@ public class BatPathing : MonoBehaviour
     [SerializeField] private float attackRadius = 1f;
     [SerializeField] private AudioClip[] batAttacks;
     [SerializeField] private float audioBoostAttack = 1f;
+    [SerializeField] private LayerMask playerLayerMask;
     private int batAttacksLength;
     private PlayerMovement player;
     private Rigidbody2D myRigidbody;
@@ -54,11 +55,14 @@ public class BatPathing : MonoBehaviour
     {
         bool playerInAttackRadius = Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
                 && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack;
+        RaycastHit2D isPlayerInAttackRadius = 
+            Physics2D.Raycast(transform.position, player.transform.position, distanceToAttack);
 
         if(shouldBatFly)
         {
-            if(playerInAttackRadius)  
+            if(isPlayerInAttackRadius.collider.gameObject.tag == "Player")
             {
+                Debug.Log(isPlayerInAttackRadius.transform.name);
                 MoveTowardPlayer();
             }
 
@@ -91,7 +95,6 @@ public class BatPathing : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards
             (transform.position, player.transform.position, towardSpeed * Time.deltaTime);
-
 
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
             && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
