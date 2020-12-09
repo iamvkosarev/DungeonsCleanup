@@ -43,6 +43,7 @@ public class Health : MonoBehaviour
     private GoblinBossAttack goblinBoss;
 
     private int firstHealth;
+    public EventHandler OnDeath;
     private EnemiesMovement enemiesMovement;
     private Rigidbody2D myRB;
     Animator animator;
@@ -124,16 +125,15 @@ public class Health : MonoBehaviour
     }
     private void Death()
     {
+        if (OnDeath != null)
+        {
+            OnDeath.Invoke(this, EventArgs.Empty);
+        }
         SpawnDeathSFX();
         DeathAnimaton();
         if (spawnExpWithoutAnimation)
         {
             SpawnExp();
-        }
-        AttackTag attackTag = GetComponent<AttackTag>();
-        if (attackTag)
-        {
-            attackTag.DestroyAttackTag();
         }
     }
     public void Destroy()

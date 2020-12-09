@@ -35,7 +35,7 @@ public class PlayerActivationButton : MonoBehaviour
     bool canActivateHatch;
     bool isReadyToActivateHatch;
     bool canPlayerActivateSomeThing;
-    bool isEnemyReadyToAbsorption;
+    bool isEnemyReadyToAbsorption = false;
     bool isCurrentItemIsShadowBottle;
     private void Awake()
     {
@@ -147,6 +147,10 @@ public class PlayerActivationButton : MonoBehaviour
             isTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == elevatorTag;
             isTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == tabletTag;
             isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == absorptionShadowTag;
+        }
+        else
+        {
+            isEnemyReadyToAbsorption = false;
         }
 
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
