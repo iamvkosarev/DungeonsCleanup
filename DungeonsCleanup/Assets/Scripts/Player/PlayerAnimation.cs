@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    [SerializeField] private float delayBeforeRelife = 1.5f;
     [SerializeField] MovingJoystickProperties movingJoystickProperties;
     [SerializeField] bool hasPlayerLowerSpecialAnimation = false;
 
+    LoseMenuScript loseMenuScript;
     PlayerActionControls playerActionControls;
     PlayerMovement playerMovementScript;
     Rigidbody2D myRigitBody;
+    public EventHandler OnReadyForLife;
     Animator myAnimator;
     bool wasSlidingOnWall;
 
@@ -33,6 +36,11 @@ public class PlayerAnimation : MonoBehaviour
         playerMovementScript = GetComponent<PlayerMovement>();
         myRigitBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        loseMenuScript = GetComponent<PlayerHealth>().GetLoseCanvasScripts();
+        if (loseMenuScript)
+        {
+            loseMenuScript.OnPlayerRelife += StartReLife;
+        }
     }
 
     private void Update()
@@ -50,9 +58,17 @@ public class PlayerAnimation : MonoBehaviour
     {
         myAnimator.Play("Idle");
     }
-    public void StartReLife(float delayBeforeRelife)
+    public void StartReLife(object obj, EventArgs e)
     {
         StartCoroutine(StartingReLife(delayBeforeRelife));
+    }
+    public void ReadyForMove()
+    {
+        DoIdle();
+        if (OnReadyForLife != null)
+        {
+            OnReadyForLife.Invoke(this, EventArgs.Empty);
+        }
     }
     IEnumerator StartingReLife(float delayBeforeRelife)
     {

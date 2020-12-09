@@ -30,7 +30,7 @@ public class HatchManagment : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckPlayer();
     }

@@ -12,6 +12,7 @@ public class AttackTag : MonoBehaviour
     GameObject attackTag;
     SpriteRenderer attackTagSpriteRenderer;
     Health health;
+    private bool canSpawnTag = true;
     private int attackTagsLength;
     
     private void Start()
@@ -25,6 +26,7 @@ public class AttackTag : MonoBehaviour
     }
     public void SetAttackTag(int num)
     {
+        if(!canSpawnTag) { return; }
         if (attackTagsLength == 0)
         {
             return;
@@ -66,5 +68,6 @@ public class AttackTag : MonoBehaviour
     public void DestroyAttackTag(object obj, EventArgs e)
     {
         DestroyAttackTag();
+        canSpawnTag = false;
     }
 }

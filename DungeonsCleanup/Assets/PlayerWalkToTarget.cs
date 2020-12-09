@@ -31,6 +31,7 @@ public class PlayerWalkToTarget : MonoBehaviour
     {
         if (pointToGo.position.x < transform.position.x)
         {
+            Debug.Log("Точка достигнута");
             playerMovement.enabled = true;
             myRigidbody2D.velocity = new Vector2(0, 0);
             playerAnimation.enabled = true;

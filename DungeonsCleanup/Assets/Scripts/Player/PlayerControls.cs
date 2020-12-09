@@ -23,7 +23,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""8900bd8e-6aba-4c71-a435-4d6cf2bdb87d"",
                     ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
                     ""interactions"": ""Press(behavior=2)""
                 },
                 {

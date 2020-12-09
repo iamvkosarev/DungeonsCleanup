@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.Advertisements;
 
 public class LoseMenuScript : PauseMenu
 {
-    [SerializeField] private float delayBeforeRelife = 1.5f;
     PlayerHealth playerHealth;
+    public EventHandler OnPlayerRelife;
     private PlayerAnimation playerAnimation;
     private void Start()
     {
@@ -42,8 +43,10 @@ public class LoseMenuScript : PauseMenu
         if(Advertisement.IsReady())
         {
             Advertisement.Show("rewardedVideo");
-            playerHealth.GiveMaxHP();
-            playerAnimation.StartReLife(delayBeforeRelife);
+            if(OnPlayerRelife != null)
+            {
+                OnPlayerRelife.Invoke(this, EventArgs.Empty);
+            }
             CloseLoseCanvas();
         }
 
