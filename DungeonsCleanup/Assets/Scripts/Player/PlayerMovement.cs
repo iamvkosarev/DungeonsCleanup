@@ -100,7 +100,9 @@ public class PlayerMovement : MonoBehaviour
     //catching files
     private Rigidbody2D myRigidbody2D;
     private Animator myAnimator;
+    private PlayerAnimation playerAnimation;
     private PlayerHealth myHealth;
+    private LoseMenuScript loseMenuScript;
     private PlayerAttackManager myAttackManager;
 
     // param
@@ -112,20 +114,29 @@ public class PlayerMovement : MonoBehaviour
     private float joystickXAxis;
     private float joystickYAxis;
     private bool readyForPunch = false;
+    private bool movement = true;
 
-    #region Set Data From Gamepad
-    public void SetDataFromGamePad(float horizontalMoveData, bool horizontalData, bool jumpData, bool attackData)
+    private PlayerActionControls inputActions;
+
+    #region Set Data From Imput System
+    private void Awake()
     {
-        isAttackButtonPressed = attackData;
-        isJumpButtonPressed = jumpData;
-        if (horizontalData && !jumpData)
-        {
-            CheckTumbleweed(horizontalMoveData);
-        }
+        inputActions = new PlayerActionControls();
+        inputActions.Land.MoveHorizontal.performed+= _ => joystickXAxis = inputActions.Land.MoveHorizontal.ReadValue<float>();
+        inputActions.Land.Jump.performed += _ => isJumpButtonPressed = true;
+        inputActions.Land.Jump.canceled += _ => isJumpButtonPressed = false;
+        inputActions.Land.Attack.performed += _ => isAttackButtonPressed = true;
+        inputActions.Land.Attack.canceled += _ => isAttackButtonPressed = false;
+        inputActions.Land.MoveHorizontal.started += _ => CheckTumbleweed(inputActions.Land.MoveHorizontal.ReadValue<float>());
+
     }
-    public void SetHorizontalMoveDataFromGamePad(float horizontalMoveData)
+    private void OnEnable()
     {
-        joystickXAxis = horizontalMoveData;
+        inputActions.Enable();
+    }
+    private void OnDisable()
+    {
+        inputActions.Disable();
     }
     #endregion
 
@@ -135,7 +146,16 @@ public class PlayerMovement : MonoBehaviour
         myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        playerAnimation = GetComponent<PlayerAnimation>();
+        if (playerAnimation)
+        {
+            playerAnimation.OnReadyForLife += StartMovementAfterDeath;
+        }
         myHealth = GetComponent<PlayerHealth>();
+        if (myHealth)
+        {
+            myHealth.OnDeath += StopMovementOnDeath;
+        }
         myAttackManager = GetComponent<PlayerAttackManager>();
         movementGamepad = joystick.GetComponent<MovementGamepad>();
         /*SettingsData settingsData = SaveSystem.LoadSettings();
@@ -156,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!movement) { return; }
         HorizontalMove();
         Jump();
         WallSlide();
@@ -179,6 +200,19 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds((isStandingOnGround)? 0.1f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
+    }
+
+
+    private void StopMovementOnDeath(object obj, EventArgs e)
+    {
+        SetCollidingOfEnemiesMode(false);
+        movement = false;
+        myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
+    }
+    private void StartMovementAfterDeath(object obj, EventArgs e)
+    {
+        SetCollidingOfEnemiesMode(true);
+        movement = true;
     }
     #region Touching
 

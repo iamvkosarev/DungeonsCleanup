@@ -30,7 +30,7 @@ public class HatchManagment : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckPlayer();
     }
@@ -38,6 +38,7 @@ public class HatchManagment : MonoBehaviour
     private void CheckPlayer()
     {
         Collider2D playerCollider = Physics2D.OverlapBox(checkPlayerPoint.position, checkPlayerSize, 0, playerLayer);
+        Collider2D playerColliderInWitchSide = Physics2D.OverlapBox(new Vector2(checkPlayerPoint.position.x, checkPlayerPoint.position.y + checkPlayerSize.y / 2f - checkPlayerInWitchSideSize.y / 2f), checkPlayerInWitchSideSize, 0, playerLayer);
         if (playerCollider != null)
         {
             if (playerActivationButton == null)
@@ -61,8 +62,17 @@ public class HatchManagment : MonoBehaviour
                     {
                         wasOpened = true;
                         PlaySFX();
+                        OpenBody();
                     }
-                    OpenBody();
+                }
+                else if (!playerColliderInWitchSide)
+                {
+                    if (!wasOpened)
+                    {
+                        wasOpened = true;
+                        PlaySFX();
+                        OpenBody(true);
+                    }
                 }
                 else
                 {
@@ -85,11 +95,20 @@ public class HatchManagment : MonoBehaviour
             CloseBody();
         }
     }
-    private void OpenBody()
+    private void OpenBody(bool fromBottom = false)
     {
+        if (fromBottom)
+        {
+            myPlatformEffector2D.rotationalOffset = 0f;
+
+        }
+        else
+        {
+
+            myPlatformEffector2D.rotationalOffset = 180f;
+        }
         openBody.SetActive(true);
         closeBody.SetActive(false);
-        myPlatformEffector2D.rotationalOffset = 180f;
     }
     private void CloseBody()
     {

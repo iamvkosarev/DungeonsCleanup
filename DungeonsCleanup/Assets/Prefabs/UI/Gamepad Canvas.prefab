@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 6528140185078635441}
   - component: {fileID: 6588115104167078284}
   - component: {fileID: 3828631264337616863}
-  - component: {fileID: 8250358065315872857}
+  - component: {fileID: 7901608936947296728}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/e
---- !u!114 &8250358065315872857
+--- !u!114 &7901608936947296728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 37382726037993954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99292807422dd144ea7f2fadf3457455, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -499,22 +499,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonName: attackButton
-  pressButtonEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3146449712392109631}
-        m_TargetAssemblyTypeName: GamepadManager, Assembly-CSharp
-        m_MethodName: ManageEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &188285325925231905
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +511,7 @@ GameObject:
   - component: {fileID: 3313436012592158916}
   - component: {fileID: 2078502860654091230}
   - component: {fileID: 2345609418220261116}
-  - component: {fileID: 2545462521172328764}
+  - component: {fileID: 110337604794649948}
   m_Layer: 5
   m_Name: Horizontal Move Left
   m_TagString: Untagged
@@ -605,7 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/a
---- !u!114 &2545462521172328764
+--- !u!114 &110337604794649948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -614,7 +598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 188285325925231905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99292807422dd144ea7f2fadf3457455, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -648,22 +632,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonName: moveButton_left
-  pressButtonEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3146449712392109631}
-        m_TargetAssemblyTypeName: GamepadManager, Assembly-CSharp
-        m_MethodName: ManageEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &508751108452732379
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +751,7 @@ GameObject:
   - component: {fileID: 2145916900821370676}
   - component: {fileID: 2408879864675842640}
   - component: {fileID: 3920124433380383727}
-  - component: {fileID: 3029775578425755129}
+  - component: {fileID: 773740831159313712}
   m_Layer: 5
   m_Name: Horizontal Move Right
   m_TagString: Untagged
@@ -861,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/d
---- !u!114 &3029775578425755129
+--- !u!114 &773740831159313712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,7 +838,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1715587588297446210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99292807422dd144ea7f2fadf3457455, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -904,22 +872,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonName: moveButton_right
-  pressButtonEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3146449712392109631}
-        m_TargetAssemblyTypeName: GamepadManager, Assembly-CSharp
-        m_MethodName: ManageEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &4170883422923021592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,8 +1611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb37cc47d894724e970912b6516acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
   isDesktopWork: 0
+  switchOffButton: 0
   activateAbilityButtons: {fileID: 7151916719900417187}
 --- !u!1 &6784996430756471693
 GameObject:
@@ -1674,7 +1626,7 @@ GameObject:
   - component: {fileID: 1054318935599427374}
   - component: {fileID: 165744383338870732}
   - component: {fileID: 8594137393240471029}
-  - component: {fileID: 1273201057869808579}
+  - component: {fileID: 231171968371259769}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -1752,7 +1704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/w
---- !u!114 &1273201057869808579
+--- !u!114 &231171968371259769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1761,7 +1713,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6784996430756471693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99292807422dd144ea7f2fadf3457455, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1795,22 +1747,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonName: jumpButton
-  pressButtonEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3146449712392109631}
-        m_TargetAssemblyTypeName: GamepadManager, Assembly-CSharp
-        m_MethodName: ManageEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7151916719900417187
 GameObject:
   m_ObjectHideFlags: 0

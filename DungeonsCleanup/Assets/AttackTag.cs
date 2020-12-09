@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AttackTag : MonoBehaviour
 {
@@ -10,14 +11,22 @@ public class AttackTag : MonoBehaviour
     [SerializeField] private float delayToDestory = 0.5f;
     GameObject attackTag;
     SpriteRenderer attackTagSpriteRenderer;
+    Health health;
+    private bool canSpawnTag = true;
     private int attackTagsLength;
     
     private void Start()
     {
         attackTagsLength = attackTagSprites.Length;
+        health = GetComponent<Health>();
+        if (health)
+        {
+            health.OnDeath += DestroyAttackTag;
+        }
     }
     public void SetAttackTag(int num)
     {
+        if(!canSpawnTag) { return; }
         if (attackTagsLength == 0)
         {
             return;
@@ -49,16 +58,16 @@ public class AttackTag : MonoBehaviour
         yield return new WaitForSeconds(delayToDestory);
         DestroyAttackTag();
     }
-
     public void DestroyAttackTag()
     {
-        if (attackTagsLength == 0)
-        {
-            return;
-        }
         if (attackTag)
         {
             Destroy(attackTag);
         }
+    }
+    public void DestroyAttackTag(object obj, EventArgs e)
+    {
+        DestroyAttackTag();
+        canSpawnTag = false;
     }
 }

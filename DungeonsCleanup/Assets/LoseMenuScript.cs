@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.Advertisements;
 
 public class LoseMenuScript : PauseMenu
 {
-    [SerializeField] private float delayBeforeRelife = 1.5f;
-    [SerializeField] private GameObject adsIsntReady;
     PlayerHealth playerHealth;
+    public EventHandler OnPlayerRelife;
     private PlayerAnimation playerAnimation;
     private void Start()
     {
@@ -40,19 +40,19 @@ public class LoseMenuScript : PauseMenu
 
     public void PlayAdvirtisement()
     {
-        Debug.Log("im here");
         if(Advertisement.IsReady())
         {
-            Debug.Log("isReady");
             Advertisement.Show("rewardedVideo");
-            playerHealth.GiveMaxHP();
-            playerAnimation.StartReLife(delayBeforeRelife);
+            if(OnPlayerRelife != null)
+            {
+                OnPlayerRelife.Invoke(this, EventArgs.Empty);
+            }
             CloseLoseCanvas();
         }
 
         else
         {
-            Instantiate(adsIsntReady);
+            Debug.Log("There isn't internet connection...");
         }
     }
 

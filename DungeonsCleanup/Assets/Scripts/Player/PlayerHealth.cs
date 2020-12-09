@@ -18,16 +18,25 @@ public class PlayerHealth : Health
     private PlayerDevelopmentManager playerDevelopmentManager;
     private PlayerMovement playerMovement;
     private PlayerAnimation playerAnimation;
+    public EventHandler OnDeath;
     private bool isHeartBitting;
     private bool isProtecting;
 
     private void Start()
     {
+        if (loseCanvas)
+        {
+            loseCanvas.OnPlayerRelife += GiveMaxHP;
+        }
         getHitsSFXLength = getHitsSFX.Length;
         playerMovement = GetComponent<PlayerMovement>();
         myAudioSource = GetComponent<AudioSource>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        if (playerAnimation)
+        {
+            playerAnimation.OnReadyForLife += StartToBeAlive;
+        }
         SetMaxHealth(playerDevelopmentManager.GetMaxHealthAccordingLvl());
     }
     public void SetMaxHealth(int maxHelath)
@@ -104,27 +113,22 @@ public class PlayerHealth : Health
     }
     private void Death()
     {
+        if (OnDeath != null)
+        {
+            OnDeath.Invoke(this, EventArgs.Empty);
+        }
         SpawnDeathSFX();
         SetVisibilityOfEnemies(false);
         playerAnimation.DoDeathAnimation();
-        playerMovement.StopHorizontalMovement();
-        playerMovement.StopRotating();
-        playerMovement.StopGroundJumps();
-        playerMovement.SetCollidingOfEnemiesMode(false);
         StartCoroutine(Reloading());
     }
-    public void GiveMaxHP()
+    public void GiveMaxHP(object obj, EventArgs e)
     {
         this.SetCurrentHealth(this.GetMaxHealth());
     }
-    public void StartToBeAlive()
+    private void StartToBeAlive(object obj, EventArgs e)
     {
         SetVisibilityOfEnemies(true);
-        playerAnimation.DoIdle();
-        playerMovement.StartHorizontalMovement();
-        playerMovement.StartRotaing();
-        playerMovement.StartGroundJumps();
-        playerMovement.SetCollidingOfEnemiesMode(true);
     }
     IEnumerator Reloading()
     {
