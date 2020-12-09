@@ -10,9 +10,11 @@ public class TimerManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
     private bool wasActivated = false;
     private float periodOfCount = 0.01f;
-    int seconds = 0;
-    int minuts = 0;
-    int miliseconds = 0;
+    private int seconds = 0;
+    private int minuts = 0;
+    private int miliseconds = 0;
+    private CountPortalsManager countPortalsManager;
+    float timeOnStart;
 
     private void OnEnable()
     {
@@ -20,7 +22,8 @@ public class TimerManager : MonoBehaviour
     }
     private void Start()
     {
-        foreach(TimerActivator timerActivator in timerActivators)
+        countPortalsManager = GetComponent<CountPortalsManager>();
+        foreach (TimerActivator timerActivator in timerActivators)
         {
             timerActivator.OnActivateTimerEvent += OnActivateTimer;
             timerActivator.OnDeactivateTimerEvent += OnDeactivateTimer;
@@ -34,6 +37,7 @@ public class TimerManager : MonoBehaviour
         if (!wasActivated)
         {
             wasActivated = true;
+            timeOnStart = Time.time;
             ActivateTimer();
         }
     }
@@ -46,36 +50,31 @@ public class TimerManager : MonoBehaviour
     {
         while (wasActivated)
         {
-            miliseconds += 1;
-            if (miliseconds == 100)
-            {
-                miliseconds = 0;
-                seconds += 1;
-            }
-            if (seconds == 60)
-            {
-                seconds = 0;
-                minuts += 1;
-            }
-            DisplayTimer();
             yield return new WaitForSeconds(periodOfCount);
+            DisplayTimer();
         }
     }
     private void DisplayTimer()
     {
+        //textMeshProUGUI.text = $"{minuts}:{seconds}:{miliseconds}";
+        miliseconds = (int)(Time.time * 100 - timeOnStart * 100)  % 100;
+        seconds = (int)(Time.time - timeOnStart) % 60;
+        minuts = (int)(Time.time - timeOnStart ) / 60;
         textMeshProUGUI.text = $"{minuts}:{seconds}:{miliseconds}";
     }
     private void OnDeactivateTimer(object obj, EventArgs e)
     {
         wasActivated = false;
-        StopTimer();
+        DeactivateTimer();
+        if (countPortalsManager)
+        {
+            countPortalsManager.ZeroPortals();
+        }
     }
 
-    private void StopTimer()
+    private void DeactivateTimer()
     {
-        seconds = 0;
-        minuts = 0;
-        miliseconds = 0;
+        timeOnStart = Time.time;
         DisplayTimer();
     }
 

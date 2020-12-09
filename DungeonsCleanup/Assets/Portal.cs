@@ -13,10 +13,12 @@ public class Portal : MonoBehaviour
     private PlayerMovement playerMovement;
     private SpriteRenderer playerSpriteRenderer;
     private AudioSource audioSource;
+    private PortalCounter portalCounter;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        portalCounter = GetComponent<PortalCounter>();
     }
     public void InstansiatePortalInfoCanvas(PlayerHealth playerHealth, Transform playerTransform, PlayerMovement playerMovement, LoseMenuScript loseMenuScript, SpriteRenderer playerSpriteRenderer)
     {
@@ -52,6 +54,10 @@ public class Portal : MonoBehaviour
 
     public void Teleport()
     {
+        if (portalCounter)
+        {
+            portalCounter.CountPortal();
+        }
         playerMovement.StartHorizontalMovement();
         playerMovement.StartRotaing();
         playerMovement.StartGroundJumps();
