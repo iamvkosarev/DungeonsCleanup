@@ -49,7 +49,11 @@ public class Item : MonoBehaviour
         {
             spriteRenderer.sprite = artifactData.GetIcon();
         }
-        myAnimator.StopRecording();
+
+        if(myAnimator)
+            myAnimator.StopRecording();
+        else
+            return;
     }
     public void SwitchItem(ItemData itemData)
     {

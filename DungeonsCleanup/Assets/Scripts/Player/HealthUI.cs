@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class HealthUI : Health
 {
-    [SerializeField] AudioClip[] getHitsSFX;
+    [SerializeField] private AudioClip[] getHitsSFX;
     private int getHitsSFXLength;
-    [SerializeField] float audioBoostGetHitSFX;
-    [SerializeField] HealthBar healthBar;
-    [SerializeField] BoxCollider2D playerHealthCollider;
-    [SerializeField] float reloadingDelay = 2f;
-    [SerializeField] float parametrOfStartingDeathAnimation = 0.05f;
+    [SerializeField] private float audioBoostGetHitSFX;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private BoxCollider2D playerHealthCollider;
+    [SerializeField] private float reloadingDelay = 2f;
+    [SerializeField] private float parametrOfStartingDeathAnimation = 0.05f;
     [SerializeField] ActivationBoss activationBoss;
+    [Header("Death")]
+    [SerializeField] private GameObject bossHeadItem;
+    [SerializeField] private Transform bossHeadItemPosition;
     bool wasStartedDeath = false;
     bool isProtecting;
     AudioSource myAudioSource;
@@ -85,7 +88,11 @@ public class HealthUI : Health
         myAnimator.SetTrigger("EndDeath");
         SetVisibilityOfEnemies(false);
         activationBoss.BossDeath();
+    }
 
+    public void SpawnBossHeadItem()
+    {
+        Instantiate(bossHeadItem, bossHeadItemPosition.position, Quaternion.identity);
     }
 
     private void SpawnGetHitSFX()
