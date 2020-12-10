@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee36060104c82840b73d76b86d92379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogCanvas: {fileID: 0}
   goblinBoss: {fileID: 1626112920}
   bossCanvas: {fileID: 0}
   playerSoundManager: {fileID: 0}
@@ -525,7 +526,7 @@ MonoBehaviour:
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.6037736, g: 0, b: 0, a: 1}
-  showFloatingPoints: 0
+  showFloatingPoints: 1
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
