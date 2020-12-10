@@ -30,7 +30,8 @@ public class Item : MonoBehaviour
         }
         else
         {
-            myAnimator.SetBool("isCrystal", false);
+            if(myAnimator)
+                myAnimator.SetBool("isCrystal", false);
         }
     }
     private void LateUpdate()
