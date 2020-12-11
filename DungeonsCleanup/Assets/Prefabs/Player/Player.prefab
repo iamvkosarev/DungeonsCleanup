@@ -427,6 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7b1c015ae04ae44a422c88ac2e419d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayBeforeRelife: 1.5
   movingJoystickProperties: {fileID: 11400000, guid: 71a57c5683628d94992d6c2aace09acd, type: 2}
   hasPlayerLowerSpecialAnimation: 1
 --- !u!50 &7081787225086070598
@@ -502,7 +503,7 @@ MonoBehaviour:
   getDamageParticle: {fileID: 4218824055498625290, guid: 8785bfa2be12a3d4cbced922e2f857fd, type: 3}
   particlesDestroyDelay: 2
   particlesColor: {r: 0.5647059, g: 0, b: 0, a: 1}
-  showFloatingPoints: 0
+  showFloatingPoints: 1
   floatingPointsPrefab: {fileID: 2867241730568453927, guid: c5f2da2fc558585409f15402d1c68eec, type: 3}
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
