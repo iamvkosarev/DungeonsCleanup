@@ -4,25 +4,73 @@ using UnityEngine;
 
 public class WaypointNavigator : MonoBehaviour
 {
-    CharacterNavigatorController controller;
+    [SerializeField] private WaypointRoot waypointRoot;
+    private CharacterNavigatorController navigatorController;
     public Waypoint currentWaypoint;
-
+    public bool canFindNewPoint = true;
     private void Awake()
     {
-        controller = GetComponent<CharacterNavigatorController>();
+        navigatorController = GetComponent<CharacterNavigatorController>();
     }
 
     private void Start()
     {
-        controller.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+        if (currentWaypoint != null)
+        {
+            navigatorController.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+        }
+        else
+        {
+            if (canFindNewPoint)
+            {
+                if (waypointRoot)
+                {
+                    currentWaypoint = waypointRoot.GetClosestWaypoint(transform.position).GetComponent<Waypoint>();
+                    navigatorController.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+                }
+                else
+                {
+                    Debug.LogError("Root component must be selected. Please assign a root component.");
+                }
+            }
+        }
+    }
+
+    public void StopChasingWaypoints()
+    {
+        canFindNewPoint = false;
+        currentWaypoint = null;
+    }
+
+    public void StartChasingWaypoints()
+    {
+        canFindNewPoint = true; ;
     }
 
     private void Update()
     {
-        if (controller.reachedDestination)
+        if(currentWaypoint != null)
         {
-            currentWaypoint = currentWaypoint.nextWaypoint;
-            controller.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+            if (navigatorController.reachedDestination)
+            {
+                currentWaypoint = currentWaypoint.nextWaypoint;
+                navigatorController.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+            }
+        }
+        else
+        {
+            if (canFindNewPoint)
+            {
+                if (waypointRoot)
+                {
+                    currentWaypoint = waypointRoot.GetClosestWaypoint(transform.position).GetComponent<Waypoint>();
+                    navigatorController.SetDestination(currentWaypoint.GetPosition(), MovementType.Walk);
+                }
+                else
+                {
+                    Debug.LogError("Root component must be selected. Please assign a root component.");
+                }
+            }
         }
     }
 }

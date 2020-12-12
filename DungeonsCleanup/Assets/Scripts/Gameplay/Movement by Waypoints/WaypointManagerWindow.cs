@@ -25,6 +25,10 @@ public class WaypointManagerWindow : EditorWindow
         }
         else
         {
+            if(waypointRoot.gameObject.GetComponent<WaypointRoot>() == null)
+            {
+                waypointRoot.gameObject.AddComponent<WaypointRoot>();
+            }
             EditorGUILayout.BeginVertical("box");
             DrawButtons();
             EditorGUILayout.EndVertical();

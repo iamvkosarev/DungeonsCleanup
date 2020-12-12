@@ -9,10 +9,11 @@ public class WaypointNavigatorEditor
     [DrawGizmo(GizmoType.Selected)]
     public static void OnDrawSceneGizmo(WaypointNavigator waypointNavigator, GizmoType gizmoType)
     {
-        if ((gizmoType & GizmoType.Selected) != 0)
+        Gizmos.color = Color.cyan;
+        if (waypointNavigator.currentWaypoint != null)
         {
-            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(waypointNavigator.currentWaypoint.transform.position, .3f);
+            Gizmos.DrawLine(waypointNavigator.transform.position, waypointNavigator.currentWaypoint.transform.position);
         }
-        Gizmos.DrawSphere(waypointNavigator.currentWaypoint.transform.position, .3f);
     }
 }
