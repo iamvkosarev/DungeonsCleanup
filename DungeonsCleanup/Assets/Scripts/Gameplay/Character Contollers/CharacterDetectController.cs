@@ -74,9 +74,12 @@ public class CharacterDetectController : MonoBehaviour
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, diff.normalized, diff.magnitude, layerMask: detectingObjAndGroundLayers);
             if (raycastHit2D)
             {
-                firstDetectedCharacter = raycastHit2D.collider.gameObject.transform;
-                resultOfDetecting = true;
-                return;
+                if(1 << raycastHit2D.collider.gameObject.layer == detectingObjLayer){
+
+                    firstDetectedCharacter = raycastHit2D.collider.gameObject.transform;
+                    resultOfDetecting = true;
+                    return;
+                }
             }
         }
         resultOfDetecting = false;
