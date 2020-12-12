@@ -66,7 +66,7 @@ public class CharacterDetectChecker : MonoBehaviour
         Collider2D[] detectedColliders = Physics2D.OverlapCircleAll(checkPos.position, radius, detectingObjLayer);
         foreach(Collider2D detectedCollider in detectedColliders)
         {
-            Vector2 diff = detectedCollider.transform.position - transform.position;
+            Vector2 diff = detectedCollider.transform.position - checkPos.position;
 
             #region Check Facing
             if (isInFront && (navigatorController.facingRight & diff.x < 0 || !navigatorController.facingRight & diff.x > 0))
@@ -81,7 +81,8 @@ public class CharacterDetectChecker : MonoBehaviour
             }
             #endregion
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, diff.normalized, diff.magnitude, layerMask: detectingObjAndGroundLayers);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(checkPos.position, diff.normalized, 
+                diff.magnitude, layerMask: detectingObjAndGroundLayers);
             if (raycastHit2D)
             {
                 if(1 << raycastHit2D.collider.gameObject.layer == detectingObjLayer){
