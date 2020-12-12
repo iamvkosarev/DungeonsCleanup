@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterDetectController : MonoBehaviour
+public class CharacterDetectChecker : MonoBehaviour
 {
     [Range(0f, 15f)] [SerializeField] private float frontCheckSize = 5f;
     [Range(0f, 10f)] [SerializeField] private float backCheckSize = 1f;
@@ -16,19 +16,22 @@ public class CharacterDetectController : MonoBehaviour
     {
         public bool hasMemory;
         public float memoryTime;
-        public float waitingTime = 0;
+        public float passedTime = 0;
     }
     [SerializeField] private Memory memory = new Memory();
 
     public bool detectedInFront;
     public bool detectedOnBack;
     public Transform firstDetectedCharacter;
+    public Vector3 posToGo;
     private CharacterNavigatorController navigatorController;
-
+    private int countVisiblePoints;
 
     private void Awake()
     {
         navigatorController = GetComponent<CharacterNavigatorController>();
+
+        memory.passedTime = memory.memoryTime;
     }
     private void Update()
     {
@@ -36,18 +39,25 @@ public class CharacterDetectController : MonoBehaviour
         Detect(out detectedOnBack, backCheckSize, isInFront: false);
         if (!detectedInFront && !detectedOnBack)
         {
-            if (!memory.hasMemory || memory.waitingTime >= memory.memoryTime)
+            if (!memory.hasMemory || memory.passedTime >= memory.memoryTime)
             {
                 firstDetectedCharacter = null;
             }
             else
             {
-                memory.waitingTime += Time.deltaTime;
+                memory.passedTime += Time.deltaTime;
+                if((int)memory.passedTime >= countVisiblePoints)
+                {
+                    countVisiblePoints += 1;
+                    posToGo = firstDetectedCharacter.position;
+                }
             }
         }
         else
         {
-            memory.waitingTime = 0;
+            posToGo = firstDetectedCharacter.position;
+            countVisiblePoints = 0;
+            memory.passedTime = 0;
         }
     }
 

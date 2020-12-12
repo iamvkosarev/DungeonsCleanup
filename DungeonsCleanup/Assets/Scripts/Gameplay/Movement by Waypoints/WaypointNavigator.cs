@@ -44,7 +44,7 @@ public class WaypointNavigator : MonoBehaviour
 
     public void StartChasingWaypoints()
     {
-        canFindNewPoint = true; ;
+        canFindNewPoint = true;
     }
 
     private void Update()

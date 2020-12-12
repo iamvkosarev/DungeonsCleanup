@@ -17,7 +17,7 @@ public class CharacterNavigatorController : MonoBehaviour
     [SerializeField] private float runSpeed;
     [SerializeField] private float stopDistance;
 
-    MovementType movementType = MovementType.Walk;
+    public MovementType movementType = MovementType.Walk;
 
     public Vector3 destination;
     public bool reachedDestination;
