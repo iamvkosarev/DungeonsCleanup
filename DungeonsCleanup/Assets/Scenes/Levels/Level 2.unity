@@ -38204,7 +38204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontCheckSize: 7.6
-  backCheckSize: 1.77
+  backCheckSize: 2.07
   checkPos: {fileID: 2988330812011304604}
   detectingObjLayer:
     serializedVersion: 2
@@ -38212,10 +38212,13 @@ MonoBehaviour:
   detectingObjAndGroundLayers:
     serializedVersion: 2
     m_Bits: 49920
+  memory:
+    hasMemory: 0
+    memoryTime: 0
+    waitingTime: 0
   detectedInFront: 0
   detectedOnBack: 0
   firstDetectedCharacter: {fileID: 0}
-  navigatorController: {fileID: 0}
 --- !u!4 &1642056282457720630
 Transform:
   m_ObjectHideFlags: 0

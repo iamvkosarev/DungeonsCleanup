@@ -10,10 +10,21 @@ public class CharacterDetectController : MonoBehaviour
     [SerializeField] private Transform checkPos;
     [SerializeField] private LayerMask detectingObjLayer;
     [SerializeField] private LayerMask detectingObjAndGroundLayers;
+
+    [Serializable]
+    private class Memory
+    {
+        public bool hasMemory;
+        public float memoryTime;
+        public float waitingTime = 0;
+    }
+    [SerializeField] private Memory memory = new Memory();
+
     public bool detectedInFront;
     public bool detectedOnBack;
     public Transform firstDetectedCharacter;
-    public CharacterNavigatorController navigatorController;
+    private CharacterNavigatorController navigatorController;
+
 
     private void Awake()
     {
@@ -23,6 +34,21 @@ public class CharacterDetectController : MonoBehaviour
     {
         Detect(out detectedInFront, frontCheckSize, isInFront: true);
         Detect(out detectedOnBack, backCheckSize, isInFront: false);
+        if (!detectedInFront && !detectedOnBack)
+        {
+            if (!memory.hasMemory || memory.waitingTime >= memory.memoryTime)
+            {
+                firstDetectedCharacter = null;
+            }
+            else
+            {
+                memory.waitingTime += Time.deltaTime;
+            }
+        }
+        else
+        {
+            memory.waitingTime = 0;
+        }
     }
 
     private void Detect(out bool resultOfDetecting, float radius, bool isInFront)
