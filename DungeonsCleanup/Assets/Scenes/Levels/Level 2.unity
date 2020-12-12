@@ -38149,8 +38149,10 @@ GameObject:
   - component: {fileID: 2988330811557956924}
   - component: {fileID: 2988330811805338215}
   - component: {fileID: 1642056282457720627}
-  - component: {fileID: 1642056282457720628}
   - component: {fileID: 1642056282457720626}
+  - component: {fileID: 1642056282457720628}
+  - component: {fileID: 1642056282457720629}
+  - component: {fileID: 1642056282457720632}
   m_Layer: 10
   m_Name: Goblin Base
   m_TagString: Untagged
@@ -38172,7 +38174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointRoot: {fileID: 1057304140}
   currentWaypoint: {fileID: 0}
-  canFindNewPoint: 0
+  canFindNewPoint: 1
 --- !u!114 &1642056282457720627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38185,9 +38187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b37e4e4958d7943800eb4a0fc61b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
-  runSpeed: 7
+  walkSpeed: 3
+  runSpeed: 5
   stopDistance: 1
+  movementType: 1
   destination: {x: 0, y: 0, z: 0}
   reachedDestination: 0
   facingRight: 0
@@ -38214,11 +38217,31 @@ MonoBehaviour:
     m_Bits: 49920
   memory:
     hasMemory: 1
-    memoryTime: 5
-    waitingTime: 0
+    memoryTime: 3
+    passedTime: 0
   detectedInFront: 0
   detectedOnBack: 0
   firstDetectedCharacter: {fileID: 0}
+  posToGo: {x: 0, y: 0, z: 0}
+--- !u!114 &1642056282457720629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642056282457720625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd550094887cd64980491cda2f686ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpawnPos: {fileID: 2988330812011304604}
+  attackCheckZoneHight: 0.46
+  attackCheckZoneWidth: 2.14
+  attackingObjLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detected: 0
 --- !u!4 &1642056282457720630
 Transform:
   m_ObjectHideFlags: 0
@@ -38253,11 +38276,27 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 33a60539504488444a668246b3a688a9, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1642056282457720632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642056282457720625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d9b891500c87f4e9d2d425e22479e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wait:
+    hasWaiting: 1
+    waitTime: 3
+    passedTime: 0
 --- !u!212 &1642056282755704945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39317,7 +39356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2857061217933937435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.658, y: 0, z: 0}
+  m_LocalPosition: {x: -0.66, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1316088927654421257}
