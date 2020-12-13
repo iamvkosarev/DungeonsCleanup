@@ -74,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Tumbleweed")]
     [SerializeField] private float tumbleweedSpeed;
-    [SerializeField] private CapsuleCollider2D feetCollider;
-    [SerializeField] private CapsuleCollider2D feetNotTouchingFeetCollide;
+    [SerializeField] private BoxCollider2D feetCollider;
+    [SerializeField] private BoxCollider2D feetNotTouchingFeetCollide;
     [SerializeField] private Transform firstPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private float maximumResponseTumbleweedTime;
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
 
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
-        yield return new WaitForSeconds((isStandingOnGround)? 0.1f : 0f);
+        yield return new WaitForSeconds((isStandingOnGround)? 0f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
     }
@@ -582,7 +582,7 @@ public class PlayerMovement : MonoBehaviour
         }
         float velocityYAxis = myRigidbody2D.velocity.y;
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-        if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
+        if (areWallJumpsSuspended) { return; }
         if (currentState == StateOFMove.TransitonUp)
         {
             if (Time.time <= timeSinceStartTransition + startingMovingTransitionTime)

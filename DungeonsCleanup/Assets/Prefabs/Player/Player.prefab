@@ -206,7 +206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6322206126601678018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1520004, y: 0.16200018, z: 0}
+  m_LocalPosition: {x: 0.932, y: 0.16200018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7573613103745708401}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3967220042134938645}
-  - component: {fileID: 2501435207065773527}
+  - component: {fileID: 2977657182678612417}
   m_Layer: 19
   m_Name: FeetNotTouchingFeet
   m_TagString: Untagged
@@ -276,14 +276,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6445435075852272089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -1.69, z: 0}
+  m_LocalPosition: {x: 0.08, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &2501435207065773527
-CapsuleCollider2D:
+--- !u!61 &2977657182678612417
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -295,9 +295,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030164748, y: 1.2839327}
-  m_Size: {x: 0.6343841, y: 0.97786516}
-  m_Direction: 0
+  m_Offset: {x: -0.031536013, y: -0.40500033}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6406153, y: 0.97828364}
+  m_EdgeRadius: 0
 --- !u!1 &7081787223668988230
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7081787223668988281}
-  - component: {fileID: 7077148873157811720}
+  - component: {fileID: 941622785054142449}
   m_Layer: 11
   m_Name: Feet
   m_TagString: Untagged
@@ -323,14 +333,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081787223668988230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -1.69, z: 0}
+  m_LocalPosition: {x: 0.08, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7081787225086070599}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &7077148873157811720
-CapsuleCollider2D:
+--- !u!61 &941622785054142449
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -342,9 +352,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.032650977, y: 1.75}
-  m_Size: {x: 0.63935655, y: 1.9099998}
-  m_Direction: 0
+  m_Offset: {x: -0.031536013, y: 0.030411363}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6406153, y: 1.849107}
+  m_EdgeRadius: 0
 --- !u!1 &7081787225086070597
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2000
   healthCollider: {fileID: 2542656809900335354}
-  feetCoolider: {fileID: 7077148873157811720}
+  feetCoolider: {fileID: 0}
   deathAnimationsNum: 0
   timeBefroStartedSpawnHazeVFX: 3
   timeAfterSpawnHazeVFXToSwitchOfOwnSpariteRender: 0.1
@@ -552,7 +572,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   groundCheckPoint: {fileID: 5440142212810733446}
-  groundCheckSize: {x: 0.57, y: 0.34}
+  groundCheckSize: {x: 0.42, y: 0.59}
   groundCheckColor: {r: 0.8490566, g: 0, b: 0, a: 0.5411765}
   hazePrefab: {fileID: 2567433816235697548, guid: 273826a61723bce4bbc315a5e54aeb59, type: 3}
   checkStairsRayLength: 1.5
@@ -572,8 +592,8 @@ MonoBehaviour:
   runParticals: {fileID: 0}
   particlesDestroyDelay: 1
   tumbleweedSpeed: 10
-  feetCollider: {fileID: 7077148873157811720}
-  feetNotTouchingFeetCollide: {fileID: 2501435207065773527}
+  feetCollider: {fileID: 941622785054142449}
+  feetNotTouchingFeetCollide: {fileID: 2977657182678612417}
   firstPointForCheckingEnemiesDuringATumbleweed: {fileID: 8097216924597165889}
   secondPointForCheckingEnemiesDuringATumbleweed: {fileID: 4916847372946655527}
   maximumResponseTumbleweedTime: 0.4
