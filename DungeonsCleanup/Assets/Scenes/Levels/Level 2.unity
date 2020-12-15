@@ -606,6 +606,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425110787667098384, guid: 6a08b006263ac454a8757dd2aa360e19, type: 3}
   m_PrefabInstance: {fileID: 1656272106}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &134904987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134904988}
+  m_Layer: 10
+  m_Name: Cuddle Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134904988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134904987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.262, y: 0.458, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1316088927654421257}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &146946792
 GameObject:
   m_ObjectHideFlags: 0
@@ -38070,6 +38100,7 @@ Transform:
   - {fileID: 1544951182291917143}
   - {fileID: 4144363765079822924}
   - {fileID: 4506297008468673324}
+  - {fileID: 134904988}
   m_Father: {fileID: 1642056282457720630}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38140,11 +38171,8 @@ GameObject:
   - component: {fileID: 4948539638337920446}
   - component: {fileID: 1642056282457720624}
   - component: {fileID: 1990608528735277305}
-  - component: {fileID: 8878546283394331168}
   - component: {fileID: 8769562874698648492}
   - component: {fileID: 1754614463769874827}
-  - component: {fileID: 5058933085801012158}
-  - component: {fileID: 5815840788673332677}
   - component: {fileID: 7185059296551470009}
   - component: {fileID: 2988330811557956924}
   - component: {fileID: 2988330811805338215}
@@ -38152,7 +38180,9 @@ GameObject:
   - component: {fileID: 1642056282457720626}
   - component: {fileID: 1642056282457720628}
   - component: {fileID: 1642056282457720629}
+  - component: {fileID: 1642056282457720634}
   - component: {fileID: 1642056282457720632}
+  - component: {fileID: 1642056282457720633}
   m_Layer: 10
   m_Name: Goblin Base
   m_TagString: Untagged
@@ -38189,7 +38219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 5
-  stopDistance: 1
+  stopDistance: 0.5
   movementType: 1
   destination: {x: 0, y: 0, z: 0}
   reachedDestination: 0
@@ -38206,7 +38236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97a845515f8ab14f9815d50109a53b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontCheckSize: 6.86
+  frontCheckSize: 6.8
   backCheckSize: 2.07
   checkPos: {fileID: 2988330812011304604}
   detectingObjLayer:
@@ -38232,12 +38262,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642056282457720625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd550094887cd64980491cda2f686ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 32df79d107117994fa0acae7d646c5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpawnPos: {fileID: 2988330812011304604}
-  attackCheckZoneHight: 0.46
-  attackCheckZoneWidth: 2.14
+  attackSpawnPos: {fileID: 5380473742653768177}
+  attackCheckZoneHight: 0.34
+  attackCheckZoneWidth: 0.77
   attackingObjLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -38297,6 +38327,53 @@ MonoBehaviour:
     hasWaiting: 1
     waitTime: 3
     passedTime: 0
+--- !u!114 &1642056282457720633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642056282457720625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddcc2bd65acee34586d21abc36de5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacksClips:
+  - {fileID: 8300000, guid: d6e11e4d16e161948bdadd44bbc7f651, type: 3}
+  attackClipAudiosBoost: 1
+  stepsClips:
+  - {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
+  - {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
+  stepsClipAudiosBoost: 1.4
+  jumpClips: []
+  jumpClipAudiosBoost: 1
+  getDamageClips:
+  - {fileID: 8300000, guid: f0c640c52fe8ca141a51c5ab6aa5bf4c, type: 3}
+  getDamageClipAudiosBoost: 0.5
+  destroyBodyClip: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  destroyBodyClipAudiosBoost: 1.2
+  deathCryClip: {fileID: 8300000, guid: e58146a40cbcbfb40b947320b8b46cca, type: 3}
+  deathCryClipAudiosBoost: 0.25
+--- !u!114 &1642056282457720634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642056282457720625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed88a34da255154f8e624392c2bc008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuddleCheckerPointPos: {fileID: 134904988}
+  cuddleCheckZoneHight: 1.52
+  cuddleCheckZoneWidth: 0.76
+  cuddlingObjLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detected: 0
 --- !u!212 &1642056282755704945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38457,12 +38534,7 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  getHitSFX: {fileID: 8300000, guid: f0c640c52fe8ca141a51c5ab6aa5bf4c, type: 3}
-  audioBoostGetHit: 0.5
-  deathSFX: {fileID: 8300000, guid: e58146a40cbcbfb40b947320b8b46cca, type: 3}
-  audioBoostDeathSFX: 0.25
-  bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
-  audioBoostBodyCrash: 1.2
+  soundManager: {fileID: 0}
 --- !u!4 &1907039533698708148
 Transform:
   m_ObjectHideFlags: 0
@@ -39032,27 +39104,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5185436, y: 0.89429104}
   m_EdgeRadius: 0
---- !u!114 &5058933085801012158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642056282457720625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c278491b70d65b2458fa0bf73a1db3d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectorPoint: {fileID: 9177590487662103158}
-  sizeOfPlayerDetecterRay: 1.29
-  maxDeflectionAngle: 15
-  playerAndEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 54016
-  playerLayerNum: 8
-  timeOnRayLoopUpdate: 0.1
-  turnRayInOppositeDirection: 0
 --- !u!4 &5380473742653768177
 Transform:
   m_ObjectHideFlags: 0
@@ -39083,37 +39134,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5815840788673332677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642056282457720625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9dcc4a1ceeddc149b6d87047d61189c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 4
-  runSpeed: 7
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  checkStairsRayLength: 1.3
-  groundCheckPoint: {fileID: 3551968112615847601}
-  feetCollider: {fileID: 1642056283065916490}
-  groundCheckSize: {x: 0.5, y: 0.3}
-  slowingOnStairsParametr: {x: 1.05, y: 0.5}
-  timeOnSlowing: 0.2
-  invisibleWallLayer:
-    serializedVersion: 2
-    m_Bits: 16777216
-  invisibleWallCheckSize: {x: 0.72, y: 0.11}
-  invisibleWallCheckPoint: {fileID: 1544951182291917143}
-  firstStepSFX: {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
-  secondStepSFX: {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
-  audioBoost: 1.4
 --- !u!4 &6072297942350180632
 Transform:
   m_ObjectHideFlags: 0
@@ -39249,34 +39269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumOfTurnings: 2
---- !u!114 &8878546283394331168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642056282457720625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367f5d45e90987840824364103fbd5da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radiusOfPointReachingZone: 0.5
-  patrolPointsLayer:
-    serializedVersion: 2
-    m_Bits: 131072
-  patrolPointCheackerCoordinates: {fileID: 4287085041646323397}
-  patrolPointCheackerColor: {r: 1, g: 0.96649516, b: 0.39999998, a: 0.28235295}
-  sizeOfPlayerDetecterRay: 6
-  detectorPoint: {fileID: 2988330812011304604}
-  maxDeflectionAngle: 60
-  playerAndCollidingEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 54016
-  playerLayerNum: 8
-  timeOnRayLoopUpdate: 0.1
-  turnRayInOppositeDirection: 0
-  timeOnWaitPlayer: 5
 --- !u!1001 &8956361950059459837
 PrefabInstance:
   m_ObjectHideFlags: 0

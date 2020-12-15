@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttackCheker : MonoBehaviour
+public class CharacterAttackChecker : MonoBehaviour
 {
     [SerializeField] private Transform attackSpawnPos;
     [Range(0.2f, 3f)][SerializeField] private float attackCheckZoneHight = 1f;
@@ -26,9 +26,20 @@ public class CharacterAttackCheker : MonoBehaviour
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireCube((Vector2)attackSpawnPos.position - new Vector2(attackCheckZoneWidth/2f * (navigatorController.facingRight ? -1:1)
-            , attackCheckZoneHight/2f), new Vector2(attackCheckZoneWidth, attackCheckZoneHight)
-            );
+        if (navigatorController)
+        {
+
+            Gizmos.DrawWireCube((Vector2)attackSpawnPos.position - new Vector2(attackCheckZoneWidth / 2f * (navigatorController.facingRight ? -1 : 1)
+                , attackCheckZoneHight / 2f), new Vector2(attackCheckZoneWidth, attackCheckZoneHight)
+                );
+        }
+        else
+        {
+
+            Gizmos.DrawWireCube((Vector2)attackSpawnPos.position - new Vector2(attackCheckZoneWidth / 2f * (1)
+                , attackCheckZoneHight / 2f), new Vector2(attackCheckZoneWidth, attackCheckZoneHight)
+                );
+        }
     }
 
 }

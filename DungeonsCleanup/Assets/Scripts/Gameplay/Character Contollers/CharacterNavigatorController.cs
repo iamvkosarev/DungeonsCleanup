@@ -13,8 +13,8 @@ public enum MovementType
 
 public class CharacterNavigatorController : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
+    [SerializeField] public float walkSpeed;
+    [SerializeField] public float runSpeed;
     [SerializeField] private float stopDistance;
 
     public MovementType movementType = MovementType.Walk;
@@ -22,6 +22,7 @@ public class CharacterNavigatorController : MonoBehaviour
     public Vector3 destination;
     public bool reachedDestination;
     private Rigidbody2D rigidbody2D;
+    private bool isMovementSuspended = false;
     public bool facingRight = false;
     bool canRotate = true;
 
@@ -36,6 +37,7 @@ public class CharacterNavigatorController : MonoBehaviour
 
     private void Update()
     {
+        if (isMovementSuspended) { return; }
         if(transform.position != destination)
         {
             Vector3 destinationDirection = destination - transform.position;
@@ -58,19 +60,31 @@ public class CharacterNavigatorController : MonoBehaviour
     private void RotationTowardDestination()
     {
         float destinationXAxisDirection = Mathf.Sign(destination.x - transform.position.x);
-        if (destinationXAxisDirection < 0 && facingRight && canRotate)
+        if (destinationXAxisDirection < 0 && facingRight)
         {
             Flip();
         }
-        else if (destinationXAxisDirection > 0 && !facingRight && canRotate)
+        else if (destinationXAxisDirection > 0 && !facingRight)
         {
             Flip();
         }
     }
     private void Flip()
     {
+        if (!canRotate) { return; }
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+    }
+    public void SuspendMovement(int suspendMovement)
+    {
+        if (suspendMovement == 0)
+        {
+            this.isMovementSuspended = false;
+        }
+        else
+        {
+            this.isMovementSuspended = true;
+        }
     }
     public void SetDestination(Vector3 destination, MovementType movementType)
     {

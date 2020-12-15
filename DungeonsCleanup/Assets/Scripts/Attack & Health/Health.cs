@@ -31,26 +31,21 @@ public class Health : MonoBehaviour
     [SerializeField] private float floatingPointSpeed;
     [SerializeField] private float maxAngleFloatingPointDirection;
     [SerializeField] private float floatingPointDestroyDelay = 2f;
-
-    [Header("SFX")]
-    [SerializeField] public AudioClip getHitSFX;
-    [SerializeField] public float audioBoostGetHit;
-    [SerializeField] public AudioClip deathSFX;
-    [SerializeField] public float audioBoostDeathSFX;
-    [SerializeField] public AudioClip bodyCrash;
-    [SerializeField] public float audioBoostBodyCrash;
-    private AudioSource myAudioSource;
     private GoblinBossAttack goblinBoss;
 
     private int firstHealth;
     public EventHandler OnDeath;
+    public CharacterSoundManager soundManager;
     private EnemiesMovement enemiesMovement;
     private Rigidbody2D myRB;
     Animator animator;
-
+    
+    private void Awake()
+    {
+        soundManager = GetComponent<CharacterSoundManager>();
+    }
     private void Start()
     {
-        myAudioSource = GetComponent<AudioSource>();
         myRB = GetComponent<Rigidbody2D>();
         firstHealth = health;
         animator = GetComponent<Animator>();
@@ -65,8 +60,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            FlipIfDontKnowWhereAttackFrom();
-            SpawnGetHitSFX();
+            soundManager.PlayGetDamageClip();
             health -= damage;
         }
 
@@ -75,17 +69,6 @@ public class Health : MonoBehaviour
         CheckZeroHealth();
     }
 
-    private void FlipIfDontKnowWhereAttackFrom()
-    {
-        if (!enemiesMovement)
-        {
-            enemiesMovement = GetComponent<EnemiesMovement>();
-        }
-        if (enemiesMovement)
-        {
-            enemiesMovement.RotateOnHit();
-        }
-    }
 
     private void SpawnFloatingPoints(int damage)
     {
@@ -129,7 +112,7 @@ public class Health : MonoBehaviour
         {
             OnDeath.Invoke(this, EventArgs.Empty);
         }
-        SpawnDeathSFX();
+        soundManager.PlayDeathSounds();;
         DeathAnimaton();
         if (spawnExpWithoutAnimation)
         {
@@ -196,24 +179,6 @@ public class Health : MonoBehaviour
             spawExperienceOrHelath.Spawn();
         }
     }
-
-    #region SFX
-    private void SpawnGetHitSFX()
-    {
-        if (getHitSFX)
-        {
-            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
-        }
-    }
-    private void SpawnDeathSFX()
-    {
-        if (deathSFX)
-        {
-            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
-            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
-        }
-    }
-    #endregion
 
     private void OnDestroy()
     {

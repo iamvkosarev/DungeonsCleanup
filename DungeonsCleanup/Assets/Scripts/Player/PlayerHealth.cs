@@ -117,7 +117,7 @@ public class PlayerHealth : Health
         {
             OnDeath.Invoke(this, EventArgs.Empty);
         }
-        SpawnDeathSFX();
+        soundManager.PlayDeathSounds();
         SetVisibilityOfEnemies(false);
         playerAnimation.DoDeathAnimation();
         StartCoroutine(Reloading());
@@ -138,21 +138,7 @@ public class PlayerHealth : Health
         //GetComponent<PlayerDataManager>().SetCheckPointSessionData();
     }
 
-    private void SpawnGetHitSFX()
-    {
-        if (getHitSFX)
-        {
-            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
-        }
-    }
-    private void SpawnDeathSFX()
-    {
-        if (deathSFX)
-        {
-            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
-            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
-        }
-    }
+    
     public bool IsPlayerDead()
     {
         if (base.GetHealth() == 0)

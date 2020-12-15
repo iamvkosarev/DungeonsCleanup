@@ -5,9 +5,10 @@ using System;
 
 public class CharacterAttackManager : MonoBehaviour
 {
-    private CharacterAttackCheker attackCheker;
+    private CharacterAttackChecker attackCheker;
     private CharacterDetectChecker detectChecker;
     private CharacterNavigatorController navigatorController;
+    private CharackerCuddleChecker cuddleChecker;
     private WaypointNavigator waypointNavigator;
 
     [Serializable]
@@ -19,19 +20,13 @@ public class CharacterAttackManager : MonoBehaviour
     }
     [SerializeField] private WaitCharacterAfterLost wait = new WaitCharacterAfterLost();
 
-    private SpawnerOfAttackingWave spawnerOfAttackingWave;
-    private SpawnerOfProjectile spawnerOfProjectile;
-
     private void Awake()
     {
-        attackCheker = GetComponent<CharacterAttackCheker>();
+        cuddleChecker = GetComponent<CharackerCuddleChecker>();
+        attackCheker = GetComponent<CharacterAttackChecker>();
         detectChecker = GetComponent<CharacterDetectChecker>();
         navigatorController = GetComponent<CharacterNavigatorController>();
         waypointNavigator = GetComponent<WaypointNavigator>();
-
-
-        spawnerOfAttackingWave = GetComponent<SpawnerOfAttackingWave>();
-        spawnerOfProjectile = GetComponent<SpawnerOfProjectile>();
 
         wait.passedTime = wait.waitTime;
     }
@@ -40,14 +35,20 @@ public class CharacterAttackManager : MonoBehaviour
     {
         if (detectChecker.firstDetectedCharacter)
         {
+            waypointNavigator.StopChasingWaypoints();
             wait.passedTime = 0;
-            if (attackCheker.detected)
+            if (cuddleChecker.detected)
+            {
+                float signOfWalk = Mathf.Sign(detectChecker.posToGo.x - transform.position.x);
+                Vector3 pointToGo = transform.position - new Vector3(transform.position.x + 0.5f * signOfWalk, transform.position.y, transform.position.z);
+                navigatorController.SetDestination(pointToGo, MovementType.Run);
+            }
+            else if (attackCheker.detected)
             {
                 navigatorController.SetDestination(detectChecker.posToGo, MovementType.Stand);
             }
             else
             {
-                waypointNavigator.StopChasingWaypoints();
                 navigatorController.SetDestination(detectChecker.posToGo, MovementType.Run);
             }
         }

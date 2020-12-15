@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 250335807196669123}
   - component: {fileID: 6503540306400233640}
   - component: {fileID: 1889122838555352843}
+  - component: {fileID: 85628225}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -495,7 +496,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4698022, y: 1.5069652}
+  m_Size: {x: 0.58010435, y: 1.5069652}
   m_EdgeRadius: 0
 --- !u!114 &4360314141667563155
 MonoBehaviour:
@@ -528,12 +529,7 @@ MonoBehaviour:
   floatingPointSpeed: 5
   maxAngleFloatingPointDirection: 20
   floatingPointDestroyDelay: 2
-  getHitSFX: {fileID: 0}
-  audioBoostGetHit: 0
-  deathSFX: {fileID: 8300000, guid: 3e297ab0e6bc1a649b8ebcba92b14039, type: 3}
-  audioBoostDeathSFX: 1
-  bodyCrash: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
-  audioBoostBodyCrash: 1
+  soundManager: {fileID: 0}
   getHitsSFX:
   - {fileID: 8300000, guid: f5004da6b4dcbc9449db82518fd9ad11, type: 3}
   - {fileID: 8300000, guid: edc0624192f5ded4384b5ab304d27da0, type: 3}
@@ -876,6 +872,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointToGo: {fileID: 0}
+--- !u!114 &85628225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081787225086070597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddcc2bd65acee34586d21abc36de5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacksClips:
+  - {fileID: 8300000, guid: d0d7dfb47d85ece4cb4bfb73c4928b0b, type: 3}
+  - {fileID: 8300000, guid: 14cd7d376f3212347880e7cbe43058ed, type: 3}
+  attackClipAudiosBoost: 0.2
+  stepsClips:
+  - {fileID: 8300000, guid: 06f38e342c62e564fbf817a29087a399, type: 3}
+  - {fileID: 8300000, guid: b361b5b90a49dbc47b6adc35e3439c94, type: 3}
+  stepsClipAudiosBoost: 1.2
+  jumpClips: []
+  jumpClipAudiosBoost: 1
+  getDamageClips:
+  - {fileID: 8300000, guid: f5004da6b4dcbc9449db82518fd9ad11, type: 3}
+  - {fileID: 8300000, guid: edc0624192f5ded4384b5ab304d27da0, type: 3}
+  getDamageClipAudiosBoost: 1.2
+  destroyBodyClip: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  destroyBodyClipAudiosBoost: 1
+  deathCryClip: {fileID: 8300000, guid: 3e297ab0e6bc1a649b8ebcba92b14039, type: 3}
+  deathCryClipAudiosBoost: 1
 --- !u!1 &7081787225611444493
 GameObject:
   m_ObjectHideFlags: 0

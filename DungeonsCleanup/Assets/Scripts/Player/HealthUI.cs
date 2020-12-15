@@ -84,7 +84,7 @@ public class HealthUI : Health
     }
     private void Death()
     {
-        SpawnDeathSFX();
+        soundManager.PlayDeathSounds();
         myAnimator.SetTrigger("EndDeath");
         SetVisibilityOfEnemies(false);
         activationBoss.BossDeath();
@@ -95,21 +95,6 @@ public class HealthUI : Health
         Instantiate(bossHeadItem, bossHeadItemPosition.position, Quaternion.identity);
     }
 
-    private void SpawnGetHitSFX()
-    {
-        if (getHitSFX)
-        {
-            myAudioSource.PlayOneShot(getHitSFX, audioBoostGetHit);
-        }
-    }
-    private void SpawnDeathSFX()
-    {
-        if (deathSFX)
-        {
-            myAudioSource.PlayOneShot(deathSFX, audioBoostDeathSFX);
-            myAudioSource.PlayOneShot(bodyCrash, audioBoostBodyCrash);
-        }
-    }
     public bool IsPlayerDead()
     {
         if (base.GetHealth() == 0)
