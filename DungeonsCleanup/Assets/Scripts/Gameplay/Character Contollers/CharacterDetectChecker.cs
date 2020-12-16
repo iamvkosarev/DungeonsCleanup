@@ -71,13 +71,11 @@ public class CharacterDetectChecker : MonoBehaviour
             #region Check Facing
             if (isInFront && (navigatorController.facingRight & diff.x < 0 || !navigatorController.facingRight & diff.x > 0))
             {
-                resultOfDetecting = false;
-                return;
+                continue;
             }
             if (!isInFront && (navigatorController.facingRight & diff.x > 0 || !navigatorController.facingRight & diff.x < 0))
             {
-                resultOfDetecting = false;
-                return;
+                continue;
             }
             #endregion
 
