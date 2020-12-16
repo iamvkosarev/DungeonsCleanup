@@ -45,13 +45,17 @@ public class WaypointManagerWindow : EditorWindow
         }
         if(Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<Waypoint>())
         {
-            if(GUILayout.Button("Creat Waipoint Before"))
+            if (GUILayout.Button("Creat Waipoint Referenced On Itself"))
             {
-                CreatWaypointBefore();
+                CreatWaypointReferencedOnItself();
             }
-            if(GUILayout.Button("Creat Waipoint After"))
+            if (GUILayout.Button("Creat Waipoint After"))
             {
                 CreatWaypointAfter();
+            }
+            if (GUILayout.Button("Creat Waipoint Before"))
+            {
+                CreatWaypointBefore();
             }
             if(GUILayout.Button("Remove Waipoint"))
             {
@@ -59,7 +63,25 @@ public class WaypointManagerWindow : EditorWindow
             }
         }
     }
+    private void CreatWaypointReferencedOnItself()
+    {
+        GameObject waypointObject = new GameObject("Waypoint" + waypointRoot.childCount, typeof(Waypoint));
+        waypointObject.transform.SetParent(waypointRoot, false);
 
+        Waypoint newWaypoint = waypointObject.GetComponent<Waypoint>();
+
+        Waypoint selectedWaypoint = Selection.activeGameObject.GetComponent<Waypoint>();
+
+        waypointObject.transform.position = selectedWaypoint.transform.position;
+        waypointObject.transform.forward = selectedWaypoint.transform.forward;
+
+        newWaypoint.previousWaypoint = newWaypoint;
+        newWaypoint.nextWaypoint = newWaypoint;
+
+        newWaypoint.transform.SetSiblingIndex(selectedWaypoint.transform.GetSiblingIndex());
+        Selection.activeGameObject = newWaypoint.gameObject;
+
+    }
     private void CreatWaypointBefore()
     {
         GameObject waypointObject = new GameObject("Waypoint" + waypointRoot.childCount, typeof(Waypoint));
