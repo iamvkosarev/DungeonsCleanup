@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointNavigator : MonoBehaviour
 {
-    [SerializeField] private WaypointRoot waypointRoot;
+    [SerializeField] public WaypointRoot waypointRoot;
     private CharacterNavigatorController navigatorController;
     public Waypoint currentWaypoint;
     public bool canFindNewPoint = true;
