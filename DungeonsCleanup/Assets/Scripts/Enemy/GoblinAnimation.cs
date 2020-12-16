@@ -43,14 +43,13 @@ public class GoblinAnimation : MonoBehaviour
             countTrunings = 1;
             numOfTurning = -1;
         }
-        else if (Mathf.Abs(myRigidbody2D.velocity.x) >= characterNavigatorController.walkSpeed
-            && Mathf.Abs(myRigidbody2D.velocity.x) < characterNavigatorController.runSpeed)
+        else if (characterNavigatorController.movementType == MovementType.Walk)
         {
             isWalking = true;
             countTrunings = 1;
             numOfTurning = -1;
         }
-        else if (Mathf.Abs(myRigidbody2D.velocity.x)>= characterNavigatorController.runSpeed)
+        else if (characterNavigatorController.movementType == MovementType.Run)
         {
             isRunning = true;
             countTrunings = 1;

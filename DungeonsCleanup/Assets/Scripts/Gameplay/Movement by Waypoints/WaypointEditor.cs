@@ -15,13 +15,20 @@ public class WaypointEditor
         }
         else
         {
-            Gizmos.color = Color.yellow * 0.5f;
+            Gizmos.color = Color.yellow * 0.6f;
         }
         Gizmos.DrawSphere(waypoint.transform.position, .3f);
         
         if(waypoint.previousWaypoint != null)
         {
-            Gizmos.color = Color.red;
+            if ((gizmoType & GizmoType.Selected) != 0)
+            {
+                Gizmos.color = Color.red;
+            }
+            else
+            {
+                Gizmos.color = Color.red * 0.6f;
+            }
             Vector2 currentPos = waypoint.transform.position;
             Vector2 previousPos = waypoint.previousWaypoint.transform.position;
             float lengthBetweenPoints = Mathf.Sqrt(
@@ -32,7 +39,14 @@ public class WaypointEditor
         }
         if(waypoint.nextWaypoint != null)
         {
-            Gizmos.color = Color.green;
+            if ((gizmoType & GizmoType.Selected) != 0)
+            {
+                Gizmos.color = Color.green;
+            }
+            else
+            {
+                Gizmos.color = Color.green * 0.6f;
+            }
             Vector2 currentPos = waypoint.transform.position;
             Vector2 nextPoint = waypoint.nextWaypoint.transform.position;
             float lengthBetweenPoints = Mathf.Sqrt(

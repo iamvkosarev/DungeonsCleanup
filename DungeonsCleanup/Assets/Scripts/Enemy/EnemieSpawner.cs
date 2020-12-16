@@ -28,7 +28,6 @@ public class EnemieSpawner : MonoBehaviour
             }
         }
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
