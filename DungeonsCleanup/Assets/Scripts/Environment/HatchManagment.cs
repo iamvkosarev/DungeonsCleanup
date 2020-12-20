@@ -21,9 +21,11 @@ public class HatchManagment : MonoBehaviour
     private AudioSource myAudioSource;
     private PlatformEffector2D myPlatformEffector2D;
     private PlayerActivationButton playerActivationButton;
+    private BoxCollider2D boxCollider2D;
 
     private void Start()
     {
+        boxCollider2D = GetComponent<BoxCollider2D>();
         myAudioSource = GetComponentInChildren<AudioSource>();
         myPlatformEffector2D = GetComponent<PlatformEffector2D>();
         CloseBody();
@@ -101,6 +103,7 @@ public class HatchManagment : MonoBehaviour
         {
             myPlatformEffector2D.rotationalOffset = 0f;
 
+            boxCollider2D.isTrigger = true;
         }
         else
         {
@@ -112,6 +115,7 @@ public class HatchManagment : MonoBehaviour
     }
     private void CloseBody()
     {
+        boxCollider2D.isTrigger = false;
         openBody.SetActive(false);
         closeBody.SetActive(true);
         myPlatformEffector2D.rotationalOffset = 0f;
