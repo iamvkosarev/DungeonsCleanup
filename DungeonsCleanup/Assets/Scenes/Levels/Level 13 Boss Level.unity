@@ -603,7 +603,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
   m_PrefabInstance: {fileID: 1295151617}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1402163609}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eff315efcf8ecd14c955f5154233e06c, type: 3}
@@ -1131,11 +1131,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.694374
+      value: 35.944374
       objectReference: {fileID: 0}
     - target: {fileID: 22700304972447097, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.48620373
+      value: -0.487114
       objectReference: {fileID: 0}
     - target: {fileID: 22700305356574010, guid: 8c80ee376d56a604bab3489d29c87a71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24287,6 +24287,10 @@ PrefabInstance:
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1934708354, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+      propertyPath: bossHeadItem
+      value: 
+      objectReference: {fileID: 8119014333148237692, guid: e98a193a330649849b638374d49fc3d7, type: 3}
     - target: {fileID: 1934708359, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
       propertyPath: player
       value: 
@@ -24568,6 +24572,39 @@ Transform:
   m_Father: {fileID: 621178852}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1402163609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9161436766510927752, guid: 9daa2e4a547297b4693ffa2c2947d959, type: 3}
+  m_PrefabInstance: {fileID: 1295151617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402163619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402163609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddcc2bd65acee34586d21abc36de5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacksClips: []
+  attackClipAudiosBoost: 1
+  stepsClips: []
+  stepsClipAudiosBoost: 1
+  jumpClips: []
+  jumpClipAudiosBoost: 1
+  getDamageClips:
+  - {fileID: 8300000, guid: 602c6deaac766a64fa5fed58e2456975, type: 3}
+  - {fileID: 8300000, guid: d26271454dec2a548bb5ebd02c160f6d, type: 3}
+  - {fileID: 8300000, guid: b5e9157bee1cf6b4786aa5463bb56fdd, type: 3}
+  - {fileID: 8300000, guid: aede95725ef8dbb4ca3da7aab43f539b, type: 3}
+  getDamageClipAudiosBoost: 1
+  destroyBodyClip: {fileID: 8300000, guid: 879bd59560d0b974589116786506e7d4, type: 3}
+  destroyBodyClipAudiosBoost: 1
+  deathCryClip: {fileID: 8300000, guid: 3b3167d82c9bc614d95be92ee11dc09f, type: 3}
+  deathCryClipAudiosBoost: 0.7
 --- !u!4 &1417226015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3562428521472082313, guid: 352ac5bca92028946b2e8b401256130c, type: 3}
