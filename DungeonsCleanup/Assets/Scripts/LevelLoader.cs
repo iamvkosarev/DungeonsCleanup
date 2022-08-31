@@ -12,6 +12,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private PlayerDataManager playerDataManager;
     private Animator myAnimator;
+    private AudioSource myAudioSource;
     private int currentSceneIndex;
     enum FollowingState
     {
@@ -21,7 +22,7 @@ public class LevelLoader : MonoBehaviour
     private FollowingState followingState;
     private void Start()
     {
-       
+        myAudioSource = GetComponent<AudioSource>();
         canvas.active = true;
         myAnimator = GetComponent<Animator>();
         StartCoroutine(LoadingStartCrossfade());
@@ -42,6 +43,7 @@ public class LevelLoader : MonoBehaviour
     {
         SetFollowingState(FollowingState.NextScene);
         canvas.active = true;
+        myAudioSource.Play();
         myAnimator.SetTrigger("StartExitCrossfade");
     }
     public void LoadMainMenuFromGameScene()

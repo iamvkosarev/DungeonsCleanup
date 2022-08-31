@@ -11,6 +11,10 @@ public class BatPathing : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private int batDamage = 15;
     [SerializeField] private float attackRadius = 1f;
+    [SerializeField] private AudioClip[] batAttacks;
+    [SerializeField] private float audioBoostAttack = 1f;
+    [SerializeField] private LayerMask playerLayerMask;
+    private int batAttacksLength;
     private PlayerMovement player;
     private Rigidbody2D myRigidbody;
     private float distanceToAttack;
@@ -24,10 +28,13 @@ public class BatPathing : MonoBehaviour
     private Animator myAnimator;
     private Health health;
     private bool shouldBatFly = true;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        batAttacksLength = batAttacks.Length;
         //GetComponent + FindObjectOfType
+        audioSource = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -48,11 +55,14 @@ public class BatPathing : MonoBehaviour
     {
         bool playerInAttackRadius = Mathf.Abs(player.transform.position.x - transform.position.x) < distanceToAttack
                 && Mathf.Abs(player.transform.position.y - transform.position.y) < distanceToAttack;
+        RaycastHit2D isPlayerInAttackRadius = 
+            Physics2D.Raycast(transform.position, player.transform.position, distanceToAttack);
 
         if(shouldBatFly)
         {
-            if(playerInAttackRadius)  
+            if(isPlayerInAttackRadius.collider.gameObject.tag == "Player")
             {
+                Debug.Log(isPlayerInAttackRadius.transform.name);
                 MoveTowardPlayer();
             }
 
@@ -86,7 +96,6 @@ public class BatPathing : MonoBehaviour
         transform.position = Vector3.MoveTowards
             (transform.position, player.transform.position, towardSpeed * Time.deltaTime);
 
-
         if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
             && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
@@ -106,6 +115,8 @@ public class BatPathing : MonoBehaviour
        if(Mathf.Abs(player.transform.position.x - transform.position.x) < attackRadius
              && Mathf.Abs(player.transform.position.y - transform.position.y) < attackRadius)
         {
+
+            audioSource.PlayOneShot(batAttacks[Random.Range(0, batAttacksLength)], audioBoostAttack);
             player.GetComponent<PlayerHealth>().TakeAwayHelath(batDamage);
         }
         myAnimator.SetBool("Attack", false);

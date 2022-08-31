@@ -32,7 +32,7 @@ public class MoveForward : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         AddMove(updateSpeed);
         StopOnPos();

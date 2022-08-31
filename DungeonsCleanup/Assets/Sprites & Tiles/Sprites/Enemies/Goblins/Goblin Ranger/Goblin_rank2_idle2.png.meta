@@ -87,6 +87,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -96,8 +97,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -118,6 +119,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -638,6 +641,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Goblin_rank2_idle2_6: -3734265100222788933
+      Goblin_rank2_idle2_14: -4072263384074689438
+      Goblin_rank2_idle2_15: -8056492991870917064
+      Goblin_rank2_idle2_0: -8268408281919054282
+      Goblin_rank2_idle2_18: 1185960365118379272
+      Goblin_rank2_idle2_5: -8195594750068815727
+      Goblin_rank2_idle2_20: 6073971325238283057
+      Goblin_rank2_idle2_19: 3638120954951115845
+      Goblin_rank2_idle2_7: -5618472181462778869
+      Goblin_rank2_idle2_3: 8010710874724589724
+      Goblin_rank2_idle2_12: -4347014801399294727
+      Goblin_rank2_idle2_1: -4604692895849264310
+      Goblin_rank2_idle2_8: 2307397256221347969
+      Goblin_rank2_idle2_9: 7347981021838360216
+      Goblin_rank2_idle2_13: -1753958525745371666
+      Goblin_rank2_idle2_16: -7809827495413519197
+      Goblin_rank2_idle2_4: -6629677688863364281
+      Goblin_rank2_idle2_10: 7323252355545818780
+      Goblin_rank2_idle2_11: -1818772003765016843
+      Goblin_rank2_idle2_2: -636212659975360117
+      Goblin_rank2_idle2_17: 92772456267508089
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

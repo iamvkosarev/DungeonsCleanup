@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,8 +82,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -103,6 +104,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -560,6 +563,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      2-5D-Walls-6_13: -8237610023308294414
+      2-5D-Walls-6_14: -1416789692971606639
+      2-5D-Walls-6_6: 5200740758474510694
+      2-5D-Walls-6_10: -2126663189256911334
+      2-5D-Walls-6_12: 2175182183669292021
+      2-5D-Walls-6_8: 5778435815868510166
+      2-5D-Walls-6_4: -7203874104473991978
+      2-5D-Walls-6_15: -8617823444811608566
+      2-5D-Walls-6_0: 1000999698836443715
+      2-5D-Walls-6_3: 4225124817547176701
+      2-5D-Walls-6_11: -7225858304141055709
+      2-5D-Walls-6_5: -6627251956098316360
+      2-5D-Walls-6_7: 5740810493586083444
+      2-5D-Walls-6_2: 5436657939189705172
+      2-5D-Walls-6_9: -5057555397061837061
+      2-5D-Walls-6_1: -8732966323264388807
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

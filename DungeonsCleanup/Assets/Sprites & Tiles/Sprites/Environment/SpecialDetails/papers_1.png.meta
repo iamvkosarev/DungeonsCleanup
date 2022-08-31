@@ -117,6 +117,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -126,8 +127,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -148,6 +149,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -866,6 +869,38 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      papers_1_17: 5763429056144481270
+      papers_1_1: -8975995153295653506
+      papers_1_24: -861384538869533284
+      papers_1_5: 2360299218929964463
+      papers_1_13: 9094606249180571621
+      papers_1_22: 3021087275613134461
+      papers_1_26: -4457742402408204776
+      papers_1_14: 3950895723837238220
+      papers_1_7: 6797892054832778540
+      papers_1_23: 2305233539764484061
+      papers_1_28: -4491756051096058018
+      papers_1_30: -6976607433964964097
+      papers_1_3: -1538745833187280267
+      papers_1_10: 1805896673383686694
+      papers_1_15: 2344300831442887392
+      papers_1_9: 8347914233653645547
+      papers_1_27: -8621658560290094178
+      papers_1_11: 5326647686458966639
+      papers_1_19: -1981791017179160121
+      papers_1_0: 409453466813378598
+      papers_1_4: -7116427927336788800
+      papers_1_20: 1142302027439552632
+      papers_1_18: 1955839811484786835
+      papers_1_2: 6500308818900109624
+      papers_1_25: -7564465060709655923
+      papers_1_8: -8314979141496934119
+      papers_1_12: -2417878040681857596
+      papers_1_29: -8670032075576498769
+      papers_1_6: 5893268447072081840
+      papers_1_16: -6055620103111968998
+      papers_1_21: -8061141633076089554
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

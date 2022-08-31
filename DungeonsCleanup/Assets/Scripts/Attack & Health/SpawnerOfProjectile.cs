@@ -10,12 +10,12 @@ public class SpawnerOfProjectile : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] bool changeDirectionOfWaveInOpposite;
 
-    DetectorEnemiesInAttackZone detector;
+    CharacterAttackChecker characterAttackChecker;
 
     private void Start() 
     {
-        
-        detector = gameObject.GetComponent<DetectorEnemiesInAttackZone>();
+
+        characterAttackChecker = gameObject.GetComponent<CharacterAttackChecker>();
     }
 
 
@@ -23,7 +23,7 @@ public class SpawnerOfProjectile : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnProjectilePoint.position, Quaternion.identity);
         float changeDirectionParam = 1;
-        Vector2 singleVectorDirectionPlayerDetecterRay = detector.GetSingleDetectorRayDirection();
+        Vector2 singleVectorDirectionPlayerDetecterRay = (characterAttackChecker.firstDetectedCharacterPos - transform.position).normalized;
         if (changeDirectionOfWaveInOpposite)
         {
             changeDirectionParam = -1;

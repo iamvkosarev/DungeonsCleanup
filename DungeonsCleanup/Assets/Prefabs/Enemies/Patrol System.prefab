@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487906008367664098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.19, y: -0.07, z: 0}
+  m_LocalPosition: {x: -3.65, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1487906009691106617}
@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487906008859918013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.99, y: -0.07, z: 0}
+  m_LocalPosition: {x: 3.29, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1487906009691106617}
@@ -171,10 +171,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints:
-  - {fileID: 1487906008859918010}
   - {fileID: 1487906008367664095}
+  - {fileID: 1487906008859918010}
   patrolmen:
   - {fileID: 0}
+  patrolZonePoint: {fileID: 0}
+  patrolZoneSize: {x: 15, y: 5}
+  patrolZoneColorCheck: {r: 1, g: 0.025157154, b: 0.025157154, a: 0.09803922}
+  playerZoneLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!1 &1487906009930170650
 GameObject:
   m_ObjectHideFlags: 0

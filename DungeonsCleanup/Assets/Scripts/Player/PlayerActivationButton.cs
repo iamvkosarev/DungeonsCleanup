@@ -9,37 +9,48 @@ public class PlayerActivationButton : MonoBehaviour
     [SerializeField] string absorptionButtonName = "Поглатить";
     [SerializeField] float checkRadius;
     [Header("Layers")]
+    [SerializeField] LayerMask interactionWithPlayerLayer;
     [SerializeField] LayerMask weaponLayer;
-    [SerializeField] LayerMask elevatorLayer;
+    [SerializeField] string elevatorTag;
     [SerializeField] LayerMask doorLayer;
-    [SerializeField] LayerMask tabletLayer;
+    [SerializeField] string tabletTag;
     [SerializeField] LayerMask itemLayer;
-    [SerializeField] LayerMask absorptionShadowLayer;
+    [SerializeField] string absorptionShadowTag;
+    [SerializeField] string portalTag;
     [SerializeField] ActivateSomeThingButton activateSomeThingButton;
+
+    [SerializeField] SpriteRenderer bodySpriteRenderer;
 
     [Header("OpenDoor")]
     [SerializeField] Transform doorCheckPoint;
     [SerializeField] Vector2 doorCheckSize;
 
+    LoseMenuScript loseMenuScript;
     PlayerActionControls playerActionControls;
     PlayerAttackManager playerAttackManager;
+    PlayerMovement playerMovement;
     PlayerDevelopmentManager playerDevelopmentManager;
     TextMeshProUGUI buttonsTextMPro;
+    PlayerHealth playerHealth;
     bool canActivateHatch;
     bool isReadyToActivateHatch;
-    bool isReadyToActivateAbsorption;
     bool canPlayerActivateSomeThing;
-    bool canActivateAbsorption;
+    bool isEnemyReadyToAbsorption = false;
+    bool isCurrentItemIsShadowBottle;
     private void Awake()
     {
         playerActionControls = new PlayerActionControls();
         playerActionControls.Land.ActivateSomething.started += _ => ActivateSomeThing();
+
     }
     private void Start()
     {
+        playerHealth = GetComponent<PlayerHealth>();
+        playerMovement = GetComponent<PlayerMovement>();
         buttonsTextMPro = activateSomeThingButton.GetComponentInChildren<TextMeshProUGUI>();
         playerDevelopmentManager = GetComponent<PlayerDevelopmentManager>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
+        loseMenuScript = playerHealth.GetLoseCanvasScripts();
     }
 
     private void ActivateSomeThing()
@@ -49,29 +60,32 @@ public class PlayerActivationButton : MonoBehaviour
         TransferPlayer();
         ShowTabletText();
         ShowItmeCanvas();
+        ShowPortalCanvas();
         ActivateHatch();
         AbsorptionShadow();
     }
 
-    private void AbsorptionShadow()
+    private void ShowPortalCanvas()
     {
-        if (canActivateAbsorption)
+        Collider2D portalCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (portalCollider != null && portalCollider.gameObject.tag == portalTag)
         {
-            isReadyToActivateAbsorption = true;
+            Debug.Log("Portal!");
+            portalCollider.GetComponent<Portal>().InstansiatePortalInfoCanvas(playerHealth,transform,playerMovement,loseMenuScript, bodySpriteRenderer);
         }
     }
 
-    public void CanActivateAbsorption(bool mode)
+    private void AbsorptionShadow()
     {
-        canActivateAbsorption = mode;
-        if (!mode)
+        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        Collider2D absorptionCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (absorptionCollider && isCurrentItemIsShadowBottle && absorptionCollider.gameObject.tag == absorptionShadowTag)
         {
-            isReadyToActivateAbsorption = false;
+            AbsorptionShadow absorptionShadow = absorptionCollider.gameObject.GetComponent<AbsorptionShadow>();
+            playerDevelopmentManager.AddShadow(absorptionShadow.shadowId);
+            Destroy(absorptionCollider.gameObject);
         }
-    }
-    public bool IsReadyForActivationAbsorption()
-    {
-        return isReadyToActivateAbsorption;
+
     }
 
     private void Update()
@@ -104,7 +118,7 @@ public class PlayerActivationButton : MonoBehaviour
     {
         if (canPlayerActivateSomeThing)
         {
-            if (canActivateAbsorption)
+            if (isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle)
             {
                 buttonsTextMPro.text = absorptionButtonName;
             }
@@ -123,12 +137,25 @@ public class PlayerActivationButton : MonoBehaviour
     private void CheckPossibilityToActivateSomeThing()
     {
         bool isPlayerTouchDoor = Physics2D.OverlapBox(doorCheckPoint.position, doorCheckSize, 0, doorLayer);
-        bool isPlayerTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
-        bool isPlayerTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
+        bool isTouchPortal = false;
+        bool isTouchElevator = false;
+        bool isTouchTablet = false;
+        Collider2D colliderToTouchInteractibleObject = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (colliderToTouchInteractibleObject)
+        {
+            isTouchPortal = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == portalTag;
+            isTouchElevator = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == elevatorTag;
+            isTouchTablet = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == tabletTag;
+            isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer).gameObject.tag == absorptionShadowTag;
+        }
+        else
+        {
+            isEnemyReadyToAbsorption = false;
+        }
+
         bool isPlayerTouchItem = Physics2D.OverlapCircle(transform.position, checkRadius, itemLayer);
-        bool isEnemyReadyToAbsorption = Physics2D.OverlapCircle(transform.position, checkRadius, absorptionShadowLayer);
-        bool isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
-        canPlayerActivateSomeThing = (canActivateHatch || isPlayerTouchDoor || isPlayerTouchElevator || isPlayerTouchTablet || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
+        isCurrentItemIsShadowBottle = playerDevelopmentManager.IsCurrentSelectedItemAShadowBorrle();
+        canPlayerActivateSomeThing = (canActivateHatch|| isTouchElevator || isTouchTablet || isPlayerTouchDoor || isTouchPortal || isPlayerTouchItem || isEnemyReadyToAbsorption && isCurrentItemIsShadowBottle);
     }
 
 
@@ -145,8 +172,8 @@ public class PlayerActivationButton : MonoBehaviour
 
     private void TransferPlayer()
     {
-        Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, elevatorLayer);
-        if (elevatorCollider != null)
+        Collider2D elevatorCollider =  Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (elevatorCollider != null && elevatorCollider.gameObject.tag == elevatorTag)
         {
             Debug.Log("Teleportation!");
             elevatorCollider.gameObject.GetComponent<Elevator>().Transfer(gameObject.transform);
@@ -158,13 +185,13 @@ public class PlayerActivationButton : MonoBehaviour
         if (itemCollider != null)
         {
             Debug.Log("Item!");
-            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas(playerDevelopmentManager);
+            itemCollider.GetComponent<Item>().InstansiateItemInfoCanvas(playerDevelopmentManager, loseMenuScript);
         }
     }
     private void ShowTabletText()
     {
-        Collider2D paperCollider = Physics2D.OverlapCircle(transform.position, checkRadius, tabletLayer);
-        if (paperCollider != null)
+        Collider2D paperCollider = Physics2D.OverlapCircle(transform.position, checkRadius, interactionWithPlayerLayer);
+        if (paperCollider != null && paperCollider.gameObject.tag == tabletTag)
         {
             Debug.Log("Tablet Text!");
             paperCollider.GetComponent<Paper>().InstansiateTabletCanvas();

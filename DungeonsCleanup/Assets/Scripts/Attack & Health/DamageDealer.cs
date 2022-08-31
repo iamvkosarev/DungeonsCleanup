@@ -21,6 +21,10 @@ public class DamageDealer : MonoBehaviour
     {
         this.damage = damage;
     }
+    public int GetDamge()
+    {
+        return damage;
+    }
     private void Update()
     {
         if (canAttack)

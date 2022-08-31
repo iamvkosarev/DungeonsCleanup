@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,8 +82,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -103,6 +104,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -485,6 +488,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      arrows_and_other_on ground_1_2: 15699799430932914
+      arrows_and_other_on ground_1_0: -4762671160924875125
+      arrows_and_other_on ground_1_9: 1207177986305768835
+      arrows_and_other_on ground_1_6: -5372976919795455948
+      arrows_and_other_on ground_1_4: -7675682976249936801
+      arrows_and_other_on ground_1_12: -3547496245422653467
+      arrows_and_other_on ground_1_5: -4383927128322296793
+      arrows_and_other_on ground_1_1: 3136362218245977952
+      arrows_and_other_on ground_1_11: 8730551126317989094
+      arrows_and_other_on ground_1_14: 5033329410977934434
+      arrows_and_other_on ground_1_8: -6925625731933350753
+      arrows_and_other_on ground_1_15: 197876937804015508
+      arrows_and_other_on ground_1_3: -5985046572174740486
+      arrows_and_other_on ground_1_7: 6796774180395197005
+      arrows_and_other_on ground_1_10: 4285511331543482921
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

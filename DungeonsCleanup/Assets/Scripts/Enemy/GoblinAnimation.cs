@@ -8,20 +8,23 @@ public class GoblinAnimation : MonoBehaviour
     [SerializeField] private int maxNumOfTurnings;
     Animator myAnimator;
     Patrolman myPatrolmanScript;
-    DetectorEnemiesInAttackZone detectorEnemiesInAttackZone;
+    CharacterAttackChecker characterAttackCheker;
+    CharacterNavigatorController characterNavigatorController;
+    Rigidbody2D myRigidbody2D;
     EnemiesMovement myMovementScript;
     bool isAttacking;
     bool isWalking;
     bool isTurningHead;
     bool isRunning;
-    bool facingRight = true;
     int countTrunings = 1;
     int numOfTurning = 0;
-    private void Start()
+    private void Awake()
     {
+        myRigidbody2D = GetComponent<Rigidbody2D>();
+        characterNavigatorController = GetComponent<CharacterNavigatorController>();
         myAnimator = GetComponent<Animator>();
         myPatrolmanScript = GetComponent<Patrolman>();
-        detectorEnemiesInAttackZone = GetComponent<DetectorEnemiesInAttackZone>();
+        characterAttackCheker = GetComponent<CharacterAttackChecker>();
         myMovementScript = GetComponent<EnemiesMovement>();
     }
 
@@ -34,38 +37,25 @@ public class GoblinAnimation : MonoBehaviour
 
     private void CheckScripts()
     {
-        if (detectorEnemiesInAttackZone.IsEnemyDetected())
+        if (characterAttackCheker.detected)
         {
             isAttacking = true;
             countTrunings = 1;
             numOfTurning = -1;
         }
-        else if (myMovementScript.IsWalking())
+        else if (characterNavigatorController.movementType == MovementType.Walk)
         {
             isWalking = true;
             countTrunings = 1;
             numOfTurning = -1;
         }
-        else if (myMovementScript.IsRunning())
+        else if (characterNavigatorController.movementType == MovementType.Run)
         {
             isRunning = true;
             countTrunings = 1;
             numOfTurning = -1;
         }
-        else if (myPatrolmanScript != null)
-        {
-            if (myPatrolmanScript.IsWaitingOnPoint())
-            {
-                if (numOfTurning == -1)
-                {
-                    numOfTurning = UnityEngine.Random.Range(0, maxNumOfTurnings + 1);
-                }
-                if (numOfTurning >= countTrunings)
-                {
-                    isTurningHead = true;
-                }
-            }
-        }
+        // turn head;
     }
 
     public void CountTurn()

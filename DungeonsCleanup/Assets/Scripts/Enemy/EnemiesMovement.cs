@@ -49,6 +49,7 @@ public class EnemiesMovement : MonoBehaviour
     bool facingRight = false;
     bool canRotate = true;
     bool canMove = true;
+    bool readyForPunch = false;
 
     private void Start()
     {
@@ -149,6 +150,7 @@ public class EnemiesMovement : MonoBehaviour
 
     private void Slowing()
     {
+        if (readyForPunch) { return; }
         if (currentStateMove == StatesOfMove.Stand && !startToSlowing  && myRigidbody2D.velocity.x !=0)
         {
             startToSlowing = true;
@@ -294,18 +296,24 @@ public class EnemiesMovement : MonoBehaviour
 
     public void GetPunch(float pushXForce, float pushYForce)
     {
-        if(player.gameObject.transform.position.x > transform.position.x)
-            myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
-        else
-            myRigidbody2D.AddForce(new Vector2(pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
-        StartCoroutine(ControlMoving());
+
+        myRigidbody2D.velocity += new Vector2(pushXForce, pushYForce);
+        StartCoroutine(SuspendHorizontalMoving(1f, true));
     }
 
-    private IEnumerator ControlMoving()
+    private IEnumerator SuspendHorizontalMoving(float horizontalMovingSuspendDelay, bool readyForPunch)
     {
+        if (readyForPunch)
+        {
+            this.readyForPunch = true;
+        }
         StopMoving();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(horizontalMovingSuspendDelay);
         StartMoving();
+        if (readyForPunch)
+        {
+            this.readyForPunch = false;
+        }
     }
     private void OnDrawGizmosSelected()
     {

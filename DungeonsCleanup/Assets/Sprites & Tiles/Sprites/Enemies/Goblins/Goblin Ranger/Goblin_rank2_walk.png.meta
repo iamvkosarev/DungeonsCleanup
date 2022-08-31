@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -57,8 +58,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -79,6 +80,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -314,6 +317,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Goblin_ranger_walk-Sheet_0: -4990764983425702103
+      Goblin_ranger_walk-Sheet_7: -3569783124404730305
+      Goblin_ranger_walk-Sheet_5: -6680170758297841986
+      Goblin_ranger_walk-Sheet_6: -1644542473416614244
+      Goblin_ranger_walk-Sheet_2: 8161312987077984164
+      Goblin_ranger_walk-Sheet_1: 4288337846588148853
+      Goblin_ranger_walk-Sheet_3: 3920479266010033527
+      Goblin_ranger_walk-Sheet_4: 5184106605040217228
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

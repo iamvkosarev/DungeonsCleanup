@@ -8,13 +8,19 @@ public enum AbilityType
 {
     Null,
     WindPush,
-    CallOfTheShadows
+    CallOfTheShadows,
+    HealthAdding
 }
 public class Abilities : MonoBehaviour
 {
     [SerializeField] private ListOfAllShadows listOfAllShadows;
     private Vector2 radiusForPush;
 
+    public bool HealthAdding(PlayerHealth playerHealth, int addingHealth)
+    {
+        playerHealth.AddHealth(addingHealth);
+        return true;
+    }
     public  void CallOfTheShadows(Transform playerTransform, GameObject shadow, PatrolPoint playerPatrolPoint)
     {
         Debug.Log("Запуск Вызов теней");
@@ -37,23 +43,16 @@ public class Abilities : MonoBehaviour
             SaveSystem.SaveShadowBorrleData(shadowsBottleId, shadowBorrleData.listOfShadows);
         }
     }
-    public void WindPush(Vector2 playerPosition, Vector2 windPushRadius, LayerMask enemiesLayer, float pushForce)
+    public void WindPush(Vector2 playerPos, Vector2 checkPoint, Vector2 chechZone, LayerMask checkLayer, float pushForce)
     {
         Debug.Log("Do wind push");
-        bool ifGoblinsInWindPushRadius = Physics2D.OverlapBox(playerPosition, windPushRadius, 0, enemiesLayer);
+        bool ifGoblinsInWindPushRadius = Physics2D.OverlapBox(checkPoint, chechZone, 0, checkLayer);
         Debug.Log(ifGoblinsInWindPushRadius);
-        Collider2D[] enemiesInWindPushRadius = Physics2D.OverlapBoxAll(playerPosition, windPushRadius, 0, enemiesLayer);
+        Collider2D[] enemiesInWindPushRadius = Physics2D.OverlapBoxAll(checkPoint, chechZone, 0, checkLayer);
         foreach(Collider2D enemy in enemiesInWindPushRadius)
         {
-            Vector2 feetPosition = enemy.gameObject.transform.parent.position;
-            Debug.Log(feetPosition +" "+ playerPosition);
-            float gipotenusa = Mathf.Sqrt(Mathf.Pow(feetPosition.x - playerPosition.x, 2) + Mathf.Pow(feetPosition.y - playerPosition.y,2));
-            Vector2 singleVector;
-            if (gipotenusa == 0)
-            {
-                singleVector = new Vector2(0, 0);
-            }
-            else { singleVector = new Vector2(feetPosition.x - playerPosition.x / gipotenusa, feetPosition.y - playerPosition.y / gipotenusa); }
+            Vector2 posEnemie = enemy.gameObject.transform.position;
+            Vector2 singleVector = new Vector2(Mathf.Sign(posEnemie.x - playerPos.x), 0.2f);
 
             EnemiesMovement enemiesMovement = enemy.gameObject.GetComponentInParent<EnemiesMovement>();
             if (enemiesMovement)

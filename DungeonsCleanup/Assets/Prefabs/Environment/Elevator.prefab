@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1138667656888213083}
   m_Layer: 21
   m_Name: Elevator
-  m_TagString: Untagged
+  m_TagString: Elevator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 217596229
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2399855185851377771, guid: 218869f861d24b1448b4cfa9f4ee42d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.16494845}
     oldSize: {x: 2, y: 3.03125}
     newSize: {x: 2, y: 3.03125}
     adaptiveTilingThreshold: 0.5

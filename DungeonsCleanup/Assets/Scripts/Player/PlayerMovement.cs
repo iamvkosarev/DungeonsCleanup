@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private MovementButtonsManager movementButtonsManager;
     [SerializeField] private MovingJoystickProperties movingJoystickProperties;
     private MovementGamepad movementGamepad;
+    private EchoEffect echoEffect;
 
     [Header("For Horizontal Movement")]
-    [SerializeField] private float runSpeed;
+    [SerializeField] public float runSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float startingMovingTransitionTime;
     [SerializeField] private float endingMovingTransitionTime;
@@ -73,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Tumbleweed")]
     [SerializeField] private float tumbleweedSpeed;
-    [SerializeField] private CapsuleCollider2D feetCollider;
-    [SerializeField] private CapsuleCollider2D feetNotTouchingFeetCollide;
+    [SerializeField] private BoxCollider2D feetCollider;
+    [SerializeField] private BoxCollider2D feetNotTouchingFeetCollide;
     [SerializeField] private Transform firstPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private Transform secondPointForCheckingEnemiesDuringATumbleweed;
     [SerializeField] private float maximumResponseTumbleweedTime;
@@ -97,55 +98,70 @@ public class PlayerMovement : MonoBehaviour
     private float timeSinceStartCheckTumbleweed = 0;
 
     //catching files
-    private PlayerActionControls playerActionControls;
     private Rigidbody2D myRigidbody2D;
     private Animator myAnimator;
+    private PlayerAnimation playerAnimation;
     private PlayerHealth myHealth;
+    private LoseMenuScript loseMenuScript;
     private PlayerAttackManager myAttackManager;
 
     // param
     private bool wasJumpRecently = false;
     private bool facingRight = true;
-    private bool isAttackButtonPressed;
-    private bool isJumpButtonPressed;
+    private bool isAttackButtonPressed = false;
+    private bool isJumpButtonPressed = false;
     private bool canRotation = true;
     private float joystickXAxis;
     private float joystickYAxis;
+    private bool readyForPunch = false;
+    private bool movement = true;
 
-    #region Customization Player Action Controls
+    private PlayerActionControls inputActions;
+
+    #region Set Data From Imput System
     private void Awake()
     {
-        playerActionControls = new PlayerActionControls();
-        // Attack
-        playerActionControls.Land.Attack.started += _ => isAttackButtonPressed = true;
-        playerActionControls.Land.Attack.canceled += _ => isAttackButtonPressed = false;
-        playerActionControls.Land.Jump.started += _ => isJumpButtonPressed = true;
-        playerActionControls.Land.Jump.canceled += _ => isJumpButtonPressed = false;
-        playerActionControls.Land.MoveHorizontal.started += _ => CheckTumbleweed();
-    }
+        inputActions = new PlayerActionControls();
+        inputActions.Land.MoveHorizontal.performed+= _ => joystickXAxis = inputActions.Land.MoveHorizontal.ReadValue<float>();
+        inputActions.Land.Jump.performed += _ => isJumpButtonPressed = true;
+        inputActions.Land.Jump.canceled += _ => isJumpButtonPressed = false;
+        inputActions.Land.Attack.performed += _ => isAttackButtonPressed = true;
+        inputActions.Land.Attack.canceled += _ => isAttackButtonPressed = false;
+        inputActions.Land.MoveHorizontal.started += _ => CheckTumbleweed(inputActions.Land.MoveHorizontal.ReadValue<float>());
 
+    }
     private void OnEnable()
     {
-        playerActionControls.Enable();
+        inputActions.Enable();
     }
     private void OnDisable()
     {
-        playerActionControls.Disable();
+        inputActions.Disable();
     }
     #endregion
 
     void Start()
     {
+        echoEffect = GetComponent<EchoEffect>();
         myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        playerAnimation = GetComponent<PlayerAnimation>();
+        if (playerAnimation)
+        {
+            playerAnimation.OnReadyForLife += StartMovementAfterDeath;
+        }
         myHealth = GetComponent<PlayerHealth>();
+        if (myHealth)
+        {
+            myHealth.OnDeath += StopMovementOnDeath;
+        }
         myAttackManager = GetComponent<PlayerAttackManager>();
         movementGamepad = joystick.GetComponent<MovementGamepad>();
-        SettingsData settingsData = SaveSystem.LoadSettings();
+        /*SettingsData settingsData = SaveSystem.LoadSettings();
         movementGamepad.SetNewAlphaChannel(settingsData.alphaChannelParam);
         movementGamepad.SetNewPos(settingsData.posXParam, settingsData.posYParam);
-        movementGamepad.SetNewScale(settingsData.scaleParam);
+        movementGamepad.SetNewScale(settingsData.scaleParam);*/
     }
     void Update()
     {
@@ -160,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!movement) { return; }
         HorizontalMove();
         Jump();
         WallSlide();
@@ -171,18 +188,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
         //canJump = (isJumpButtonPressed) ? true : false;
         StartCoroutine(JumpWorkWithDalay());
         joystickYAxis = (isJumpButtonPressed) ? 1f : 0f;
     }
     IEnumerator JumpWorkWithDalay()
     {
+
         bool _canJump = (isJumpButtonPressed) ? true : false;
         if (_canJump && isStandingOnGround) { StopHorizontalMovement(); }
-        yield return new WaitForSeconds((isStandingOnGround)? 0.15f : 0f);
+        yield return new WaitForSeconds((isStandingOnGround)? 0f : 0f);
         if (_canJump) { StartHorizontalMovement(); }
         canJump = _canJump;
+    }
+
+
+    private void StopMovementOnDeath(object obj, EventArgs e)
+    {
+        SetCollidingOfEnemiesMode(false);
+        movement = false;
+        myRigidbody2D.velocity = new Vector2(0, myRigidbody2D.velocity.y);
+    }
+    private void StartMovementAfterDeath(object obj, EventArgs e)
+    {
+        SetCollidingOfEnemiesMode(true);
+        movement = true;
     }
     #region Touching
 
@@ -224,7 +254,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isTumbleweed)
         {
+            echoEffect.work = true;
             myRigidbody2D.velocity = new Vector2(tumbleweedSpeed * Mathf.Sign(transform.rotation.y), myRigidbody2D.velocity.y);
+        }
+        else
+        {
+            echoEffect.work = false;
         }
     }
 
@@ -258,11 +293,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void CheckTumbleweed()
+    private void CheckTumbleweed(float horizontalMoveData)
     {
         if (wasTumbleweedSuspended) { return; }
-        joystickXAxis = playerActionControls.Land.MoveHorizontal.ReadValue<float>();
-        if (joystickXAxis > 0)
+        if (horizontalMoveData > 0)
         {
             if (lastPressedHorisontalButton != PressedHorisontalButtons.right ||
                 Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
@@ -278,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(DoingTumblweed());
             }
         }
-        else if (joystickXAxis < 0)
+        else if (horizontalMoveData < 0)
         {
             if (lastPressedHorisontalButton != PressedHorisontalButtons.left ||
                 Time.time - timeSinceStartCheckTumbleweed > maximumResponseTumbleweedTime)
@@ -391,7 +425,7 @@ public class PlayerMovement : MonoBehaviour
 
             //myRigitbody2D.AddForce(new Vector2(wallJumpForce * wallJumpDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.x), ForceMode2D.Impulse );
             float playerDirection = Mathf.Sign(transform.rotation.y);
-            StartCoroutine(SuspendHorizontalMoving());
+            StartCoroutine(SuspendHorizontalMoving(horizontalMovingSuspendDelay, false));
             myRigidbody2D.velocity = new Vector2(wallJumpForce * -playerDirection * wallJumpAngle.x, wallJumpForce * wallJumpAngle.y);
             canJump = false;
             StartCoroutine(SuspendWallJumps());
@@ -452,10 +486,18 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Horizontal move
-    IEnumerator SuspendHorizontalMoving()
+    IEnumerator SuspendHorizontalMoving(float horizontalMovingSuspendDelay, bool readyForPunch)
     {
+        if (readyForPunch)
+        {
+            this.readyForPunch = true;
+        }
         StopHorizontalMovement();
         yield return new WaitForSeconds(horizontalMovingSuspendDelay);
+        if (readyForPunch)
+        {
+            this.readyForPunch = false;
+        }
         StartHorizontalMovement();
 
     }
@@ -521,18 +563,26 @@ public class PlayerMovement : MonoBehaviour
     {
         isMovingStateManagementSuspended = true;
         timeSinceStartTransition = Time.time;
-        velocityOnTheStartOfTransition = myRigidbody2D.velocity.x ;
+        velocityOnTheStartOfTransition = myRigidbody2D.velocity.x * Mathf.Sign(joystickXAxis);
         velocityInTheEndOfTransition = velocityInTheEndOfTransition_input * Mathf.Sign(joystickXAxis);
     }
 
     private void HorizontalMove()
     {
         if (areHorizontalMovingSuspended) {
-            myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
-            return; }
+            if (!readyForPunch)
+            {
+                myRigidbody2D.velocity = new Vector2(0f, myRigidbody2D.velocity.y);
+            }
+            else
+            {
+                myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, myRigidbody2D.velocity.y);
+            }
+            return;
+        }
         float velocityYAxis = myRigidbody2D.velocity.y;
         float absJpystickXAxis = Mathf.Abs(joystickXAxis);
-        if (!IsPlyerStanding() && absJpystickXAxis == 0 || areHorizontalMovingSuspended) { return; }
+        if (areWallJumpsSuspended) { return; }
         if (currentState == StateOFMove.TransitonUp)
         {
             if (Time.time <= timeSinceStartTransition + startingMovingTransitionTime)
@@ -634,6 +684,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (raincoatInFlightSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(raincoatInFlightSFX, audioBoost);
         }
     }
@@ -641,6 +695,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (firstStepSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(firstStepSFX, audioBoost);
         }
 
@@ -649,6 +707,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (secondStepSFX)
         {
+            if (!myAudioSource)
+            {
+                myAudioSource = GetComponent<AudioSource>();
+            }
             myAudioSource.PlayOneShot(secondStepSFX, audioBoost);
         }
     }
@@ -659,7 +721,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetPunch(float pushXForce, float pushYForce)
     {
-        myRigidbody2D.AddForce(new Vector2(-pushXForce * Mathf.Sign(transform.localScale.x), pushYForce));
+        StartCoroutine(SuspendHorizontalMoving(0.5f, true));
+        myRigidbody2D.velocity += new Vector2(pushXForce, pushYForce);
         //StartCoroutine(SuspendHorizontalMoving());
     }
     private void UpdateColliderInBody()

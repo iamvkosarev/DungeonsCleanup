@@ -105,6 +105,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,9 +114,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -136,6 +137,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -2189,6 +2192,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Player-Sheet_15: 5539777403619449140
+      Player-Sheet_24: -942514622319641326
+      Player-Sheet_23: -7289432629376863316
+      Player-Sheet_14: 7634215581329522130
+      Player-Sheet_0: 4518225611054890064
+      Player-Sheet_13: 3286906832049929247
+      Player-Sheet_1: 1871674578834246284
+      Player-Sheet_7: 8222716190985997936
+      Player-Sheet_17: 2187288752748286106
+      Player-Sheet_26: 5880835566841204743
+      Player-Sheet_3: 3489784368332026933
+      Player-Sheet_10: 2707164253404849536
+      Player-Sheet_25: -294642602615556148
+      Player-Sheet_16: -6321474878828185251
+      Player-Sheet_19: 6562097317275539161
+      Player-Sheet_12: 1723550264998150791
+      Player-Sheet_21: -5136658248656738812
+      Player-Sheet_4: -3944583295012536477
+      Player-Sheet_5: 3090173003755996115
+      Player-Sheet_9: -3961127741491812631
+      Player-Sheet_2: -8148742256322455360
+      Player-Sheet_11: 760240769326365700
+      Player-Sheet_22: 4115175211340068186
+      Player-Sheet_20: 5492903409996221455
+      Player-Sheet_6: 8403341588387058359
+      Player-Sheet_18: -8430032442272652478
+      Player-Sheet_8: -3764308334532073066
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

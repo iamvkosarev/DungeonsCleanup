@@ -131,10 +131,10 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerDevelopmentManager.SetCurrentExp(currentExp);
         playerDevelopmentManager.SetCurrentLvl(lvl);
-        playerDevelopmentManager.SetExpInExpBar();
         playerDevelopmentManager.SetItems(listOfItemsId, listOfItemsTypes);
         playerDevelopmentManager.SetCurrentSelectedItem(currentSelectedItem);
         playerDevelopmentManager.SetParametersAccordingToTheLvl();
+        playerDevelopmentManager.SetExpInExpBar();
     }
 
     private bool SetScene()
