@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -72,8 +73,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -94,6 +95,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -434,6 +437,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Goblin_rank1_death_2_12: 1826788643163859297
+      Goblin_rank1_death_2_0: -559764506879404149
+      Goblin_rank1_death_2_7: 7374120110787177328
+      Goblin_rank1_death_2_11: -470248715342081200
+      Goblin_rank1_death_2_2: 8324894805321985018
+      Goblin_rank1_death_2_3: 4542507622310931057
+      Goblin_rank1_death_2_9: -1625773508413439930
+      Goblin_rank1_death_2_10: -3473316913091072200
+      Goblin_rank1_death_2_8: 7364483284519549014
+      Goblin_rank1_death_2_6: 4116086005146523331
+      Goblin_rank1_death_2_5: 4095476218478810073
+      Goblin_rank1_death_2_4: 971350279514471723
+      Goblin_rank1_death_2_1: 7296993573987627800
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

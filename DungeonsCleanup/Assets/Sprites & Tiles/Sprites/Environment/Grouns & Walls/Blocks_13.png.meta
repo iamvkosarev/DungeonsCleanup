@@ -138,6 +138,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -147,8 +148,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -169,6 +170,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -1016,6 +1019,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Blocks_13_11: -1597994625274825740
+      Blocks_13_30: 6745245292891277011
+      Blocks_13_5: 1605778962266815641
+      Blocks_13_12: -8984354537327363517
+      Blocks_13_17: -7960313808425017430
+      Blocks_13_22: -8908453008695181925
+      Blocks_13_26: 6417497101186615807
+      Blocks_13_14: 758129100031419900
+      Blocks_13_20: -2554943260452219379
+      Blocks_13_33: -6898168686792248213
+      Blocks_13_31: 5665959085785203548
+      Blocks_13_10: 9141736311224076987
+      Blocks_13_7: -5013344911440609932
+      Blocks_13_32: 4395648858151424495
+      Blocks_13_34: 1995706616515506209
+      Blocks_13_9: 6661637165316120242
+      Blocks_13_23: 7059299234984698543
+      Blocks_13_4: -4615744308790844548
+      Blocks_13_35: 5889803983959177997
+      Blocks_13_2: -3393358963518623437
+      Blocks_13_19: -859067350560140306
+      Blocks_13_24: -851784879926006327
+      Blocks_13_28: 3523190236637663499
+      Blocks_13_27: 2532848529991693216
+      Blocks_13_36: 259608952420414957
+      Blocks_13_3: -9070842654513399346
+      Blocks_13_37: 1060919476993884718
+      Blocks_13_21: 3234643165131853292
+      Blocks_13_8: -777398191780881266
+      Blocks_13_13: -5796557363019955347
+      Blocks_13_6: 4739070709386997640
+      Blocks_13_25: -3831660587487251579
+      Blocks_13_18: -1539401892969633084
+      Blocks_13_15: -4260821654520812618
+      Blocks_13_29: 1895262842146374725
+      Blocks_13_16: -2924961145458280318
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -90,6 +90,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -99,8 +100,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -121,6 +122,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -674,6 +677,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      block_for_dungeon_1_15: -6499885491856281747
+      block_for_dungeon_1_14: 8113802490851096567
+      block_for_dungeon_1_9: -6865754304356585771
+      block_for_dungeon_1_2: -8016158504355233022
+      block_for_dungeon_1_17: 5743899942132383676
+      block_for_dungeon_1_12: -7335225694236421009
+      block_for_dungeon_1_8: 3792522482041737619
+      block_for_dungeon_1_10: -1379347857803705507
+      block_for_dungeon_1_1: 570481650617251030
+      block_for_dungeon_1_3: 4855546655102200903
+      block_for_dungeon_1_13: 7995927475602838741
+      block_for_dungeon_1_4: -7817111935209174726
+      block_for_dungeon_1_21: 6556707080056017974
+      block_for_dungeon_1_20: -8713425578347647835
+      block_for_dungeon_1_7: -5264158165789893586
+      block_for_dungeon_1_0: -6774043085506775980
+      block_for_dungeon_1_16: -4868973075163250448
+      block_for_dungeon_1_5: 334573336042931983
+      block_for_dungeon_1_6: -6894774879960960350
+      block_for_dungeon_1_19: 5444756049244522124
+      block_for_dungeon_1_11: 6514004779422000694
+      block_for_dungeon_1_18: -4799500944632683894
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
