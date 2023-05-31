@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -14,12 +14,16 @@ public class LevelLoader : MonoBehaviour
     private Animator myAnimator;
     private AudioSource myAudioSource;
     private int currentSceneIndex;
+
     enum FollowingState
     {
         NextScene,
         MainMenu
     }
+
     private FollowingState followingState;
+    private PlayerHeatmapRecorder _playerHeatmapRecorder;
+
     private void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
@@ -27,6 +31,12 @@ public class LevelLoader : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         StartCoroutine(LoadingStartCrossfade());
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex != 0)
+        {
+            _playerHeatmapRecorder = new PlayerHeatmapRecorder(nextSceneBuildIndex,
+                Resources.Load<PlayerHeatmapRecordeData>("PlayerHeatmapRecordeData"));
+            _playerHeatmapRecorder.Start();
+        }
     }
 
 
@@ -35,10 +45,12 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(dalayBeforeStart);
         myAnimator.SetTrigger("StartStartCrossfade");
     }
+
     public void SwitchOffCanvas()
     {
         canvas.active = false;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SetFollowingState(FollowingState.NextScene);
@@ -46,12 +58,14 @@ public class LevelLoader : MonoBehaviour
         myAudioSource.Play();
         myAnimator.SetTrigger("StartExitCrossfade");
     }
+
     public void LoadMainMenuFromGameScene()
     {
         SetFollowingState(FollowingState.MainMenu);
         canvas.active = true;
         myAnimator.SetTrigger("StartExitCrossfade");
     }
+
     private void SetFollowingState(FollowingState followingState)
     {
         this.followingState = followingState;
@@ -60,24 +74,30 @@ public class LevelLoader : MonoBehaviour
     public void LoadScene()
     {
         Debug.Log(followingState);
+        if (currentSceneIndex != 0)
+        {
+            _playerHeatmapRecorder.Finish();
+        }
+
         if (followingState == FollowingState.NextScene)
         {
             SceneManager.LoadScene(nextSceneBuildIndex);
         }
-        else if(followingState == FollowingState.MainMenu)
+        else if (followingState == FollowingState.MainMenu)
         {
             SceneManager.LoadScene("Main Menu");
         }
     }
+
     public void RefreshCurrentSessionData()
     {
         if (playerDataManager != null && followingState == FollowingState.NextScene)
         {
-
             playerDataManager.RefreshLastSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
             if (isCheckPoint)
             {
-                playerDataManager.RefreshCheckPointSessionData(setNewSceneNum: true, newStartSceneNum: nextSceneBuildIndex);
+                playerDataManager.RefreshCheckPointSessionData(setNewSceneNum: true,
+                    newStartSceneNum: nextSceneBuildIndex);
             }
         }
         else if (playerDataManager != null && followingState == FollowingState.MainMenu)

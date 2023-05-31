@@ -118,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerActionControls inputActions;
 
+    public BoxCollider2D FeetCollider => feetCollider;
+
     #region Set Data From Imput System
     private void Awake()
     {
